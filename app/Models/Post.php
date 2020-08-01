@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use App\Traits\Constants;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use Constants;
+    protected $guarded = [];
+
+    public function getStatus(){
+        return $this->getModelStatus($this->status);
+    }
+
+    public function category(){
+        return $this->belongsTo(PostCategory::class , 'post_category_id');
+    }
+
+    public function author(){
+        return $this->belongsTo(User::class , 'user_id');
+    }
+
+    public function comments(){
+        return $this->hasMany(PostComment::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(PostLike::class);
+    }
+}
