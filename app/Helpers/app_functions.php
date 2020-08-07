@@ -140,3 +140,30 @@ function getFileType(String $type)
     function docMimes(){
         return "application/pdf,application/docx,application/doc";
     }
+
+
+    function formatTime($minutes) {
+        $seconds = $minutes * 60;
+        $dtF = new DateTime("@0");
+        $dtT = new DateTime("@$seconds");
+        $a=$dtF->diff($dtT)->format('%a');
+        $h=$dtF->diff($dtT)->format('%h');
+        $i=$dtF->diff($dtT)->format('%i');
+        $s=$dtF->diff($dtT)->format('%s');
+        if($a>0)
+        {
+           return $dtF->diff($dtT)->format('%a days, %h hrs, %i mins and %s secs');
+        }
+        else if($h>0)
+        {
+            return $dtF->diff($dtT)->format('%h hrs, %i mins ');
+        }
+        else if($i>0)
+        {
+            return $dtF->diff($dtT)->format(' %i mins');
+        }
+        else
+        {
+            return $dtF->diff($dtT)->format('%s seconds');
+        }
+    }

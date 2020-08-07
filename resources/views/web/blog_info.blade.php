@@ -2,29 +2,6 @@
 @section('content')
 <!-- Content -->
 <div class="page-content bg-gray">
-    <!-- inner page banner -->
-    <div class="dlab-bnr-inr overlay-black-middle bg-pt" style="background-image:url(images/banner/bnr1.jpg);">
-        <div class="container">
-            <div class="dlab-bnr-inr-entry">
-                @if(!empty($search_keywords))
-                    <h1 class="text-white">Search result for "{{ $search_keywords }}"</h1>
-                @elseif(!empty($search_keywords))
-                    <h1 class="text-white">Blog posts for "{{ $category }}"</h1>
-                @else
-                    <h1 class="text-white">Our Blog Posts</h1>
-                @endif
-                <!-- Breadcrumb row -->
-                <div class="breadcrumb-row">
-                    <ul class="list-inline">
-                        <li><a href="{{ route('homepage')}} ">Home</a></li>
-                        <li>Our Blog</li>
-                    </ul>
-                </div>
-                <!-- Breadcrumb row END -->
-            </div>
-        </div>
-    </div>
-    <!-- inner page banner END -->
     <!-- contact area -->
     <div class="content-area">
         <div class="container">

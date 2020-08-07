@@ -42,4 +42,6 @@ class CourseController extends Controller
         return view('web.course_info' , compact('course' , 'categories' , 'related_courses'));
     }
 
+    
+
 }

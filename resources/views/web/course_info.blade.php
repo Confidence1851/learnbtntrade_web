@@ -2,29 +2,6 @@
 @section('content')
 <!-- Content -->
 <div class="page-content bg-gray">
-    <!-- inner page banner -->
-    <div class="dlab-bnr-inr overlay-black-middle bg-pt" style="background-image:url(images/banner/bnr1.jpg);">
-        <div class="container">
-            <div class="dlab-bnr-inr-entry">
-                @if(!empty($search_keywords))
-                    <h1 class="text-white">Search result for "{{ $search_keywords }}"</h1>
-                @elseif(!empty($search_keywords))
-                    <h1 class="text-white">Blog posts for "{{ $category }}"</h1>
-                @else
-                    <h1 class="text-white">Our Blog Posts</h1>
-                @endif
-                <!-- Breadcrumb row -->
-                <div class="breadcrumb-row">
-                    <ul class="list-inline">
-                        <li><a href="{{ route('homepage')}} ">Home</a></li>
-                        <li>Course Information</li>
-                    </ul>
-                </div>
-                <!-- Breadcrumb row END -->
-            </div>
-        </div>
-    </div>
-    <!-- inner page banner END -->
     <div class="section-full content-inner">
         <div class="container">
             <div class="row">
@@ -34,15 +11,15 @@
                         <ul class="course-info">
                             <li>
                                 <i class="fa fa-user"></i> <span> 65</span>
-                                <div class="course-info-dec">Student</div>
+                                <div class="course-info-dec">Students</div>
                             </li>
                             <li>
                                 <i class="fa fa-star"></i> <span> 4.3</span>
                                 <div class="course-info-dec">Reviews (23)</div>
                             </li>
                             <li>
-                                <i class="fa fa-clock-o"></i> <span> 2.0</span>
-                                <div class="course-info-dec">Learning Hours</div>
+                            <i class="fa fa-clock-o"></i> <span> {{ formatTime($course->getDuration())}}</span>
+                                <div class="course-info-dec">Duration</div>
                             </li>
                         </ul>
                     </div>
@@ -109,7 +86,9 @@
 
                                             <tr>
                                                 <td>
-                                                    <span><i class="fa fa-play m-r10 text-primary"></i>Section {{$section->number}}</span>
+                                                    <a href="{{ route('my_courses.take_course' , ['id' => encrypt($section->id) , 'slug' => $section->slug ]) }}">
+                                                        <span><i class="fa fa-play m-r10 text-primary"></i>Section {{$section->number}}</span>
+                                                    </a>
                                                 </td>
                                                 <td>{{$section->title}}</td>
                                                 <td class="text-right">

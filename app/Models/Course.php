@@ -45,4 +45,8 @@ class Course extends Model
         }
         return '$'.number_format((float)$this->price, 2);
     }
+
+    public function getDuration(){
+        return $this->sections()->where('status' , $this->activeStatus)->sum('duration');
+    }
 }

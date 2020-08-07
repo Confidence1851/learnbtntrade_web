@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/style.css">
 	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/templete.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/custom.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/skin/skin-4.css">
 	<!-- Google Font -->
 	<style>
@@ -45,12 +46,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/plugins/revolution/revolution/css/revolution.min.css">
     <!-- Jquery Toast css -->
     <link href="{{asset('toast')}}/jquery.toast.min.css" rel="stylesheet" type="text/css" />
-<style>
-
-.jq-toast-wrap {
-    z-index: 90000000!important;
-}
-</style>
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -77,6 +72,10 @@
                             <button id="quik-search-btn" type="button" class="site-button-link"><i class="la la-search"></i></button>
                             @auth
                                 <a href="{{ route('home') }}" class="btn btn-outline-primary mr-3">Logo</a>
+                                <ul class="sub-menu right">
+									<li><a href=""></a></li>
+									<li><a href=""></a></li>
+								</ul>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-outline-primary mr-3">Login</a>
                                 <a href="{{ route('register') }}" class="btn btn-primary d-none d-md-block">Register</a>
@@ -85,9 +84,9 @@
                     </div>
                     <!-- Quik search -->
                     <div class="dlab-quik-search ">
-                        <form action="#">
-                            <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
-                            <span id="quik-search-remove"><i class="ti-close"></i></span>
+                        <form role="search" method="get" action="{{ route('our_courses.course_search')}}">
+                            <input name="keywords" class="form-control" value="{{ $search_keywords ?? '' }}" placeholder="Type to search for courses">
+                            <span id="quik-search-remove" type="button"><i class="ti-close"></i></span>
                         </form>
                     </div>
                     <!-- main nav -->
@@ -133,7 +132,10 @@
 
     @yield('content')
 
-
+    @php
+        $hide_footer = $hide_footer ?? false;
+    @endphp
+    @if(!$hide_footer)
 	<!-- Footer -->
     <footer class="site-footer footer-center">
         <div class="footer-top">
@@ -192,6 +194,7 @@
         </div>
     </footer>
     <!-- Footer END -->
+    @endif
     <button class="scroltop style2 radius" type="button"><i class="fa fa-arrow-up"></i></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->

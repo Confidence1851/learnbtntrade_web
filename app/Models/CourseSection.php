@@ -22,4 +22,8 @@ class CourseSection extends Model
         return $this->hasMany(CourseSectionResource::class);
     }
 
+    public function activeResources(){
+        return $this->hasMany(CourseSectionResource::class, 'course_section_id')->where('status', $this->activeStatus);
+    }
+
 }

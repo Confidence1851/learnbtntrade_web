@@ -36,6 +36,13 @@ Route::prefix('verified-courses')->as('our_courses.')->group(function () {
     Route::get('/category/{id}/{slug}', 'Web\CourseController@category_courses')->name('category_courses');
 });
 
+Route::prefix('my-courses')->namespace('Student')->as('my_courses.')->middleware(['auth'])->group(function () {
+    Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
+    Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
+    Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
+});
+
+
 Auth::routes(['verify' => true , 'register' => true]);
 // Route::get('/t', function () {
 //     event(new \App\Events\SendMessage());
