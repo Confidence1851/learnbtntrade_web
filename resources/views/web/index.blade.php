@@ -12,7 +12,7 @@
 							<!-- SLIDE  -->
 							<li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ asset($web_source) }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
 								<!-- LAYER NR. 1 -->
 								<!-- LAYERS -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer"
@@ -153,7 +153,7 @@
 							</li>
 							<li data-index="rs-200" data-transition="fadethroughdark" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ asset($web_source) }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
 								<!-- LAYER NR. 1 -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-200-layer"
 									data-x="['center','center','center','center']"
@@ -291,7 +291,7 @@
 			<div class="row teacher-about">
 				<div class="col-md-5">
 					<h2 class="">Hey there, my name is John Doe. I'm the founder of the EduZone coaching classes.</h2>
-					<img src="{{ asset($web_source) }}/images/sign.png" alt="">
+					<img src="{{ $web_source }}/images/sign.png" alt="">
 				</div>
 				<div class="col-md-7">
 					<p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary.</p>
@@ -300,7 +300,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.3s">
 					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><span class="icon-cell"><img src="{{ asset($web_source) }}/images/icon/book.png" alt=""></span> </div>
+						<div class="icon-bx-sm bg-primary m-b20"><span class="icon-cell"><img src="{{ $web_source }}/images/icon/book.png" alt=""></span> </div>
 						<div class="icon-content p-l40">
 							<h5 class="dlab-tilte">Expert Faculty</h5>
 							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
@@ -309,7 +309,7 @@
 				</div>
 				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.3s">
 					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ asset($web_source) }}/images/icon/graduate.png" alt=""></a> </div>
+						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ $web_source }}/images/icon/graduate.png" alt=""></a> </div>
 						<div class="icon-content p-l40">
 							<h5 class="dlab-tilte">Learn Courses Online</h5>
 							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
@@ -318,7 +318,7 @@
 				</div>
 				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.3s">
 					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ asset($web_source) }}/images/icon/books.png" alt=""></a> </div>
+						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ $web_source }}/images/icon/books.png" alt=""></a> </div>
 						<div class="icon-content p-l40">
 							<h5 class="dlab-tilte">Book Library & Store</h5>
 							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
@@ -490,9 +490,9 @@
 						<div class="col-md-6 col-lg-3 col-sm-6">
 							<div class="dlab-box courses-bx">
 								<div class="dlab-media">
-									<img src="{{ asset($web_source) }}/images/our-services/coaching/pic1.jpg" alt="">
+									<img src="{{ $web_source }}/images/our-services/coaching/pic1.jpg" alt="">
 									<div class="user-info">
-										<img src="{{ asset($web_source) }}/images/testimonials/pic1.jpg" alt="">
+										<img src="{{ $web_source }}/images/testimonials/pic1.jpg" alt="">
 										<h6 class="title">Jack Ronan</h6>
 										<div class="review">
 											<ul class="item-review">
@@ -521,9 +521,9 @@
 						<div class="col-md-6 col-lg-3 col-sm-6">
 							<div class="dlab-box courses-bx">
 								<div class="dlab-media">
-									<img src="{{ asset($web_source) }}/images/our-services/coaching/pic2.jpg" alt="">
+									<img src="{{ $web_source }}/images/our-services/coaching/pic2.jpg" alt="">
 									<div class="user-info">
-										<img src="{{ asset($web_source) }}/images/testimonials/pic2.jpg" alt="">
+										<img src="{{ $web_source }}/images/testimonials/pic2.jpg" alt="">
 										<h6 class="title">Jack Ronan</h6>
 										<div class="review">
 											<ul class="item-review">
@@ -552,9 +552,9 @@
 						<div class="col-md-6 col-lg-3 col-sm-6">
 							<div class="dlab-box courses-bx">
 								<div class="dlab-media">
-									<img src="{{ asset($web_source) }}/images/our-services/coaching/pic3.jpg" alt="">
+									<img src="{{ $web_source }}/images/our-services/coaching/pic3.jpg" alt="">
 									<div class="user-info">
-										<img src="{{ asset($web_source) }}/images/testimonials/pic3.jpg" alt="">
+										<img src="{{ $web_source }}/images/testimonials/pic3.jpg" alt="">
 										<h6 class="title">Jack Ronan</h6>
 										<div class="review">
 											<ul class="item-review">
@@ -583,9 +583,9 @@
 						<div class="col-md-6 col-lg-3 col-sm-6">
 							<div class="dlab-box courses-bx">
 								<div class="dlab-media">
-									<img src="{{ asset($web_source) }}/images/our-services/coaching/pic4.jpg" alt="">
+									<img src="{{ $web_source }}/images/our-services/coaching/pic4.jpg" alt="">
 									<div class="user-info">
-										<img src="{{ asset($web_source) }}/images/testimonials/pic2.jpg" alt="">
+										<img src="{{ $web_source }}/images/testimonials/pic2.jpg" alt="">
 										<h6 class="title">Jack Ronan</h6>
 										<div class="review">
 											<ul class="item-review">
@@ -626,7 +626,7 @@
 					<div class="items">
 						<div class="event-post post-grid shadow radius">
 							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ asset($web_source) }}/images/events/grid/coaching/pic1.jpg" alt=""></a>
+								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic1.jpg" alt=""></a>
 							</div>
 							<div class="dlab-post-info">
 								<div class="dlab-post-meta">
@@ -645,7 +645,7 @@
 					<div class="items">
 						<div class="event-post post-grid shadow radius">
 							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ asset($web_source) }}/images/events/grid/coaching/pic2.jpg" alt=""></a>
+								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic2.jpg" alt=""></a>
 							</div>
 							<div class="dlab-post-info">
 								<div class="dlab-post-meta">
@@ -664,7 +664,7 @@
 					<div class="items">
 						<div class="event-post post-grid shadow radius">
 							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ asset($web_source) }}/images/events/grid/coaching/pic3.jpg" alt=""></a>
+								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic3.jpg" alt=""></a>
 							</div>
 							<div class="dlab-post-info">
 								<div class="dlab-post-meta">
