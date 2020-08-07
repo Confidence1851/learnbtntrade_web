@@ -316,7 +316,7 @@
                     </li>
 
                     <li class="header">INTERACTIONS</li>
-
+{{--
                     <li class="{{$activeGroup == 'adverts' ? 'active' : ''}}">
                         <a href="{{ route('adverts.index') }}">
                             <i class="material-icons col-amber">rss_feed</i>
@@ -328,7 +328,7 @@
                             <i class="material-icons col-light-blue">volume_up</i>
                             <span>Annoucements</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="{{$activeGroup == 'subscribers' ? 'active' : ''}}">
                         <a href="javascript:void(0);">
@@ -344,12 +344,12 @@
                         </a>
                     </li>
                     <hr>
-                    <li class="{{$activeGroup == 'logs' ? 'active' : ''}}">
+                    {{-- <li class="{{$activeGroup == 'logs' ? 'active' : ''}}">
                     <a href="{{ route('logs.index') }}">
                             <i class="material-icons col-red">donut_large</i>
                             <span>Logs</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <!-- #Menu -->
