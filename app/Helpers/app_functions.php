@@ -43,7 +43,7 @@ function putFileInPrivateStorage($file , $path){
 
 /**Gets file from public storage */
 function getFileFromStorage($fullpath){
-    return asset($fullpath);
+    return $fullpath;
 }
 
 /**Deletes file from public storage */
