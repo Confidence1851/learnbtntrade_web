@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
             // }
             $view->with([
                 'web_source' => env('ASSET_URL').'/web',
-                'admin_source' => env('ASSET_URL').'/'."dashboard",
+                'admin_source' => env('ASSET_URL')."/dashboard",
             ]);
         });
 

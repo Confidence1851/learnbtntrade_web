@@ -17,8 +17,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- FAVICONS ICON -->
-	<link rel="icon" href="{{ asset($web_source) }}/images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="{{ asset($web_source) }}/images/favicon.png" />
+	<link rel="icon" href="{{ $web_source }}/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ $web_source }}/images/favicon.png" />
 
 	<!-- PAGE TITLE HERE -->
     <title>{{ $title ?? '' }} | LearnBtcTrade</title>
@@ -27,23 +27,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--[if lt IE 9]>
-	<script src="{{ asset($web_source) }}/js/html5shiv.min.js"></script>
-	<script src="{{ asset($web_source) }}/js/respond.min.js"></script>
+	<script src="{{ $web_source }}/js/html5shiv.min.js"></script>
+	<script src="{{ $web_source }}/js/respond.min.js"></script>
 	<![endif]-->
 
 	<!-- STYLESHEETS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/plugins.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/style.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/templete.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/custom.css">
-	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/css/skin/skin-4.css">
+    <link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/style.css">
+	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/templete.css">
+	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/custom.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ $web_source }}/css/skin/skin-4.css">
 	<!-- Google Font -->
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 	</style>
 
 	<!-- REVOLUTION SLIDER CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ asset($web_source) }}/plugins/revolution/revolution/css/revolution.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/revolution/revolution/css/revolution.min.css">
     <!-- Jquery Toast css -->
     <link href="{{asset('toast')}}/jquery.toast.min.css" rel="stylesheet" type="text/css" />
 </head>
@@ -58,7 +58,7 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion logo-dark">
-						<a href="{{ route('homepage') }}"><img src="{{ asset($web_source) }}/images/logo-4.png" alt=""></a>
+						<a href="{{ route('homepage') }}"><img src="{{ $web_source }}/images/logo-4.png" alt=""></a>
 					</div>
                     <!-- nav toggle button -->
                     <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
 						<div class="logo-header d-md-block d-lg-none">
-							<a href="index.html"><img src="{{ asset($web_source) }}/images/logo-4.png" alt=""></a>
+							<a href="index.html"><img src="{{ $web_source }}/images/logo-4.png" alt=""></a>
 						</div>
                        <ul class="nav navbar-nav">
                             <li class="{{ $activePage == 'home' ? 'active' : ''}}">
@@ -164,7 +164,7 @@
             <div class="container p-tb10">
 				<div class="row">
                     <div class="col-md-12 col-sm-12 m-b30 logo-white">
-						<img src="{{ asset($web_source) }}/images/logo-white-4.png" alt="" width="180">
+						<img src="{{ $web_source }}/images/logo-white-4.png" alt="" width="180">
 					</div>
 				</div>
                 <div class="row">
@@ -198,39 +198,39 @@
     <button class="scroltop style2 radius" type="button"><i class="fa fa-arrow-up"></i></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-<script src="{{ asset($web_source) }}/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
-<script src="{{ asset($web_source) }}/plugins/wow/wow.js"></script><!-- WOW JS -->
-<script src="{{ asset($web_source) }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="{{ asset($web_source) }}/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="{{ asset($web_source) }}/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
-<script src="{{ asset($web_source) }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
-<script src="{{ asset($web_source) }}/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
-<script src="{{ asset($web_source) }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
-<script src="{{ asset($web_source) }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-<script src="{{ asset($web_source) }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script src="{{ asset($web_source) }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-<script src="{{ asset($web_source) }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
-<script src="{{ asset($web_source) }}/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
-<script src="{{ asset($web_source) }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery -->
-<script src="{{ asset($web_source) }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
-<script src="{{ asset($web_source) }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
-<script src="{{ asset($web_source) }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
-<script src="{{ asset($web_source) }}/js/dz.ajax.js"></script><!-- CONTACT JS  -->
-<script src="{{ asset($web_source) }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
-<script src="{{ asset($web_source) }}/js/jquery.lazy.min.js"></script>
+<script src="{{ $web_source }}/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="{{ $web_source }}/plugins/wow/wow.js"></script><!-- WOW JS -->
+<script src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ $web_source }}/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ $web_source }}/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
+<script src="{{ $web_source }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
+<script src="{{ $web_source }}/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{ $web_source }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+<script src="{{ $web_source }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="{{ $web_source }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
+<script src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
+<script src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+<script src="{{ $web_source }}/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
+<script src="{{ $web_source }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery -->
+<script src="{{ $web_source }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="{{ $web_source }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
+<script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
+<script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  -->
+<script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
+<script src="{{ $web_source }}/js/jquery.lazy.min.js"></script>
 <!-- REVOLUTION JS FILES -->
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="{{ asset($web_source) }}/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script src="{{ asset($web_source) }}/js/rev.slider.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="{{ $web_source }}/js/rev.slider.js"></script>
 <script>
 jQuery(document).ready(function() {
 	'use strict';
