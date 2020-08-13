@@ -35,7 +35,9 @@
                         @foreach ($posts as $post)
                             <div class="blog-post blog-md clearfix shadow bg-white">
                                 <div class="dlab-post-media dlab-img-effect zoom-slow">
-                                <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}"><img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive"></a>
+                                    <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">
+                                        <img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive">
+                                    </a>
                                 </div>
                                 <div class="dlab-post-info">
                                     <div class="dlab-post-meta">
@@ -45,12 +47,13 @@
                                         </ul>
                                     </div>
                                     <div class="dlab-post-title ">
-                                        <h4 class="post-title"><a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ $post->title ?? '' }}</a></h4>
+                                        <h4 class="post-title">
+                                            <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ $post->title ?? '' }}</a>
+                                        </h4>
                                     </div>
                                     <div class="dlab-post-text">
-                                        <p>
-                                            {{-- {!! $post->body ?? '' !!} --}}
-                                            {{ $post->title ?? '' }}
+                                        <p class="limit_content" limit="20">
+                                            {!! $post->body ?? '' !!}
                                         </p>
                                     </div>
                                     <div class="post-footer">

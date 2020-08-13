@@ -43,7 +43,12 @@ class Course extends Model
         if($price < 1){
             return 'Free';
         }
-        return '$'.number_format((float)$this->price, 2);
+        return format_money($this->price);
+    }
+
+
+    public function payableAmount(){
+       return  $this->price - $this->discount;
     }
 
     public function getDuration(){

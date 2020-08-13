@@ -4,13 +4,10 @@ namespace App\Models;
 
 use App\Traits\Constants;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
 
-class BankAccount extends Model
+class OrderItem extends Model
 {
-    use  Constants;
-    protected static $logUnguarded = true;
-
+    use Constants;
     protected $guarded = [];
 
     public function getStatus(){
@@ -20,4 +17,9 @@ class BankAccount extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
+
 }

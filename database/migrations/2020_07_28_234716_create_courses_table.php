@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('code')->unique();
+            $table->string('orders_count')->default(0);
             $table->decimal('price');
             $table->decimal('discount')->default(0);
             $table->text('description');

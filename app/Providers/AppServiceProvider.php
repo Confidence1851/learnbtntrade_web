@@ -55,6 +55,8 @@ class AppServiceProvider extends ServiceProvider
             //     // }
             // }
             $view->with([
+                'logo_img' => url('logo.png'),
+                'favicon_img' => url('logo.png'),
                 'web_source' => env('ASSET_URL').'/web',
                 'admin_source' => env('ASSET_URL')."/dashboard",
             ]);

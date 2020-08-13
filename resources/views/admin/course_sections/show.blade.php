@@ -44,7 +44,7 @@
 
                                                     <div class="col-md-6"><br>
                                                         <div class="p-3">
-                                                            <video src="{{ route('course.sections.file', encrypt($section->id)) }}" controls class="img-responsive"></video>
+                                                            <video src="{{ route('course.sections.file', encrypt($section->id)) }}" controls class="img-responsive" style="max-height: 400px"></video>
                                                         </div>
                                                     </div>
 

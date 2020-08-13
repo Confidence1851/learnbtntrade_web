@@ -21,6 +21,12 @@ Route::get('/frequesntly-asked-questions', 'Web\WebController@faqs')->name('faqs
 Route::get('/download-center', 'Web\WebController@download_center')->name('download_center');
 Route::get('/download-file/{name}', 'Web\WebController@download_file')->name('download_file');
 
+
+Route::prefix('services')->namespace('Web')->as('services.')->middleware(['auth'])->group(function () {
+    Route::get('plans', 'PlanController@index')->name('plans');
+});
+
+
 Route::prefix('our-blog')->as('our_blog.')->group(function () {
     Route::get('/search', 'Web\BlogController@blog_posts')->name('blog_search');
     Route::get('/', 'Web\BlogController@blog_posts')->name('blog_posts');
@@ -42,6 +48,13 @@ Route::prefix('my-courses')->namespace('Student')->as('my_courses.')->middleware
     Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
 });
 
+Route::prefix('cart')->namespace('Student')->as('cart.')->middleware(['auth'])->group(function () {
+    Route::get('/items', 'CartController@items')->name('items');
+    Route::post('/add', 'CartController@addCourseToCart')->name('add');
+    Route::post('/remove', 'CartController@removeCourseFromCart')->name('remove');
+    Route::post('/checkout', 'CartController@checkout')->name('checkout');
+    Route::get('/checkout/success/{data}', 'CartController@checkoutSuccess')->name('checkout.success');
+});
 
 Auth::routes(['verify' => true , 'register' => true]);
 // Route::get('/t', function () {

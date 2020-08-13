@@ -1,7 +1,8 @@
 @extends('web.layouts.app' , ['title' => 'Home'])
 @section('content')
-
-	<!-- Slider -->
+<!-- Content -->
+<div class="page-content bg-white">
+   <!-- Slider -->
 	<div class="main-slider style-two default-banner" id="home">
 		<div class="tp-banner-container">
 			<div class="tp-banner" >
@@ -12,7 +13,7 @@
 							<!-- SLIDE  -->
 							<li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
 								<!-- LAYER NR. 1 -->
 								<!-- LAYERS -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer"
@@ -40,7 +41,7 @@
 									data-volume="mute"
 									data-videowidth="100%"
 									data-videoheight="100%"
-									data-videomp4="video/video2.mp4"
+                                    data-videomp4="{{ $web_source }}/video/video2.mp4"
 									data-videopreload="auto"
 									data-videoloop="loop"
 									data-aspectratio="16:9"
@@ -153,7 +154,7 @@
 							</li>
 							<li data-index="rs-200" data-transition="fadethroughdark" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
 								<!-- LAYER NR. 1 -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-200-layer"
 									data-x="['center','center','center','center']"
@@ -284,423 +285,402 @@
 			</div>
 		</div>
 	</div>
-	<!-- Slider END -->
-	<!-- Our Services -->
-	<div class="section-full content-inner bg-white">
-		<div class="container">
-			<div class="row teacher-about">
-				<div class="col-md-5">
-					<h2 class="">Hey there, my name is John Doe. I'm the founder of the EduZone coaching classes.</h2>
-					<img src="{{ $web_source }}/images/sign.png" alt="">
-				</div>
-				<div class="col-md-7">
-					<p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.3s">
-					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><span class="icon-cell"><img src="{{ $web_source }}/images/icon/book.png" alt=""></span> </div>
-						<div class="icon-content p-l40">
-							<h5 class="dlab-tilte">Expert Faculty</h5>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.3s">
-					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ $web_source }}/images/icon/graduate.png" alt=""></a> </div>
-						<div class="icon-content p-l40">
-							<h5 class="dlab-tilte">Learn Courses Online</h5>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.3s">
-					<div class="icon-bx-wraper bx-style-2 m-l40 p-a30 left bg-gray icon-bx-ho">
-						<div class="icon-bx-sm bg-primary m-b20"><a href="javascript:void(0);" class="icon-cell"><img src="{{ $web_source }}/images/icon/books.png" alt=""></a> </div>
-						<div class="icon-content p-l40">
-							<h5 class="dlab-tilte">Book Library & Store</h5>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing  sed diam nibh euismod..</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Content -->
-    <div class="page-content bg-white">
-        <!-- contact area -->
-        <div class="content-block">
-			<!-- Register Form -->
-			<div class="section-full bg-secondry form-area style1 content-inner overlay-black-dark bg-img-fix" style="background-image:url(images/background/bg7.jpg)">
-				<div class="container">
-					<div class="row align-items-center">
-						<div class="col-lg-7 m-b30">
-							<div class="section-head">
-								<h4 class="title-small">Get a Free online Registeration</4>
-								<h2 class="title text-primary">register now!</h2>
-								<p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-							</div>
-							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-6 m-b30">
-									<div class="dlab-box counter-style-2 text-white">
-										<div class="icon-lg"><i class="flaticon-mortarboard"></i></div>
-										<h2 class="counter text-primary m-b5">150</h2>
-										<span class="counter-text">Happy Students</span>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-6 m-b30">
-									<div class="dlab-box counter-style-2 text-white">
-										<div class="icon-lg"><i class="flaticon-homework"></i></div>
-										<h2 class="counter text-primary m-b5">256</h2>
-										<span class="counter-text">Approved Courses</span>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-6 m-b30">
-									<div class="dlab-box counter-style-2 text-white">
-										<div class="icon-lg"><i class="flaticon-classroom"></i></div>
-										<h2 class="counter text-primary m-b5">652</h2>
-										<span class="counter-text">Certified Teachers</span>
-									</div>
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-6 m-b30">
-									<div class="dlab-box counter-style-2 text-white">
-										<div class="icon-lg"><i class="flaticon-championship"></i></div>
-										<h2 class="counter text-primary m-b5">765</h2>
-										<span class="counter-text">Graduate Students</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-5 m-b30">
-							<div class="register-form style1">
-								<form method="post" class="dzForm" action="script/contact.php">
-									<input type="hidden" value="Appointment" name="dzToDo" >
-									<div class="row sp15">
-										<div class="col-md-12">
-											<div class="form-group">
-												<input name="dzName" class="form-control" placeholder="Name" type="text">
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<input name="dzEmail" class="form-control" placeholder="Email" type="text">
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<input name="dzOther[date]" class="form-control" placeholder="Select Date" type="text">
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<select class="bs-select-hidden" name="dzOther[service]" >
-													<option value="Yoda">Mathematics</option>
-													<option value="Wait Loss">Physics</option>
-													<option value="Cardio">Chemistry</option>
-													<option value="Gym">Biology</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<div class="input-group">
-													<textarea name="dzMessage" rows="4" class="form-control" required=""></textarea>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12 text-center">
-											<button name="submit" type="submit" value="Submit" class="site-button btn-block"><span>Submit</span></button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
+    <!-- contact area -->
+    <div class="content-block">
+        {{-- Featured Courses --}}
+        @if($featuredCourses->count() > 0)
+            <div class="section-full bg-gray content-inner about-carousel-ser">
+                <div class="container">
+                    <div class="section-head text-center">
+                        <h2 class="title">Featured Courses</h2>
+                        <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
                     </div>
-				</div>
-			</div>
-			<!-- Register Form End -->
-			<div class="section-full content-inner bg-white">
-				<div class="container">
-					<div class="row edu-about align-items-center">
-						<div class="col-lg-6 m-b30">
-							<div class="section-head m-b20">
-								<h2 class="title">Learn New Skills</h2>
-								<h5 class="title-small">Igniting the spark of genius in every child.</h5>
-								<div class="dlab-separator bg-primary"></div>
-							</div>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							<ul class="list-check primary circle text-black">
-								<li>We provide the exceptional service wed want</li>
-								<li>The Rank Of Education In Consumer's Market.</li>
-								<li>You Will Never Believe These Bizarre Truth Of Education.</li>
-								<li>A company involved in service, maintenance</li>
-							</ul>
-							<a href="about-2.html" class="site-button btnhover14">Read More</a>
-						</div>
-						<div class="col-lg-6">
-							<div class="row features-area-one">
-								<div class="col-lg-6 col-md-6">
-									<div class="features-box style1 bg-primary m-b30">
-										<div class="dlab-info">
-											<i class="la la-book"></i>
-											<h3 class="info">12</h3>
-											<span>Expert faculty</span>
-										</div>
-									</div>
-									<div class="features-box style1 bg-secondry">
-										<div class="dlab-info">
-											<i class="la la-paint-brush"></i>
-											<h3 class="info">07</h3>
-											<span>Special Education</span>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 m-t30">
-									<div class="features-box style1 bg-secondry m-b30">
-										<div class="dlab-info">
-											<i class="la la-book"></i>
-											<h3 class="info">05</h3>
-											<span>Online Courses</span>
-										</div>
-									</div>
-									<div class="features-box style1 bg-primary m-b30">
-										<div class="dlab-info">
-											<i class="la la-user-circle"></i>
-											<h3 class="info">24</h3>
-											<span>hour Services</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- About Us End -->
-			<!-- About Company -->
-			<div class="section-full bg-gray content-inner about-carousel-ser">
-				<div class="container">
-					<div class="section-head text-center">
-						<h2 class="title">Popular Courses</h2>
-						<p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-lg-3 col-sm-6">
-							<div class="dlab-box courses-bx">
-								<div class="dlab-media">
-									<img src="{{ $web_source }}/images/our-services/coaching/pic1.jpg" alt="">
-									<div class="user-info">
-										<img src="{{ $web_source }}/images/testimonials/pic1.jpg" alt="">
-										<h6 class="title">Jack Ronan</h6>
-										<div class="review">
-											<ul class="item-review">
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<span>10 Review</span>
-										</div>
-									</div>
-								</div>
-								<div class="dlab-info">
-									<h6 class="dlab-title"><a href="courses-details.html">Learn Python – Interactive Python Tutorial</a></h6>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-									<div class="courses-info">
-										<ul>
-											<li><i class="fa fa-users"></i> 20 Student </li>
-										</ul>
-										<span class="price">$79.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-6">
-							<div class="dlab-box courses-bx">
-								<div class="dlab-media">
-									<img src="{{ $web_source }}/images/our-services/coaching/pic2.jpg" alt="">
-									<div class="user-info">
-										<img src="{{ $web_source }}/images/testimonials/pic2.jpg" alt="">
-										<h6 class="title">Jack Ronan</h6>
-										<div class="review">
-											<ul class="item-review">
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<span>10 Review</span>
-										</div>
-									</div>
-								</div>
-								<div class="dlab-info">
-									<h6 class="dlab-title"><a href="courses-details.html">Learn Python – Interactive Python Tutorial</a></h6>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-									<div class="courses-info">
-										<ul>
-											<li><i class="fa fa-users"></i> 20 Student </li>
-										</ul>
-										<span class="price">$79.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-6">
-							<div class="dlab-box courses-bx">
-								<div class="dlab-media">
-									<img src="{{ $web_source }}/images/our-services/coaching/pic3.jpg" alt="">
-									<div class="user-info">
-										<img src="{{ $web_source }}/images/testimonials/pic3.jpg" alt="">
-										<h6 class="title">Jack Ronan</h6>
-										<div class="review">
-											<ul class="item-review">
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<span>10 Review</span>
-										</div>
-									</div>
-								</div>
-								<div class="dlab-info">
-									<h6 class="dlab-title"><a href="courses-details.html">Learn Python – Interactive Python Tutorial</a></h6>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-									<div class="courses-info">
-										<ul>
-											<li><i class="fa fa-users"></i> 20 Student </li>
-										</ul>
-										<span class="price">$79.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-6">
-							<div class="dlab-box courses-bx">
-								<div class="dlab-media">
-									<img src="{{ $web_source }}/images/our-services/coaching/pic4.jpg" alt="">
-									<div class="user-info">
-										<img src="{{ $web_source }}/images/testimonials/pic2.jpg" alt="">
-										<h6 class="title">Jack Ronan</h6>
-										<div class="review">
-											<ul class="item-review">
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<span>10 Review</span>
-										</div>
-									</div>
-								</div>
-								<div class="dlab-info">
-									<h6 class="dlab-title"><a href="courses-details.html">Learn Python – Interactive Python Tutorial</a></h6>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-									<div class="courses-info">
-										<ul>
-											<li><i class="fa fa-users"></i> 20 Student </li>
-										</ul>
-										<span class="price">$79.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- About Company END -->
-			<!-- Latest From Blog -->
-			<div class="section-full content-inner-2 bg-white">
-				<div class="container">
-					<div class="section-head text-center">
-						<h2 class="title">Our Events</h2>
-						<p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-					</div>
-					<div class="blog-carousel owl-btn-center-lr owl-carousel owl-btn-3">
-					<div class="items">
-						<div class="event-post post-grid shadow radius">
-							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic1.jpg" alt=""></a>
-							</div>
-							<div class="dlab-post-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-date"> <strong>10 June</strong> <span> 2020</span> </li>
-										<li class="post-author"> <i class="la la-clock"></i> 05:00 PM </li>
-										<li class="post-tag"> <i class="ti-location-pin"></i> Marmora Road </li>
-									</ul>
-								</div>
-								<div class="dlab-post-title">
-									<h4 class="post-title"><a href="event-details.html">Why is Early Education Essential?</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="items">
-						<div class="event-post post-grid shadow radius">
-							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic2.jpg" alt=""></a>
-							</div>
-							<div class="dlab-post-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-date"> <strong>10 June</strong> <span> 2020</span> </li>
-										<li class="post-author"> <i class="la la-clock"></i> 05:00 PM </li>
-										<li class="post-tag"> <i class="ti-location-pin"></i> Marmora Road </li>
-									</ul>
-								</div>
-								<div class="dlab-post-title">
-									<h4 class="post-title"><a href="event-details.html">The Shocking Revelation of Education.</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="items">
-						<div class="event-post post-grid shadow radius">
-							<div class="dlab-post-media">
-								<a href="event-details.html"><img src="{{ $web_source }}/images/events/grid/coaching/pic3.jpg" alt=""></a>
-							</div>
-							<div class="dlab-post-info">
-								<div class="dlab-post-meta">
-									<ul>
-										<li class="post-date"> <strong>10 June</strong> <span> 2020</span> </li>
-										<li class="post-author"> <i class="la la-clock"></i> 05:00 PM </li>
-										<li class="post-tag"> <i class="ti-location-pin"></i> Marmora Road </li>
-									</ul>
-								</div>
-								<div class="dlab-post-title">
-									<h4 class="post-title"><a href="event-details.html">Five Things Nobody Told You About</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
-			<!-- Latest From Blog End -->
-			<!-- Call To Action -->
-			<div class="section-full call-action bg-primary wow fadeIn" data-wow-duration="2s" data-wow-delay="0.9s">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9">
-							<h2 class="title text-white">Amazing things happen to your business </h2>
-							<p class="m-b0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						</div>
-						<div class="col-lg-3 d-flex">
-							<a href="contact-2.html" class="site-button white align-self-center btnhover14 outline ml-auto outline-2">Get In Touch</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Call To Action End -->
-		</div>
-		<!-- contact area END -->
+                        <div class="row">
+                            @foreach ($featuredCourses as $course)
+                                <div class="col-md-4">
+                                    @include('web.fragments.course_item')
+                                </div>
+                            @endforeach
+                        </div>
+                </div>
+            </div>
+        @endif
+
+        <!-- Our Projects  -->
+        <div class="section-full bg-img-fix content-inner-2 overlay-black-dark contact-action style2" style="background-image:url({{ $web_source }}/images/background/bg2.jpg);">
+            <div class="container">
+                <div class="row relative">
+                    <div class="col-md-12 col-lg-8 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <div class="contact-no-area">
+                            <h2 class="title">Create your free account now and get immediate access to 100s of online courses.</h2>
+                            <form action="script/mailchamp.php" method="post" class="dzSubscribe subscribe-box row align-items-center sp15">
+                                <div class="col-lg-12">
+                                    <div class="dzSubscribeMsg"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="input-group">
+                                        <input name="dzName" required="required" type="text" class="form-control" placeholder="Your Name ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="input-group">
+                                        <input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="input-group">
+                                        <button name="submit" value="Submit" type="submit" class="site-button btn-block btnhover13">Subscribe</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 contact-img-bx wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <img src="{{ $web_source }}/images/pic1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Projects END -->
+        <!-- Our Services -->
+        <div class="section-full bg-white content-inner">
+            <div class="container">
+                <div class="row service-area-one">
+                    <div class="col-lg-4 m-b30 hidden-sm">
+                        <div class="rdx-thu"><img src="{{ $web_source }}/images/student1.png" alt=""></div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="section-head">
+                            <h2 class="title"> Welcome To LearnBtcTrade Academy</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left">
+                                    <div class="icon-bx-xs bg-secondry radius"> <a href="#" class="icon-cell"><i class="fa fa-paint-brush"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">Special Education</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left">
+                                    <div class="icon-bx-xs bg-secondry radius"> <a href="#" class="icon-cell"><i class="fa fa-calendar"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">Events</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left">
+                                    <div class="icon-bx-xs bg-primary radius"> <a href="#" class="icon-cell"><i class="fa fa-book"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">Full Day Session</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left">
+                                    <div class="icon-bx-xs bg-primary radius"> <a href="#" class="icon-cell"><i class="fa fa-graduation-cap"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">Pre Classes </h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left">
+                                    <div class="icon-bx-xs bg-secondry radius"> <a href="#" class="icon-cell"><i class="fa fa-user"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">Qualified Teachers</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper left serb">
+                                    <div class="icon-bx-xs bg-secondry radius"> <a href="#" class="icon-cell"><i class="fa fa-clock-o"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h5 class="rdx-tilte">24/7 Supports</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam..</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Services End -->
+        <!-- Company staus -->
+        <div class="section-full text-white bg-img-fix content-inner overlay-black-dark counter-staus-box" style="background-image:url(images/background/bg4.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <div class="icon-bx-wraper center">
+                            <div class="icon-content">
+                                <h2 class="dlab-tilte counter">1226</h2>
+                                <p>Happy Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.4s">
+                        <div class="icon-bx-wraper center">
+                            <div class="icon-content">
+                                <h2 class="dlab-tilte counter">1552</h2>
+                                <p>Approved Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.6s">
+                        <div class="icon-bx-wraper center">
+                            <div class="icon-content">
+                                <h2 class="dlab-tilte counter">1156</h2>
+                                <p>Certified Teachers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.6s">
+                        <div class="icon-bx-wraper center">
+                            <div class="icon-content">
+                                <h2 class="dlab-tilte counter">2100</h2>
+                                <p>Graduate Students</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Company staus End -->
+        <!-- Team member -->
+        <div class="section-full bg-gray content-inner">
+            <div class="container">
+                <div class="section-head text-center ">
+                    <h2 class="title"> Meet The Teacher</h2>
+                    <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="teachers-profile.html">
+                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic17.jpg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="teachers-profile.html">Nashid Martines</a></h4>
+                                <span class="dlab-position">Director</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="teachers-profile.html">
+                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic16.jpg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="teachers-profile.html">Konne Backfield</a></h4>
+                                <span class="dlab-position">Designer</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="teachers-profile.html">
+                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic15.jpg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="teachers-profile.html">Hackson Willingham</a></h4>
+                                <span class="dlab-position">Developer</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="teachers-profile.html">
+                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic18.jpg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="teachers-profile.html">Konne Backfield</a></h4>
+                                <span class="dlab-position">Manager</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team member End -->
+        <!-- Testimonials blog -->
+        <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" style="background-image:url(images/background/map-bg.png);">
+            <div class="container">
+                <div class="section-head text-white text-center">
+                    <h2 class="title">What People Are Saying</h2>
+                    <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+                </div>
+                <div class="section-content">
+                    <div class="testimonial-two-dots owl-carousel owl-none owl-theme owl-dots-primary-full owl-loaded owl-drag">
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text ">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic3.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic2.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic1.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text ">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic3.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic2.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-15 quote-right">
+                                <div class="testimonial-text">
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
+                                </div>
+                                <div class="testimonial-detail clearfix">
+                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic1.jpg" width="100" height="100" alt=""></div>
+                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonials blog End -->
+        <!-- Latest blog -->
+        @if ($latestPosts->count() > 0)
+            <div class="section-full content-inner bg-gray wow fadeIn" data-wow-duration="2s" data-wow-delay="0.4s">
+                <div class="container">
+                    <div class="section-head text-center">
+                        <h2 class="title">Latest blog post</h2>
+                        <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+                    </div>
+                    <div class="blog-carousel owl-none owl-carousel">
+                            @foreach ($latestPosts as $post)
+                                @include('web.fragments.blog_carousel_item')
+                            @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+        <!-- Latest blog END -->
+        <!-- Client logo -->
+        <div class="section-full dlab-we-find bg-img-fix p-t20 p-b20 bg-white wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
+            <div class="container">
+                <div class="section-content">
+                    <div class="client-logo-carousel mfp-gallery gallery owl-btn-center-lr owl-carousel owl-btn-3">
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"><a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo1.jpg" alt=""></a></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo2.jpg" alt=""></a> </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo1.jpg" alt=""></a> </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo3.jpg" alt=""></a> </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo4.jpg" alt=""></a> </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ow-client-logo">
+                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo3.jpg" alt=""></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Client logo END -->
     </div>
-    <!-- Content END -->
+</div>
+<!-- Content END-->
 @endsection

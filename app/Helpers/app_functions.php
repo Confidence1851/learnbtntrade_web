@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Cart;
+use App\Models\CartItem;
+use App\Traits\Cart as TraitsCart;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+
 /** Returns a random alphanumeric token or number
  * @param int length
  * @param bool  type
@@ -166,4 +171,85 @@ function getFileType(String $type)
         {
             return $dtF->diff($dtT)->format('%s seconds');
         }
+    }
+
+    /** Returns cart details
+     * @return object
+     */
+    function getUserCart(){
+        $user = auth('web')->user();
+
+        $cart = Cart::where('user_id', $user->id)->first();
+        if(empty($cart)){
+            $cart = Cart::create([
+                'user_id' => $user->id,
+                'price' => 0,
+                'discount' => 0,
+                'total' => 0,
+                'quantity' => 0,
+                'reference' => generateCartHash(),
+            ]);
+        }
+        return $cart;
+    }
+
+
+    /** Refreshes cart details based on cart  items
+     * @param int cart_id
+     * @param bool generate_reference
+     * @return cart object
+     */
+    function refreshCart($cart_id , $generate_reference = false){
+        $cart = Cart::find($cart_id);
+        $items = CartItem::where('cart_id' , $cart->id)->get();
+        $price = 0;
+        $discount = 0;
+        $total = 0;
+        $count = 0;
+        foreach($items as $item){
+            $count++;
+            if(!empty($item->course_id)){
+                $price += $item->course->price;
+                $discount += $item->course->discount;
+                $total += $item->course->payableAmount();
+            }
+        }
+
+        $cart->price = $price;
+        $cart->discount = $discount;
+        $cart->total = $total;
+        $cart->quantity = $count;
+        
+        if($generate_reference){
+            $cart->reference = generateCartHash();
+        }
+        $cart->save();
+
+        return $cart;
+    }
+
+    function generateCartHash(){
+        $token = getRandomToken(10);
+        $check = Cart::where('reference',$token)->count();
+        if($check == 0){
+            return strtoupper($token);
+        }
+        return generateCartHash();
+    }
+
+
+    /** Checks if a course is in cart and returns item if found
+     */
+    function cartHasCourse($course_id){
+        return CartItem::where('course_id' , $course_id)->where('cart_id', getUserCart()->id)->first();
+    }
+
+
+    /**Returns formatted money value
+     * @param float amount
+     * @param int places
+     * @param string symbol
+     */
+    function format_money($amount , $places = 2, $symbol = '$'){
+        return $symbol.''.number_format((float)$amount ,$places);
     }

@@ -8,7 +8,17 @@ use Illuminate\Http\Request;
 class WebController extends Controller
 {
     public function index(){
-        return view('web.index');
+        $featuredCourses = $this->Course->model()
+            ->where('status' , $this->activeStatus)
+            ->where('featured' , $this->activeStatus)
+            ->inRandomOrder()->limit(4)
+            ->get();
+
+        $latestPosts = $this->Post->model()->where('status' , $this->activeStatus)
+            ->where('featured', $this->activeStatus)
+            ->limit(12)
+            ->get();
+        return view('web.index' , compact('featuredCourses' , 'latestPosts'));
     }
 
     public function contact_us(){

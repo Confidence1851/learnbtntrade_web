@@ -18,7 +18,7 @@
 
 	<!-- FAVICONS ICON -->
 	<link rel="icon" href="{{ $web_source }}/images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="{{ $web_source }}/images/favicon.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ $favicon_img }}" />
 
 	<!-- PAGE TITLE HERE -->
     <title>{{ $title ?? '' }} | LearnBtcTrade</title>
@@ -35,7 +35,6 @@
     <link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/style.css">
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/templete.css">
-	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/custom.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ $web_source }}/css/skin/skin-4.css">
 	<!-- Google Font -->
 	<style>
@@ -46,6 +45,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/revolution/revolution/css/revolution.min.css">
     <!-- Jquery Toast css -->
     <link href="{{asset('toast')}}/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/custom.css">
 </head>
 <body id="bg">
 <div class="page-wraper">
@@ -58,7 +58,10 @@
                 <div class="container clearfix">
                     <!-- website logo -->
                     <div class="logo-header mostion logo-dark">
-						<a href="{{ route('homepage') }}"><img src="{{ $web_source }}/images/logo-4.png" alt=""></a>
+                        <a href="{{ route('homepage') }}" class="d-flex">
+                            <img src="{{ $logo_img }}" alt="" class="logo_img">
+                            <span class="logo_text d-none d-md-block"> LearnBtcTrade</span>
+                        </a>
 					</div>
                     <!-- nav toggle button -->
                     <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,13 +72,27 @@
                     <!-- extra nav -->
                     <div class="extra-nav">
                         <div class="extra-cell">
-                            <button id="quik-search-btn" type="button" class="site-button-link"><i class="la la-search"></i></button>
+                            <button id="quik-search-btn" type="button" class="site-button-link"  title="Search"><i class="la la-search"></i></button>
                             @auth
-                                <a href="{{ route('home') }}" class="btn btn-outline-primary mr-3">Logo</a>
-                                <ul class="sub-menu right">
-									<li><a href=""></a></li>
-									<li><a href=""></a></li>
-								</ul>
+                            <a href="{{ route('cart.items') }}" id="quik-cart-btn" type="button" class="site-button-link" title="Go to cart">
+                                <i class="fa fa-shopping-cart cart_icon_lg"></i>
+                                <span class="cart_float_count cart_count">{{ getUserCart()->quantity }}</span>
+                            </a>
+                            <a href="javascript:void()" class="toggleFloatingMenu mr-3 d-none d-md-block">
+                                <div class="avatar_box">
+                                    <img src="{{ auth('web')->user()->getAvatar()}}"  class="img-responsive img-rounded toggleFloatingMenu" alt="">
+                                </div>
+                            </a>
+                                <div id="floating_menu" class="d-none">
+                                    <p><a href="{{ route('home')}}">Go to Dashboard</a></p>
+                                    <p><a href="{{ route('homepage')}}">My Courses</a></p>
+                                    <p><a href="{{ route('homepage')}}">Order History</a></p>
+                                    <p><a href="{{ route('homepage')}}">Edit Profile</a></p>
+                                    <hr>
+                                    <p class="">
+                                        <a href="{{ route('homepage')}}" class="">Logout</a>
+                                    </p>
+                                </div>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-outline-primary mr-3">Login</a>
                                 <a href="{{ route('register') }}" class="btn btn-primary d-none d-md-block">Register</a>
@@ -105,14 +122,36 @@
                                 <a href="{{ route('our_blog.blog_posts') }}">Blog</a>
                             </li>
                             <li class="{{ $activePage == 'signal' ? 'active' : ''}}">
-								<a href="javascript:;">Signals</a>
+								<a href="javascript:;">Services</a>
 								<ul class="sub-menu right">
-									<li><a href="">Plans</a></li>
-									<li><a href="">Results</a></li>
+                                    <li><a href="{{ route('services.plans')}}">Plans</a></li>
+									<li><a href="">Signal Results</a></li>
 								</ul>
-							</li>
+                            </li>
+                        </ul>
+                        @if(auth('web')->check())
+                            <ul class="nav navbar-nav d-block d-md-none mt-5">
+                                <li class="d-flex">
+                                    <div class="avatar_box">
+                                        <img src="{{ auth('web')->user()->getAvatar()}}"  class="img-responsive img-rounded" alt="">
+                                    </div>
+                                    {{ auth('web')->user()->fullName() }}
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('home') }}">Go to Dashboard</a>
+                                </li>
+                                <li class="{{ $activePage == 'courses' ? 'active' : ''}}">
+                                <a href="{{ route('our_courses.courses')}}">My Courses</a>
+                                </li>
+                                <li class="{{ $activePage == 'blog' ? 'active' : ''}}">
+                                    <a href="{{ route('our_blog.blog_posts') }}">Order History</a>
+                                </li>
+                                <li class="{{ $activePage == 'blog' ? 'active' : ''}}">
+                                    <a href="{{ route('our_blog.blog_posts') }}">Logout</a>
+                                </li>
 
-						</ul>
+                            </ul>
+                        @endif
 						<div class="dlab-social-icon">
 							<ul>
 								<li><a class="site-button circle fa fa-facebook" href="javascript:void(0);"></a></li>
@@ -137,150 +176,12 @@
     @endphp
     @if(!$hide_footer)
 	<!-- Footer -->
-    <footer class="site-footer footer-center">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center m-b30">
-                        <h2 class="text-white m-b5">A Short Story About Us </h2>
-						<p class="max-w600 p-b20 m-auto">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-						<div class="max-w500 m-auto m-t30 subscribe-form">
-							<form class="dzSubscribe" action="script/mailchamp.php" method="post">
-								<div class="dzSubscribeMsg"></div>
-								<div class="input-group">
-									<input name="dzEmail" required="required"  class="form-control" placeholder="Your Email Id" type="email">
-									<span class="input-group-btn">
-										<button name="submit" value="Submit" type="submit" class="site-button btnhover14">Subscribe</button>
-									</span>
-								</div>
-							</form>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer bottom part -->
-        <div class="footer-bottom text-center">
-            <div class="container p-tb10">
-				<div class="row">
-                    <div class="col-md-12 col-sm-12 m-b30 logo-white">
-						<img src="{{ $web_source }}/images/logo-white-4.png" alt="" width="180">
-					</div>
-				</div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-						<div class="widget-link ">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about-1.html">About</a></li>
-								<li><a href="help-desk.html">Help Desk</a></li>
-								<li><a href="privacy-policy.html">Privacy Policy</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 m-t20">
-						<ul class="list-inline">
-							<li><a href="javascript:void(0);" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="javascript:void(0);" class="site-button-link google-plus hover"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="javascript:void(0);" class="site-button-link linkedin hover"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="javascript:void(0);" class="site-button-link instagram hover"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="javascript:void(0);" class="site-button-link twitter hover"><i class="fa fa-twitter"></i></a></li>
-						</ul>
-					</div>
-				</div>
-            </div>
-        </div>
-    </footer>
+    @include('web.layouts.footer')
     <!-- Footer END -->
     @endif
     <button class="scroltop style2 radius" type="button"><i class="fa fa-arrow-up"></i></button>
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-<script src="{{ $web_source }}/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
-<script src="{{ $web_source }}/plugins/wow/wow.js"></script><!-- WOW JS -->
-<script src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="{{ $web_source }}/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="{{ $web_source }}/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
-<script src="{{ $web_source }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
-<script src="{{ $web_source }}/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
-<script src="{{ $web_source }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
-<script src="{{ $web_source }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-<script src="{{ $web_source }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-<script src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
-<script src="{{ $web_source }}/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
-<script src="{{ $web_source }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery -->
-<script src="{{ $web_source }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
-<script src="{{ $web_source }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
-<script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
-<script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  -->
-<script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
-<script src="{{ $web_source }}/js/jquery.lazy.min.js"></script>
-<!-- REVOLUTION JS FILES -->
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script src="{{ $web_source }}/js/rev.slider.js"></script>
-<script>
-jQuery(document).ready(function() {
-	'use strict';
-	dz_rev_slider_4();
-	$('.lazy').Lazy();
-});	/*ready*/
-</script>
-<!-- Tost-->
-<script src="{{asset('toast')}}/jquery.toast.min.js"></script>
-
-<!-- toastr init js-->
-{{-- <script src="{{url('admin')}}/assets/js/pages/toastr.init.js"></script> --}}
-<script>
-	! function(p) {
-		"use strict";
-		var notifier;
-
-		function t() {}
-		t.prototype.send = function(t, i, o, e, n, a, s, r) {
-				var c = {
-					heading: t,
-					text: i,
-					position: o,
-					loaderBg: e,
-					icon: n,
-					hideAfter: a = a || 3e3,
-					stack: s = s || 1
-				};
-				r && (c.showHideTransition = r),
-					console.log(c),
-					p.toast().reset("all"),
-					p.toast(c)
-			},
-			p.NotificationApp = new t,
-			p.NotificationApp.Constructor = t
-	}(window.jQuery),
-	function(i) {
-		notifier = i;
-		"use strict";
-	}(window.jQuery);
-
-	function successMsg(title, msg) {
-        console.log('dfdfjdjf');
-		notifier.NotificationApp.send(title, msg, "top-right", "#5ba035", "success")
-	}
-
-	function errorMsg(title, msg) {
-		notifier.NotificationApp.send(title, msg, "top-right", "#bf441d", "error")
-	}
-</script>
 @include('web.layouts.script')
 @yield('scripts')
 </body>

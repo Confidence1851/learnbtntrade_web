@@ -25,7 +25,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function user()
     {
-        return Auth::User();
+        return auth('web')->user();
     }
 
 

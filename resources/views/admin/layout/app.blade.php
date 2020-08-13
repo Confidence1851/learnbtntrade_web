@@ -307,13 +307,32 @@
                         </a>
                         <ul class="ml-menu">
                             <li class="{{$activePage == 'sub_admins' ? 'active' : ''}}">
-                                <a href="{{ route('home') }}">All Users</a>
+                                <a href="{{ route('users.index') }}">All Users</a>
                             </li>
                             <li class="{{$activePage == 'agents' ? 'active' : ''}}">
                                 <a href="{{ route('agents.index') }}">Enrolled Users</a>
                             </li>
                         </ul>
                     </li>
+
+
+
+                    <li class="{{$activeGroup == 'services' ? 'active' : ''}}">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">person</i>
+                            <span>Services</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="{{$activePage == 'plans' ? 'active' : ''}}">
+                                <a href="{{ route('users.index') }}">Plans</a>
+                            </li>
+                            <li class="{{$activePage == 'signal_updates' ? 'active' : ''}}">
+                                <a href="{{ route('agents.index') }}">Signal Updates</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
 
                     <li class="header">INTERACTIONS</li>
 {{--

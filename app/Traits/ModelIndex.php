@@ -70,8 +70,8 @@ trait ModelIndex
         // AccountRepositoryInterface $accountRepositoryInterface ,
         CourseCategoryRepositoryInterface $courseCategoryRepositoryInterface ,
         CourseSectionRepositoryInterface $courseSectionRepositoryInterface ,
-        CourseSectionResourceRepositoryInterface $courseSectioResourceRepositoryInterface
-        // ReferralRepositoryInterface $referralRepositoryInterface ,
+        CourseSectionResourceRepositoryInterface $courseSectioResourceRepositoryInterface,
+        ReferralRepositoryInterface $referralRepositoryInterface 
         // AgentRepositoryInterface $agentRepositoryInterface ,
         // AgentCourseRepositoryInterface $agentCourseRepositoryInterface ,
         // SettingRepositoryInterface $settingRepositoryInterface ,
@@ -97,7 +97,7 @@ trait ModelIndex
         $this->CourseCategory = $courseCategoryRepositoryInterface;
         $this->CourseSection = $courseSectionRepositoryInterface;
         $this->CourseSectionResource = $courseSectioResourceRepositoryInterface;
-        // $this->Referral = $referralRepositoryInterface;
+        $this->Referral = $referralRepositoryInterface;
         // $this->Agent = $agentRepositoryInterface;
         // $this->AgentCourse = $agentCourseRepositoryInterface;
         // $this->Setting = $settingRepositoryInterface;

@@ -3,7 +3,7 @@
 }
 
 .jq-toast-wrap {
-    z-index: 90000000!important;
+    z-index: 90000000 !important;
 }
 
 #video_player {
@@ -28,6 +28,16 @@
     padding-bottom: 25px;
 }
 
+.message_title {
+    margin-top: 100px;
+}
+
+.check_img {
+    max-width: 300px;
+    min-width: 100px;
+    margin-top: 40px;
+}
+
 @media screen and (max-width: 594px) {
     #video_player {
         width: 100%;
@@ -39,6 +49,13 @@
         overflow-x: hidden;
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+    #quik-search-btn {
+        display: none;
+    }
+    .message_title {
+        margin-top: 20px !important;
+        text-align: center;
     }
 }
 
@@ -56,4 +73,85 @@
 
 .section_resource_item i {
     margin-right: 10px;
+}
+
+.course_cart {
+    color: rgb(26, 26, 129);
+}
+
+.cart_icon_md {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart_icon_lg {
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.course_enroll_btn {
+    padding: 0px !important;
+    font-size: 12px;
+    padding: 5px 15px !important;
+    background-color: dodgerblue;
+    color: white;
+}
+
+.course_enroll_btn .spinner {
+    width: 16px;
+    height: 16px;
+}
+
+.cart_float_count {
+    position: relative;
+    bottom: 12px;
+    right: 15px;
+    font-size: 12px;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 100%;
+    padding: .2em .5em;
+    font-size: 55%;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    box-sizing: border-box;
+}
+
+#floating_menu {
+    position: fixed;
+    top: 70px;
+    background-color: white;
+    width: 200px;
+    height: 300px;
+    padding: 20px;
+}
+
+.avatar_box {
+    width: 60px;
+    height: 60px;
+}
+
+.img-rounded {
+    border-radius: 100%;
+}
+
+.logo_img {
+    width: 70px !important;
+    padding: 5px;
+}
+
+.logo_text {
+    text-align: start !important;
+    font-size: 23px !important;
+    color: #003399 !important;
+    letter-spacing: normal !important;
+    padding-top: 18px;
+    font-weight: bold;
+}
+
+.logo_area {
+    padding-top: 10px;
 }
