@@ -47,6 +47,7 @@ function putFileInPrivateStorage($file , $path){
     return $filename;
 }
 
+
 /**Gets file from public storage */
 function getFileFromStorage($fullpath){
     return asset($fullpath);
