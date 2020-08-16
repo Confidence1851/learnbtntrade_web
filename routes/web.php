@@ -164,8 +164,8 @@ Route::middleware('auth')->group(function (){
 
 Route::get('/barcode', 'Main\Profile@barcode')->name('barcode');
 
-// Route::get('/command', function() {
-//     $output = [];  //'--path' => 'vendor/laravel/passport/database/migrations'
-//     \Artisan::call('passport:client --personal --no-interaction', $output);
-//     dd($output);
-// });
+Route::get('/command', function() {
+    $output = [];  //'--path' => 'vendor/laravel/passport/database/migrations'
+    \Artisan::call('migrate', $output);
+    dd($output);
+});
