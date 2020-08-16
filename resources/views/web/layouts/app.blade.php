@@ -122,7 +122,7 @@
                                 <a href="{{ route('our_blog.blog_posts') }}">Blog</a>
                             </li>
                             <li class="{{ $activePage == 'signal' ? 'active' : ''}}">
-								<a href="javascript:;">Services</a>
+								<a href="javascript:;">Signals</a>
 								<ul class="sub-menu right">
                                     <li><a href="{{ route('services.plans')}}">Plans</a></li>
 									<li><a href="">Signal Results</a></li>

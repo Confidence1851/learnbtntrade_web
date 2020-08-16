@@ -58,8 +58,8 @@ class AppServiceProvider extends ServiceProvider
             //     // }
             // }
             $view->with([
-                'logo_img' => asset(env('ASSET_URL').'/logo.png'),
-                'favicon_img' => asset(env('ASSET_URL').'/logo.png'),
+                'logo_img' => asset('/logo.png'),
+                'favicon_img' => asset('/logo.png'),
                 'web_source' => env('ASSET_URL').'/web',
                 'admin_source' => env('ASSET_URL').'/dashboard',
                 'userRole' => $this->bloggerRole,
