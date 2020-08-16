@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 class BlogCategoryController extends Controller
 {
-    public $imagepath = 'images/blog/categories';
 
     /**
      * Display a listing of the resource.
@@ -74,7 +73,7 @@ class BlogCategoryController extends Controller
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['file'] = putFileInStorage($image , $this->imagepath);
+            $data['file'] = putFileInStorage($image , $this->blogCategoryImagePath);
         }
         return $data;
     }

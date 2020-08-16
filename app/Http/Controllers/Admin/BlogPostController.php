@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 class BlogPostController extends Controller
 {
-    public $imagepath = 'images/blog/posts';
 
     /**
      * Display a listing of the resource.
@@ -57,6 +56,9 @@ class BlogPostController extends Controller
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/jpg,image/svg',
             'body' => 'required|string',
             'status' => 'required|string',
+            'featured' => 'required|string',
+            'meta_keywords' => 'nullable|string',
+            'meta_description' => 'nullable|string',
         ]);
         $count = 0 ;
         if(!empty($id)){
@@ -76,7 +78,7 @@ class BlogPostController extends Controller
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->imagepath);
+            $data['image'] = putFileInStorage($image , $this->blogPostsImagePath);
         }
         return $data;
     }

@@ -29,4 +29,8 @@ class Post extends Model
     public function likes(){
         return $this->hasMany(PostLike::class);
     }
+
+    public function getImageAttribute($image){
+        return $this->blogPostsImagePath.'/'.$image;
+    }
 }

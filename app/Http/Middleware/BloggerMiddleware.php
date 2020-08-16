@@ -2,13 +2,15 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Agent;
+use App\Models\User;
+use App\Traits\Constants;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class AgentMiddleware
+class BloggerMiddleware
 {
+    use Constants;
     /**
      * Handle an incoming request.
      *
@@ -20,16 +22,12 @@ class AgentMiddleware
 
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            $user = Auth::User();
-            // dd($user);
-            $agent = Agent::where('user_id',$user->id)->first();
-            if(!empty($agent)){
+        if(auth('web')->check()){
+            $user = auth('web')->user();
+            if($user->role == $this->bloggerRole){
                 return $next($request);
             }
-            // dd('here');
-            // Session::flash('error_msg','Acess Denied!...Admins only!');
-            return redirect('/home')->with('error_msg','Acess Denied!...Agents only!');
+            return redirect()->back()->with('error_msg','Acess Denied!...Bloggers only!');
         }
         else{
             return redirect('/login');

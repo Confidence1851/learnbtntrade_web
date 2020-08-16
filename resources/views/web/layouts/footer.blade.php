@@ -3,31 +3,18 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 col-5 col-xl-2 col-lg-2 col-sm-6 footer-col-4">
+          <div class="col-md-3">
             <div class="widget widget_services border-0">
               <h5 class="m-b30 text-white">Company</h5>
               <ul>
-                <li><a href="javascript:void(0);">About Us </a></li>
-                <li><a href="javascript:void(0);">Home </a></li>
-                <li><a href="javascript:void(0);">Contact Us</a></li>
-                <li><a href="javascript:void(0);">About Us</a></li>
-                <li><a href="javascript:void(0);">Our Services</a></li>
+                <li><a href="{{ route('homepage')}}">Home </a></li>
+                <li><a href="{{ route('contact_us')}}">Contact Us</a></li>
+                <li><a href="{{ route('homepage')}}">About Us</a></li>
+                <li><a href="{{ route('terms_and_conditions')}}">Terms and Conditions</a></li>
               </ul>
             </div>
           </div>
-          <div class="col-md-3 col-7 col-xl-2 col-lg-3 col-sm-6 footer-col-4">
-            <div class="widget widget_services border-0">
-              <h5 class="m-b30 text-white">Useful Link</h5>
-              <ul>
-                <li><a href="javascript:void(0);">Create Account</a></li>
-                <li><a href="javascript:void(0);">Company Philosophy </a></li>
-                <li><a href="javascript:void(0);">Corporate Culture</a></li>
-                <li><a href="javascript:void(0);">Portfolio</a></li>
-                <li><a href="javascript:void(0);">Client Management</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-xl-4 col-lg-3 col-sm-6 footer-col-4">
+          <div class="col-md-5">
             <div class="widget widget_getintuch">
               <h5 class="m-b30 text-white ">Contact us</h5>
               <ul>
@@ -37,15 +24,20 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-12 col-xl-4 col-lg-4 col-sm-6 footer-col-4 ">
+          <div class="col-md-4">
             <div class="widget">
               <h5 class="m-b30 text-white">Subscribe To Our Newsletter</h5>
-              <p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the..</p>
+              <p class="text-capitalize m-b20">
+                  Stay up to date with our latest offers and courses
+              </p>
               <div class="subscribe-form m-b20">
                 <form class="dzSubscribe" action="script/mailchamp.php" method="post">
                   <div class="dzSubscribeMsg"></div>
                   <div class="input-group">
-                    <input name="dzEmail" required="required"  class="form-control" placeholder="Your Email Id" type="email">
+                    <input name="name" required  class="form-control" placeholder="Enter your name" type="text">
+                  </div>
+                  <div class="input-group mt-2">
+                    <input name="email" required  class="form-control" placeholder="Enter email address" type="email">
                     <span class="input-group-btn">
                       <button name="submit" value="Submit" type="submit" class="site-button">Subscribe</button>
                     </span>

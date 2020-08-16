@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
-    public $imagepath = 'images/courses/preview';
 
     /**
      * Display a listing of the resource.
@@ -41,11 +41,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        if(array_key_exists('error',$data)){
+            return redirect()->back()->with('error_msg' , $data['error']);
+        }
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = auth('web')->user()->id;
         $data['code'] = $this->course_code();
-        $this->Course->create($data);
-        return redirect()->route('courses.details.index')->with('success_msg', 'courses course created successfully!');
+        $course = $this->Course->create($data);
+        return redirect()->route('course.details.show',$course->id)->with('success_msg', 'courses course created successfully!');
     }
 
 
@@ -81,18 +84,18 @@ class CourseController extends Controller
                 //
             }
             else{
-                $count = $this->Course->model()->where('title' , $data['title'])->first();
+                $count = $this->Course->model()->where('title' , $data['title'])->count();
             }
         }
         else{
-            $count = $this->Course->model()->where('title' , $data['title'])->first();
+            $count = $this->Course->model()->where('title' , $data['title'])->count();
         }
         if($count > 0){
-            return redirect()->back()->with('error_msg', 'courses title already exists!');
+            return ['error' => 'Course title already exists!'];
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->imagepath);
+            $data['image'] = putFileInStorage($image , $this->coursePreviewImagePath);
         }
         $data['discount'] =  empty($data['discount']) ? 0 : $data['discount'];
         return $data;
@@ -135,6 +138,9 @@ class CourseController extends Controller
         $course = $this->Course->find($id);
 
         $data = $this->validateData($request , $id);
+        if(array_key_exists('error',$data)){
+            return redirect()->back()->with('error_msg' , $data['error']);
+        }
         try{
             if(!empty($request['image'])){
                 deleteFileFromStorage($course->image);

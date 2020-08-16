@@ -87,8 +87,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1" {{ $category->status == 1 ? 'selected': '' }}>Active</option>
-                                                    <option value="3" {{ $category->status == 3 ? 'selected': '' }}>Inactive</option>
+                                                    <option value="{{$activeStatus}}" {{ $category->status == $activeStatus ? 'selected' : '' }}>Active</option>
+                                                    <option value="{{$inactiveStatus}} {{ $category->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')

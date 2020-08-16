@@ -70,18 +70,19 @@ class RegisterController extends Controller
             'lname' => $data['lname'],
             'email' => $data['email'],
             'ref_code' => $this->ref_code(),
-            'role' => 0,
+            'role' => $this->userRole,
+            'status' => $this->activeStatus,
             'password' => Hash::make($data['password']),
         ]);
     }
 
 
     private function ref_code(){
-        $token = getRandomToken(6);
-        $check = User::where('ref_code',$token)->count();
-        if($check == 0){
-            return strtoupper($token);
-        }
-        return $this->ref_code();
+            $token = getRandomToken(6);
+            $check = User::where('ref_code',$token)->count();
+            if($check == 0){
+                return strtoupper($token);
+            }
+            return $this->ref_code();
     }
 }

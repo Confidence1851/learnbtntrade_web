@@ -26,18 +26,20 @@ class User extends Authenticatable  //implements MustVerifyEmail
      */
 
     public function getRole(){
-        $role =$this->role;
-        $sub_role =$this->sub_role;
-        if($role == 0 && $sub_role == 0){
+        $role = $this->role;
+        if($role == $this->userRole){
                 return 'User';
         }
-        if($role == 0 && $sub_role == 1){
-            return 'Agent';
+        if($role ==  $this->bloggerRole){
+            return 'Blogger';
         }
-        if($role == 1 && $sub_role == 1){
+        if($role ==  $this->instructorRole){
+            return 'Instructor';
+        }
+        if($role ==  $this->subAdminRole){
             return 'Sub Administrator';
         }
-        if($role == 2 && $sub_role == 1){
+        if($role == 5){
             return 'Administrator';
         }
     }
@@ -48,7 +50,7 @@ class User extends Authenticatable  //implements MustVerifyEmail
 
     protected $fillable = [
         'fname', 'lname', 'email', 'password', 'ref_code', 'role', 'location', 'phone' ,
-        'country' , 'state', 'gender'  , 'avatar'
+        'country' , 'state', 'gender'  , 'avatar' , 'status'
     ];
 
     /**
@@ -75,10 +77,10 @@ class User extends Authenticatable  //implements MustVerifyEmail
 
     public function getAvatar(){
         if(empty($this->avatar)){
-            // $avatar = new Avatar();
-            return getFileFromStorage('user.jpg');
+            return getFileFromStorage('user.png');
         }
-        return getFileFromStorage($this->avatar);
+        // return getFileFromPrivateStorage($this->userImagePath.'/'.$this->avatar);
+        return route('user.avatar',encrypt($this->userImagePath.'/'.$this->avatar));
     }
 
     public function agent(){

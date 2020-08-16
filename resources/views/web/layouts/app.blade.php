@@ -17,7 +17,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- FAVICONS ICON -->
-	<link rel="icon" href="{{ $web_source }}/images/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="{{ $favicon_img }}" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="{{ $favicon_img }}" />
 
 	<!-- PAGE TITLE HERE -->
@@ -80,7 +80,7 @@
                             </a>
                             <a href="javascript:void()" class="toggleFloatingMenu mr-3 d-none d-md-block">
                                 <div class="avatar_box">
-                                    <img src="{{ auth('web')->user()->getAvatar()}}"  class="img-responsive img-rounded toggleFloatingMenu" alt="">
+                                    <img src="{{ auth('web')->user()->getAvatar() }}"  class="img-responsive img-rounded toggleFloatingMenu" alt="">
                                 </div>
                             </a>
                                 <div id="floating_menu" class="d-none">

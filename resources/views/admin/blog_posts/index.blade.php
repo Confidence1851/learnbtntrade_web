@@ -46,7 +46,11 @@
                                         <td><img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive" width="100"></td>
                                             <td>{{$post->title}}</td>
                                             <td>{!! $post->category->title !!}</td>
-                                            <td>{{$post->author->fullName()}}</td>
+                                            <td>
+                                                <a href="{{ route('bloggers.show',$post->author->id) }}" title="See Author`s information">
+                                                    {{$post->author->fullName()}}
+                                                </a>
+                                            </td>
                                             <td>{{$post->comments->count()}}</td>
                                             <td>{{$post->featured == 1 ? 'Yes' : 'No'}}</td>
                                             <td>{{$post->getStatus()}}</td>

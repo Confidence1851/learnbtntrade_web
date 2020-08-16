@@ -84,8 +84,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1">Active</option>
-                                                    <option value="3">Inactive</option>
+                                                    <option value="{{$activeStatus}}">Active</option>
+                                                    <option value="{{$inactiveStatus}}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')

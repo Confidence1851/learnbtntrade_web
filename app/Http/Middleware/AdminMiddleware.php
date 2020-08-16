@@ -19,15 +19,12 @@ class AdminMiddleware
 
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            $user = Auth::User();
-            // dd($user);
-            if($user->role == 2 && $user->status == 1){
+        if(auth('web')->check()){
+            $user = auth('web')->user();
+            if($user->role == 5 && $user->status == 1){
                 return $next($request);
             }
-            // dd('here');
-            // Session::flash('error_msg','Acess Denied!...Admins only!');
-            return redirect('/home')->with('error_msg','Acess Denied!...Admins only!');
+            return redirect()->route('homepage')->with('error_msg','Acess Denied!...Admins only!');
         }
         else{
             return redirect('/login');

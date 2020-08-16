@@ -15,7 +15,7 @@ class CreateInstructorRequestsTable extends Migration
     {
         Schema::create('instructor_requests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id',false);
+            $table->unsignedBigInteger('user_id',false)->nullable();
             $table->string('name');
             $table->string('email');
             $table->text('comment');

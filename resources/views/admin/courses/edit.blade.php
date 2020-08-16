@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Edit Blog Post' , 'activeGroup'  => 'blog', 'activePage' => 'post'])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Edit Course' , 'activeGroup'  => 'course', 'activePage' => 'course_all'])
 @section('content')
      <div class="container-fluid">
 
@@ -8,32 +8,31 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                EDIT BLOG POST
+                                EDIT COURSE
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="{{ route('blog.posts.index') }}" class="btn btn-sm btn-outline-primary"> Back to list</a>
+                                    <a href="{{ route('course.details.index') }}" class="btn btn-sm btn-outline-primary"> Back to list</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
-                            <form action="{{ route('blog.posts.update' , $post->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('course.details.update' , $course)}}" method="post" enctype="multipart/form-data">@csrf
                                 @method('put')
-                                @csrf
                                 <div class="row">
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <label for="">Post Category</label>
-                                                <select type="text" name="post_category_id" required class="form-control">
+                                                <label for="">Course Category</label>
+                                                <select type="text" name="course_category_id" required class="form-control">
                                                     <option value="" selected>Select Category</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{$category->id}}" {{ $category->id == $post->post_category_id ? 'selected' : '' }}>{{$category->title}}</option>
+                                                        <option value="{{$category->id}}" {{ $category->id == $course->course_category_id ? 'selected' : '' }}>{{$category->title}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            @error('post_category_id')
+                                            @error('course_category_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -45,7 +44,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Title</label>
-                                            <input type="text" name="title" required class="form-control" required value="{{ $post->title }}">
+                                            <input type="text" name="title" required class="form-control" required value="{{ $course->title }}">
                                             </div>
                                             @error('title')
                                                 <span class="invalid-feedback" role="alert">
@@ -58,10 +57,40 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <label for="">Body</label>
-                                            <textarea id="ckeditor"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
+                                                <label for="">Description</label>
+                                            <textarea id="ckeditor" type="text" name="description" class="form-control" required>{!! $course->description !!}</textarea>
                                             </div>
-                                            @error('body')
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">Price ($)</label>
+                                            <input type="number" name="price" required class="form-control" required value="{{ $course->price }}">
+                                            </div>
+                                            @error('title')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">Discount ($)</label>
+                                            <input type="number" name="discount"  class="form-control"  value="{{ $course->discount }}">
+                                            </div>
+                                            @error('discount')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -74,9 +103,37 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Image</label>
-                                                <input type="file" name="image" class="form-control" >
+                                                <input type="file" name="image" required class="form-control" required>
                                             </div>
                                             @error('image')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">SEO Keywords</label>
+                                                <input type="text" name="meta_keywords"  class="form-control"  value="{{ $course->meta_keywords }}" placeholder="bitcoin, training, crypto" >
+                                            </div>
+                                            @error('meta_keywords')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">SEO Description</label>
+                                                <input type="text" name="meta_description"  class="form-control"  value="{{ $course->meta_description }}" placeholder="this category is for bitcoin only" >
+                                            </div>
+                                            @error('meta_description')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -90,8 +147,8 @@
                                                 <label for="">Featured</label>
                                                 <select type="text" name="featured" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="0" {{ $post->featured == 0 ? 'selected' : '' }}>No</option>
-                                                    <option value="1" {{ $post->featured == 1 ? 'selected' : '' }}>Yes</option>
+                                                    <option value="0" {{ $course->status == 0 ? 'selected' : '' }}>No</option>
+                                                    <option value="1" {{ $course->status == 1 ? 'selected' : '' }}>Yes</option>
                                                 </select>
                                             </div>
                                             @error('status')
@@ -108,8 +165,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1" {{ $post->status == 1 ? 'selected' : '' }}>Active</option>
-                                                    <option value="3" {{ $post->status == 3 ? 'selected' : '' }}>Inactive</option>
+                                                    <option value="{{$activeStatus}}" {{ $course->status == $activeStatus ? 'selected' : '' }}>Active</option>
+                                                    <option value="{{$inactiveStatus}} {{ $course->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')

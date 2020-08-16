@@ -10,6 +10,10 @@ class Course extends Model
     use Constants;
     protected $guarded = [];
 
+    public function getImageAttribute($image){
+        return $this->coursePreviewImagePath.'/'.$image;
+    }
+
     public function getStatus(){
         return $this->getModelStatus($this->status);
     }

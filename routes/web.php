@@ -14,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'Web\WebController@index')->name('homepage');
 Route::get('/contact-us', 'Web\WebController@contact_us')->name('contact_us');
-Route::get('/terms-of-use', 'Web\WebController@terms_of_use')->name('terms_of_use');
+Route::get('/terms-and-conditions', 'Web\WebController@terms_and_conditions')->name('terms_and_conditions');
 Route::get('/privacy-policy', 'Web\WebController@privacy_policy')->name('privacy_policy');
 Route::get('/how-we-work', 'Web\WebController@how_we_work')->name('how_we_work');
 Route::get('/frequesntly-asked-questions', 'Web\WebController@faqs')->name('faqs');
 Route::get('/download-center', 'Web\WebController@download_center')->name('download_center');
 Route::get('/download-file/{name}', 'Web\WebController@download_file')->name('download_file');
+Route::get('/avatar/{path}', 'Web\WebController@userAvatar')->name('user.avatar');
 
 
-Route::prefix('services')->namespace('Web')->as('services.')->middleware(['auth'])->group(function () {
+Route::prefix('services')->namespace('Web')->as('services.')->group(function () {
     Route::get('plans', 'PlanController@index')->name('plans');
 });
 
@@ -57,10 +58,6 @@ Route::prefix('cart')->namespace('Student')->as('cart.')->middleware(['auth'])->
 });
 
 Auth::routes(['verify' => true , 'register' => true]);
-// Route::get('/t', function () {
-//     event(new \App\Events\SendMessage());
-//     dd('Event Run Successfully.');
-// });
 
 Route::middleware('auth')->group(function (){
 
@@ -68,71 +65,98 @@ Route::middleware('auth')->group(function (){
     Route::get('/user-dashboard', 'Agent\HomeController@index')->name('user_dashboard');
 
 
-    Route::middleware('agent')->prefix('agent')->group( function (){
-        Route::get('/chat-with-clients', 'Agent\ChatController@index')->name('agent_chats');
-        Route::get('/agent-coupons', 'Agent\AgentController@agent_coupons')->name('agent_coupons');
-        Route::get('/agent-transactions', 'Agent\AgentController@agent_transactions')->name('agent_transactions');
+    Route::middleware('blogger')->namespace('Blogger')->prefix('blogger')->group( function (){
+        Route::get('/dashboard', 'HomeController@index')->name('blogger_dashboard');
 
-        Route::post('find-account-details','Agent\AgentController@account_details');
-        Route::post('sell-coupon','Agent\AgentController@sell_coupon')->name('sell_coupon');
-        Route::post('update-transaction-pin','Agent\AgentController@update_pin')->name('update_pin');
-
-
-
+        Route::prefix('blog')->as('blogger.')->group(function () {
+            Route::resource('categories','BlogCategoryController');
+            Route::resource('posts','BlogPostController');
+            Route::resource('comments','BlogCommentController');
+        });
     });
 
 
-    Route::middleware('auth')->group(function (){
+    Route::middleware('instructor')->namespace('Instructor')->prefix('instructor')->as('instructors.')->group( function (){
+        Route::get('/dashboard', 'HomeController@index')->name('instructor_dashboard');
+        Route::as('course.')->prefix('course')->group(function () {
+            Route::resource('details','CourseController');
+            Route::get('sections/create/{id}','CourseSectionController@create')->name('sections.create');
+            Route::resource('sections','CourseSectionController')->except(['create']);
+            Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
+            Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
+        });
+    });
 
-        Route::get('/administrator-dashboard', 'Admin\HomeController@index')->name('admin_dashboard');
+
+    Route::middleware(['blogger' , 'blogger' , 'instructor'])->namespace('Admin')->prefix('super-user')->group(function (){
+        Route::get('profile/edit', 'UsersController@editProfile')->name('edit.profile');
+        Route::post('/profile/update', 'UsersController@updateProfile')->name('profile.update');
+        Route::post('profile/password-reset', 'UsersController@profile_password_reset')->name('profile.password_reset');
+    });
+
+
+    Route::middleware('admin')->namespace('Admin')->prefix('admin')->group(function (){
+
+        Route::get('/dashboard', 'HomeController@index')->name('admin_dashboard');
 
         Route::prefix('blog')->as('blog.')->group(function () {
-            Route::resource('categories','Admin\BlogCategoryController');
-            Route::resource('posts','Admin\BlogPostController');
-            Route::resource('comments','Admin\BlogCommentController');
+            Route::resource('categories','BlogCategoryController');
+            Route::resource('posts','BlogPostController');
+            Route::resource('comments','BlogCommentController');
         });
+
 
         Route::prefix('course')->as('course.')->group(function () {
-            Route::resource('categories','Admin\CourseCategoryController');
-            Route::resource('details','Admin\CourseController');
-            Route::get('sections/create/{id}','Admin\CourseSectionController@create')->name('sections.create');
-            Route::resource('sections','Admin\CourseSectionController')->except(['create']);
-            Route::resource('sections/resources','Admin\CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
-            Route::resource('comments','Admin\BlogCommentController');
-            Route::get('/section/file/{id}', 'Admin\CourseSectionController@section_file')->name('sections.file');
+            Route::resource('categories','CourseCategoryController');
+            Route::resource('details','CourseController');
+            Route::get('sections/create/{id}','CourseSectionController@create')->name('sections.create');
+            Route::resource('sections','CourseSectionController')->except(['create']);
+            Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
+            Route::resource('comments','BlogCommentController');
+            Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
         });
 
+        Route::resource('orders','OrderController');
+        Route::get('/orders/receipt/{id}/download', 'OrderController@download_receipt')->name('orders.receipts.download');
+        Route::get('/orders/status/{id}', 'OrderController@status')->name('orders.status');
+
+        Route::resource('bloggers','BloggersController');
 
 
 
-        Route::resource('users','Admin\UsersController');
 
-        Route::resource('transactions','Admin\TransactionsController')->only('show');
-        Route::get('debit-transactions','Admin\TransactionsController@debit_index')->name('debit_trans');
-        Route::get('credit-transactions','Admin\TransactionsController@credit_index')->name('credit_trans');
+        Route::resource('users','UsersController');
+        Route::get('enrolled/users','UsersController@enrolled')->name('users.enrolled');
+        Route::post('users/password/reset/{id}','UsersController@password_reset')->name('users.password_reset');
 
-        Route::resource('investments','Admin\InvestmentsController')->only('index','show');
-        Route::get('pending-investments','Admin\InvestmentsController@pending')->name('pending_investments');
-        Route::post('approve-investments','Admin\InvestmentsController@approve')->name('approve_investments');
-        Route::post('extend-investment-date','Admin\InvestmentsController@extendInvestmentDate')->name('extend_investment_date');
+        Route::resource('transactions','TransactionsController')->only('show');
+        Route::get('debit-transactions','TransactionsController@debit_index')->name('debit_trans');
+        Route::get('credit-transactions','TransactionsController@credit_index')->name('credit_trans');
 
-        Route::resource('withdrawals','Admin\WithdrawalsController')->only('index','show');
-        Route::get('pending-withdrawals','Admin\WithdrawalsController@pending')->name('pending_withdrawals');
-        Route::post('process-withdrawal','Admin\WithdrawalsController@process')->name('process_withdrawal');
-        Route::post('cancel-withdrawal','Admin\WithdrawalsController@cancel')->name('cancel_withdrawal');
-        Route::post('approve-withdrawal','Admin\WithdrawalsController@approve')->name('approve_withdrawal');
+        Route::resource('investments','InvestmentsController')->only('index','show');
+        Route::get('pending-investments','InvestmentsController@pending')->name('pending_investments');
+        Route::post('approve-investments','InvestmentsController@approve')->name('approve_investments');
+        Route::post('extend-investment-date','InvestmentsController@extendInvestmentDate')->name('extend_investment_date');
 
-        Route::resource('coupons','Admin\CouponsController')->only('index','show','store');
+        Route::resource('withdrawals','WithdrawalsController')->only('index','show');
+        Route::get('pending-withdrawals','WithdrawalsController@pending')->name('pending_withdrawals');
+        Route::post('process-withdrawal','WithdrawalsController@process')->name('process_withdrawal');
+        Route::post('cancel-withdrawal','WithdrawalsController@cancel')->name('cancel_withdrawal');
+        Route::post('approve-withdrawal','WithdrawalsController@approve')->name('approve_withdrawal');
 
-        Route::resource('adverts','Admin\AdvertsController');
+        Route::resource('coupons','CouponsController')->only('index','show','store');
 
-        Route::resource('agents','Admin\AgentsController');
-        Route::post('/refill-agent-wallet', 'Admin\AgentsController@refill_agent')->name('refill_agent');
+        Route::resource('instructors','InstructorsController');
+        Route::get('/instructor/requests', 'InstructorsController@requests')->name('instructors.requests');
+        Route::get('/instructors/status', 'InstructorsController@status')->name('instructors.status');
 
-        Route::resource('logs','Admin\LogsController');
+        Route::resource('agents','AgentsController');
+        Route::post('/refill-agent-wallet', 'AgentsController@refill_agent')->name('refill_agent');
 
-        Route::get('/referrals-index', 'Admin\HomeController@referrals')->name('referrals.index');
-        Route::resource('advertmedia','Admin\AdvertMediaController');
+        Route::resource('logs','LogsController');
+
+        Route::get('/referrals-index', 'HomeController@referrals')->name('referrals.index');
+        Route::resource('advertmedia','AdvertMediaController');
 
 
     });
@@ -140,8 +164,8 @@ Route::middleware('auth')->group(function (){
 
 Route::get('/barcode', 'Main\Profile@barcode')->name('barcode');
 
-Route::get('/command', function() {
-    $output = [];  //'--path' => 'vendor/laravel/passport/database/migrations'
-    \Artisan::call('passport:client --personal --no-interaction', $output);
-    dd($output);
-});
+// Route::get('/command', function() {
+//     $output = [];  //'--path' => 'vendor/laravel/passport/database/migrations'
+//     \Artisan::call('passport:client --personal --no-interaction', $output);
+//     dd($output);
+// });

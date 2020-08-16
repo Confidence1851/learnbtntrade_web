@@ -26,4 +26,8 @@ class CourseSection extends Model
         return $this->hasMany(CourseSectionResource::class, 'course_section_id')->where('status', $this->activeStatus);
     }
 
+    public function getVideoAttribute($video){
+        return $this->courseSectionVideoPath.'/'.$video;
+    }
+
 }

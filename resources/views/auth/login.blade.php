@@ -34,7 +34,7 @@
                     <div class="p-a30 border-1 seth">
                         <div class="tab-content">
                                 <h4 class="font-weight-700">NEW CUSTOMER</h4>
-                                <p class="font-weight-600">By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                                <p class="font-weight-600">By creating an account on our platform, you will be able to order and enroll for courses, view and track your orders in your account and more.</p>
                                 <a class="site-button m-r5 button-lg radius-no" href="{{ route('register') }}">CREATE AN ACCOUNT</a>
                         </div>
                     </div>

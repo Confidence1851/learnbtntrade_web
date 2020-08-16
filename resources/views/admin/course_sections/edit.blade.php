@@ -124,8 +124,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1" {{ $section->status == 1 ? 'selected' : '' }}>Active</option>
-                                                    <option value="3" {{ $section->status == 3 ? 'selected' : '' }}>Inactive</option>
+                                                    <option value="{{$activeStatus}}" {{ $section->status == $activeStatus ? 'selected' : '' }}>Active</option>
+                                                    <option value="{{$inactiveStatus}} {{ $section->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')
@@ -154,7 +154,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">SEO Description</label>
-                                                <input type="text" name="meta_description"  class="form-control"  value="{{ $section->meta_keywords}}" placeholder="this category is for bitcoin only" >
+                                                <input type="text" name="meta_description"  class="form-control"  value="{{ $section->meta_description}}" placeholder="this category is for bitcoin only" >
                                             </div>
                                             @error('meta_description')
                                                 <span class="invalid-feedback" role="alert">

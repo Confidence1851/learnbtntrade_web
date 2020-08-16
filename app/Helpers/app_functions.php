@@ -2,6 +2,7 @@
 
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Post;
 use App\Traits\Cart as TraitsCart;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +36,7 @@ function putFileInStorage($file , $path , $resize = false , $x = null , $y = nul
         $filename = uniqid().'.'.$file->getClientOriginalExtension();
         $file->move(public_path($path) , $filename);
         $fullpath = $path.'/'.$filename;
-        return $fullpath;
+        return $filename;
 }
 
 /**Puts file in a private storage */
@@ -43,7 +44,7 @@ function putFileInPrivateStorage($file , $path){
     $filename = uniqid().'.'.$file->getClientOriginalExtension();
     Storage::putFileAs($path,$file,$filename,'private');
     $fullpath = $path.'/'.$filename;
-    return $fullpath;
+    return $filename;
 }
 
 /**Gets file from public storage */
@@ -81,15 +82,21 @@ function downloadFileFromPrivateStorage($path , $name){
 
         return Storage::download($path,$display_name,$headers);
     }
+    return null;
 }
 
 
 /**Reads file from private storage */
-function getFileFromPrivateStorage($fullpath){
-    $fileContents = Storage::disk('local')->get($fullpath);
-    $response = Response::make($fileContents, 200);
-    $response->header('Content-Type', "video/mp4");
-    return $response;
+function getFileFromPrivateStorage($fullpath , $disk = 'local'){
+    $exists = Storage::disk($disk)->exists($fullpath);
+    if($exists){
+        $fileContents = Storage::disk($disk)->get($fullpath);
+        $content = Storage::mimeType($fullpath);
+        $response = Response::make($fileContents, 200);
+        $response->header('Content-Type', $content);
+        return $response;
+    }
+    return null;
 }
 
 
@@ -219,7 +226,7 @@ function getFileType(String $type)
         $cart->discount = $discount;
         $cart->total = $total;
         $cart->quantity = $count;
-        
+
         if($generate_reference){
             $cart->reference = generateCartHash();
         }
@@ -252,4 +259,22 @@ function getFileType(String $type)
      */
     function format_money($amount , $places = 2, $symbol = '$'){
         return $symbol.''.number_format((float)$amount ,$places);
+    }
+
+
+    function bloggerStats($blogger_id){
+        $posts = Post::where('user_id' , $blogger_id)->get();
+        $counts = 0;
+        $likes = 0;
+        $comments = 0;
+            foreach($posts as $post){
+                $counts++;
+                $comments += $post->comments->count();
+                $likes += $post->likes->count();
+            }
+        return [
+            'likes' => $likes,
+            'comments' => $comments,
+            'posts' => $counts,
+        ];
     }

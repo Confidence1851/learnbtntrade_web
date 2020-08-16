@@ -5,6 +5,40 @@ namespace App\Traits;
 trait Constants
 {
 
+    /**
+     * User Role
+     * @return int 0
+     */
+    public $userRole = 0;
+
+
+    /**
+     * Instructor Role
+     * @return int 1
+     */
+    public $instructorRole = 1;
+
+    /**
+     * Blogger Role
+     * @return int 2
+     */
+    public $bloggerRole = 2;
+
+    /**
+     * Sub Admin Role
+     * @return int 3
+     */
+    public $subAdminRole = 3;
+
+
+    /**
+     * Blogger Role
+     * @return int 5
+     */
+    public $adminRole = 5;
+
+
+
     //Http Statuses
 
     /**
@@ -69,7 +103,7 @@ trait Constants
      * Declined Status
      * @return int 2
      */
-    public $declinedStatus = 2;
+    public $inactiveStatus = 2;
 
     /**
      * Disabled Status
@@ -148,4 +182,73 @@ trait Constants
     }
 
 
+
+     /**
+     * User images file path
+     * @return string
+     */
+    public $userImagePath = 'users/avatars';
+
+    /**
+     * Blog Post categories images file path
+     * @return string
+     */
+    public $blogCategoryImagePath = 'images/blog/categories';
+
+    /**
+     * Blog Post images file path
+     * @return string
+     */
+    public $blogPostsImagePath = 'images/blog/posts';
+
+    /**
+     * Course Categories images file path
+     * @return string
+     */
+    public $courseCategoryImagePath = 'images/course/categories';
+
+    /**
+     * Course Preview images file path
+     * @return string
+     */
+    public $coursePreviewImagePath = 'images/courses/preview';
+
+    /**
+     * Course Section images file path
+     * @return string
+     */
+    public $courseSectionImagePath = 'images/course/sections';
+
+    /**
+     * Course Section videos file path
+     * @return string
+     */
+    public $courseSectionVideoPath = 'video/course/sections';
+
+
+    /**
+     * Course Section Resource images file path
+     * @return string
+     */
+    public $courseSectionResourceImagePath = 'images/course/sections_resources';
+
+    /**
+     * Course Section Resource videos file path
+     * @return string
+     */
+    public $courseSectionResourceVideoPath = 'videos/course/sections_resources';
+
+    /**
+     * Course Section Resource documents file path
+     * @return string
+     */
+    public $courseSectionResourceDocPath = 'documents/course/sections_resources';
+
+    /**
+     * Order Receipts file path
+     * @return string
+     */
+    public $orderReceiptsFilePath = 'files/orders/receipts';
+
 }
+

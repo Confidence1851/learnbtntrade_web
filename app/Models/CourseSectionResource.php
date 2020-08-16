@@ -18,4 +18,16 @@ class CourseSectionResource extends Model
         return $this->belongsTo(CourseSection::class , 'course_section_id');
     }
 
+    public function getFileAttribute($file){
+        if($this->type == 'Document'){
+            return $this->courseSectionResourceDocPath.'/'.$file;
+        }
+        if($this->type == 'Image'){
+            return $this->courseSectionResourceImagePath.'/'.$file;
+        }
+        if($this->type == 'Video'){
+            return $this->courseSectionResourceVideoPath.'/'.$file;
+        }
+    }
+
 }

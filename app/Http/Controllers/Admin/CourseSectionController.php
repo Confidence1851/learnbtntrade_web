@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 
 class CourseSectionController extends Controller
 {
-    public $imagepath = 'images/course/sections';
-    public $videopath = 'video/course/sections';
 
     /**
      * Display a listing of the resource.
@@ -91,7 +89,7 @@ class CourseSectionController extends Controller
 
         if(!empty( $video = $request->file('video'))){
             $size = bytesToHuman(File::size($video));
-            $data['video'] = putFileInPrivateStorage($video , $this->videopath);
+            $data['video'] = putFileInPrivateStorage($video , $this->courseSectionVideoPath);
             $data['size'] = $size;
         }
         return $data;

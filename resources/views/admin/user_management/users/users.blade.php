@@ -1,15 +1,8 @@
 @extends('admin.layout.app',[ 'pageTitle' =>  'Users Management | Users' , 'activeGroup'  => 'users_management', 'activePage' => 'users'])
 @section('content')
-@php
-    $source = env('RESOURCE_PATH').'/'."dashboard";
-@endphp
+
      <div class="container-fluid">
-            <!-- <div class="block-header">
-                <h2>
-                    JQUERY DATATABLES
-                    <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
-                </h2>
-            </div> -->
+
 
             <!-- Exportable Table -->
             <div class="row clearfix">
@@ -17,18 +10,18 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                USERS
+                                {{ $title ?? ''}}
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{-- <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
                                         <li><a href="javascript:void(0);">New User</a></li>
                                         <li><a href="javascript:void(0);">Broadcast Message</a></li>
                                         <li><a href="javascript:void(0);">Suspend User</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                             </ul>
                         </div>
@@ -38,11 +31,12 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Name</th>
+                                            <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Acct. No.</th>
-                                            <th>Wallet</th>
+                                            <th>Ref Code</th>
+                                            <th>Country</th>
+                                            <th>State</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -50,12 +44,13 @@
                                     <tbody>
                                         @foreach($users as $user)
                                         <tr>
-                                            <td class="text-center"><img src="{{asset($source)}}/images/user.png" width="30" height="30"  alt="Avatar" /></td>
-                                            <td>{{$user->name}}</td>
+                                            <td class="text-center"><img src="{{$user->getAvatar()}}" width="30" height="30"  alt="Avatar" /></td>
+                                            <td>{{$user->fullName()}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->phone}}</td>
-                                            <td>{{$user->account_no}}</td>
-                                            <td>${{$user->wallet}}</td>
+                                            <td>{{$user->ref_code}}</td>
+                                            <td>{{$user->country}}</td>
+                                            <td>{{$user->state}}</td>
                                             <td>{{$user->getStatus()}}</td>
                                             <td><a href="{{ route('users.show',$user) }}" class="btn btn-outline-primary sm">More Info</a></td>
                                         </tr>

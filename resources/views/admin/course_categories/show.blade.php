@@ -33,7 +33,7 @@
                                     <div class="">
                                         <div class="header">
                                             <h2>
-                                                Category Courses
+                                                CATEGORY COURSES
                                             </h2>
                                             <ul class="header-dropdown m-r--5">
                                                 <li class="dropdown">
@@ -49,9 +49,8 @@
                                                             {{-- <th>#</th> --}}
                                                             <th>Image</th>
                                                             <th>Title</th>
-                                                            <th>Category</th>
                                                             <th>Author</th>
-                                                            <th>Comments</th>
+                                                            <th>Sections</th>
                                                             <th>Featured</th>
                                                             <th>Status</th>
                                                             <th>Creation Date</th>
@@ -62,31 +61,30 @@
                                                         @php
                                                         $i = 0;
                                                         @endphp
-                                                        @foreach($category->courses as $post)
+                                                        @foreach($category->courses as $course)
                                                         @php
                                                             $i++;
                                                         @endphp
                                                         <tr>
                                                             {{-- <td>{{$i}}</td> --}}
-                                                        <td><img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive" width="100"></td>
-                                                            <td>{{$post->title}}</td>
-                                                            <td>{!! $post->category->title !!}</td>
-                                                            <td>{{$post->author->fullName()}}</td>
-                                                            <td>{{$post->comments->count()}}</td>
-                                                            <td>{{$post->featured == 1 ? 'Yes' : 'No'}}</td>
-                                                            <td>{{$post->getStatus()}}</td>
-                                                            <td>{{$post->created_at->format('M D d, Y')}}</td>
+                                                            <td><img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive" width="100"></td>
+                                                            <td>{{$course->title}}</td>
+                                                            <td>{{$course->author->fullName()}}</td>
+                                                            <td>{{$course->sections->count()}}</td>
+                                                            <td>{{$course->featured == 1 ? 'Yes' : 'No'}}</td>
+                                                            <td>{{$course->getStatus()}}</td>
+                                                            <td>{{$course->created_at->format('M D d, Y')}}</td>
                                                             <td>
-                                                                <form  action="{{ route('course.details.destroy',$post) }}" method="POST">
+                                                                <form  action="{{ route('course.details.destroy',$course) }}" method="POST">
                                                                     @method('delete')
                                                                     @csrf
-                                                                    <a href="{{ route('course.details.show',$post) }}" class="btn btn-info sm">
+                                                                    <a href="{{ route('course.details.show',$course) }}" class="btn btn-info btn-xs">
                                                                         <i class="material-icons">remove_red_eye</i>
                                                                     </a>
-                                                                    <a href="{{ route('course.details.edit',$post) }}" class="btn btn-success sm">
+                                                                    <a href="{{ route('course.details.edit',$course) }}" class="btn btn-success btn-xs">
                                                                         <i class="material-icons">edit</i>
                                                                     </a>
-                                                                    <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
+                                                                    <button type="submit" class="btn btn-danger btn-xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
                                                                         <i class="material-icons">delete</i>
                                                                     </button>
 

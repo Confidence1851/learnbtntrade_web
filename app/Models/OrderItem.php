@@ -22,4 +22,8 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public function course(){
+        return $this->belongsTo(Course::class);
+    }
+
 }

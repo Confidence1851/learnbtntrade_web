@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 class CourseCategoryController extends Controller
 {
-    public $imagepath = 'images/course/categories';
 
     /**
      * Display a listing of the resource.
@@ -74,7 +73,7 @@ class CourseCategoryController extends Controller
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['file'] = putFileInStorage($image , $this->imagepath);
+            $data['file'] = putFileInStorage($image , $this->courseCategoryImagePath);
         }
         return $data;
     }

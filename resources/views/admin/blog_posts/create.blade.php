@@ -106,8 +106,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1">Active</option>
-                                                    <option value="3">Inactive</option>
+                                                    <option value="{{$activeStatus}}">Active</option>
+                                                    <option value="{{$inactiveStatus}}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')
@@ -117,6 +117,35 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">SEO Keywords</label>
+                                                <input type="text" name="meta_keywords"  class="form-control"  value="{{ old('meta_keywords')}}" placeholder="bitcoin, training, crypto" >
+                                            </div>
+                                            @error('meta_keywords')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="">SEO Description</label>
+                                                <input type="text" name="meta_description"  class="form-control"  value="{{ old('meta_description')}}" placeholder="this post is for ............." >
+                                            </div>
+                                            @error('meta_description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="text-center ">
                                     <button type="submit" class="btn btn-success btn-lg "> Save </button>

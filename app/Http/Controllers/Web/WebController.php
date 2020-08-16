@@ -25,8 +25,8 @@ class WebController extends Controller
         return view('web.contact_us');
     }
 
-    public function terms_of_use(){
-        return view('web.terms_of_use');
+    public function terms_and_conditions(){
+        return view('web.terms_and_conditions');
     }
 
     public function how_we_work(){
@@ -61,5 +61,16 @@ class WebController extends Controller
             return redirect()->back()->with('error_msg' , 'Couldn`t download file!');
         }
     }
+
+    /**
+     * Returns user avatar
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userAvatar($path)
+    {
+        return getFileFromPrivateStorage(decrypt($path));
+    }
+
 
 }

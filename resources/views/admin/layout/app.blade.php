@@ -5,9 +5,12 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>{{$pageTitle}}</title>
-    <!-- Favicon-->
-    <link rel="icon" href="{{ $admin_source }}/favicon.ico" type="image/x-icon">
+    <title>{{$pageTitle}} | {{auth('web')->user()->getRole()}}</title>
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="{{ $favicon_img }}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ $favicon_img }}" />
+
 
     <!-- Google Fonts -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
@@ -31,12 +34,32 @@
      <!-- Bootstrap Select Css -->
      <link href="{{ $admin_source }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
+    <!-- Morris Css -->
+    <link href="{{ $admin_source }}/plugins/morrisjs/morris.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="{{ $admin_source }}/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ $admin_source }}/css/themes/all-themes.css" rel="stylesheet" />
+    <style>
+        .upload_icon{
+            position: relative;
+            bottom: 40px;
+            right: -190px;
+            cursor: pointer;
+            background-color: skyblue;
+            width: 20px;
+            height: 30px;
+            border-radius: 100%;
+            padding-top: 3.5px;
+            padding-right: 27px;
+            padding-left: 3px;
+        }
+        .rounded_{
+            border-radius: 50% 40% !important;
+        }
+    </style>
 </head>
 
 <body class="theme-blue">
@@ -81,7 +104,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="/">LearnBtcTrade Admin</a>
+                <a class="navbar-brand" href="/">LearnBtcTrade {{auth('web')->user()->getRole()}}</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -198,13 +221,13 @@
                     </li>
                     <!-- #END# Notifications -->
                     <li class="">
-                        <a href="{{ route('pending_investments') }}" class=""  role="button" title="Pending Investments">
+                        <a href="" class=""  role="button" title="Pending Investments">
                             <i class="material-icons">timeline</i>
                         <span class="label-count">0</span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('pending_withdrawals') }}" class=""  role="button"  title="Pending Withdrawals">
+                        <a href="" class=""  role="button"  title="Pending Withdrawals">
                             <i class="material-icons">trending_up</i>
                             <span class="label-count">0</span>
                         </a>
@@ -220,19 +243,15 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{ $admin_source }}/images/user.png" width="48" height="48" alt="User" />
+                    <img src="{{auth('web')->user()->getAvatar()}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} ({{Auth::user()->getRole()}})</div>
-                    <div class="email">{{Auth::user()->email}}</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{auth('web')->user()->name}} ({{auth('web')->user()->getRole()}})</div>
+                    <div class="email">{{auth('web')->user()->email}}</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                        <li><a href="{{ route('edit.profile')}}"><i class="material-icons">person</i>Edit Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Sign Out</a></li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
@@ -254,7 +273,7 @@
 
                     <li class="{{$activeGroup == 'blog' ? 'active' : ''}}">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">chat</i>
+                            <i class="material-icons">devices</i>
                             <span>Blog</span>
                         </a>
                         <ul class="ml-menu">
@@ -282,19 +301,25 @@
                         </ul>
                     </li>
 
+                    <li class="{{$activePage == 'bloggers' ? 'active' : ''}}">
+                        <a href="{{ route('bloggers.index') }}">
+                            <i class="material-icons">home</i>
+                            <span>Bloggers</span>
+                        </a>
+                    </li>
 
 
-                    <li class="{{$activeGroup == 'users_transaction' ? 'active' : ''}}">
+                    <li class="{{$activeGroup == 'instructors' ? 'active' : ''}}">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">supervisor_account</i>
                             <span>Instructors</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class="{{$activePage == 'debit' ? 'active' : ''}}">
-                                <a href="{{ route('debit_trans') }}">All Instructors</a>
+                            <li class="{{$activePage == 'all' ? 'active' : ''}}">
+                                <a href="{{ route('instructors.index') }}">All Instructors</a>
                             </li>
-                            <li class="{{$activePage == 'credit' ? 'active' : ''}}">
-                                <a href="{{ route('credit_trans') }}">Instructor Requests</a>
+                            <li class="{{$activePage == 'requests' ? 'active' : ''}}">
+                                <a href="{{ route('instructors.requests') }}">Instructor Requests</a>
                             </li>
                         </ul>
                     </li>
@@ -310,16 +335,22 @@
                                 <a href="{{ route('users.index') }}">All Users</a>
                             </li>
                             <li class="{{$activePage == 'agents' ? 'active' : ''}}">
-                                <a href="{{ route('agents.index') }}">Enrolled Users</a>
+                                <a href="{{ route('users.enrolled') }}">Enrolled Users</a>
                             </li>
                         </ul>
                     </li>
 
+                    <li class="{{$activePage == 'orders' ? 'active' : ''}}">
+                        <a href="{{ route('orders.index') }}">
+                            <i class="material-icons">shopping_cart</i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
 
 
                     <li class="{{$activeGroup == 'services' ? 'active' : ''}}">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">store</i>
                             <span>Services</span>
                         </a>
                         <ul class="ml-menu">
@@ -375,7 +406,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2020 <a href="javascript:void(0);">Smart Guard Corp</a>.
+                    &copy; 2020 <a href="javascript:void(0);">LearnBtcTrade Ltd.</a>.
                 </div>
             </div>
             <!-- #Footer -->
@@ -417,6 +448,12 @@
 
     <!-- Multi Select Plugin Js -->
     <script src="{{ $admin_source }}/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+
+    <!-- Morris Plugin Js -->
+    {{-- <script src="{{ $admin_source }}/plugins/raphael/raphael.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/morrisjs/morris.js"></script>
+    <script src="{{ $admin_source }}/js/pages/charts/morris.js"></script> --}}
 
 
     <!-- Custom Js -->

@@ -5,10 +5,13 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Setting;
+use App\Traits\Constants;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    use Constants;
     /**
      * Register any application services.
      *
@@ -57,8 +60,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'logo_img' => url('logo.png'),
                 'favicon_img' => url('logo.png'),
-                'web_source' => env('ASSET_URL').'/web',
-                'admin_source' => env('ASSET_URL')."/dashboard",
+                'web_source' => url(env('ASSET_URL').'/web'),
+                'admin_source' => url(env('ASSET_URL')."/dashboard"),
+                'userRole' => $this->bloggerRole,
+                'bloggerRole' => $this->bloggerRole,
+                'instructorRole' => $this->instructorRole,
+                'subAdminRole' => $this->subAdminRole,
+                'adminRole' => $this->adminRole,
+                'activeStatus' => $this->activeStatus,
+                'pendingStatus' => $this->pendingStatus,
+                'inactiveStatus' => $this->inactiveStatus,
             ]);
         });
 

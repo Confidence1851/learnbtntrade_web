@@ -43,7 +43,7 @@
                                         @endphp
                                         <tr>
                                             {{-- <td>{{$i}}</td> --}}
-                                        <td><img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive" width="100"></td>
+                                            <td><img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive" width="100"></td>
                                             <td>{{$course->title}}</td>
                                             <td>{!! $course->category->title !!}</td>
                                             <td>{{$course->author->fullName()}}</td>
@@ -55,13 +55,13 @@
                                                 <form  action="{{ route('course.details.destroy',$course) }}" method="POST">
                                                     @method('delete')
                                                     @csrf
-                                                    <a href="{{ route('course.details.show',$course) }}" class="btn btn-info sm">
+                                                    <a href="{{ route('course.details.show',$course) }}" class="btn btn-info btn-xs">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
-                                                    <a href="{{ route('course.details.edit',$course) }}" class="btn btn-success sm">
+                                                    <a href="{{ route('course.details.edit',$course) }}" class="btn btn-success btn-xs">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
+                                                    <button type="submit" class="btn btn-danger btn-xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
                                                         <i class="material-icons">delete</i>
                                                     </button>
 

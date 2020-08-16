@@ -72,7 +72,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Price ($)</label>
-                                            <input type="number" name="price" required class="form-control" required value="{{ old('title') }}">
+                                            <input type="number" name="price" required class="form-control" required value="{{ old('price') }}">
                                             </div>
                                             @error('title')
                                                 <span class="invalid-feedback" role="alert">
@@ -130,7 +130,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">SEO Description</label>
-                                                <input type="text" name="meta_description"  class="form-control"  value="{{ old('meta_keywords')}}" placeholder="this category is for bitcoin only" >
+                                                <input type="text" name="meta_description"  class="form-control"  value="{{ old('meta_description')}}" placeholder="this category is for bitcoin only" >
                                             </div>
                                             @error('meta_description')
                                                 <span class="invalid-feedback" role="alert">
@@ -164,8 +164,8 @@
                                                 <label for="">Status</label>
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
-                                                    <option value="1">Active</option>
-                                                    <option value="3">Inactive</option>
+                                                    <option value="{{$activeStatus}}">Active</option>
+                                                    <option value="{{$inactiveStatus}}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')

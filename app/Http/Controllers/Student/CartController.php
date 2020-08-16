@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     use TraitsCart;
-    public $filePath = 'files/orders/receipts';
 
     // public function __construct()
     // {
@@ -66,7 +65,7 @@ class CartController extends Controller
             'reference' => 'required|string',
         ]);
         if(!empty( $file = $request->file('file'))){
-            $data['file'] = putFileInPrivateStorage($file , $this->filePath);
+            $data['file'] = putFileInPrivateStorage($file , $this->orderReceiptsFilePath);
         }
 
         // DB::beginTransaction();

@@ -26,23 +26,23 @@ class HomeController extends Controller
     public function index()
     {
         // $this->adminAccount();
-        $user = Auth::user();
+        $user = auth('web')->user();
         // $user->sendApiEmailVerificationNotification();
         // dd(Session::get('error_msg'));
         $success_msg = Session::get('success_msg');
         $error_msg = Session::get('error_msg');
         // dd($error_msg);
 
-        // if($user->role == 2 && $user->status == 1){  //if user is an admin
+        if($user->role == $this->adminRole){  //if user is an admin
             return redirect()->route('admin_dashboard')->with('success_msg', $success_msg)->with('error_msg', Session::get('error_msg'));
-        // }
-        // if($user->role == 1 && $user->sub_role  == 1 && $user->status == 1){  //if user is a sub admin
-        //     // return redirect()->route('sub_admin_dashboard');
-        // }
-        // if($user->role == 0 && $user->sub_role  == 1 && $user->status == 1){  //if user is a Agent
-        //     return redirect()->route('user_dashboard')->with('success_msg',$success_msg )->with('error_msg', $error_msg );
-        // }
-        // return redirect('/');
+        }
+        if($user->role == $this->bloggerRole && $user->status == 1){  //if user is a blogger
+            return redirect()->route('blogger_dashboard')->with('success_msg',$success_msg )->with('error_msg', $error_msg );
+        }
+        if($user->role == $this->instructorRole && $user->status == 1){  //if user is a Agent
+            return redirect()->route('instructors.instructor_dashboard')->with('success_msg',$success_msg )->with('error_msg', $error_msg );
+        }
+        return redirect('/');
 
     }
 

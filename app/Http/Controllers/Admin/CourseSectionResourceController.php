@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\File;
 
 class CourseSectionResourceController extends Controller
 {
-    public $imagepath = 'images/course/sections/resources';
-    public $videopath = 'videos/course/sections/resources';
-    public $documentpath = 'documents/course/sections/resources';
+
 
     /**
      * Display a listing of the resource.
@@ -64,13 +62,13 @@ class CourseSectionResourceController extends Controller
         if(!empty( $file = $request->file('file'))){
             $type = getFileType($file->getClientOriginalExtension());
             if(strtolower($type) == 'image'){
-                $path = $this->imagepath;
+                $path = $this->courseSectionResourceImagePath;
             }
             if(strtolower($type) == 'video'){
-                $path = $this->videopath;
+                $path = $this->courseSectionResourceVideoPath;
             }
             if(strtolower($type) == 'document'){
-                $path = $this->documentpath;
+                $path = $this->courseSectionResourceDocPath;
             }
             $size = bytesToHuman(File::size($file));
             $data['file'] = putFileInPrivateStorage($file , $path);
@@ -131,19 +129,16 @@ class CourseSectionResourceController extends Controller
      */
     public function destroy($id)
     {
-        $section = $this->CourseSection->find($id);
-        if($section->Courses->count() > 0){
-            return redirect()->back()->with('error_msg', 'Cant delete section because it has some Courses. Delete Courses first!');
-        }
+        $resource = $this->CourseSectionResource->find($id);
         try{
-            if(!empty($section->video)){
-               deleteFileFromPrivateStorage($section->video);
+            if(!empty($resource->file)){
+               deleteFileFromPrivateStorage($resource->file);
             }
         }
         catch(\Exception $e){
-            session()->flash('error_msg' , 'Couldn`t delete old section video!');
+            session()->flash('error_msg' , 'Couldn`t delete resource file from storage!');
         }
-        $this->CourseSection->delete($section->id);
-        return redirect()->back()->with('success_msg', 'Course section deleted successfully!');
+        $this->CourseSectionResource->delete($resource->id);
+        return redirect()->back()->with('success_msg', 'Course section resource deleted successfully!');
     }
 }
