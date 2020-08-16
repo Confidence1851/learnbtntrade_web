@@ -109,7 +109,7 @@
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
 						<div class="logo-header d-md-block d-lg-none">
-							<a href="index.html"><img src="{{ $web_source }}/images/logo-4.png" alt=""></a>
+                            <a href="{{ route('homepage') }}"><img src="{{ $logo_img }}" alt=""></a>
 						</div>
                        <ul class="nav navbar-nav">
                             <li class="{{ $activePage == 'home' ? 'active' : ''}}">
