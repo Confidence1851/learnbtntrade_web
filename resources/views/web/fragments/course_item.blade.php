@@ -3,7 +3,7 @@
         <div class="dlab-media">
         <img src="{{ getFileFromStorage($course->image) }}" alt="">
             <div class="user-info">
-                <img src="{{ getFileFromStorage($course->author->getAvatar()) }}" alt="">
+                <img src="{{ $course->author->getAvatar() }}" alt="">
                 <h6 class="title">{{ $course->author->fullName() }}</h6>
                 <div class="review">
                     <ul class="item-review">

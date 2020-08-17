@@ -58,10 +58,10 @@ class AppServiceProvider extends ServiceProvider
             //     // }
             // }
             $view->with([
-                'logo_img' => route('homepage').'/'.asset('/logo.png'),
-                'favicon_img' => route('homepage').'/'.asset('/logo.png'),
-                'web_source' => route('homepage').'/'.env('ASSET_URL').'/web',
-                'admin_source' => route('homepage').'/'.env('ASSET_URL').'/dashboard',
+                'logo_img' => route('homepage').env('ASSET_URL').'/logo.png',
+                'favicon_img' => route('homepage').env('ASSET_URL').'/logo.png',
+                'web_source' => route('homepage').env('ASSET_URL').'/web',
+                'admin_source' => route('homepage').env('ASSET_URL').'/dashboard',
                 'userRole' => $this->bloggerRole,
                 'bloggerRole' => $this->bloggerRole,
                 'instructorRole' => $this->instructorRole,

@@ -47,10 +47,15 @@ function putFileInPrivateStorage($file , $path){
     return $filename;
 }
 
+// Returns full public path
+function my_asset($path = null){
+    return route('homepage').env('ASSET_URL').'/'.$path;
+}
+
 
 /**Gets file from public storage */
 function getFileFromStorage($fullpath){
-    return route('homepage').'/'.asset($fullpath);
+    return my_asset($fullpath);
 }
 
 /**Deletes file from public storage */
@@ -89,6 +94,7 @@ function downloadFileFromPrivateStorage($path , $name){
 
 /**Reads file from private storage */
 function getFileFromPrivateStorage($fullpath , $disk = 'local'){
+    // $fullpath = route('homepage').'/'.$fullpath;
     $exists = Storage::disk($disk)->exists($fullpath);
     if($exists){
         $fileContents = Storage::disk($disk)->get($fullpath);

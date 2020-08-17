@@ -69,6 +69,7 @@ class WebController extends Controller
      */
     public function userAvatar($path)
     {
+        // dd(decrypt($path));
         return getFileFromPrivateStorage(decrypt($path));
     }
 
