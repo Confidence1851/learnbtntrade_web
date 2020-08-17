@@ -50,7 +50,7 @@ function putFileInPrivateStorage($file , $path){
 
 /**Gets file from public storage */
 function getFileFromStorage($fullpath){
-    return route('homepage').'/'.$fullpath;
+    return asset($fullpath);
 }
 
 /**Deletes file from public storage */
