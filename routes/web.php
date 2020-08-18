@@ -44,6 +44,7 @@ Route::prefix('verified-courses')->as('our_courses.')->group(function () {
 });
 
 Route::prefix('my-courses')->namespace('Student')->as('my_courses.')->middleware(['auth'])->group(function () {
+    Route::get('/index', 'CourseController@my_courses')->name('index');
     Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
     Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
     Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');

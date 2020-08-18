@@ -94,7 +94,6 @@ function downloadFileFromPrivateStorage($path , $name){
 
 /**Reads file from private storage */
 function getFileFromPrivateStorage($fullpath , $disk = 'local'){
-    // $fullpath = route('homepage').'/'.$fullpath;
     $exists = Storage::disk($disk)->exists($fullpath);
     if($exists){
         $fileContents = Storage::disk($disk)->get($fullpath);

@@ -80,12 +80,13 @@
                             </a>
                                 <div id="floating_menu" class="d-none">
                                     <p><a href="{{ route('home')}}">Go to Dashboard</a></p>
-                                    <p><a href="{{ route('homepage')}}">My Courses</a></p>
+                                    <p><a href="{{ route('my_courses.index')}}">My Courses</a></p>
                                     <p><a href="{{ route('homepage')}}">Order History</a></p>
                                     <p><a href="{{ route('homepage')}}">Edit Profile</a></p>
                                     <hr>
                                     <p class="">
-                                        <a href="{{ route('homepage')}}" class="">Logout</a>
+                                        <a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
                                     </p>
                                 </div>
                             @else

@@ -79,7 +79,6 @@ class User extends Authenticatable  //implements MustVerifyEmail
         if(empty($this->avatar)){
             return getFileFromStorage('user.png');
         }
-        // return getFileFromPrivateStorage($this->userImagePath.'/'.$this->avatar);
         return route('user.avatar',encrypt($this->userImagePath.'/'.$this->avatar));
     }
 
@@ -101,6 +100,15 @@ class User extends Authenticatable  //implements MustVerifyEmail
 
     public function cart(){
         return $this->hasOne(Cart::class);
+    }
+
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function activeOrders(){
+        return $this->hasMany(Order::class)->where('status', $this->activeStatus);
     }
 
 }
