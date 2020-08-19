@@ -25,6 +25,10 @@ class WebController extends Controller
         return view('web.contact_us');
     }
 
+    public function about_us(){
+        return view('web.about_us');
+    }
+
     public function terms_and_conditions(){
         return view('web.terms_and_conditions');
     }

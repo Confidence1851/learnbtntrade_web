@@ -1,5 +1,6 @@
 @extends('web.layouts.app' , ['title' => 'Home'])
 @section('content')
+<div id="loading-area"></div>
 <!-- Content -->
 <div class="page-content bg-white">
    <!-- Slider -->
@@ -455,94 +456,7 @@
             </div>
         </div>
         <!-- Company staus End -->
-        <!-- Team member -->
-        <div class="section-full bg-gray content-inner">
-            <div class="container">
-                <div class="section-head text-center ">
-                    <h2 class="title"> Meet The Teacher</h2>
-                    <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-                        <div class="dlab-box m-b30 dlab-team1">
-                            <div class="dlab-media">
-                                <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic17.jpg">
-                                </a>
-                            </div>
-                            <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Nashid Martines</a></h4>
-                                <span class="dlab-position">Director</span>
-                                <ul class="dlab-social-icon dez-border">
-                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
-                        <div class="dlab-box m-b30 dlab-team1">
-                            <div class="dlab-media">
-                                <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic16.jpg">
-                                </a>
-                            </div>
-                            <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Konne Backfield</a></h4>
-                                <span class="dlab-position">Designer</span>
-                                <ul class="dlab-social-icon dez-border">
-                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
-                        <div class="dlab-box m-b30 dlab-team1">
-                            <div class="dlab-media">
-                                <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic15.jpg">
-                                </a>
-                            </div>
-                            <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Hackson Willingham</a></h4>
-                                <span class="dlab-position">Developer</span>
-                                <ul class="dlab-social-icon dez-border">
-                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
-                        <div class="dlab-box m-b30 dlab-team1">
-                            <div class="dlab-media">
-                                <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/images/our-team/pic18.jpg">
-                                </a>
-                            </div>
-                            <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Konne Backfield</a></h4>
-                                <span class="dlab-position">Manager</span>
-                                <ul class="dlab-social-icon dez-border">
-                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team member End -->
+       
         <!-- Testimonials blog -->
         <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" style="background-image:url(images/background/map-bg.png);">
             <div class="container">

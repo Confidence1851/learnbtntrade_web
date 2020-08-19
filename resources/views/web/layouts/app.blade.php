@@ -44,7 +44,6 @@
 </head>
 <body id="bg">
 <div class="page-wraper">
-<div id="loading-area"></div>
 	<!-- header -->
     <header class="site-header mo-left header">
 		<!-- main header -->

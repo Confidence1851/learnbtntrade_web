@@ -9,9 +9,10 @@
               <ul>
                 <li><a href="{{ route('homepage')}}">Home </a></li>
                 <li><a href="{{ route('contact_us')}}">Contact Us</a></li>
-                <li><a href="{{ route('homepage')}}">About Us</a></li>
+                <li><a href="{{ route('abou_us')}}">About Us</a></li>
                 <li><a href="{{ route('terms_and_conditions')}}">Terms and Conditions</a></li>
-              </ul>
+                <li><a href="{{ route('faqs')}}">Frequently Asked Questions</a></li>
+            </ul>
             </div>
           </div>
           <div class="col-md-5">
@@ -60,13 +61,11 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-sm-6 text-left "> <span>Copyright © 2020 DexignZone</span> </div>
+          <div class="col-md-6 col-sm-6 text-left "> <span>Copyright © 2020 LearnBtcTrade</span> </div>
           <div class="col-md-6 col-sm-6 text-right ">
             <div class="widget-link ">
               <ul>
-                <li><a href="javascript:void(0);"> About</a></li>
-                <li><a href="javascript:void(0);"> Help Desk</a></li>
-                <li><a href="javascript:void(0);"> Privacy Policy</a></li>
+                <li><a href="javascript:void(0);">Powered by RootTechnologies</a></li>
               </ul>
             </div>
           </div>

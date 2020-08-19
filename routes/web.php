@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'Web\WebController@index')->name('homepage');
 Route::get('/contact-us', 'Web\WebController@contact_us')->name('contact_us');
+Route::get('/about-us', 'Web\WebController@about_us')->name('abou_us');
 Route::get('/terms-and-conditions', 'Web\WebController@terms_and_conditions')->name('terms_and_conditions');
 Route::get('/privacy-policy', 'Web\WebController@privacy_policy')->name('privacy_policy');
 Route::get('/how-we-work', 'Web\WebController@how_we_work')->name('how_we_work');
