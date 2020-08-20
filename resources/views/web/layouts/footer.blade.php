@@ -19,9 +19,9 @@
             <div class="widget widget_getintuch">
               <h5 class="m-b30 text-white ">Contact us</h5>
               <ul>
-                <li><i class="ti-location-pin"></i><strong>address</strong> demo address #8901 Marmora Road Chi Minh City, Vietnam </li>
-                <li><i class="ti-mobile"></i><strong>phone</strong>0800-123456 (24/7 Support Line)</li>
-                <li><i class="ti-email"></i><strong>email</strong>info@example.com</li>
+                <li><i class="ti-location-pin"></i><strong>Address</strong> Nos 15 Ikpa Road Uyo , Akwa Ibom State, Nigeria.</li>
+                <li><i class="ti-mobile"></i><strong>phone</strong><a href="tel:+2348094110146">+234 809 411 0146 (Support Line)</a></li>
+                <li><i class="ti-email"></i><strong>email</strong><a href="mailto:learnbtctrade@gmail.com">learnbtctrade@gmail.com</a></li>
               </ul>
             </div>
           </div>

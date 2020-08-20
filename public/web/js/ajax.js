@@ -4,6 +4,17 @@ $.ajaxSetup({
     },
 });
 
+$(document).ready(function() {
+    let success = $('#success_flash_msg').text().trim();
+    if (success.length > 0) {
+        successMsg("Success", success);
+    } else {
+        let error = $('#error_flash_msg').text().trim();
+        if (error.length > 0) {
+            errorMsg("Error", error);
+        }
+    }
+});
 
 $('#commentform').on('submit', function(e) {
     e.preventDefault();

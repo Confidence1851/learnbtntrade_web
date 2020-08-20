@@ -1,6 +1,6 @@
 @extends('web.layouts.app' , ['title' => 'Home'])
 @section('content')
-<div id="loading-area"></div>
+<div id="loading-area" style="background-image: url({{ $logo_img }});"></div>
 <!-- Content -->
 <div class="page-content bg-white">
    <!-- Slider -->
@@ -34,10 +34,10 @@
 									data-paddingright="[0,0,0,0]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[0,0,0,0]"
-									style="z-index: 2;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px; background-image:url(images/overlay/rrdiagonal-line.png)"> </div>
+									style="z-index: 2;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
 									<!-- LAYER NR. 1 -->
 								<!-- BACKGROUND VIDEO LAYER -->
-								<div class="rs-background-video-layer"
+								{{-- <div class="rs-background-video-layer"
 									data-forcerewind="on"
 									data-volume="mute"
 									data-videowidth="100%"
@@ -48,7 +48,7 @@
 									data-aspectratio="16:9"
 									data-autoplay="true"
 									data-autoplayonlyfirsttime="false"
-								></div>
+								></div> --}}
 
 								<div class="tp-caption tp-shape tp-shapewrapper ov-tp "
 									id="slide-100-layer-1"
@@ -155,7 +155,7 @@
 							</li>
 							<li data-index="rs-200" data-transition="fadethroughdark" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+								{{-- <img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina> --}}
 								<!-- LAYER NR. 1 -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-200-layer"
 									data-x="['center','center','center','center']"
@@ -313,7 +313,7 @@
                 <div class="row relative">
                     <div class="col-md-12 col-lg-8 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
                         <div class="contact-no-area">
-                            <h2 class="title">Create your free account now and get immediate access to 100s of online courses.</h2>
+                            <h2 class="title">Subscribe to our newsletter and be the first to get the latest updates.</h2>
                             <form action="script/mailchamp.php" method="post" class="dzSubscribe subscribe-box row align-items-center sp15">
                                 <div class="col-lg-12">
                                     <div class="dzSubscribeMsg"></div>
@@ -417,38 +417,30 @@
         </div>
         <!-- Our Services End -->
         <!-- Company staus -->
-        <div class="section-full text-white bg-img-fix content-inner overlay-black-dark counter-staus-box" style="background-image:url(images/background/bg4.jpg);">
+        <div class="section-full text-white bg-img-fix content-inner overlay-black-dark counter-staus-box"">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.2s">
+                    <div class="col-md-4 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.2s">
                         <div class="icon-bx-wraper center">
                             <div class="icon-content">
-                                <h2 class="dlab-tilte counter">1226</h2>
+                                <h2 class="dlab-tilte counter">{{ $stats['students'] }}</h2>
                                 <p>Happy Students</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.4s">
+                    <div class="col-md-4 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.4s">
                         <div class="icon-bx-wraper center">
                             <div class="icon-content">
-                                <h2 class="dlab-tilte counter">1552</h2>
+                                <h2 class="dlab-tilte counter">{{ $stats['courses'] }}</h2>
                                 <p>Approved Courses</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.6s">
+                    <div class="col-md-4 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.6s">
                         <div class="icon-bx-wraper center">
                             <div class="icon-content">
-                                <h2 class="dlab-tilte counter">1156</h2>
-                                <p>Certified Teachers</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-sm-6 col-6 m-b30 wow fadeInUp counter-style-5" data-wow-duration="2s" data-wow-delay="0.6s">
-                        <div class="icon-bx-wraper center">
-                            <div class="icon-content">
-                                <h2 class="dlab-tilte counter">2100</h2>
-                                <p>Graduate Students</p>
+                                <h2 class="dlab-tilte counter">{{ $stats['instructors'] }}</h2>
+                                <p>Verified Instructors</p>
                             </div>
                         </div>
                     </div>
@@ -456,9 +448,9 @@
             </div>
         </div>
         <!-- Company staus End -->
-       
+
         <!-- Testimonials blog -->
-        <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" style="background-image:url(images/background/map-bg.png);">
+        <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" >
             <div class="container">
                 <div class="section-head text-white text-center">
                     <h2 class="title">What People Are Saying</h2>

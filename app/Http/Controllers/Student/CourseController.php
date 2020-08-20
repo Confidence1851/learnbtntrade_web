@@ -15,7 +15,7 @@ class CourseController extends Controller
                     ->where('course_id', $course->id)
                     ->where('status' , $this->activeStatus)
                     ->orderby('number', 'asc')->get();
-        return view('web.course_sections' , compact('course' , 'section' , 'sections'));
+        return view('student.course_sections' , compact('course' , 'section' , 'sections'));
     }
 
     public function download_resource($id){
@@ -35,12 +35,9 @@ class CourseController extends Controller
 
     public function my_courses(){
         $user = $this->User->user();
-        $courses = collect();
-        foreach($user->activeOrders()->pluck('id') as $order){
-            dump($order);
-        // $orderedCourses = OrderItem::where('course_id' , '<>' , null)->wherehas('course')->
+        $orderedCourses = userOrderedCourses($user->id);
+        $courses = $this->Course->model()->whereIn('id', $orderedCourses)->paginate(50);
 
-        }
         return view('student.courses', compact('courses'));
     }
 
@@ -58,6 +55,12 @@ class CourseController extends Controller
                 'data' => null
             ]);
         }
+    }
+
+    public function go_to_course($id){
+        $course = $this->Course->find($id);
+        $section = $this->CourseSection->model()->where('course_id' , $course->id)->first();
+        return redirect()->route('my_courses.take_course' , ['id' => encrypt($section->id) , 'slug' => $section->slug ]);
     }
 
 }

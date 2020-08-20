@@ -23,6 +23,7 @@ class CourseController extends Controller
             $category_id = $this->CourseCategory->find($category_id);
         }
         $featured_courses = $this->Course->model()->where('status' , $this->activeStatus)->where('featured' , $this->activeStatus)->limit(10)->get();
+
         return view('web.courses' , compact('courses' , 'featured_courses' , 'categories' , 'search_keywords' , 'category_id'));
     }
 
@@ -42,6 +43,6 @@ class CourseController extends Controller
         return view('web.course_info' , compact('course' , 'categories' , 'related_courses'));
     }
 
-    
+
 
 }

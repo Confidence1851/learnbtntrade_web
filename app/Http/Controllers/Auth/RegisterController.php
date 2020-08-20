@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,6 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'referrer' => ['nullable', 'string', 'max:255'],
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -65,7 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
@@ -74,6 +76,17 @@ class RegisterController extends Controller
             'status' => $this->activeStatus,
             'password' => Hash::make($data['password']),
         ]);
+
+        if(!empty($code = $data['referrer'])){
+            $ref = User::where('ref_code',$code)->first();
+            Referral::create([
+                'user_id' => $user->id,
+                'referrer_id' => $ref->id,
+                'type' => 0
+            ]);
+        }
+
+        return $user;
     }
 
 
@@ -84,5 +97,17 @@ class RegisterController extends Controller
                 return strtoupper($token);
             }
             return $this->ref_code();
+    }
+
+    public function ref_invite($code){
+        $user = User::where('ref_code',$code)->first();
+        if(empty($user)){
+            $user = new User();
+        }
+        session([
+            'ref_name' => $user->fullName(),
+            'ref_code' => $user->ref_code,
+        ]);
+        return redirect()->route('register');
     }
 }

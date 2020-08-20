@@ -18,7 +18,12 @@ class WebController extends Controller
             ->where('featured', $this->activeStatus)
             ->limit(12)
             ->get();
-        return view('web.index' , compact('featuredCourses' , 'latestPosts'));
+        $stats = [
+            'students' => 20,
+            'courses' => 40,
+            'instructors' => 10,
+        ];
+        return view('web.index' , compact('featuredCourses' , 'latestPosts' , 'stats'));
     }
 
     public function contact_us(){

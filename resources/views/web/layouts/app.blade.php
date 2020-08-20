@@ -81,7 +81,7 @@
                                     <p><a href="{{ route('home')}}">Go to Dashboard</a></p>
                                     <p><a href="{{ route('my_courses.index')}}">My Courses</a></p>
                                     <p><a href="{{ route('homepage')}}">Order History</a></p>
-                                    <p><a href="{{ route('homepage')}}">Edit Profile</a></p>
+                                    <p><a href="{{ route('student.profile')}}">Edit Profile</a></p>
                                     <hr>
                                     <p class="">
                                         <a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();">Logout</a>
@@ -165,7 +165,14 @@
 
 
     @yield('content')
-
+    <div class="d-none">
+    @if (session()->has('success_flash'))
+        <div id="success_flash_msg">{{ session()->get('success_flash') ?? ''}}</div>
+    @endif
+    @if (session()->has('error_flash'))
+        <div id="error_flash_msg">{{ session()->get('error_flash') ?? ''}}</div>
+    @endif
+    </div>
     @php
         $hide_footer = $hide_footer ?? false;
     @endphp

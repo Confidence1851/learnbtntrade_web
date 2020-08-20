@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'Web\WebController@index')->name('homepage');
+Route::get('/signup-invite/ref/{code}', 'Auth\RegisterController@ref_invite')->name('ref_invite');
 Route::get('/contact-us', 'Web\WebController@contact_us')->name('contact_us');
 Route::get('/about-us', 'Web\WebController@about_us')->name('abou_us');
 Route::get('/terms-and-conditions', 'Web\WebController@terms_and_conditions')->name('terms_and_conditions');
@@ -44,11 +45,19 @@ Route::prefix('verified-courses')->as('our_courses.')->group(function () {
     Route::get('/category/{id}/{slug}', 'Web\CourseController@category_courses')->name('category_courses');
 });
 
-Route::prefix('my-courses')->namespace('Student')->as('my_courses.')->middleware(['auth'])->group(function () {
-    Route::get('/index', 'CourseController@my_courses')->name('index');
-    Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
-    Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
-    Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
+Route::namespace('Student')->middleware(['auth'])->group(function () {
+    Route::prefix('my-courses')->as('my_courses.')->group(function () {
+        Route::get('/index', 'CourseController@my_courses')->name('index');
+        Route::get('/go-to-course/{id}/{slug}', 'CourseController@go_to_course')->name('go_to_course');
+        Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
+        Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
+        Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
+    });
+    Route::prefix('student')->as('student.')->group(function () {
+        Route::get('/profile', 'ProfileController@profile')->name('profile');
+        Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
+        Route::post('/profile/password-reset', 'ProfileController@password_reset')->name('profile.password_reset');
+    });
 });
 
 Route::prefix('cart')->namespace('Student')->as('cart.')->middleware(['auth'])->group(function () {

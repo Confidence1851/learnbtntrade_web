@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('ref_code',20)->unique();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
-            $table->string('location')->nullable();
+            $table->string('address')->nullable();
             $table->string('password');
             $table->tinyinteger('role')->default(0);
             $table->tinyinteger('status')->default(0);

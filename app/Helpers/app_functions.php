@@ -2,7 +2,9 @@
 
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\OrderItem;
 use App\Models\Post;
+use App\Models\User;
 use App\Traits\Cart as TraitsCart;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
@@ -256,6 +258,39 @@ function getFileType(String $type)
     function cartHasCourse($course_id){
         return CartItem::where('course_id' , $course_id)->where('cart_id', getUserCart()->id)->first();
     }
+
+    function userOrderedCourses($user_id){
+        $user = User::find($user_id);
+        return $orderedCourses = OrderItem::where('user_id' , $user->id)->whereHas('order' , function ($query) {
+            $query->where('status' , 1);
+        })->pluck('course_id');
+    }
+
+
+    function getMyCourses(){
+        $my_courses = [];
+        if(auth('web')->check()){
+            if(session()->has('my_courses')){
+                $my_courses = session()->get('my_courses');
+            }
+            else{
+                $my_courses = userOrderedCourses(auth('web')->id());
+                session('my_courses',$my_courses);
+            }
+        }
+        return $my_courses;
+    }
+
+    // function userHasCourse($course_id){
+    //     if(empty($user)){
+    //         return false;
+    //     }
+
+    //     if(in_array($course_id , $orderedCourses)){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
 
     /**Returns formatted money value

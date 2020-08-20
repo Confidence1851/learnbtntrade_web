@@ -1,5 +1,6 @@
 @extends('web.layouts.app' , ['title' => 'List of courses'   , 'activePage' => 'course' , 'meta_keywords' => '' , 'meta_description' => '' ])
 @section('content')
+
 <!-- Content -->
 <div class="page-content bg-gray">
     <!-- inner page banner -->

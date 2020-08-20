@@ -36,7 +36,18 @@
                             <form id="login" class="tab-pane active" method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <h4 class="font-weight-700">PERSONAL INFORMATION</h4>
-                                <p class="font-weight-600">If you have an account with us, please log in.</p>
+                                <p class="font-weight-600">
+                                    @php
+                                        $msg = 'If you have an account with us, please log in.';
+                                        if( session()->has('ref_code') ){
+                                            if( !empty(session()->get('ref_name')) ){
+                                                $msg = 'You were referred by '.session()->get('ref_name');
+                                            }
+                                        }
+
+                                    @endphp
+                                    {{$msg}}
+                                </p>
                                 <div class="form-group">
                                     <label class="font-weight-700">First Name *</label>
                                     <input name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus class="form-control" placeholder="First Name" type="text">
@@ -51,7 +62,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-700">PASSWORD *</label>
-                                    <input name="password" required="" class="form-control " placeholder="Type Password" type="password">
+                                    <input name="password" required class="form-control " placeholder="Type Password" type="password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-700">REFERRAL CODE</label>
+                                    <input name="referrer" class="form-control " placeholder="Enter referrer code(optional)" type="text" value="{{ session()->get('ref_code') ?? ''}}">
                                 </div>
                                 <div class="text-left m-t15">
                                     <button class="site-button button-lg radius-no outline outline-2">CREATE</button>
