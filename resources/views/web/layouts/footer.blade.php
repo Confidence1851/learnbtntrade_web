@@ -46,11 +46,11 @@
                 </form>
               </div>
               <ul class="list-inline m-a0">
-                <li><a href="javascript:void(0);" class="site-button facebook circle "><i class="fa fa-facebook"></i></a></li>
-                <li><a href="javascript:void(0);" class="site-button google-plus circle "><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="javascript:void(0);" class="site-button linkedin circle "><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="javascript:void(0);" class="site-button instagram circle "><i class="fa fa-instagram"></i></a></li>
-                <li><a href="javascript:void(0);" class="site-button twitter circle "><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/Learnbtctrade-Academy-103280771417756/" class="site-button facebook circle "><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://t.me/Learnbtctradeacademy" class="site-button google-plus circle "><i class="fa fa-telegram"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/emmanuel-jackson-a04822189" class="site-button linkedin circle "><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/learnbtctrade?r=nametag" class="site-button instagram circle "><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/LearnbtctradeA?s=09" class="site-button twitter circle "><i class="fa fa-twitter"></i></a></li>
               </ul>
             </div>
           </div>

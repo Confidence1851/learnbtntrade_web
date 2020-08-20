@@ -285,7 +285,8 @@
 				<!-- END REVOLUTION SLIDER -->
 			</div>
 		</div>
-	</div>
+    </div>
+
     <!-- contact area -->
     <div class="content-block">
         {{-- Featured Courses --}}
@@ -336,8 +337,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-4 contact-img-bx wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
-                        <img src="{{ $web_source }}/images/pic1.png" alt="">
+                    <div style="border-color: #F7F9FB" class="col-md-12 col-lg-4 contact-img-bx wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <div id="crypto_widget"></div>
                     </div>
                 </div>
             </div>
