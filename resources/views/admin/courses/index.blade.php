@@ -43,7 +43,7 @@
                                         @endphp
                                         <tr>
                                             {{-- <td>{{$i}}</td> --}}
-                                            <td><img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive" width="100"></td>
+                                            <td><img src="{{ getFileFromStorage($course->image ,'storage') }}" alt="" class="img-responsive" width="100"></td>
                                             <td>{{$course->title}}</td>
                                             <td>{!! $course->category->title !!}</td>
                                             <td>{{$course->author->fullName()}}</td>

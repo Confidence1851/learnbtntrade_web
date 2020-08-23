@@ -1,7 +1,7 @@
 <a href="{{ route('our_courses.course_info' , ['id' => $course->id , 'slug' => $course->slug]) }}">
     <div class="dlab-box courses-bx">
         <div class="dlab-media">
-        <img src="{{ getFileFromStorage($course->image) }}" alt="">
+        <img src="{{ getFileFromStorage($course->image , 'storage') }}" alt="">
             <div class="user-info">
                 <img src="{{ $course->author->getAvatar() }}" alt="">
                 <h6 class="title">{{ $course->author->fullName() }}</h6>

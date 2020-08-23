@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Web\WebController@index')->name('homepage');
 Route::get('/signup-invite/ref/{code}', 'Auth\RegisterController@ref_invite')->name('ref_invite');
 Route::get('/contact-us', 'Web\WebController@contact_us')->name('contact_us');
-Route::get('/about-us', 'Web\WebController@about_us')->name('abou_us');
+Route::get('/about-us', 'Web\WebController@about_us')->name('about_us');
 Route::get('/terms-and-conditions', 'Web\WebController@terms_and_conditions')->name('terms_and_conditions');
 Route::get('/privacy-policy', 'Web\WebController@privacy_policy')->name('privacy_policy');
 Route::get('/how-we-work', 'Web\WebController@how_we_work')->name('how_we_work');
@@ -23,6 +23,9 @@ Route::get('/frequesntly-asked-questions', 'Web\WebController@faqs')->name('faqs
 Route::get('/download-center', 'Web\WebController@download_center')->name('download_center');
 Route::get('/download-file/{name}', 'Web\WebController@download_file')->name('download_file');
 Route::get('/avatar/{path}', 'Web\WebController@userAvatar')->name('user.avatar');
+Route::get('/file/{path}', 'Web\WebController@read_file')->name('read_file');
+Route::post('/save-contact', 'Web\WebController@contact_form')->name('contact_form');
+Route::post('/subscribe-email', 'Web\WebController@subscribe_email')->name('subscribe_email');
 
 
 Route::prefix('services')->namespace('Web')->as('services.')->group(function () {
@@ -125,6 +128,14 @@ Route::middleware('auth')->group(function (){
             Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
             Route::resource('comments','BlogCommentController');
             Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
+
+            Route::prefix('test')->as('test.')->group(function () {
+            Route::get('details/create/{id}','CourseTestController@create')->name('details.create');
+            Route::resource('details','CourseTestController')->except(['create']);
+            Route::get('questions/create/{id}','CourseTestQuestionController@create')->name('questions.create');
+            Route::resource('questions','CourseTestQuestionController')->except(['create']);
+            });
+
         });
 
         Route::resource('orders','OrderController');

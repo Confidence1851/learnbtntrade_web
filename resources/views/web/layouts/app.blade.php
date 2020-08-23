@@ -80,7 +80,7 @@
                                 <div id="floating_menu" class="d-none">
                                     <p><a href="{{ route('home')}}">Go to Dashboard</a></p>
                                     <p><a href="{{ route('my_courses.index')}}">My Courses</a></p>
-                                    <p><a href="{{ route('homepage')}}">Order History</a></p>
+                                    <p><a href="#">Order History</a></p>
                                     <p><a href="{{ route('student.profile')}}">Edit Profile</a></p>
                                     <hr>
                                     <p class="">

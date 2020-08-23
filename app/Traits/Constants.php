@@ -141,8 +141,8 @@ trait Constants
                 return 'Pending';
             case $this->activeStatus:
                 return 'Active';
-            case $this->declinedStatus:
-                return 'Declined';
+            case $this->inactiveStatus:
+                return 'Inactive';
             case $this->disabledStatus:
                 return 'Disabled';
             case $this->processingStatus:
@@ -249,6 +249,14 @@ trait Constants
      * @return string
      */
     public $orderReceiptsFilePath = 'files/orders/receipts';
+
+
+     /**
+     * Course Test Question file path
+     * @return string
+     */
+    public $courseTestQuestionPath = 'files/course/tests/questions';
+
 
 }
 

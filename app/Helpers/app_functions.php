@@ -9,6 +9,8 @@ use App\Traits\Cart as TraitsCart;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 
 /** Returns a random alphanumeric token or number
@@ -34,10 +36,9 @@ function getRandomToken($length , $typeInt = false){
 }
 
 /**Puts file in a public storage */
-function putFileInStorage($file , $path , $resize = false , $x = null , $y = null){
+function putFileInStorage($file , $path ){
         $filename = uniqid().'.'.$file->getClientOriginalExtension();
-        $file->move(public_path($path) , $filename);
-        $fullpath = $path.'/'.$filename;
+        $file->storeAs($path , $filename);
         return $filename;
 }
 
@@ -45,18 +46,42 @@ function putFileInStorage($file , $path , $resize = false , $x = null , $y = nul
 function putFileInPrivateStorage($file , $path){
     $filename = uniqid().'.'.$file->getClientOriginalExtension();
     Storage::putFileAs($path,$file,$filename,'private');
-    $fullpath = $path.'/'.$filename;
+    return $filename;
+}
+
+function resizeImageandSave($image ,$path , $disk = 'local', $width = 300 , $height = 300){
+    // create new image with transparent background color
+    $background = Image::canvas($width, $height, '#ffffff');
+
+    // read image file and resize it to 262x54
+    $img = Image::make($image);
+    //Resize image
+    $img->resize($width, $height, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
+
+    // insert resized image centered into background
+    $background->insert($img, 'center');
+
+    // save
+    $filename = uniqid().'.'.$image->getClientOriginalExtension();
+    $path = $path.'/'.$filename;
+    Storage::disk($disk)->put($path, (string) $background->encode());
     return $filename;
 }
 
 // Returns full public path
-function my_asset($path = null){
+function my_asset($path = null ){
     return route('homepage').env('ASSET_URL').'/'.$path;
 }
 
 
 /**Gets file from public storage */
-function getFileFromStorage($fullpath){
+function getFileFromStorage($fullpath , $storage = 'public'){
+    if($storage == 'storage'){
+        return route('read_file',encrypt($fullpath));
+    }
     return my_asset($fullpath);
 }
 
@@ -93,9 +118,16 @@ function downloadFileFromPrivateStorage($path , $name){
     return null;
 }
 
+function readPrivateFile($path){
+
+}
+
 
 /**Reads file from private storage */
 function getFileFromPrivateStorage($fullpath , $disk = 'local'){
+    if($disk == 'public'){
+        $disk = null;
+    }
     $exists = Storage::disk($disk)->exists($fullpath);
     if($exists){
         $fileContents = Storage::disk($disk)->get($fullpath);
@@ -110,7 +142,7 @@ function getFileFromPrivateStorage($fullpath , $disk = 'local'){
 
 
 function str_limit($string , $limit = 20 , $end  = '...'){
-    return Str::limit($string, $limit, $end);
+    return Str::limit(strip_tags($string), $limit, $end);
 }
 
 

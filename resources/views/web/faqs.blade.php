@@ -36,31 +36,34 @@
                             <div class="form-header">
                                 <h2 class="title">Any question?</h2>
                             </div>
-                            <form>
+                            <form action="{{ route('contact_form') }}" id="contact_form" method="POST"> @csrf
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzName" type="text" required="" class="form-control" placeholder="Your Name">
+                                        <input name="name" type="text" required class="form-control" placeholder="Your Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzName" type="text" required="" class="form-control" placeholder="Your email">
+                                        <input name="email" type="text" required class="form-control" placeholder="Your email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzName" type="text" required="" class="form-control" placeholder="Subject">
+                                        <input name="subject" type="text" required class="form-control" placeholder="Subject">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <textarea class="form-control" placeholder="Write Message"></textarea>
+                                        <textarea class="form-control" name="message" placeholder="Write Message"></textarea>
                                     </div>
                                 </div>
                                 <div class="clearfix">
                                     <button class="site-button button-md bg-secondry btn-block">SEND MESSAGE</button>
                                 </div>
                             </form>
+                            <div id="form_message" class="d-none mt-5 text-center contact-box dzForm">
+                                Your message has been submitted!
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-12 m-b30">

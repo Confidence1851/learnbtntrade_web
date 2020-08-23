@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
+use App\Models\NewsletterSubscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WebController extends Controller
 {
@@ -18,11 +21,18 @@ class WebController extends Controller
             ->where('featured', $this->activeStatus)
             ->limit(12)
             ->get();
-        $stats = [
-            'students' => 20,
-            'courses' => 40,
-            'instructors' => 10,
-        ];
+
+        if(session()->has('homepage_data')){
+            $stats = session()->get('homepage_data');
+        }
+        else{
+            $stats = [
+                'students' => $this->User->model()->where('role' , 0)->count(),
+                'courses' => $this->Course->model()->where('status' , $this->activeStatus)->count(),
+                'instructors' => $this->User->model()->where('role' , $this->instructorRole)->count(),
+            ];
+            session()->put('homepage_data' , $stats);
+        }
         return view('web.index' , compact('featuredCourses' , 'latestPosts' , 'stats'));
     }
 
@@ -71,15 +81,49 @@ class WebController extends Controller
         }
     }
 
+
     /**
      * Returns user avatar
      *
      * @return \Illuminate\Http\Response
      */
-    public function userAvatar($path)
+    public function read_file($path)
     {
-        // dd(decrypt($path));
         return getFileFromPrivateStorage(decrypt($path));
+    }
+
+    public function contact_form(Request $request){
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($data));
+        return response()->json([
+            'success' => true,
+            'msg' => 'Your message has been received!'
+        ]);
+    }
+
+    public function subscribe_email(Request $request){
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+        ]);
+        $check = NewsletterSubscriber::where('email' , $data['email'])->count();
+        if($check > 0){
+            return response()->json([
+                'success' => false,
+                'msg' => 'You already subscribed!'
+            ]);
+        }
+        NewsletterSubscriber::create($data);
+        return response()->json([
+            'success' => true,
+            'msg' => 'You have successfully subscribed!'
+        ]);
     }
 
 

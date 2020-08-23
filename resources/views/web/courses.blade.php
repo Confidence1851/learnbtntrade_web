@@ -40,6 +40,13 @@
                                 </div>
                             @endforeach
                         </div>
+                         <!-- Pagination start -->
+                         <div class="pagination-bx rounded-sm primary clearfix m-b30 text-center">
+                            <ul class="pagination">
+                                {!! $courses->links() !!}
+                            </ul>
+                        </div>
+                        <!-- Pagination END -->
                     @else
                         <div class="container">
                             <div class="text-center mt-5">
@@ -54,7 +61,7 @@
                 </div>
                 <!-- left part start -->
                  <!-- Side bar start -->
-                <div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4 d-none d-md-block">
                     <aside class="side-bar sticky-top">
                         <div class="widget">
                             <h5 class="widget-title style-1">Search</h5>
@@ -71,12 +78,12 @@
                         </div>
                         @if($featured_courses->count() > 0)
                         <div class="widget recent-posts-entry">
-                            <h5 class="widget-title style-1">Featured Posts</h5>
+                            <h5 class="widget-title style-1">Featured Courses</h5>
                             <div class="widget-post-bx">
                                 @foreach($featured_courses as $course)
                                 <div class="widget-post clearfix">
                                     <div class="dlab-post-media">
-                                        <img src="{{ getFileFromStorage($course->image) }}" width="200" height="143" alt="">
+                                        <img src="{{ getFileFromStorage($course->image , 'storage') }}" width="200" height="143" alt="">
                                     </div>
                                     <div class="dlab-post-info">
                                         <div class="dlab-post-meta">

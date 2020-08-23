@@ -79,7 +79,7 @@ class User extends Authenticatable  //implements MustVerifyEmail
         if(empty($this->avatar)){
             return getFileFromStorage('user.png');
         }
-        return route('user.avatar',encrypt($this->userImagePath.'/'.$this->avatar));
+        return route('read_file',encrypt($this->userImagePath.'/'.$this->avatar));
     }
 
     public function agent(){

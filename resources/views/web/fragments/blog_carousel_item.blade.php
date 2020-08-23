@@ -2,7 +2,7 @@
     <div class="blog-post blog-grid blog-rounded blog-effect1 post-style-1">
         <div class="dlab-post-media dlab-img-effect">
             <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">
-                <img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive">
+                <img src="{{ getFileFromStorage($post->image , 'storage') }}" alt="" class="img-responsive">
             </a>
         </div>
         <div class="dlab-info p-a20">

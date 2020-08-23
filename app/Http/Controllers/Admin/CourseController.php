@@ -95,7 +95,7 @@ class CourseController extends Controller
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->coursePreviewImagePath);
+            $data['image'] = resizeImageandSave($image , $this->coursePreviewImagePath , 'local' , 640 , 360);
         }
         $data['discount'] =  empty($data['discount']) ? 0 : $data['discount'];
         return $data;
@@ -143,7 +143,7 @@ class CourseController extends Controller
         }
         try{
             if(!empty($request['image'])){
-                deleteFileFromStorage($course->image);
+                deleteFileFromPrivateStorage($course->image);
             }
         }
         catch(\Exception $e){

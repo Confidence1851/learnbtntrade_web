@@ -16,7 +16,7 @@
 <script src="{{ $web_source }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="{{ $web_source }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
 <script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
-<script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  -->
+{{-- <script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  --> --}}
 <script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
 <script src="{{ $web_source }}/js/jquery.lazy.min.js"></script>
 <!-- REVOLUTION JS FILES -->
@@ -116,4 +116,66 @@ jQuery(document).ready(function() {
             }
         })
     }
+
+
+    $('#contact_form').on('submit', function(e) {
+        e.preventDefault();
+        var formdata = new FormData($(this)[0]);
+        var url = $(this).attr('action');
+        $('.form_btn').attr('disabled', true);
+        $.ajax({
+            url: url,
+            type: 'Post',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            success: function(data) {
+                console.log(data);
+                if (data.success) {
+                    successMsg("Success", data.msg);
+                    $('#contact_form').addClass('d-none');
+                    $('#form_message').removeClass('d-none');
+                } else {
+                    errorMsg("Error", data.msg);
+                }
+            }
+
+        });
+    });
+
+
+
+
+    $('.subscribe_form').on('submit', function(e) {
+        e.preventDefault();
+        var formdata = new FormData($(this)[0]);
+        var url = $(this).attr('action');
+        $(this).find('button').attr('disabled', true);
+        $.ajax({
+            url: url,
+            type: 'Post',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            success: function(data) {
+                console.log(data);
+                if (data.success) {
+                    successMsg("Success", data.msg);
+                    $('#subscribe_form').reset();
+                } else {
+                    errorMsg("Error", data.msg);
+                    $(this).find('button').removeAttr('disabled');
+                }
+            }
+
+        });
+    });
+    $(document).ready(() => {
+        $('video').attr('controlsList', 'nodownload');
+        $("video").on("contextmenu",function(){
+            return false;
+        });
+    });
 </script>

@@ -34,6 +34,10 @@ class Course extends Model
         return $this->hasMany(CourseLike::class);
     }
 
+    public function tests(){
+        return $this->hasMany(CourseTest::class);
+    }
+
     public function countReviews(){
         return 0;
     }

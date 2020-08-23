@@ -21,6 +21,7 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#information" aria-controls="information" role="tab" data-toggle="tab">Information</a></li>
                                     <li role="presentation" class=""><a href="#sections" aria-controls="media" role="tab" data-toggle="tab">Sections</a></li>
+                                    <li role="presentation" class=""><a href="#tests" aria-controls="media" role="tab" data-toggle="tab">Test Details</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -49,7 +50,7 @@
                                                 </div>
                                                 <div class=""  style="padding:10px ">
                                                     <div class="mt-2 mb-2">
-                                                        <img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive">
+                                                        <img src="{{ getFileFromStorage($course->image , 'storage') }}" alt="" class="img-responsive">
                                                     </div>
                                                     <br>
                                                     {!! $course->description !!}
@@ -100,13 +101,80 @@
                                                                                 <td>{{$section->getStatus()}}</td>
                                                                                 <td>{{$course->created_at->format('M D d, Y')}}</td>
                                                                                 <td>
-                                                                                    <form  action="{{ route('course.comments.destroy',$section) }}" method="POST">
+                                                                                    <form  action="{{ route('course.sections.destroy',$section) }}" method="POST">
                                                                                         @method('delete')
                                                                                         @csrf
                                                                                         <a href="{{ route('course.sections.show' , $section->id) }}" class="btn btn-info xs">
                                                                                             <i class="material-icons">remove_red_eye</i>
                                                                                         </a>
                                                                                         <a href="{{ route('course.sections.edit' , $section->id) }}" class="btn btn-success xs">
+                                                                                            <i class="material-icons">edit</i>
+                                                                                        </a>
+
+                                                                                        <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item? ');">
+                                                                                            <i class="material-icons">delete</i>
+                                                                                        </button>
+
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                            @endforeach
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- #END# Exportable Table -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade in" id="tests">
+                                        <div class="panel panel-default panel-post">
+                                            <div class="panel-heading">
+                                                <h3>Course Test Details
+                                                    <span style="float: right">
+                                                         <a href="{{ route('course.test.details.create' , $course->id) }}" class="btn btn-sm btn-outline-primary"> New Test</a>
+                                                    </span>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body" style="padding:10px ">
+                                                 <!-- Exportable Table -->
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="">
+
+                                                            <div class="body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">  <!-- js-basic-example -->
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Title</th>
+                                                                                <th>Difficulty</th>
+                                                                                <th>Duration</th>
+                                                                                <th>Status</th>
+                                                                                <th>Creation Date</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach($course->tests as $test)
+                                                                            <tr>
+                                                                                <td>{{$test->title }}</td>
+                                                                                <td>{{$test->getDifficulty() }}</td>
+                                                                                <td>{{$test->duration}} Mins</td>
+                                                                                <td>{{$test->getStatus()}}</td>
+                                                                                <td>{{$test->created_at->format('M D d, Y')}}</td>
+                                                                                <td>
+                                                                                    <form  action="{{ route('course.test.details.destroy',$test) }}" method="POST">
+                                                                                        @method('delete')
+                                                                                        @csrf
+                                                                                        <a href="{{ route('course.test.details.show' , $test->id) }}" class="btn btn-info xs">
+                                                                                            <i class="material-icons">remove_red_eye</i>
+                                                                                        </a>
+                                                                                        <a href="{{ route('course.test.details.edit' , $test->id) }}" class="btn btn-success xs">
                                                                                             <i class="material-icons">edit</i>
                                                                                         </a>
 

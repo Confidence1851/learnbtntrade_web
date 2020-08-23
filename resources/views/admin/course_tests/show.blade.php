@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Blog Post Information' , 'activeGroup'  => 'blog', 'activePage' => 'post'])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Course Test Information' , 'activeGroup'  => 'course', 'activePage' => 'course_all'])
 @section('content')
      <div class="container-fluid">
 
@@ -8,11 +8,11 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BLOG POST INFORMATION
+                                COURSE TEST INFORMATION
                             </h2>
                             <ul class="header-dropdown m-r--5 mt-4 md-mt-0">
                                 <li class="dropdown">
-                                    <a href="{{ route('blog.posts.edit' , $post->id) }}" class="btn btn-sm btn-outline-primary"> Edit Post</a>
+                                    <a href="{{ route('course.test.details.edit' , $test->id) }}" class="btn btn-sm btn-outline-primary"> Edit Test</a>
                                 </li>
                             </ul>
                         </div>
@@ -20,7 +20,7 @@
                             <div>
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#information" aria-controls="information" role="tab" data-toggle="tab">Information</a></li>
-                                    <li role="presentation" class=""><a href="#comments" aria-controls="media" role="tab" data-toggle="tab">Comments</a></li>
+                                    <li role="presentation" class=""><a href="#questions" aria-controls="media" role="tab" data-toggle="tab">Questions</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -32,37 +32,32 @@
                                             <div class="panel-body">
                                                 <div class="row" style="padding:10px ">
                                                     <div class="col-md-6"><br>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Author Name: </b> {{ $post->author->fullName() ?? ''}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Category: </b> {{ $post->category->title ?? ''}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Title: </b> {{ $post->title}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">SEO Keywords: </b> {{ $post->meta_keywords}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">SEO Description: </b> {{ $post->meta_description}}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Author Name: </b> {{ $test->author->fullName() ?? ''}}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Course: </b> {{ $test->course->title ?? ''}}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Title: </b> {{ $test->title}}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Difficulty: </b> {{ $test->getDifficulty() }}</p>
                                                     </div>
 
                                                     <div class="col-md-6"><br>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Featured: </b>{{ $post->featured  == 1 ? 'Yes' : 'No'}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Status: </b> {{ $post->getStatus()}}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Created At: </b> {{ date('Y-m-d',strtotime($post->created_at)) }}</p>
-                                                        <p class="p-5"><b class="ml-5 mt-3">Updated At: </b> {{ date('Y-m-d',strtotime($post->updated_at)) }}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Duration: </b> {{ $test->duration}} mins</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Status: </b> {{ $test->getStatus()}}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Created At: </b> {{ date('Y-m-d',strtotime($test->created_at)) }}</p>
+                                                        <p class="p-5"><b class="ml-5 mt-3">Updated At: </b> {{ date('Y-m-d',strtotime($test->updated_at)) }}</p>
                                                     </div>
 
-                                                </div>
-                                                <div class=""  style="padding:10px ">
-                                                    <div class="mt-2 mb-2">
-                                                        <img src="{{ getFileFromStorage($post->image , 'storage') }}" alt="" class="img-responsive">
-                                                    </div>
-                                                    <br>
-                                                    {!! $post->body !!}
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div role="tabpanel" class="tab-pane fade in" id="comments">
+                                    <div role="tabpanel" class="tab-pane fade in" id="questions">
                                         <div class="panel panel-default panel-post">
                                             <div class="panel-heading">
-                                                <h3>Post Comments
+                                                <h3>Test Questions
+                                                    <span style="float: right">
+                                                         <a href="{{ route('course.test.questions.create', $test->id) }}" class="btn btn-sm btn-outline-primary"> New Question</a>
+                                                    </span>
                                                 </h3>
                                             </div>
                                             <div class="panel-body" style="padding:10px ">
@@ -70,35 +65,40 @@
                                                 <div class="row clearfix">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="">
+
                                                             <div class="body">
                                                                 <div class="table-responsive">
                                                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">  <!-- js-basic-example -->
                                                                         <thead>
                                                                             <tr>
-                                                                                <th></th>
-                                                                                <th>Author</th>
-                                                                                <th>Comment</th>
+                                                                                <th>Test Title</th>
+                                                                                <th>Question</th>
+                                                                                <th>Type</th>
+                                                                                <th>Duration</th>
                                                                                 <th>Status</th>
                                                                                 <th>Creation Date</th>
                                                                                 <th>Action</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-
-                                                                            @foreach($post->comments as $comment)
+                                                                            @foreach($test->questions as $question)
                                                                             <tr>
-                                                                            <td><img src="{{ $comment->author->getAvatar() }}" alt="" class="img-responsive" width="100"></td>
-                                                                                <td>{{$comment->author->fullName() }}</td>
-                                                                                <td>{{$comment->body}}</td>
-                                                                                <td>{{$comment->getStatus()}}</td>
-                                                                                <td>{{$post->created_at->format('M D d, Y')}}</td>
+                                                                                <td>{{$test->title}}</td>
+                                                                                <td>{!! $question->question !!}</td>
+                                                                                <td>{{$question->getType() }}</td>
+                                                                                <td>{{$question->duration}} Mins</td>
+                                                                                <td>{{$question->getStatus()}}</td>
+                                                                                <td>{{$question->created_at->format('M D d, Y')}}</td>
                                                                                 <td>
-                                                                                    <form  action="{{ route('blog.comments.destroy',$comment) }}" method="POST">
+                                                                                    <form  action="{{ route('course.test.questions.destroy',$question) }}" method="POST">
                                                                                         @method('delete')
                                                                                         @csrf
-                                                                                        {{-- <a href="" class="btn btn-info sm">
+                                                                                        <a href="{{ route('course.test.questions.show' , $question->id) }}" class="btn btn-info xs">
                                                                                             <i class="material-icons">remove_red_eye</i>
-                                                                                        </a> --}}
+                                                                                        </a>
+                                                                                        <a href="{{ route('course.test.questions.edit' , $question->id) }}" class="btn btn-success xs">
+                                                                                            <i class="material-icons">edit</i>
+                                                                                        </a>
 
                                                                                         <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item? ');">
                                                                                             <i class="material-icons">delete</i>

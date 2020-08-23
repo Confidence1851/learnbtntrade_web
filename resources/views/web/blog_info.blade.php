@@ -20,7 +20,7 @@
 								</div>
 								<h2 class="dlab-title">{!! $post->title ?? '' !!}</h2>
 								<div class="dlab-media">
-									<a href="javascript:;"><img src="{{ getFileFromStorage($post->image) }}" alt=""></a>
+									<a href="javascript:;"><img src="{{ getFileFromStorage($post->image , 'storage') }}" alt=""></a>
 								</div>
 								<div class="dlab-post-text text">
                                      {!! $post->body ?? '' !!}

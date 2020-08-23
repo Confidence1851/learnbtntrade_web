@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="media m-b30">
-                                <img src="{{ getFileFromStorage($course->image) }}" alt="">
+                                <img src="{{ getFileFromStorage($course->image , 'storage') }}" alt="" style="width: 100%">
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -285,20 +285,20 @@
                 </div>
                 <!-- left part start -->
                 <!-- Side bar start -->
-                <div class="col-xl-3 col-lg-4 col-md-12 m-b30">
+                <div class="col-xl-3 col-lg-4 col-md-12 m-b30 ">
                     <aside class="side-bar sticky-top">
                         <div class="widget">
                             <div class="teacher-info text-center">
-                                <div class="top-info">
+                                {{-- <div class="top-info">
                                     <span class="price text-primary">Free</span>
                                     <a href="" class="site-button button-sm">Take This Course</a>
-                                </div>
+                                </div> --}}
                                 <div class="teacher-pic">
-                                    <a href="#"><img src="images/testimonials/pic1.jpg" alt=""></a>
+                                <a href="#"><img src="{{ $course->author->getAvatar() }}" alt=""></a>
                                 </div>
-                                <h4 class="name">Henry H. Garrick</h4>
-                                <span class="position">course instructor</span>
-                                <div class="clearfix m-b20">
+                                <h4 class="name">{{ $course->author->fullName() }}</h4>
+                                <span class="position">Course Instructor</span>
+                                {{-- <div class="clearfix m-b20">
                                     <a href="" class="site-button button-sm">FOLLOW NOW <i class="fa fa-user-plus m-l5"></i></a>
                                 </div>
                                 <ul class="social-list">
@@ -306,69 +306,49 @@
                                     <li><a href="javascript:void(0);" class="site-button circle fa fa-twitter twitter"></a></li>
                                     <li><a href="javascript:void(0);" class="site-button circle fa fa-linkedin linkedin"></a></li>
                                     <li><a href="javascript:void(0);" class="site-button circle fa fa-whatsapp whatsapp"></a></li>
+                                </ul> --}}
+                            </div>
+                        </div>
+                        @if($related_courses->count() > 0)
+                            <div class="widget recent-posts-entry">
+                                <h5 class="widget-title style-1">Related Courses</h5>
+                                <div class="widget-post-bx">
+                                    @foreach($related_courses as $course)
+                                    <div class="widget-post clearfix">
+                                        <div class="dlab-post-media">
+                                            <img src="{{ getFileFromStorage($course->image , 'storage') }}" width="200" height="143" alt="">
+                                        </div>
+                                        <div class="dlab-post-info">
+                                            <div class="dlab-post-meta">
+                                                <ul>
+                                                    <li class="post-date"> <i class="la la-clock"></i> <span> {{ date('d M Y',strtotime($course->created_at)) }}</span> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="dlab-post-header">
+                                                <h6 class="post-title">
+                                                <a href="{{ route('our_courses.course_info' , ['id' => $course->id , 'slug' => $course->slug]) }}">
+                                                        {{ str_limit($course->title) }}
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
+
+                            @if($categories->count() > 0)
+                            <div class="widget widget_archive">
+                                <h5 class="widget-title style-1">Categories List</h5>
+                                <ul>
+                                    @foreach ($categories as $category)
+                                        <li><a href="{{ route('our_courses.category_courses' , ['id' => $category->id , 'slug' => $category->slug]) }}">{{ str_limit($category->title) }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
-                        </div>
-                        <div class="widget widget_archive">
-                            <h5 class="widget-title style-1">Categories List</h5>
-                            <ul>
-                                <li><a href="javascript:void(0);">Lifestyle</a></li>
-                                <li><a href="javascript:void(0);">Creative</a></li>
-                                <li><a href="javascript:void(0);">Education</a></li>
-                                <li><a href="javascript:void(0);">Events</a></li>
-                                <li><a href="javascript:void(0);">Sports</a></li>
-                            </ul>
-                        </div>
-                        <div class="widget recent-posts-entry">
-                            <h5 class="widget-title style-1">Recent Posts</h5>
-                            <div class="widget-post-bx">
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media">
-                                        <img src="images/blog/recent-blog/pic1.jpg" width="200" height="143" alt="">
-                                    </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-date"> <i class="la la-clock"></i> <strong>01 June</strong> <span> 2020</span> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="dlab-post-header">
-                                            <h6 class="post-title"><a href="blog-single-left-sidebar.html">Why is Early Education Essential?</a></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media">
-                                        <img src="images/blog/recent-blog/pic2.jpg" width="200" height="160" alt="">
-                                    </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-date"> <i class="la la-clock"></i> <strong>01 June</strong> <span> 2020</span> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="dlab-post-header">
-                                            <h6 class="post-title"><a href="blog-single-left-sidebar.html">Here's What People Are Saying About</a></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media">
-                                        <img src="images/blog/recent-blog/pic3.jpg" width="200" height="160" alt="">
-                                    </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-date"> <i class="la la-clock"></i> <strong>01 June</strong> <span> 2020</span> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="dlab-post-header">
-                                            <h6 class="post-title"><a href="blog-single-left-sidebar.html">Five Things Nobody Told You About</a></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+
                     </aside>
                 </div>
                 <!-- Side bar END -->

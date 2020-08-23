@@ -36,7 +36,7 @@
                             <div class="blog-post blog-md clearfix shadow bg-white">
                                 <div class="dlab-post-media dlab-img-effect zoom-slow">
                                     <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">
-                                        <img src="{{ getFileFromStorage($post->image) }}" alt="" class="img-responsive">
+                                        <img src="{{ getFileFromStorage($post->image , 'storage') }}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="dlab-post-info">
@@ -72,6 +72,13 @@
                                 </div>
                             </div>
                         @endforeach
+                         <!-- Pagination start -->
+                        <div class="pagination-bx rounded-sm primary clearfix m-b30 text-center">
+                            <ul class="pagination">
+                                {!! $posts->links() !!}
+                            </ul>
+                        </div>
+                        <!-- Pagination END -->
                     @else
                     <div class="container">
                         <div class="text-center mt-5">
@@ -81,13 +88,7 @@
                     @endif
 
 
-                    <!-- Pagination start -->
-                    <div class="pagination-bx rounded-sm primary clearfix m-b30 text-center">
-                        <ul class="pagination">
-                            {!! $posts->links() !!}
-                        </ul>
-                    </div>
-                    <!-- Pagination END -->
+
                 </div>
                 <!-- Left part END -->
                 <!-- Side bar start -->

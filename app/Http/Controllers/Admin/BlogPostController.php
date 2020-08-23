@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -78,10 +79,11 @@ class BlogPostController extends Controller
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->blogPostsImagePath);
+            $data['image'] = resizeImageandSave($image , $this->blogPostsImagePath , 'local' , 640 , 360);
         }
         return $data;
     }
+
 
     /**
      * Display the specified resource.
@@ -122,7 +124,7 @@ class BlogPostController extends Controller
         $data = $this->validateData($request , $id);
         try{
             if(!empty($request['image'])){
-                deleteFileFromStorage($post->image);
+                deleteFileFromPrivateStorage($post->image);
             }
         }
         catch(\Exception $e){

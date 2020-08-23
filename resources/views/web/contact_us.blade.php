@@ -33,79 +33,63 @@
                         <li>
                             <i class="fa fa-map-marker"></i>
                             <h4 class="title">Address</h4>
-                            <p>123 West Street, Melbourne Victoria 3000 Australia</p>
+                            <p>Nos 15 Ikpa Road Uyo , Akwa Ibom State, Nigeria.</p>
                         </li>
                         <li>
                             <i class="fa fa-envelope-o"></i>
                             <h4 class="title">Email</h4>
-                            <p>info@example.com</p>
+                            <p><a href="mailto:learnbtctrade@gmail.com">learnbtctrade@gmail.com</a></p>
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
                             <h4 class="title">Phone</h4>
-                            <p>+61 3 8376 6284<br>+23 123 456 7890</p>
+                            <p<a href="tel:+2348094110146">+234 809 411 0146 (Support Line)</a></p>
                         </li>
-                        <li>
-                            <i class="fa fa-fax"></i>
-                            <h4 class="title">Fax</h4>
-                            <p>+000 123 2294 089</p>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="col-lg-8 col-md-7 col-sm-12 m-b30">
-                    <form class="contact-box dzForm" action="script/contact.php">
+                    <form class="contact-box dzForm" action="{{ route('contact_form') }}" id="contact_form" method="POST"> @csrf
                         <h3 class="title-box">Write us a few words about your concerns and we’ll  get back to you within <strong>24</strong> hours</h3>
                         <div class="dzFormMsg m-b20"></div>
                         <input type="hidden" value="Contact" name="dzToDo">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzFirstName" type="text" required="" class="form-control" placeholder="First Name">
+                                        <input name="name" type="text" required class="form-control" placeholder="Full Name">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzLastName" type="text" required="" class="form-control" placeholder="Last Name">
+                                        <input name="email" type="email" class="form-control" required placeholder="Your Email Id">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input name="dzOther[Phone]" type="text" required="" class="form-control" placeholder="Phone">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input name="dzEmail" type="email" class="form-control" required="" placeholder="Your Email Id">
+                                        <input name="subject" type="text" required class="form-control" placeholder="Subject">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <textarea name="dzMessage" rows="4" class="form-control" required="" placeholder="Tell us about your project or idea"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group form-recaptcha">
-                                    <div class="input-group">
-                                        <div class="g-recaptcha" data-sitekey="<!-- Put reCaptcha Site Key -->" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                                        <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
+                                        <textarea name="message" rows="4" class="form-control" required placeholder="Tell us about your project or idea"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
-                                <button name="submit" type="submit" value="Submit" class="site-button">Get A Free Quote!</button>
+                                <button name="submit" type="submit" value="Submit" class="site-button">Send Message!</button>
                             </div>
                         </div>
                     </form>
+                    <div id="form_message" class="d-none mt-5 text-center contact-box dzForm">
+                        Your message has been submitted!
+                    </div>
                 </div>
             </div>
         </div>
