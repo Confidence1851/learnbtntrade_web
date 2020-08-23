@@ -126,7 +126,7 @@ class UsersController extends Controller
         ]);
 
         if(!empty( $image = $request->file('avatar'))){
-            $data['avatar'] = putFileInPrivateStorage($image , $this->userImagePath);
+            $data['avatar'] = resizeImageandSave($image , $this->userImagePath , 'local' , 360 , 360);
         }
 
         return $data;
