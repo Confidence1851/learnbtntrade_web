@@ -355,10 +355,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li class="{{$activePage == 'plans' ? 'active' : ''}}">
-                                <a href="{{ route('users.index') }}">Plans</a>
+                                <a href="{{ route('service.plans.index') }}">Plans</a>
                             </li>
                             <li class="{{$activePage == 'signal_updates' ? 'active' : ''}}">
-                                <a href="{{ route('agents.index') }}">Signal Updates</a>
+                                <a href="#">Signal Updates</a>
                             </li>
                         </ul>
                     </li>
@@ -381,7 +381,7 @@
                     </li> --}}
 
                     <li class="{{$activeGroup == 'subscribers' ? 'active' : ''}}">
-                        <a href="javascript:void(0);">
+                        <a href="{{ route('newsletters.index') }}">
                             <i class="material-icons col-light-green">volume_up</i>
                             <span>Newsletter Subscribers</span>
                         </a>

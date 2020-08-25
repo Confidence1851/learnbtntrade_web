@@ -17,9 +17,10 @@ class CreateCartItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('cart_id',false);
             $table->unsignedBigInteger('course_id',false)->nullable();
-            $table->unsignedBigInteger('bundle_id',false)->nullable();
+            $table->unsignedBigInteger('plan_id',false)->nullable();
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             $table->timestamps();
         });
     }

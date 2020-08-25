@@ -42,8 +42,12 @@ class Course extends Model
         return 0;
     }
 
-    public function countStuddentsEnrolled(){
-        return 0;
+    public function orderedItems(){
+        return $this->hasMany(OrderItem::class , 'course_id');
+    }
+
+    public function orderedCount(){
+        return $this->hasMany(OrderItem::class , 'course_id')->count();
     }
 
     public function getPrice(){

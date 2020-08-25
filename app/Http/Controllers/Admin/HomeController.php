@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\NewsletterSubscriber;
 use App\Models\Order;
 use App\Models\Plan;
 use App\Models\Signal;
@@ -31,5 +32,10 @@ class HomeController extends Controller
     public function referrals(){
         $referrals = $this->Referral->model()->orderby('created_at','desc')->get();
         return view('admin.referral.index',compact('referrals'));
+    }
+
+    public function newsletters(){
+        $emails = NewsletterSubscriber::orderby('created_at','desc')->get();
+        return view('admin.newsletter.index',compact('emails'));
     }
 }

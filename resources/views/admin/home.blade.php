@@ -127,7 +127,7 @@
                                                     <th scope="row">{{$i}}</th>
                                                     <td>{{ $course->title }}</td>
                                                     <td>
-                                                        <a href="{{ route('blog.posts.show',$course) }}" class="btn btn-info sm">
+                                                        <a href="{{ route('course.details.show',$course) }}" class="btn btn-info sm">
                                                             <i class="material-icons">remove_red_eye</i>
                                                         </a>
                                                     </td>

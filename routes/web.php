@@ -55,6 +55,10 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
         Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
         Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
         Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
+        Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
+        Route::get('/start-tests/{id}', 'CourseController@start_test')->name('start_test');
+        Route::post('/submit-tests/', 'CourseController@submit_tests')->name('submit_tests');
+        Route::get('/test-complete/{id}', 'CourseController@test_complete')->name('test_complete');
     });
     Route::prefix('student')->as('student.')->group(function () {
         Route::get('/profile', 'ProfileController@profile')->name('profile');
@@ -120,6 +124,12 @@ Route::middleware('auth')->group(function (){
         });
 
 
+        Route::prefix('services')->as('service.')->group(function () {
+            Route::resource('plans','PlanController');
+            Route::resource('plan/items','PlanItemController');
+        });
+
+
         Route::prefix('course')->as('course.')->group(function () {
             Route::resource('categories','CourseCategoryController');
             Route::resource('details','CourseController');
@@ -130,10 +140,10 @@ Route::middleware('auth')->group(function (){
             Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
 
             Route::prefix('test')->as('test.')->group(function () {
-            Route::get('details/create/{id}','CourseTestController@create')->name('details.create');
-            Route::resource('details','CourseTestController')->except(['create']);
-            Route::get('questions/create/{id}','CourseTestQuestionController@create')->name('questions.create');
-            Route::resource('questions','CourseTestQuestionController')->except(['create']);
+                Route::get('details/create/{id}','CourseTestController@create')->name('details.create');
+                Route::resource('details','CourseTestController')->except(['create']);
+                Route::get('questions/create/{id}','CourseTestQuestionController@create')->name('questions.create');
+                Route::resource('questions','CourseTestQuestionController')->except(['create']);
             });
 
         });
@@ -143,9 +153,6 @@ Route::middleware('auth')->group(function (){
         Route::get('/orders/status/{id}', 'OrderController@status')->name('orders.status');
 
         Route::resource('bloggers','BloggersController');
-
-
-
 
         Route::resource('users','UsersController');
         Route::get('enrolled/users','UsersController@enrolled')->name('users.enrolled');
@@ -177,7 +184,8 @@ Route::middleware('auth')->group(function (){
 
         Route::resource('logs','LogsController');
 
-        Route::get('/referrals-index', 'HomeController@referrals')->name('referrals.index');
+        Route::get('/referrals/index', 'HomeController@referrals')->name('referrals.index');
+        Route::get('/newsletter/index', 'HomeController@newsletters')->name('newsletters.index');
         Route::resource('advertmedia','AdvertMediaController');
 
 

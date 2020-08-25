@@ -10,9 +10,8 @@
                 <!-- Breadcrumb row -->
                 <div class="breadcrumb-row">
                     <ul class="list-inline">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Element</li>
-                        <li>Pricing Table</li>
+                        <li><a href="{{ route('homepage')}}">Home</a></li>
+                        <li>Service Plans</li>
                     </ul>
                 </div>
                 <!-- Breadcrumb row END -->
@@ -27,85 +26,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="sort-title pricing-table-title clearfix text-center">
+                        {{-- <div class="sort-title pricing-table-title clearfix text-center">
                             <h4>Pricing table-1 Columns 4 with gap</h4>
-                        </div>
+                        </div> --}}
                         <!-- Pricing table-1 Columns 4 with gap -->
                         <div class="section-content box-sort-in button-example p-tb30 pricing-table-col-gap">
                             <div class="pricingtable-row m-b30">
                                 <div class="row">
-                                    <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
-                                        <div class="pricingtable-wrapper">
-                                            <div class="pricingtable-inner">
-                                                <div class="pricingtable-price"> <span class="pricingtable-bx">$10</span> <span class="pricingtable-type">Month</span> </div>
-                                                <div class="pricingtable-title bg-primary">
-                                                    <h2>Basic</h2>
+                                    @foreach ($plans as $plan)
+                                        @php
+                                            $highlight = $plan->featured == 1 ? 'pricingtable-highlight' : '';
+                                        @endphp
+                                        <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
+                                            <div class="pricingtable-wrapper">
+                                                <div class="pricingtable-inner {{ $highlight }}">
+                                                <div class="pricingtable-price"> <span class="pricingtable-bx">{{ format_money($plan->price) }}</span> <span class="pricingtable-type">{{ $plan->duration }}</span> </div>
+                                                    <div class="pricingtable-title bg-primary">
+                                                     <h2>{{ $plan->title }}</h2>
+                                                    </div>
+                                                    <ul class="pricingtable-features">
+                                                        @foreach ($plan->activeItems as $item)
+                                                            <li><i class="fa fa-check"></i> {{ $item->body }} </li>
+                                                        @endforeach
+                                                    </ul>
+                                                    <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Add to Cart</a> </div>
                                                 </div>
-                                                <ul class="pricingtable-features">
-                                                    <li><i class="fa fa-check"></i> Full Responsive </li>
-                                                    <li><i class="fa fa-check"></i> Multi color theme</li>
-                                                    <li><i class="fa fa-check"></i> With Bootstrap</li>
-                                                    <li><i class="fa fa-check"></i> Easy to customize</li>
-                                                    <li><i class="fa fa-check"></i> Many Sortcodes</li>
-                                                </ul>
-                                                <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Sign Up</a> </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
-                                        <div class="pricingtable-wrapper">
-                                            <div class="pricingtable-inner pricingtable-highlight">
-                                                <div class="pricingtable-price"> <span class="pricingtable-bx">$12</span> <span class="pricingtable-type">Month</span> </div>
-                                                <div class="pricingtable-title bg-primary">
-                                                    <h2>Basic</h2>
-                                                </div>
-                                                <ul class="pricingtable-features">
-                                                    <li><i class="fa fa-check"></i> Full Responsive </li>
-                                                    <li><i class="fa fa-check"></i> Multi color theme</li>
-                                                    <li><i class="fa fa-check"></i> With Bootstrap</li>
-                                                    <li><i class="fa fa-check"></i> Easy to customize</li>
-                                                    <li><i class="fa fa-check"></i> Many Sortcodes</li>
-                                                </ul>
-                                                <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Sign Up</a> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
-                                        <div class="pricingtable-wrapper">
-                                            <div class="pricingtable-inner">
-                                                <div class="pricingtable-price"> <span class="pricingtable-bx">$18</span> <span class="pricingtable-type">Month</span> </div>
-                                                <div class="pricingtable-title bg-primary">
-                                                    <h2>Basic</h2>
-                                                </div>
-                                                <ul class="pricingtable-features">
-                                                    <li><i class="fa fa-check"></i> Full Responsive </li>
-                                                    <li><i class="fa fa-check"></i> Multi color theme</li>
-                                                    <li><i class="fa fa-check"></i> With Bootstrap</li>
-                                                    <li><i class="fa fa-check"></i> Easy to customize</li>
-                                                    <li><i class="fa fa-check"></i> Many Sortcodes</li>
-                                                </ul>
-                                                <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Sign Up</a> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
-                                        <div class="pricingtable-wrapper">
-                                            <div class="pricingtable-inner">
-                                                <div class="pricingtable-price"> <span class="pricingtable-bx">$23</span> <span class="pricingtable-type">Month</span> </div>
-                                                <div class="pricingtable-title bg-primary">
-                                                    <h2>Basic</h2>
-                                                </div>
-                                                <ul class="pricingtable-features">
-                                                    <li><i class="fa fa-check"></i> Full Responsive </li>
-                                                    <li><i class="fa fa-check"></i> Multi color theme</li>
-                                                    <li><i class="fa fa-check"></i> With Bootstrap</li>
-                                                    <li><i class="fa fa-check"></i> Easy to customize</li>
-                                                    <li><i class="fa fa-check"></i> Many Sortcodes</li>
-                                                </ul>
-                                                <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Sign Up</a> </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

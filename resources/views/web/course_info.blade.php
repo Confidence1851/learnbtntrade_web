@@ -10,12 +10,12 @@
                         <h2 class="m-t0 m-b10 font-28 title text-black">{{ $course->title }}</h2>
                         <ul class="course-info">
                             <li>
-                                <i class="fa fa-user"></i> <span> 65</span>
-                                <div class="course-info-dec">Students</div>
+                            <i class="fa fa-user"></i> <span>{{ $course->orderedCount() }}</span>
+                                <div class="course-info-dec">Student(s)</div>
                             </li>
                             <li>
-                                <i class="fa fa-star"></i> <span> 4.3</span>
-                                <div class="course-info-dec">Reviews (23)</div>
+                                <i class="fa fa-star"></i> <span>0.0</span>
+                                <div class="course-info-dec">Reviews (0)</div>
                             </li>
                             <li>
                             <i class="fa fa-clock-o"></i> <span> {{ formatTime($course->getDuration())}}</span>
@@ -52,7 +52,7 @@
                                     <li>
                                         <a data-toggle="tab" href="#review">
                                             <i class="fa fa-comments"></i>
-                                            <span class="title-head">Review </span> <span class="text-primary">(3)</span>
+                                            <span class="title-head">Review </span> <span class="text-primary">(0)</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -62,7 +62,7 @@
                                         <div class="col-mt-3 mb-4">
                                             {!! $course->description !!}
                                         </div>
-                                        <div class="m-t10">
+                                        <div class="m-t10 d-none">
                                             <h5>Share :</h5>
                                             <ul class="dlab-social-icon">
                                                 <li><a href="javascript:void(0);" class="site-button circle fa fa-facebook facebook"></a></li>
@@ -99,7 +99,7 @@
                                             @endforeach
                                         </table>
                                     </div>
-                                    <div id="review" class="tab-pane comments-area">
+                                    <div id="review" class="tab-pane comments-area d-none">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-5 m-b30">
                                                 <h5>Average Rating</h5>

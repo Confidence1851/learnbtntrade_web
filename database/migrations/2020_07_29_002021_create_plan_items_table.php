@@ -16,6 +16,7 @@ class CreatePlanItemsTable extends Migration
         Schema::create('plan_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('plan_id',false);
+            $table->string('number');
             $table->string('icon')->nullable();
             $table->string('body');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');

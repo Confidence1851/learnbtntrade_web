@@ -16,7 +16,7 @@ class CreateErrorLogsTable extends Migration
         Schema::create('error_logs', function (Blueprint $table) {
             $table->id();
             $table->string('action');
-            $table->string('error');
+            $table->text('error');
             $table->timestamps();
         });
     }

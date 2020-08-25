@@ -18,12 +18,13 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('order_id',false);
             $table->unsignedBigInteger('user_id',false);
             $table->unsignedBigInteger('course_id',false)->nullable();
-            $table->unsignedBigInteger('bundle_id',false)->nullable();
+            $table->unsignedBigInteger('plan_id',false)->nullable();
             $table->decimal('amount');
             $table->decimal('discount')->default(0);
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

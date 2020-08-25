@@ -293,7 +293,7 @@ function getFileType(String $type)
 
     function userOrderedCourses($user_id){
         $user = User::find($user_id);
-        return $orderedCourses = OrderItem::where('user_id' , $user->id)->whereHas('order' , function ($query) {
+        return $orderedCourses = OrderItem::where('user_id' , $user->id)->whereHas('course')->whereHas('order' , function ($query) {
             $query->where('status' , 1);
         })->pluck('course_id');
     }
@@ -312,6 +312,28 @@ function getFileType(String $type)
         }
         return $my_courses;
     }
+
+    function userOrderedPlans($user_id){
+        $user = User::find($user_id);
+        return $orderedCourses = OrderItem::where('user_id' , $user->id)->whereHas('plan')->whereHas('order' , function ($query) {
+            $query->where('status' , 1);
+        })->pluck('bundle_id');
+    }
+
+    function getMyPlans(){
+        $my_plans = [];
+        if(auth('web')->check()){
+            if(session()->has('my_plans')){
+                $my_plans = session()->get('my_plans');
+            }
+            else{
+                $my_plans = userOrderedPlans(auth('web')->id());
+                session('my_plans',$my_plans);
+            }
+        }
+        return $my_plans;
+    }
+
 
     // function userHasCourse($course_id){
     //     if(empty($user)){

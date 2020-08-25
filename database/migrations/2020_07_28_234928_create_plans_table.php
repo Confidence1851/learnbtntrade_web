@@ -17,6 +17,7 @@ class CreatePlansTable extends Migration
             $table->id();
             $table->string('price');
             $table->string('title')->unique();
+            $table->string('duration');
             $table->string('slug')->unique();
             $table->string('caption')->unique();
             $table->tinyinteger('featured')->default(0);

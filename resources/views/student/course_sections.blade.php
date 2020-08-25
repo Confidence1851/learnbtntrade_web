@@ -34,7 +34,11 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="section_footer text-center">Take Test</div>
+                <div class="section_footer text-center">
+                    <a href="{{ route('my_courses.take_test' ,  ['id' => $section->course->id , 'slug' => $section->course->slug])}}" >
+                        Take Test
+                    </a>
+                </div>
             </div>
         </div>
     </div>

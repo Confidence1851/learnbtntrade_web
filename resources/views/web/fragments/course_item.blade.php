@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="dlab-info">
-            <h6 class="dlab-title"><a href="courses-details.html">{{ str_limit($course->title) }}</a></h6>
+            <h6 class="dlab-title"><a href="{{ route('my_courses.go_to_course' , ['id' => $course->id , 'slug' => $course->slug]) }}">{{ str_limit($course->title) }}</a></h6>
             <p>{!! str_limit($course->description) !!}.</p>
             <div class="courses-info">
                 <ul>

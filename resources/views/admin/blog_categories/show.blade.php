@@ -22,9 +22,9 @@
                                 <p><b>Slug:</b> <span>{{$category->title}}</span></p>
                                 <p><b>SEO Keywords:</b> <span>{{$category->meta_keywords}}</span></p>
                                 <p><b>SEO Description:</b> <span>{{$category->meta_description}}</span></p>
-                                <p><b>Status:</b> <span>{{$category->title}}</span></p>
-                                <p><b>Created At:</b> <span>{{$category->title}}</span></p>
-                                <p><b>Last updated At:</b> <span>{{$category->title}}</span></p>
+                                <p><b>Status:</b> <span>{{$category->getStatus()}}</span></p>
+                                <p><b>Created At:</b> <span>{{ date('M d, Y', strtotime($category->created_at)) }}</span></p>
+                                <p><b>Last updated At:</b> <span>{{  date('M d, Y', strtotime($category->updated_at)) }}</span></p>
                             </div>
                             <br>
                             <br>

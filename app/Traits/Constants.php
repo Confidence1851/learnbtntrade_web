@@ -211,7 +211,7 @@ trait Constants
      * Course Preview images file path
      * @return string
      */
-    public $coursePreviewImagePath = 'images/courses/preview';
+    public $coursePreviewImagePath = 'images/course/preview';
 
     /**
      * Course Section images file path
@@ -256,6 +256,12 @@ trait Constants
      * @return string
      */
     public $courseTestQuestionPath = 'files/course/tests/questions';
+
+    /**
+     * Course Test Answers file path
+     * @return string
+     */
+    public $courseTestAnswerPath = 'files/course/tests/answers';
 
 
 }

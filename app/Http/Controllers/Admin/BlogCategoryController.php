@@ -62,11 +62,11 @@ class BlogCategoryController extends Controller
                 //
             }
             else{
-                $count = $this->PostCategory->model()->where('title' , $data['title'])->first();
+                $count = $this->PostCategory->model()->where('title' , $data['title'])->count();
             }
         }
         else{
-            $count = $this->PostCategory->model()->where('title' , $data['title'])->first();
+            $count = $this->PostCategory->model()->where('title' , $data['title'])->count();
         }
         if($count > 0){
             return redirect()->back()->with('error_msg', 'Blog Category title already exists!');
