@@ -380,6 +380,13 @@
                         </a>
                     </li> --}}
 
+                    <li class="{{$activeGroup == 'testimonials' ? 'active' : ''}}">
+                        <a href="{{ route('testimonials.index') }}">
+                            <i class="material-icons col-amber">rss_feed</i>
+                            <span>Testimonials</span>
+                        </a>
+                    </li>
+
                     <li class="{{$activeGroup == 'subscribers' ? 'active' : ''}}">
                         <a href="{{ route('newsletters.index') }}">
                             <i class="material-icons col-light-green">volume_up</i>

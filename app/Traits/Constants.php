@@ -189,6 +189,13 @@ trait Constants
      */
     public $userImagePath = 'users/avatars';
 
+
+     /**
+     * Testimonial images file path
+     * @return string
+     */
+    public $testimonialImagePath = 'testimonials/avatars';
+
     /**
      * Blog Post categories images file path
      * @return string

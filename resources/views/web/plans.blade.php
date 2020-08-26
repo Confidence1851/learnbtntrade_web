@@ -49,7 +49,22 @@
                                                             <li><i class="fa fa-check"></i> {{ $item->body }} </li>
                                                         @endforeach
                                                     </ul>
-                                                    <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button ">Add to Cart</a> </div>
+                                                    @if (auth('web')->check())
+                                                        @if(!in_array($plan->id , getMyActivePlans()->toArray()) && empty($item = cartHasPlan($plan->id)))
+                                                            <form action="{{ route('cart.add') }}" method="post" item_id="{{$plan->id}}" class="cart_ajax_form"> @csrf
+                                                                <input type="hidden" name="plan_id" value="{{$plan->id}}">
+                                                                <input type="hidden" class="course_cart_input_{{$plan->id}}" name="course_cart_id" value="">
+                                                                <button type="submit" class="mt-2 site-button cart_btn_{{$plan->id}}" title="Add To Cart">
+                                                                    <span class="spinner-border text-light spinner cart_btn_spinner_{{$plan->id}} d-none"></span>
+                                                                    <span class="cart_btn_text_{{$plan->id}}">Add to cart</span>
+                                                                </button>
+                                                            </form>
+                                                        @else
+                                                            <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button btn-success">Subscribed</a> </div>\
+                                                        @endif
+                                                    @else
+                                                        <div class="pricingtable-footer"> <a href="{{ route('login')}}" class="site-button ">Login</a> </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

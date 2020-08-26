@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plan;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class PlanController extends Controller
+class TestimonialController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +16,8 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plans =Plan::get();
-        return view('admin.plans.index',compact('plans'));
+        $testimonials = Testimonial::get();
+        return view('admin.testimonials.index',compact('testimonials'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PlanController extends Controller
      */
     public function create()
     {
-        return view('admin.plans.create');
+        //
     }
 
     /**
@@ -39,26 +39,28 @@ class PlanController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $data['slug'] = Str::slug($data['title']);
-        $plan = Plan::create($data);
-        return redirect()->route('service.plans.show' , $plan)->with('success_msg', 'Plan created successfully!');
+        Testimonial::create($data);
+        return redirect()->back()->with('success_msg', 'Testimonial created successfully!');
     }
 
 
     public function validateData($request , $id = null)
     {
+        // dd($request->all());
         $data = $request->validate([
             'title' => 'required|string',
-            'caption' => 'required|string',
-            'price' => 'required|string',
-            'duration' => 'required|string',
+            'name' => 'required|string',
+            'content' => 'required|string',
+            'image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg,image/svg',
             'featured' => 'required|string',
             'status' => 'required|string',
         ]);
 
+        if(!empty( $image = $request->file('image'))){
+            $data['image'] = putFileInStorage($image , $this->testimonialImagePath);
+        }
         return $data;
     }
-
 
     /**
      * Display the specified resource.
@@ -68,8 +70,7 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        $plan =Plan::find($id);
-        return view('admin.plans.show',compact('plan'));
+        //
     }
 
     /**
@@ -92,14 +93,20 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $plan = Plan::find($id);
+        $testimonial = Testimonial::find($id);
 
         $data = $this->validateData($request , $id);
-        $data['slug'] = Str::slug($data['title']);
-        $plan->update($data);
-        return redirect()->back()->with('success_msg', 'Plan updated successfully!');
+        try{
+            if(!empty($request['file'])){
+                deleteFileFromStorage($testimonial->image);
+            }
+        }
+        catch(\Exception $e){
+            session()->flash('error_msg' , 'Couldn`t delete old testimonial image!');
+        }
+        $testimonial->update($data);
+        return redirect()->back()->with('success_msg', 'Testimonial updated successfully!');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -109,7 +116,17 @@ class PlanController extends Controller
      */
     public function destroy($id)
     {
-        Plan::findorfail($id)->delete();
-        return redirect()->back()->with('success_msg', 'Plan deleted successfully!');
+        $testimonial = Testimonial::find($id);
+
+        try{
+            if(!empty($testimonial->image)){
+               deleteFileFromStorage($testimonial->image);
+            }
+        }
+        catch(\Exception $e){
+            session()->flash('error_msg' , 'Couldn`t delete old testimonial image!');
+        }
+        $testimonial->delete($testimonial->id);
+        return redirect()->back()->with('success_msg', 'Testimonial deleted successfully!');
     }
 }

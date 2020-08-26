@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
 use App\Models\NewsletterSubscriber;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -33,7 +34,8 @@ class WebController extends Controller
             ];
             session()->put('homepage_data' , $stats);
         }
-        return view('web.index' , compact('featuredCourses' , 'latestPosts' , 'stats'));
+        $testimonials = Testimonial::where('status' , $this->activeStatus)->get();  //->where('featured' , $this->activeStatus)
+        return view('web.index' , compact('featuredCourses' , 'latestPosts' , 'stats' , 'testimonials'));
     }
 
     public function contact_us(){
@@ -100,7 +102,7 @@ class WebController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($data));
+        Mail::to(env('CONTACT_MAIL_ADDRESS'))->send(new ContactMail($data));
         return response()->json([
             'success' => true,
             'msg' => 'Your message has been received!'

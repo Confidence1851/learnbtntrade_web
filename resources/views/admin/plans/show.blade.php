@@ -12,7 +12,7 @@
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="{{ route('blog.categories.edit',$plan) }}" class="btn btn-sm btn-outline-primary"> Edit Plan</a>
+                                    <a href="{{ route('service.plans.edit',$plan) }}" class="btn btn-sm btn-outline-primary"> Edit Plan</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,13 +69,10 @@
                                                             <td>{{$item->getStatus()}}</td>
                                                             <td>{{$item->created_at->format('M D d, Y')}}</td>
                                                             <td>
-                                                                <form  action="{{ route('blog.posts.destroy',$item) }}" method="POST">
+                                                                <form  action="{{ route('service.items.destroy',$item) }}" method="POST">
                                                                     @method('delete')
                                                                     @csrf
-                                                                    <a href="{{ route('blog.posts.show',$item) }}" class="btn btn-info sm">
-                                                                        <i class="material-icons">remove_red_eye</i>
-                                                                    </a>
-                                                                    <a href="{{ route('blog.posts.edit',$item) }}" class="btn btn-success sm">
+                                                                    <a href="#" data-toggle="modal" data-target="#edit_item_{{$item->id}}" class="btn btn-success sm">
                                                                         <i class="material-icons">edit</i>
                                                                     </a>
                                                                     <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
@@ -85,6 +82,78 @@
                                                                 </form>
                                                             </td>
                                                         </tr>
+                                                    <div class="modal fade" id="edit_item_{{$item->id}}" tabindex="-1" role="dialog">
+                                                            <div class="modal-dialog modal-md" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">New Item</h4>
+                                                                    </div>
+                                                                <form action="{{ route('service.items.update' , $item) }}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <div class="modal-body">
+                                                                        <input type="hidden" name="plan_id" value="{{ $plan->id }}" required>
+
+                                                                            <div class="form-group" id="caption">
+                                                                                <div class="form-line">
+                                                                                    <label for="">Item Number</label>
+                                                                                    <input type="number" name="number" value="{{ $item->number }}" required class="form-control">
+                                                                                </div>
+                                                                                @error('number')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-group" id="caption">
+                                                                                <div class="form-line">
+                                                                                    <label for="">Icon</label>
+                                                                                    <input type="text" name="icon" value="{{ $item->icon }}"  class="form-control">
+                                                                                </div>
+                                                                                @error('caption')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-group" id="caption">
+                                                                                <div class="form-line">
+                                                                                    <label for="">Body</label>
+                                                                                    <input type="text" name="body" value="{{ $item->body }}"  required class="form-control">
+                                                                                </div>
+                                                                                @error('body')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <div class="form-line">
+                                                                                    <label for="">Status</label>
+                                                                                    <select type="text" name="status" required class="form-control" required>
+                                                                                        <option disabled selected></option>
+                                                                                        <option value="{{$activeStatus}}" {{ $item->status == $activeStatus ? 'selected' : '' }}>Active</option>
+                                                                                        <option value="{{$inactiveStatus}}" {{ $item->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                @error('status')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                                        <button type="save" class="btn btn-link waves-effect">SAVE</button>
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         @endforeach
                                                     </tbody>
                                                 </table>

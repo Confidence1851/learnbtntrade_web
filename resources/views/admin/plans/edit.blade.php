@@ -59,7 +59,7 @@
                                                 <select type="text" name="status" required class="form-control" required>
                                                     <option disabled selected></option>
                                                     <option value="{{$activeStatus}}" {{ $category->status == $activeStatus ? 'selected' : '' }}>Active</option>
-                                                    <option value="{{$inactiveStatus}} {{ $category->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
+                                                    <option value="{{$inactiveStatus}}" {{ $category->status == $inactiveStatus ? 'selected' : '' }}">Inactive</option>
                                                 </select>
                                             </div>
                                             @error('status')

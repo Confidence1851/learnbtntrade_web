@@ -4,55 +4,57 @@
         <!-- Hover Zoom Effect -->
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box hover-zoom-effect">
-                    <div class="icon bg-green">
-                        <i class="material-icons">person</i>
-                    </div>
-                    <a href="{{ route('users.index') }}">
+                <a href="{{ route('users.index') }}">
+                    <div class="info-box hover-zoom-effect">
+                        <div class="icon bg-green">
+                            <i class="material-icons">person</i>
+                        </div>
+
                         <div class="content">
                             <div class="text">USERS</div>
                             <div class="number">{{ $count['users'] }}</div>
                         </div>
-                    </a>
-                </div>
-
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box hover-zoom-effect">
-                    <div class="icon bg-blue">
-                        <i class="material-icons">devices</i>
-                    </div>
-                    <a href="{{ route('blog.posts.index') }}">
+                <a href="{{ route('blog.posts.index') }}">
+                    <div class="info-box hover-zoom-effect">
+                        <div class="icon bg-blue">
+                            <i class="material-icons">devices</i>
+                        </div>
                         <div class="content">
                             <div class="text">POSTS</div>
                             <div class="number">{{ $count['posts'] }}</div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box hover-zoom-effect">
-                    <div class="icon bg-grey">
-                        <i class="material-icons">book</i>
-                    </div>
-                    <a href="{{ route('course.details.index') }}">
+                <a href="{{ route('course.details.index') }}">
+                    <div class="info-box hover-zoom-effect">
+                        <div class="icon bg-grey">
+                            <i class="material-icons">book</i>
+                        </div>
                         <div class="content">
                             <div class="text">COURSES</div>
                             <div class="number">{{ $count['courses'] }}</div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box hover-zoom-effect">
-                    <div class="icon bg-cyan">
-                        <i class="material-icons">payment</i>
+                <a href="{{ route('service.plans.index') }}">
+                    <div class="info-box hover-zoom-effect">
+                        <div class="icon bg-cyan">
+                            <i class="material-icons">payment</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">PLANS</div>
+                            <div class="number">{{ $count['plans'] }}</div>
+                        </div>
                     </div>
-                    <div class="content">
-                        <div class="text">PLANS</div>
-                        <div class="number">{{ $count['plans'] }}</div>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
         <!-- #END# Hover Zoom Effect -->

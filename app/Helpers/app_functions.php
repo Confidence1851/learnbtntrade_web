@@ -3,6 +3,7 @@
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\OrderItem;
+use App\Models\PlanSubscription;
 use App\Models\Post;
 use App\Models\User;
 use App\Traits\Cart as TraitsCart;
@@ -288,7 +289,11 @@ function getFileType(String $type)
     /** Checks if a course is in cart and returns item if found
      */
     function cartHasCourse($course_id){
-        return CartItem::where('course_id' , $course_id)->where('cart_id', getUserCart()->id)->first();
+        return CartItem::where('cart_id', getUserCart()->id)->where('course_id' , $course_id)->first();
+    }
+
+    function cartHasPlan($plan_id){
+        return CartItem::where('cart_id', getUserCart()->id)->where('plan_id' , $plan_id)->first();
     }
 
     function userOrderedCourses($user_id){
@@ -307,28 +312,30 @@ function getFileType(String $type)
             }
             else{
                 $my_courses = userOrderedCourses(auth('web')->id());
-                session('my_courses',$my_courses);
+                session()->put('my_courses',$my_courses);
             }
         }
         return $my_courses;
     }
 
-    function userOrderedPlans($user_id){
+    function userActivePlans($user_id){
         $user = User::find($user_id);
-        return $orderedCourses = OrderItem::where('user_id' , $user->id)->whereHas('plan')->whereHas('order' , function ($query) {
-            $query->where('status' , 1);
-        })->pluck('bundle_id');
+        return PlanSubscription::where('user_id' , $user->id)
+            ->whereHas('plan')
+            ->where('stop' , '>' , now())
+            ->where('status' ,1)
+            ->pluck('plan_id');
     }
 
-    function getMyPlans(){
+    function getMyActivePlans(){
         $my_plans = [];
         if(auth('web')->check()){
             if(session()->has('my_plans')){
                 $my_plans = session()->get('my_plans');
             }
             else{
-                $my_plans = userOrderedPlans(auth('web')->id());
-                session('my_plans',$my_plans);
+                $my_plans = userActivePlans(auth('web')->id());
+                session()->put('my_plans',$my_plans);
             }
         }
         return $my_plans;

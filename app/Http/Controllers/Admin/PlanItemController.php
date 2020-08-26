@@ -37,8 +37,8 @@ class PlanItemController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        $plan = PlanItem::create($data);
-        return redirect()->route('service.plans.show' , $plan)->with('success_msg', 'Plan item created successfully!');
+        $planItem = PlanItem::create($data);
+        return redirect()->back()->with('success_msg', 'Plan item created successfully!');
     }
 
 
@@ -86,8 +86,13 @@ class PlanItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $planItem = PlanItem::find($id);
+
+        $data = $this->validateData($request , $id);
+        $planItem->update($data);
+        return redirect()->back()->with('success_msg', 'Plan item updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +102,7 @@ class PlanItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PlanItem::findorfail($id)->delete();
+        return redirect()->back()->with('success_msg', 'Plan item deleted successfully!');
     }
 }

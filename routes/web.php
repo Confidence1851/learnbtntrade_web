@@ -153,6 +153,7 @@ Route::middleware('auth')->group(function (){
         Route::get('/orders/status/{id}', 'OrderController@status')->name('orders.status');
 
         Route::resource('bloggers','BloggersController');
+        Route::resource('testimonials','TestimonialController');
 
         Route::resource('users','UsersController');
         Route::get('enrolled/users','UsersController@enrolled')->name('users.enrolled');

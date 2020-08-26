@@ -172,7 +172,9 @@
                 <div class="container">
                     <div class="section-head text-center">
                         <h2 class="title">Featured Courses</h2>
-                        <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+                        <p>
+                            Get Unlimited access to our Mini & Professional Course with premium Mentorship
+                        </p>
                     </div>
                         <div class="row">
                             @foreach ($featuredCourses as $course)
@@ -377,86 +379,28 @@
         </div>
         <!-- Company staus End -->
 
-        <!-- Testimonials blog -->
-        <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" >
-            <div class="container">
-                <div class="section-head text-white text-center">
-                    <h2 class="title">What People Are Saying</h2>
-                    <p>There are many variations of passages of Lorem Ipsum typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
-                </div>
-                <div class="section-content">
-                    <div class="testimonial-two-dots owl-carousel owl-none owl-theme owl-dots-primary-full owl-loaded owl-drag">
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text ">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic3.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic2.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic1.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text ">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic3.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic2.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-15 quote-right">
-                                <div class="testimonial-text">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum</p>
-                                </div>
-                                <div class="testimonial-detail clearfix">
-                                    <div class="testimonial-pic radius"><img src="{{ $web_source }}/images/testimonials/pic1.jpg" width="100" height="100" alt=""></div>
-                                    <strong class="testimonial-name">David Matin</strong> <span class="testimonial-position">Student</span>
-                                </div>
-                            </div>
+        @if ($testimonials->count() > 0)
+            <!-- Testimonials blog -->
+            <div class="section-full overlay-black-middle bg-secondry content-inner-2 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s" >
+                <div class="container">
+                    <div class="section-head text-white text-center">
+                        <h2 class="title">What People Are Saying</h2>
+                        <p>
+                            First-hand testimonies from those who have enrolled for our courses
+                        </p>
+                    </div>
+                    <div class="section-content">
+                        <div class="testimonial-two-dots owl-carousel owl-none owl-theme owl-dots-primary-full owl-loaded owl-drag">
+                            @foreach($testimonials as $testimonial)
+                                @include('web.fragments.testimonial_item')
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Testimonials blog End -->
+            <!-- Testimonials blog End -->
+        @endif
+
         <!-- Latest blog -->
         @if ($latestPosts->count() > 0)
             <div class="section-full content-inner bg-gray wow fadeIn" data-wow-duration="2s" data-wow-delay="0.4s">
