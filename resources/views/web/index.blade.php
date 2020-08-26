@@ -163,43 +163,6 @@
 		</div>
     </div>
 
-    
-    <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-        "symbols": [
-        {
-            "proName": "OANDA:SPX500USD",
-            "title": "S&P 500"
-        },
-        {
-            "proName": "OANDA:NAS100USD",
-            "title": "Nasdaq 100"
-        },
-        {
-            "proName": "FX_IDC:EURUSD",
-            "title": "EUR/USD"
-        },
-        {
-            "proName": "BITSTAMP:BTCUSD",
-            "title": "BTC/USD"
-        },
-        {
-            "proName": "BITSTAMP:ETHUSD",
-            "title": "ETH/USD"
-        }
-        ],
-        "colorTheme": "light",
-        "isTransparent": false,
-        "displayMode": "adaptive",
-        "locale": "en"
-    }
-        </script>
-    </div>
-    <!-- TradingView Widget END -->
 
     <!-- contact area -->
     <div class="content-block">
@@ -510,46 +473,7 @@
             </div>
         @endif
         <!-- Latest blog END -->
-        <!-- Client logo -->
-        <div class="section-full dlab-we-find bg-img-fix p-t20 p-b20 bg-white wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
-            <div class="container">
-                <div class="section-content">
-                    <div class="client-logo-carousel mfp-gallery gallery owl-btn-center-lr owl-carousel owl-btn-3">
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"><a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo1.jpg" alt=""></a></div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo2.jpg" alt=""></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo1.jpg" alt=""></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo3.jpg" alt=""></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo4.jpg" alt=""></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ow-client-logo">
-                                <div class="client-logo"> <a href="javascript:void(0);"><img src="{{ $web_source }}/images/client-logo/logo3.jpg" alt=""></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Client logo END -->
+        @include('web.fragments.trading_view')
     </div>
 </div>
 <!-- Content END-->

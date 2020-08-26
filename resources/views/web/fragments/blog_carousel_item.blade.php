@@ -11,17 +11,17 @@
                     <li class="post-author"> <i class="la la-user-circle"></i>
                         By <a href="javascript:void(0);">{{ $post->author->fullName() ?? '' }}</a>
                     </li>
-                    <li class="post-tag"> <a href="javascript:void(0);">{{ strtoupper($post->category->title ?? '')}}</a> </li>
+                    <li class="post-tag"> <a href="javascript:void(0);">{{ str_limit(strtoupper($post->category->title ?? '')) }}</a> </li>
                 </ul>
             </div>
             <div class="dlab-post-title">
                 <h4 class="post-title">
-                    <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ $post->title ?? '' }}</a>
+                    <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ str_limit($post->title ?? '') }}</a>
                 </h4>
             </div>
             <div class="dlab-post-text">
                 <p class="limit_content" limit="20">
-                    {!! $post->body ?? '' !!}
+                    {!! str_limit(strip_tags($post->body ?? '') , 200) !!}
                 </p>
             </div>
             <div class="post-footer">

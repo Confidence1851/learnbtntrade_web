@@ -67,18 +67,18 @@ class BlogPostController extends Controller
                 //
             }
             else{
-                $count = $this->Post->model()->where('title' , $data['title'])->first();
+                $count = $this->Post->model()->where('title' , $data['title'])->count();
             }
         }
         else{
-            $count = $this->Post->model()->where('title' , $data['title'])->first();
+            $count = $this->Post->model()->where('title' , $data['title'])->count();
         }
         if($count > 0){
             return redirect()->back()->with('error_msg', 'Blog title already exists!');
         }
 
         if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->blogPostsImagePath);
+            $data['image'] = resizeImageandSave($image , $this->blogPostsImagePath , 'local' , 640 , 360);
         }
         return $data;
     }

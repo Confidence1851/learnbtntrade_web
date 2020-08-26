@@ -51,6 +51,7 @@ class PlanController extends Controller
             'title' => 'required|string',
             'caption' => 'required|string',
             'price' => 'required|string',
+            'duration' => 'required|string',
             'featured' => 'required|string',
             'status' => 'required|string',
         ]);
