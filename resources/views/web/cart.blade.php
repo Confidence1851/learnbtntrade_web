@@ -10,7 +10,7 @@
                 <!-- Breadcrumb row -->
                 <div class="breadcrumb-row">
                     <ul class="list-inline">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{route('homepage')}}">Home</a></li>
                         <li>Shop Cart</li>
                     </ul>
                 </div>
@@ -45,15 +45,23 @@
                             </thead>
                             <tbody>
                                 @foreach($items as $item)
+                                @php
+                                    if(!empty($item->course_id)){
+                                        $object = $item->course;
+                                    }
+                                    else{
+                                        $object = $item->plan;
+                                    }
+                                @endphp
                                 <tr class="alert cartItem_{{$item->id}}">
                                     <td class="product-item-img">
-                                        <img src="{{ getFileFromStorage($item->course->image) }}" title="Item Image" alt="">
+                                        <img src="{{ getFileFromStorage($object->image) }}" title="Item Image" alt="">
                                     </td>
-                                    <td class="product-item-name">{{ $item->course->title }}</td>
-                                    <td class="product-item-price">{{ format_money($item->course->price) }}</td>
+                                    <td class="product-item-name">{{ $object->title }}</td>
+                                    <td class="product-item-price">{{ format_money($object->price) }}</td>
                                     <td class="product-item-close">
                                         <form action="{{ route('cart.remove') }}" method="post" item_id="{{$item->id}}" class="cart_ajax_form hideItem"> @csrf
-                                            <input type="hidden" name="course_id" value="{{$item->course->id}}">
+                                            <input type="hidden" name="course_id" value="{{$object->id}}">
                                             <input type="hidden" class="course_cart_input_{{$item->id}}" name="course_cart_id" value="{{ $item->id }}">
                                             <button type="submit" class=" btn-sm btn btn-outline-danger cart_btn_{{$item->id}}" title="Remove from Cart">
                                                 <span class="spinner-border text-light spinner cart_btn_spinner_{{$item->id}} d-none"></span>

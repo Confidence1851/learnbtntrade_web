@@ -22,13 +22,14 @@ class CartController extends Controller
 
     public function addCourseToCart(Request $request){
 
-        if(empty($request['course_id'])){
+        if(empty($request['course_id']) && empty($request['plan_id'])){
             return response()->json(['success' => false, 'msg' => 'Could not validate request!']);
         }
-        $processCart = $this->addToCart($request['course_id']);
+
+        $processCart = $this->addToCart($request['course_id'] , $request['plan_id']);
         if($processCart['success']){
             $processCart['type'] = 'add';
-            $processCart['msg'] = 'Course added to cart!';
+            $processCart['msg'] = 'Item added to cart!';
             $processCart['title'] = 'Remove from cart';
             $processCart['action'] = route('cart.remove');
         }
@@ -43,7 +44,7 @@ class CartController extends Controller
         $processCart = $this->removeFromCart($request['course_cart_id']);
         if($processCart['success']){
             $processCart['type'] = 'remove';
-            $processCart['msg'] = 'Course removed from cart!';
+            $processCart['msg'] = 'Item removed from cart!';
             $processCart['title'] = 'Add to Cart';
             $processCart['action'] = route('cart.add');
         }
@@ -87,17 +88,28 @@ class CartController extends Controller
                     $discount = $course->discount;
                 }
             }
+            else{
+                if(!empty($plan = $item->plan)){
+                    $amount = $plan->price;
+                }
+            }
             OrderItem::create([
                 'order_id' => $order->id,
                 'user_id' => auth('web')->id(),
                 'course_id' => $item->course_id,
-                'bundle_id' => $item->bundle_id,
+                'plan_id' => $item->plan_id,
                 'amount' => $amount,
                 'discount' => $discount,
             ]);
 
-            $item->course->orders_count += 1;
-            $item->course->save();
+
+            if(!empty($item->course_id)){
+                if(!empty($course = $item->course)){
+                    $course->orders_count += 1;
+                    $course->save();
+                }
+            }
+
             $item->delete();
         }
 

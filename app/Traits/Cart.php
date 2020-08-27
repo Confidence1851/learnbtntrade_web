@@ -3,24 +3,44 @@ namespace App\Traits;
 
 use App\Models\Cart as ModelsCart;
 use App\Models\CartItem;
+use App\Models\Plan;
 
 trait Cart{
-    public function addToCart($course_id){
+    public function addToCart($course_id  = null , $plan_id = null){
         $course = $this->Course->find($course_id);
-        if(empty($course->id)){
+        $cart = getUserCart();
+
+        if(!empty($course->id)){
+
+            $check = CartItem::where('cart_id' , $cart->id)->where('course_id' , $course->id)->count();
+            if($check > 0){
+                return ['success' => false, 'msg' => 'Course already exists in cart!'];
+            }
+
+            $item = CartItem::create([
+                'cart_id' => $cart->id,
+                'course_id' => $course->id
+            ]);
+
+
             return ['success' => false, 'msg' => 'Course could not be validated!'];
         }
+        elseif(!empty($plan_id)){
+            $plan = Plan::find($plan_id);
+            if(empty($plan)){
+                return ['success' => false, 'msg' => 'Plan could not be validated!'];
+            }
 
-        $cart = getUserCart();
-        $check = CartItem::where('cart_id' , $cart->id)->where('course_id' , $course->id)->count();
-        if($check > 0){
-            return ['success' => false, 'msg' => 'Course already exists in cart!'];
+            $check = CartItem::where('cart_id' , $cart->id)->where('plan_id' , $plan->id)->count();
+            if($check > 0){
+                return ['success' => false, 'msg' => 'Plan already exists in cart!'];
+            }
+
+            $item = CartItem::create([
+                'cart_id' => $cart->id,
+                'plan_id' => $plan->id
+            ]);
         }
-
-        $item = CartItem::create([
-            'cart_id' => $cart->id,
-            'course_id' => $course->id
-        ]);
 
         $cart = refreshCart($cart->id);
 

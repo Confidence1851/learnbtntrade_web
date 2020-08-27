@@ -40,7 +40,7 @@
                                         <div class="col-sm-6 col-md-6 col-lg-3 m-t30">
                                             <div class="pricingtable-wrapper">
                                                 <div class="pricingtable-inner {{ $highlight }}">
-                                                <div class="pricingtable-price"> <span class="pricingtable-bx">{{ format_money($plan->price) }}</span> <span class="pricingtable-type">{{ $plan->duration }}</span> </div>
+                                                <div class="pricingtable-price"> <span class="pricingtable-bx">{{ format_money($plan->price) }}</span> <span class="pricingtable-type">{{ getPlanDuration()[$plan->duration] }}</span> </div>
                                                     <div class="pricingtable-title bg-primary">
                                                      <h2>{{ $plan->title }}</h2>
                                                     </div>
@@ -50,15 +50,27 @@
                                                         @endforeach
                                                     </ul>
                                                     @if (auth('web')->check())
-                                                        @if(!in_array($plan->id , getMyActivePlans()->toArray()) && empty($item = cartHasPlan($plan->id)))
-                                                            <form action="{{ route('cart.add') }}" method="post" item_id="{{$plan->id}}" class="cart_ajax_form"> @csrf
-                                                                <input type="hidden" name="plan_id" value="{{$plan->id}}">
-                                                                <input type="hidden" class="course_cart_input_{{$plan->id}}" name="course_cart_id" value="">
-                                                                <button type="submit" class="mt-2 site-button cart_btn_{{$plan->id}}" title="Add To Cart">
-                                                                    <span class="spinner-border text-light spinner cart_btn_spinner_{{$plan->id}} d-none"></span>
-                                                                    <span class="cart_btn_text_{{$plan->id}}">Add to cart</span>
-                                                                </button>
-                                                            </form>
+                                                        @if(!in_array($plan->id , getMyActivePlans()->toArray()))
+                                                            @if(!empty($item = cartHasPlan($plan->id)))
+                                                                <form action="{{ route('cart.remove') }}" method="post" item_id="{{$plan->id}}" class="cart_ajax_form cart_form_{{$plan->id}}"> @csrf
+                                                                    <input type="hidden" name="plan_id" value="{{$plan->id}}">
+                                                                    <input type="hidden" class="course_cart_input_{{$plan->id}}" name="course_cart_id" value="{{$item->id}}">
+                                                                    <button type="submit" class="site-button mt-2 btn cart_btn_{{$plan->id}}" title="Remove from car">
+                                                                        <span class="spinner-border text-light spinner cart_btn_spinner_{{$plan->id}} d-none"></span>
+                                                                        <span class="cart_btn_text_{{$plan->id}}">Remove from cart</span>
+                                                                    </button>
+                                                                </form>
+                                                            @else
+                                                                <form action="{{ route('cart.add') }}" method="post" item_id="{{$plan->id}}" class="cart_ajax_form"> @csrf
+                                                                    <input type="hidden" name="plan_id" value="{{$plan->id}}">
+                                                                    <input type="hidden" class="course_cart_input_{{$plan->id}}" name="course_cart_id" value="">
+                                                                    <button type="submit" class="site-button mt-2 btn cart_btn_{{$plan->id}}" title="Add To Cart">
+                                                                        <span class="spinner-border text-light spinner cart_btn_spinner_{{$plan->id}} d-none"></span>
+                                                                        <span class="cart_btn_text_{{$plan->id}}">Add to cart</span>
+                                                                    </button>
+                                                                </form>
+                                                            @endif
+                                                        </li>
                                                         @else
                                                             <div class="pricingtable-footer"> <a href="javascript:void(0);" class="site-button btn-success">Subscribed</a> </div>\
                                                         @endif

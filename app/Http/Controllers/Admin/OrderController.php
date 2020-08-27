@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\PlanSubscription;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -98,13 +100,44 @@ class OrderController extends Controller
     public function status($id)
     {
         $order = Order::findorfail($id);
+
         if($order->status == $this->pendingStatus){
             $order->status = $this->activeStatus;
         }
         else{
             $order->status = $this->pendingStatus;
         }
+        foreach($order->items as $item){
+            if(!empty($item->course_id)){
+                // if(!empty($course = $item->course)){
+                //     Do something
+                // }
+            }
+            else{
+                if(!empty($plan = $item->plan)){
+                    $planSub = PlanSubscription::where('order_item_id' , $item->id)->where('plan_id' , $plan->id)->first();
+                    if(empty($planSub)){
+                        PlanSubscription::create([
+                            'user_id' => $item->user_id,
+                            'plan_id' => $plan->id,
+                            'order_item_id' => $item->id,
+                            'start' => now(),
+                            'stop' => Carbon::now()->addDays($plan->duration),
+                            'status' =>  $order->status,
+                            'comment' => '',
+                        ]);
+                    }
+                    else{
+                        $planSub->status =  $order->status;
+                        $planSub->save();
+                    }
+                }
+            }
+
+        }
+
+
         $order->save();
-        return redirect()->back()->with('success_msg', 'Order updated successfully!');
+        return redirect()->back()->with('success_msg', 'Order and all related plan subscriptions updated successfully!');
     }
 }

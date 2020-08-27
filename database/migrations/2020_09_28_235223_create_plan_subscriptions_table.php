@@ -21,7 +21,7 @@ class CreatePlanSubscriptionsTable extends Migration
             $table->string('phone_no')->nullable();
             $table->string('start');
             $table->string('stop');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('order_item_id')->references('id')->on('order_items')->onDelete('cascade');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');

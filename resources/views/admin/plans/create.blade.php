@@ -63,7 +63,12 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Duration</label>
-                                                <input type="text" name="duration" class="form-control" required  value="{{ old('duration')}}" >
+                                                <select type="text" name="duration" required class="form-control" required>
+                                                    <option disabled selected></option>
+                                                    @foreach (getPlanDuration() as $key => $duration)
+                                                        <option value="{{ $key }}">{{ $duration }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             @error('duration')
                                                 <span class="invalid-feedback" role="alert">

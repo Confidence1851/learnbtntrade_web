@@ -56,9 +56,12 @@
                                                     if (!empty($orderedItem->course_id)){
                                                         $item = $orderedItem->course;
                                                     }
+                                                    else{
+                                                        $item = $orderedItem->plan;
+                                                    }
                                                 @endphp
                                                 <tr>
-                                                    <td><img src="{{ getFileFromStorage($item->image) }}" alt="" class="img-responsive" width="100"></td>
+                                                    <td><img src="{{ getFileFromStorage($item->image ?? '') }}" alt="" class="img-responsive" width="100"></td>
                                                     <td>{{$item->title}}</td>
                                                     <td>{{ format_money($orderedItem->amount) }}</td>
                                                     <td>{{ format_money($orderedItem->discount) }}</td>

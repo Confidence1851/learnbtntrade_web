@@ -26,4 +26,9 @@ class OrderItem extends Model
         return $this->belongsTo(Course::class);
     }
 
+
+    public function plan(){
+        return $this->belongsTo(Plan::class , 'plan_id');
+    }
+
 }

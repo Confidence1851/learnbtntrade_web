@@ -7,6 +7,7 @@ use App\Models\PlanSubscription;
 use App\Models\Post;
 use App\Models\User;
 use App\Traits\Cart as TraitsCart;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -261,6 +262,11 @@ function getFileType(String $type)
                 $discount += $item->course->discount;
                 $total += $item->course->payableAmount();
             }
+            else{
+                $price += $item->plan->price;
+                $discount += 0;
+                $total += $item->plan->price;
+            }
         }
 
         $cart->price = $price;
@@ -272,6 +278,9 @@ function getFileType(String $type)
             $cart->reference = generateCartHash();
         }
         $cart->save();
+
+        session()->forget('my_courses');
+        session()->forget('my_plans');
 
         return $cart;
     }
@@ -322,7 +331,7 @@ function getFileType(String $type)
         $user = User::find($user_id);
         return PlanSubscription::where('user_id' , $user->id)
             ->whereHas('plan')
-            ->where('stop' , '>' , now())
+            ->whereDate('stop' , '>=' , Carbon::now())
             ->where('status' ,1)
             ->pluck('plan_id');
     }
@@ -378,5 +387,20 @@ function getFileType(String $type)
             'likes' => $likes,
             'comments' => $comments,
             'posts' => $counts,
+        ];
+    }
+
+
+    function getPlanDuration(){
+        return [
+            '1' => '1 Day',
+            '3' => '3 Days',
+            '7' => 'Week',
+            '14' => '2 Weeks',
+            '30' => 'Month',
+            '60' => '2 Months',
+            '90' => 'Quarter',
+            '120' => '6 Months',
+            '360' => 'Year',
         ];
     }
