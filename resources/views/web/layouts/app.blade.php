@@ -122,7 +122,7 @@
 								<a href="javascript:;">Signals</a>
 								<ul class="sub-menu right">
                                     <li><a href="{{ route('services.plans')}}">Plans</a></li>
-									<li><a href="">Signal Results</a></li>
+									{{-- <li><a href="">Signal Results</a></li> --}}
 								</ul>
                             </li>
                         </ul>
@@ -132,19 +132,26 @@
                                     <div class="avatar_box">
                                         <img src="{{ auth('web')->user()->getAvatar()}}"  class="img-responsive img-rounded" alt="">
                                     </div>
-                                    {{ auth('web')->user()->fullName() }}
+                                    <span class="mt-3">
+                                        {{ auth('web')->user()->fullName() }}
+                                    </span>
+                                </li>
+                                @if ( auth('web')->user()->role != 0 )
+                                    <li class="">
+                                        <a href="{{ route('home') }}">Go to Dashboard</a>
+                                    </li>
+                                @endif
+                                <li class="{{ $activePage == 'my_courses' ? 'active' : ''}}">
+                                <a href="{{ route('my_courses.index')}}">My Courses</a>
                                 </li>
                                 <li class="">
-                                    <a href="{{ route('home') }}">Go to Dashboard</a>
+                                    <a href="#">Order History</a>
                                 </li>
-                                <li class="{{ $activePage == 'courses' ? 'active' : ''}}">
-                                <a href="{{ route('our_courses.courses')}}">My Courses</a>
+                                <li class="">
+                                    <a href="{{ route('student.profile')}}">Edit Profile</a>
                                 </li>
-                                <li class="{{ $activePage == 'blog' ? 'active' : ''}}">
-                                    <a href="{{ route('our_blog.blog_posts') }}">Order History</a>
-                                </li>
-                                <li class="{{ $activePage == 'blog' ? 'active' : ''}}">
-                                    <a href="{{ route('our_blog.blog_posts') }}">Logout</a>
+                                <li class="">
+                                    <a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();">Logout</a>
                                 </li>
 
                             </ul>

@@ -9,12 +9,13 @@ use App\Models\CourseTestQuestion;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use VideoStream;
 
 class CourseController extends Controller
 {
     public function take_course($id , $slug){
         $section = $this->CourseSection->find(decrypt($id));
-        $course = $this->CourseSection->find($section->course_id);
+        $course = $this->Course->find($section->course_id);
         $sections = $this->CourseSection->model()
                     ->where('course_id', $course->id)
                     ->where('status' , $this->activeStatus)
@@ -48,17 +49,22 @@ class CourseController extends Controller
 
     public function section_video($id){
         $user = $this->User->user();
-        if(true){
-            $section = $this->CourseSection->find(decrypt($id));
-            return getFileFromPrivateStorage($section->video);
-        }
-        else{
-            return response()->json([
-                'success' => false,
-                'msg' => 'You don`t have access to this resource',
-                'data' => null
-            ]);
-        }
+        $section = $this->CourseSection->find(decrypt($id));
+        //  return getFileFromPrivateStorage($section->video);
+        $stream = new VideoStream($section->video);
+        return $stream->start();
+
+        // if(true){
+        //     $section = $this->CourseSection->find(decrypt($id));
+        //     return getFileFromPrivateStorage($section->video);
+        // }
+        // else{
+        //     return response()->json([
+        //         'success' => false,
+        //         'msg' => 'You don`t have access to this resource',
+        //         'data' => null
+        //     ]);
+        // }
     }
 
     public function go_to_course($id){
