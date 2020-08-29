@@ -82,7 +82,7 @@
                                         <p><a href="{{ route('home')}}">Go to Dashboard</a></p>
                                     @endif
                                     <p><a href="{{ route('my_courses.index')}}">My Courses</a></p>
-                                    <p><a href="#">Order History</a></p>
+                                    <p><a href="{{ route('student.orders.history')}}">Order History</a></p>
                                     <p><a href="{{ route('student.profile')}}">Edit Profile</a></p>
                                     <hr>
                                     <p class="">
@@ -145,7 +145,7 @@
                                 <a href="{{ route('my_courses.index')}}">My Courses</a>
                                 </li>
                                 <li class="">
-                                    <a href="#">Order History</a>
+                                    <a href="{{ route('student.orders.history')}}">Order History</a>
                                 </li>
                                 <li class="">
                                     <a href="{{ route('student.profile')}}">Edit Profile</a>

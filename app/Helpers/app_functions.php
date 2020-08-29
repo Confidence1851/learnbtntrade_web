@@ -332,6 +332,7 @@ function getFileType(String $type)
         return PlanSubscription::where('user_id' , $user->id)
             ->whereHas('plan')
             ->whereDate('stop' , '>=' , Carbon::now())
+            ->orWhere('stop' , 'Lifetime')
             ->where('status' ,1)
             ->pluck('plan_id');
     }
@@ -402,5 +403,11 @@ function getFileType(String $type)
             '90' => 'Quarter',
             '120' => '6 Months',
             '360' => 'Year',
+            'Lifetime' => 'Lifetime',
         ];
+    }
+
+
+    function setActiveCourse($course_id){
+        session()->put('active_course_id', $course_id);
     }

@@ -9,72 +9,91 @@ use App\Models\CourseTestQuestion;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use VideoStream;
+use App\Helpers\VideoStream;
 
 class CourseController extends Controller
 {
+
     public function take_course($id , $slug){
         $section = $this->CourseSection->find(decrypt($id));
+
+        $check = $this->validateAccess($section->course_id);
+        if(!$check){
+            return view('student.access_denied');
+        }
+
         $course = $this->Course->find($section->course_id);
         $sections = $this->CourseSection->model()
                     ->where('course_id', $course->id)
                     ->where('status' , $this->activeStatus)
                     ->orderby('number', 'asc')->get();
+
         return view('student.course_sections' , compact('course' , 'section' , 'sections'));
     }
 
-    public function download_resource($id){
-        $user = $this->User->model();
-        if(true){
-            $resource = $this->CourseSectionResource->find(decrypt($id));
-            return downloadFileFromPrivateStorage($resource->file , $resource->filename);
+    public function download_resource($id)
+    {
+        $resource = $this->CourseSectionResource->find(decrypt($id));
+        $check = $this->validateAccess($resource->course_id);
+        if(!$check){
+            return view('student.access_denied');
         }
-        else{
-            return response()->json([
-                'success' => false,
-                'msg' => 'You don`t have access to this resource',
-                'data' => null
-            ]);
-        }
+        return downloadFileFromPrivateStorage($resource->file , $resource->filename);
     }
 
     public function my_courses(){
         $user = $this->User->user();
         $orderedCourses = userOrderedCourses($user->id);
         $courses = $this->Course->model()->whereIn('id', $orderedCourses)->paginate(50);
-
         return view('student.courses', compact('courses'));
     }
 
 
     public function section_video($id){
-        $user = $this->User->user();
         $section = $this->CourseSection->find(decrypt($id));
+        $check = $this->validateAccess($section->course_id);
+        if(!$check){
+            return response()->json([
+                'success' => false,
+                'msg' => 'You don`t have access to this resource',
+                'data' => null
+            ]);
+        }
         //  return getFileFromPrivateStorage($section->video);
         $stream = new VideoStream($section->video);
         return $stream->start();
+    }
 
-        // if(true){
-        //     $section = $this->CourseSection->find(decrypt($id));
-        //     return getFileFromPrivateStorage($section->video);
-        // }
-        // else{
-        //     return response()->json([
-        //         'success' => false,
-        //         'msg' => 'You don`t have access to this resource',
-        //         'data' => null
-        //     ]);
-        // }
+    public function validateAccess($course_id){
+        $user = auth('web')->user();
+        if(in_array($user->role , [$this->adminRole , $this->instructorRole] )){
+            return true;
+        }
+        $my_courses = userOrderedCourses($user->id);
+        if(!in_array($course_id , $my_courses->toArray())){
+            return false;
+        }
+        return true;
     }
 
     public function go_to_course($id){
         $course = $this->Course->find($id);
+        $check = $this->validateAccess($id);
+        if(!$check){
+            return view('student.access_denied');
+        }
         $section = $this->CourseSection->model()->where('course_id' , $course->id)->first();
         return redirect()->route('my_courses.take_course' , [ 'id' => encrypt($section->id) , 'slug' => $section->slug ]);
     }
 
     public function take_tests($id){
         $course = $this->Course->find($id);
+
+        $check = $this->validateAccess($id);
+        if(!$check){
+            return view('student.access_denied');
+        }
+
         $tests = CourseTest::where('course_id' , $course->id)->where('status' , $this->activeStatus)->get();
         return view('student.course_tests', compact('tests' , 'course'));
     }
@@ -82,6 +101,12 @@ class CourseController extends Controller
 
     public function start_test($id){
         $test = CourseTest::find($id);
+
+        $check = $this->validateAccess($test->course_id);
+        if(!$check){
+            return view('student.access_denied');
+        }
+
         $questions = CourseTestQuestion::where('course_test_id' , $test->id)->where('status' , $this->activeStatus)->get();
         return view('student.test_questions', compact('questions' , 'test'));
     }

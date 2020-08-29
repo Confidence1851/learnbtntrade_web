@@ -122,7 +122,7 @@ class OrderController extends Controller
                             'plan_id' => $plan->id,
                             'order_item_id' => $item->id,
                             'start' => now(),
-                            'stop' => Carbon::now()->addDays($plan->duration),
+                            'stop' => $plan->duration == 'Lifetime' ? $plan->duration : Carbon::now()->addDays($plan->duration),
                             'status' =>  $order->status,
                             'comment' => '',
                         ]);

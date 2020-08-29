@@ -61,22 +61,21 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
     Route::prefix('my-courses')->as('my_courses.')->group(function () {
         Route::get('/index', 'CourseController@my_courses')->name('index');
         Route::get('/go-to-course/{id}/{slug}', 'CourseController@go_to_course')->name('go_to_course');
-
-        Route::middleware(['auth'])->group(function () {
-            Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
-            Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
-            Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
-            Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
-            Route::get('/start-tests/{id}', 'CourseController@start_test')->name('start_test');
-            Route::post('/submit-tests/', 'CourseController@submit_tests')->name('submit_tests');
-            Route::get('/test-complete/{id}', 'CourseController@test_complete')->name('test_complete');
-            });
-        });
+        Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
+        Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
+        Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
+        Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
+        Route::get('/start-tests/{id}', 'CourseController@start_test')->name('start_test');
+        Route::post('/submit-tests/', 'CourseController@submit_tests')->name('submit_tests');
+        Route::get('/test-complete/{id}', 'CourseController@test_complete')->name('test_complete');
+    });
 
     Route::prefix('student')->as('student.')->group(function () {
         Route::get('/profile', 'ProfileController@profile')->name('profile');
         Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
         Route::post('/profile/password-reset', 'ProfileController@password_reset')->name('profile.password_reset');
+        Route::get('/orders/history', 'TransactionController@order_history')->name('orders.history');
+        Route::get('/referrals/history', 'TransactionController@referral_history')->name('referrals.history');
     });
 });
 

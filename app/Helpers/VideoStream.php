@@ -1,6 +1,10 @@
 <?php
+namespace App\Helpers;
+
+use Exception;
+
 /**
- * Description of VideoStream
+ *Process Video streaming
  *
  * @author Rana
  * @link http://codesamplez.com/programming/php-html5-video-streaming-tutorial
@@ -16,7 +20,8 @@ class VideoStream
 
     function __construct($filePath)
     {
-        $this->path = $filePath;
+        $this->path = 'storage/app/'.$filePath;
+        // dd($this->path);
     }
 
     /**
@@ -24,7 +29,12 @@ class VideoStream
      */
     private function open()
     {
-        if (!($this->stream = fopen($this->path, 'rb'))) {
+        try{
+            if (!($this->stream = fopen($this->path, 'rb'))) {
+                die('Could not open stream for reading');
+            }
+        }
+        catch(Exception $e){
             die('Could not open stream for reading');
         }
 

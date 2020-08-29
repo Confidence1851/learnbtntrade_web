@@ -111,7 +111,7 @@
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[0,0,0,0]"
                                     style="z-index: 7; min-width: 640px; max-width: 640px; font-weight: 700; font-size: 18px; line-height: 30px; font-weight: 400; color: #fff; font-family: 'Roboto',sans-serif;">
-                                    Home For Wealth Creation through Financial Education.
+                                    Home For Wealth Creation through Blockchain Education.
 								</div>
 								<!-- LAYER NR. 5 -->
 								<a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"

@@ -43,6 +43,7 @@ class BlogPostController extends Controller
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = auth('web')->id();
         $data['status'] = $this->activeStatus;
+        // $data['featured'] = $this->activeStatus;
         $this->Post->create($data);
         return redirect()->route('blogger.posts.index')->with('success_msg', 'Blog post created successfully!');
     }

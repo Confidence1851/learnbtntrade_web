@@ -38,6 +38,10 @@ class Course extends Model
         return $this->hasMany(CourseTest::class);
     }
 
+    public function activeTests(){
+        return $this->hasMany(CourseTest::class)->where('status' , $this->activeStatus);
+    }
+
     public function countReviews(){
         return 0;
     }

@@ -11,7 +11,7 @@
                 <div class="h4">Sections List</div>
                 <div class="sections_list">
                     @foreach ($sections as $this_section)
-                        <div class="section_item">
+                        <div class="section_item mb-3">
                             <div class="row">
                                 <div class="col-10">
                                     <a href="#" onclick="return loadVideo('{{$this_section->title}}' ,'{{ route('my_courses.section_video', encrypt($this_section->id)) }}')" title="Play {{$this_section->title}}"> {{$this_section->title}}</a>
@@ -34,11 +34,13 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="section_footer text-center">
-                    <a href="{{ route('my_courses.take_test' ,  ['id' => $section->course->id , 'slug' => $section->course->slug])}}" >
-                        Take Test
-                    </a>
-                </div>
+                @if($course->activeTests->count() > 0)
+                    <div class="section_footer text-center">
+                        <a href="{{ route('my_courses.take_test' ,  ['id' => $section->course->id , 'slug' => $section->course->slug])}}" >
+                            Take Test
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
