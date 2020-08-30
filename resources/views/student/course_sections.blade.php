@@ -1,5 +1,9 @@
 @extends('web.layouts.app' , ['title' => $section->title   , 'activePage' => 'course' , 'meta_keywords' => $section->meta_keywords , 'meta_description' => $section->meta_description , 'hide_footer' => true ])
 @section('content')
+{{-- @php
+    $hash = session()->get('video_hash');
+    session()->forget('video_hash');
+@endphp --}}
   <main class="page-content">
     <div class="container-fluid">
         <div class="row mt-4">

@@ -6,13 +6,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+	<meta name="keywords" content="learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy" />
+	<meta name="author" content="Confidence Ugolo" />
 	<meta name="robots" content="" />
-	<meta name="description" content="EduZone - Education Collage & School HTML5 Template" />
-	<meta property="og:title" content="EduZone - Education Collage & School HTML5 Template" />
-	<meta property="og:description" content="EduZone - Education Collage & School HTML5 Template" />
-	<meta property="og:image" content="" />
+	<meta name="description" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
+	<meta property="og:title" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
+	<meta property="og:description" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
+	<meta property="og:image" content="{{ $favicon_img }}" />
 	<meta name="format-detection" content="telephone=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -83,7 +83,7 @@
                                     @endif
                                     <p><a href="{{ route('my_courses.index')}}">My Courses</a></p>
                                     <p><a href="{{ route('student.orders.history')}}">Order History</a></p>
-                                    <p><a href="{{ route('student.profile')}}">Edit Profile</a></p>
+                                    <p><a href="{{ route('student.profile')}}">My Profile</a></p>
                                     <hr>
                                     <p class="">
                                         <a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();">Logout</a>
@@ -148,7 +148,7 @@
                                     <a href="{{ route('student.orders.history')}}">Order History</a>
                                 </li>
                                 <li class="">
-                                    <a href="{{ route('student.profile')}}">Edit Profile</a>
+                                    <a href="{{ route('student.profile')}}">My Profile</a>
                                 </li>
                                 <li class="">
                                     <a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();">Logout</a>

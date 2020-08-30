@@ -168,20 +168,7 @@ trait Constants
         ];
     }
 
-    public function getInvestmentStatus($status){
-        switch($status){
-            case $this->pendingStatus:
-                return 'Pending';
-            case $this->activeStatus:
-                return 'Active';
-            case $this->completedStatus:
-                return 'Completed';
-            case $this->cancelledStatus:
-                return 'Cancelled';
-        }
-    }
-
-
+    
 
      /**
      * User images file path

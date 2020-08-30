@@ -30,13 +30,8 @@ use App\Repositories\Interfaces\CourseSectionRepositoryInterface;
 trait ModelIndex
 {
 
-    // protected $Account;
-    // protected $Agent;
-    // protected $AgentCourse;
+    protected $Withdrawal;
     protected $BankAccount;
-    // protected $Chat;
-    // protected $ChatMessage;
-    // protected $Coupon;
     protected $Country;
     protected $CountryState;
     protected $ErrorLog;
@@ -52,11 +47,7 @@ trait ModelIndex
     protected $Referral;
     protected $Setting;
     protected $VerificationPin;
-    // protected $Deposit;
-    // protected $FiatTransfer;
     protected $AdminLog;
-    // protected $Advert;
-    // protected $AdvertMedia;
     protected $Notification;
 
     public function __construct(
@@ -71,7 +62,7 @@ trait ModelIndex
         CourseCategoryRepositoryInterface $courseCategoryRepositoryInterface ,
         CourseSectionRepositoryInterface $courseSectionRepositoryInterface ,
         CourseSectionResourceRepositoryInterface $courseSectioResourceRepositoryInterface,
-        ReferralRepositoryInterface $referralRepositoryInterface 
+        ReferralRepositoryInterface $referralRepositoryInterface
         // AgentRepositoryInterface $agentRepositoryInterface ,
         // AgentCourseRepositoryInterface $agentCourseRepositoryInterface ,
         // SettingRepositoryInterface $settingRepositoryInterface ,

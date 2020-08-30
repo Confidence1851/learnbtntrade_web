@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Withdrawal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WithdrawalsController extends Controller
 {
     public function index(){
-        $withdrawals = $this->Withdrawal->model()->where('status','!=','Pending')->orderby('created_at','desc')->get();
+        $withdrawals = Withdrawal::orderby('created_at','desc')->get();
         return view('admin.withdrawals.index',compact('withdrawals'));
     }
 
     public function pending(){
-        $withdrawals = $this->Withdrawal->model()->where('status','Pending')->orderby('created_at','desc')->get();
+        $withdrawals = Withdrawal::where('status','Pending')->orderby('created_at','desc')->get();
         foreach($withdrawals as $withdrawal){
             $withdrawal['color'] = 'green';
             $withdrawal['timeout'] = Carbon::parse($withdrawal->created_at)->longRelativeToNowDiffForHumans();

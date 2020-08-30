@@ -55,11 +55,11 @@ class Course extends Model
     }
 
     public function getPrice(){
-        $price = $this->price - $this->discount;
+        $price = ($this->price - $this->discount);
         if($price < 1){
             return 'Free';
         }
-        return format_money($this->price);
+        return format_money($price);
     }
 
 

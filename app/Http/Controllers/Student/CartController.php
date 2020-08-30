@@ -22,6 +22,7 @@ class CartController extends Controller
 
     public function addCourseToCart(Request $request){
 
+        // dd($request->all());
         if(empty($request['course_id']) && empty($request['plan_id'])){
             return response()->json(['success' => false, 'msg' => 'Could not validate request!']);
         }
@@ -29,7 +30,7 @@ class CartController extends Controller
         $processCart = $this->addToCart($request['course_id'] , $request['plan_id']);
         if($processCart['success']){
             $processCart['type'] = 'add';
-            $processCart['msg'] = 'Item added to cart!';
+            $processCart['msg'] =  $processCart['msg'] ?? 'Item added to cart!';
             $processCart['title'] = 'Remove from cart';
             $processCart['action'] = route('cart.remove');
         }
@@ -55,7 +56,9 @@ class CartController extends Controller
         $cart = getUserCart();
         $items = getUserCart()->items;
         $reference = $cart->reference;
-        return view('web.cart', compact('cart', 'items' , 'reference'));
+        $hasSubs = $items->where('plan_id' , '!=', null)->count();
+        // dd($hasSubs);
+        return view('web.cart', compact('cart', 'items' , 'reference' , 'hasSubs'));
     }
 
     public function checkout(Request $request){
@@ -63,6 +66,7 @@ class CartController extends Controller
         $data = $request->validate([
             'file' => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,application/pdf',
             'comment' => 'nullable|string',
+            'phone_no' => 'nullable|string',
             'reference' => 'required|string',
         ]);
         if(!empty( $file = $request->file('file'))){

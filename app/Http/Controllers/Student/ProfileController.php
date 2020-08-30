@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\BankAccount;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -10,7 +12,15 @@ class ProfileController extends Controller
 {
     public function profile(){
         $user = $this->User->user();
-        return view('student.profile', compact('user'));
+        $referrals = $this->Referral->model()
+                ->where('referrer_id' , $user->id)
+                ->orderby('created_at' , 'desc')
+                ->get();
+        $withdrawals = Withdrawal::where('user_id' , $user->id)
+                ->orderby('created_at' , 'desc')
+                ->get();
+                
+        return view('student.profile', compact('user' , 'referrals' , 'withdrawals'));
     }
 
     public function update(Request $request)
@@ -70,6 +80,30 @@ class ProfileController extends Controller
 
         $this->User->update($user->id,['password' => Hash::make($request->password) ]);
         return redirect()->back()->with('success_flash', 'Password updated successfully!');
+
+    }
+
+    public function bank_account (Request $request)
+    {
+        $data = $request->validate([
+            'bank_name' => 'required|string',
+            'account_name' => 'required|string',
+            'account_number' => 'required|string',
+        ]);
+        $user = $this->User->user();
+        $check = BankAccount::where('account_number' , $data['account_number'])->whereNotIn('user_id',[$user->id])->count();
+        if($check > 0){
+            return redirect()->back()->with('error_flash', 'Account details used by someone else!');
+        }
+        $bank = BankAccount::where('user_id', $user->id)->first();
+        if(!empty($bank)){
+            $bank->update($data);
+        }
+        else{
+            $data['user_id'] = $user->id;
+            BankAccount::create($data);
+        }
+        return redirect()->back()->with('success_flash', 'Account details updated successfully!');
 
     }
 }

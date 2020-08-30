@@ -35,7 +35,7 @@
                             @foreach($orders as $order)
                             <div class="panel">
                                 <div class="acod-head">
-                                    <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse" data-target="#collapse1" aria-expanded="true">
+                                    <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse" data-target="#collapse_{{$order->id}}" aria-expanded="true">
                                         <div class="row">
                                             <div class="col-md-4">
                                                <b>Reference:</b>  #{{$order->reference}}
@@ -51,7 +51,7 @@
                                         </div>
                                     </a> </h6>
                                 </div>
-                                <div id="collapse1" class="acod-body collapse show" data-parent="#accordion001">
+                                <div id="collapse_{{$order->id}}" class="acod-body collapse " data-parent="#accordion001">
                                     <div class="acod-content">
                                        <h5>Order Items</h5>
 

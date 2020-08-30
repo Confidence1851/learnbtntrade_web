@@ -117,7 +117,11 @@
                         </table>
 
                         <div class="form-group">
-                            <p style="color: red"><b>Instruction:</b> Kindly copy the ORDER REFERENCE below and use it as a comment when paying!</p>
+                            <p style="color: red" class="mb-4">
+                                <b>Instruction:</b>
+                                    Kindly copy the ORDER REFERENCE below and use it as a comment when paying! <br>
+                                    Please note that our exchange rate is <b> NGN400 per $1. </b>
+                            </p>
                             <label for="">Order Reference</label>
                             <input type="text" class="form-control" name="reference" value="{{$reference}}" required readonly>
                         </div>
@@ -130,6 +134,12 @@
                                 <label for="">Upload Receipt</label>
                                 <input type="file" class="form-control"  name="file" placeholder="" required>
                             </div>
+                            @if($hasSubs > 0)
+                            <div class="form-group">
+                                <label for="">Whatsapp Number</label>
+                                <input type="text" class="form-control" required name="phone_no" placeholder="For signal plans">
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="">Add Comment</label>
                                 <input type="text" class="form-control"  name="comment" placeholder="Extra Comment? (optional)">

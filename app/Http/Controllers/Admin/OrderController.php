@@ -124,7 +124,8 @@ class OrderController extends Controller
                             'start' => now(),
                             'stop' => $plan->duration == 'Lifetime' ? $plan->duration : Carbon::now()->addDays($plan->duration),
                             'status' =>  $order->status,
-                            'comment' => '',
+                            'comment' => $order->comment,
+                            'phone_no' => $order->phone_no,
                         ]);
                     }
                     else{

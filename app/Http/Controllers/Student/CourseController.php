@@ -27,7 +27,7 @@ class CourseController extends Controller
                     ->where('course_id', $course->id)
                     ->where('status' , $this->activeStatus)
                     ->orderby('number', 'asc')->get();
-
+        // session()->put('video_hash' , encrypt(time()));
         return view('student.course_sections' , compact('course' , 'section' , 'sections'));
     }
 

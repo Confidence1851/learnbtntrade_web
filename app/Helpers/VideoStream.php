@@ -20,7 +20,7 @@ class VideoStream
 
     function __construct($filePath)
     {
-        $this->path = 'storage/app/'.$filePath;
+        $this->path =storage_path('app/'.$filePath);
         // dd($this->path);
     }
 
@@ -29,14 +29,14 @@ class VideoStream
      */
     private function open()
     {
-        try{
+        // try{
             if (!($this->stream = fopen($this->path, 'rb'))) {
                 die('Could not open stream for reading');
             }
-        }
-        catch(Exception $e){
-            die('Could not open stream for reading');
-        }
+        // }
+        // catch(Exception $e){
+        //     die('Could not open stream for reading');
+        // }
 
     }
 

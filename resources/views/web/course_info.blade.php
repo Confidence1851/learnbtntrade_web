@@ -99,7 +99,7 @@
                                             @endforeach
                                         </table>
                                     </div>
-                                    <div id="review" class="tab-pane comments-area d-none">
+                                    <div id="review" class="tab-pane comments-area ">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-5 m-b30">
                                                 <h5>Average Rating</h5>
@@ -254,20 +254,16 @@
                                         </div>
                                         <div class="comment-respond" id="respond">
                                             <div class="section-head">
-                                                <h5 class="widget-title style-1">LEAVE A REPLY</h5>
+                                                <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
                                             </div>
-                                            <h3 class="comment-reply-title" id="reply-title">
-                                                <small> <a style="display:none;" href="javascript:void(0);" id="cancel-comment-reply-link" rel="nofollow">Cancel reply</a> </small>
-                                            </h3>
                                             <form class="comment-form" id="commentform" method="post">
-                                                <p class="comment-form-author">
-                                                    <label for="author">Name <span class="required">*</span></label>
-                                                    <input type="text" value="" placeholder="Name" id="author">
-                                                </p>
-                                                <p class="comment-form-email">
-                                                    <label for="email">Email <span class="required">*</span></label>
-                                                    <input type="text" value="" placeholder="Email" id="email">
-                                                </p>
+                                                <div class="user_rating">
+                                                    <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
+                                                    <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
+                                                    <i class="text-yellow fa fa-star" data-alt="3" title="regular"></i>
+                                                    <i class="text-yellow fa fa-star" data-alt="4" title="regular"></i>
+                                                    <i class="text-yellow fa fa-star" data-alt="5" title="regular"></i>
+                                                </div>
                                                 <p class="comment-form-comment">
                                                     <label for="comment">Comment</label>
                                                     <textarea rows="8" placeholder="Add a Comment" id="comment"></textarea>

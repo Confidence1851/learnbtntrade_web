@@ -72,6 +72,7 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
 
     Route::prefix('student')->as('student.')->group(function () {
         Route::get('/profile', 'ProfileController@profile')->name('profile');
+        Route::post('/bank', 'ProfileController@bank_account')->name('bank_account.store');
         Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
         Route::post('/profile/password-reset', 'ProfileController@password_reset')->name('profile.password_reset');
         Route::get('/orders/history', 'TransactionController@order_history')->name('orders.history');
@@ -114,7 +115,17 @@ Route::middleware('auth')->group(function (){
             Route::resource('sections','CourseSectionController')->except(['create']);
             Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
             Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
+
+
+            Route::prefix('test')->as('test.')->group(function () {
+                Route::get('details/create/{id}','CourseTestController@create')->name('details.create');
+                Route::resource('details','CourseTestController')->except(['create']);
+                Route::get('questions/create/{id}','CourseTestQuestionController@create')->name('questions.create');
+                Route::resource('questions','CourseTestQuestionController')->except(['create']);
+            });
+            
         });
+
     });
 
 
@@ -139,6 +150,7 @@ Route::middleware('auth')->group(function (){
         Route::prefix('services')->as('service.')->group(function () {
             Route::resource('plans','PlanController');
             Route::resource('plan/items','PlanItemController');
+            Route::resource('subscriptions','PlanSubscriptionController')->only('index');
         });
 
 
@@ -171,14 +183,6 @@ Route::middleware('auth')->group(function (){
         Route::get('enrolled/users','UsersController@enrolled')->name('users.enrolled');
         Route::post('users/password/reset/{id}','UsersController@password_reset')->name('users.password_reset');
 
-        Route::resource('transactions','TransactionsController')->only('show');
-        Route::get('debit-transactions','TransactionsController@debit_index')->name('debit_trans');
-        Route::get('credit-transactions','TransactionsController@credit_index')->name('credit_trans');
-
-        Route::resource('investments','InvestmentsController')->only('index','show');
-        Route::get('pending-investments','InvestmentsController@pending')->name('pending_investments');
-        Route::post('approve-investments','InvestmentsController@approve')->name('approve_investments');
-        Route::post('extend-investment-date','InvestmentsController@extendInvestmentDate')->name('extend_investment_date');
 
         Route::resource('withdrawals','WithdrawalsController')->only('index','show');
         Route::get('pending-withdrawals','WithdrawalsController@pending')->name('pending_withdrawals');
@@ -186,21 +190,15 @@ Route::middleware('auth')->group(function (){
         Route::post('cancel-withdrawal','WithdrawalsController@cancel')->name('cancel_withdrawal');
         Route::post('approve-withdrawal','WithdrawalsController@approve')->name('approve_withdrawal');
 
-        Route::resource('coupons','CouponsController')->only('index','show','store');
-
         Route::resource('instructors','InstructorsController');
         Route::get('/instructor/requests', 'InstructorsController@requests')->name('instructors.requests');
         Route::get('/instructors/status', 'InstructorsController@status')->name('instructors.status');
 
-        Route::resource('agents','AgentsController');
-        Route::post('/refill-agent-wallet', 'AgentsController@refill_agent')->name('refill_agent');
 
         Route::resource('logs','LogsController');
 
         Route::get('/referrals/index', 'HomeController@referrals')->name('referrals.index');
         Route::get('/newsletter/index', 'HomeController@newsletters')->name('newsletters.index');
-        Route::resource('advertmedia','AdvertMediaController');
-
 
     });
 });

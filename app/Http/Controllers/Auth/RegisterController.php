@@ -84,6 +84,8 @@ class RegisterController extends Controller
                 'referrer_id' => $ref->id,
                 'type' => 0
             ]);
+            $ref->wallet += 1;
+            $ref->save();
         }
 
         return $user;

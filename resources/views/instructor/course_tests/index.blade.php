@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Service Plans' , 'activeGroup'  => 'services', 'activePage' => 'plans'])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Courses' , 'activeGroup'  => 'course', 'activePage' => 'course_all'])
 @section('content')
      <div class="container-fluid">
 
@@ -8,11 +8,11 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                SERVICE PLANS
+                                COURSES
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="{{ route('service.plans.create') }}" class="btn btn-sm btn-outline-primary"> New Plan</a>
+                                    <a href="{{ route('course.details.create') }}" class="btn btn-sm btn-outline-primary"> New Course</a>
                                 </li>
                             </ul>
                         </div>
@@ -21,11 +21,12 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">  <!-- js-basic-example -->
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            {{-- <th>Image</th> --}}
+                                            {{-- <th>#</th> --}}
+                                            <th>Image</th>
                                             <th>Title</th>
-                                            <th>Price</th>
-                                            <th>Items</th>
+                                            <th>Category</th>
+                                            <th>Author</th>
+                                            <th>Sections</th>
                                             <th>Featured</th>
                                             <th>Status</th>
                                             <th>Creation Date</th>
@@ -34,32 +35,33 @@
                                     </thead>
                                     <tbody>
                                         @php
-                                            $i = 0;
+                                        $i = 0;
                                         @endphp
-                                        @foreach($plans as $plan)
+                                        @foreach($courses as $course)
                                         @php
                                             $i++;
                                         @endphp
                                         <tr>
-                                            <td>{{$i}}</td>
-                                            {{-- <td><img src="{{$plan->title}}" alt="image"></td> --}}
-                                            <td>{{$plan->title}}</td>
-                                            <td>{{ format_money($plan->price)}}</td>
-                                            <td><a href="{{ route('service.plans.show',$plan) }}">{{$plan->items->count()}}</a></td>
-                                            <td>{{$plan->featured == 1 ? 'Yes' : 'No'}}</td>
-                                            <td>{{$plan->getStatus()}}</td>
-                                            <td>{{$plan->created_at->format('M D d, Y')}}</td>
+                                            {{-- <td>{{$i}}</td> --}}
+                                            <td><img src="{{ getFileFromStorage($course->image) }}" alt="" class="img-responsive" width="100"></td>
+                                            <td>{{$course->title}}</td>
+                                            <td>{!! $course->category->title !!}</td>
+                                            <td>{{$course->author->fullName()}}</td>
+                                            <td>{{$course->sections->count()}}</td>
+                                            <td>{{$course->featured == 1 ? 'Yes' : 'No'}}</td>
+                                            <td>{{$course->getStatus()}}</td>
+                                            <td>{{$course->created_at->format('M D d, Y')}}</td>
                                             <td>
-                                                <form  action="{{ route('service.plans.destroy',$plan) }}" method="POST">
+                                                <form  action="{{ route('course.details.destroy',$course) }}" method="POST">
                                                     @method('delete')
                                                     @csrf
-                                                    <a href="{{ route('service.plans.show',$plan) }}" class="btn btn-info sm">
+                                                    <a href="{{ route('course.details.show',$course) }}" class="btn btn-info btn-xs">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
-                                                    <a href="{{ route('service.plans.edit',$plan) }}" class="btn btn-success sm">
+                                                    <a href="{{ route('course.details.edit',$course) }}" class="btn btn-success btn-xs">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger xs"  onclick=" return confirm('Are you sure you want to delete this item?');">
+                                                    <button type="submit" class="btn btn-danger btn-xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">
                                                         <i class="material-icons">delete</i>
                                                     </button>
 

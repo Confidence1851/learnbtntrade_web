@@ -357,10 +357,21 @@
                             <li class="{{$activePage == 'plans' ? 'active' : ''}}">
                                 <a href="{{ route('service.plans.index') }}">Plans</a>
                             </li>
-                            <li class="{{$activePage == 'signal_updates' ? 'active' : ''}}">
-                                <a href="#">Signal Updates</a>
+                            <li class="{{$activePage == 'subscriptions' ? 'active' : ''}}">
+                                <a href="{{ route('service.subscriptions.index') }}">Plan Subcriptions</a>
                             </li>
+
+                            {{-- <li class="{{$activePage == 'signal_updates' ? 'active' : ''}}">
+                                <a href="#">Signal Updates</a>
+                            </li> --}}
                         </ul>
+                    </li>
+
+                    <li class="{{$activePage == 'withdrawals' ? 'active' : ''}}">
+                        <a href="{{ route('withdrawals.index') }}">
+                            <i class="material-icons">shopping_cart</i>
+                            <span>Withdrawals</span>
+                        </a>
                     </li>
 
 

@@ -10,37 +10,63 @@
                             <h2>
                                 WITHDRAWALS
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable">  <!-- js-basic-example -->
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Action</th>
+                                            <th>#</th>
                                             <th>User Name</th>
-                                            <th>Reference No.</th>
+                                            <th>Bank</th>
                                             <th>Amount</th>
-                                            <th>Status</th>
                                             <th>Creation Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $i = 0;
+                                        @endphp
                                         @foreach($withdrawals as $withdrawal)
+                                        @php
+                                            $i++;
+                                        @endphp
                                         <tr>
-                                            <td><a href="{{ route('withdrawals.show',$withdrawal) }}" class="btn btn-outline-primary sm">More Info</a></td>
+                                            <td>{{$i}}</td>
                                             <td>{{$withdrawal->user->name ?? ''}}</td>
-                                            <td>{{$withdrawal->ref_no}}</td>
-                                            <td>$ {{$withdrawal->amount}}</td>
-                                            <td>{{$withdrawal->getStatus()}}</td>
-                                            <td>{{ date('M D , Y h:i:A' , strtotime($withdrawal->date))}}</td>
+                                            <td><a href="#"data-toggle="modal" data-target="#view_item_{{$withdrawal->id}}"  class="btn btn-primary btn-sm"> View Bank</a></td>
+                                            <td>{{ format_money($withdrawal->amount) }}</td>
+                                            <td>{{ date('M D , Y h:i:A' , strtotime($withdrawal->created_at))}}</td>
                                         </tr>
+
+                                        <div class="modal fade" id="view_item_{{$withdrawal->id}}" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Bank Information</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Bank Name:</b> {{$withdrawal->bank_name}}
+                                                            </div>
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Account Name:</b> {{$withdrawal->account_name}}
+                                                            </div>
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Account Number:</b> {{$withdrawal->account_number}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -52,3 +78,5 @@
             <!-- #END# Exportable Table -->
         </div>
 @stop
+
+

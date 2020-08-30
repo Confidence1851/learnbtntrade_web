@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="widget widget_services border-0">
-              <h5 class="m-b30 text-white">Company</h5>
+              <h5 class="m-b30 text-white">Useful Links</h5>
               <ul>
                 <li><a href="{{ route('homepage')}}">Home </a></li>
                 <li><a href="{{ route('contact_us')}}">Contact Us</a></li>

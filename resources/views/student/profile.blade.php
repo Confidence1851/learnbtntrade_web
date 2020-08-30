@@ -6,7 +6,7 @@
     <div class="dlab-bnr-inr overlay-black-middle bg-pt" style="background-image:url(images/banner/bnr4.jpg);">
         <div class="container">
             <div class="dlab-bnr-inr-entry">
-                <h1 class="text-white">M Profile</h1>
+                <h1 class="text-white">My Profile</h1>
                 <!-- Breadcrumb row -->
                 <div class="breadcrumb-row">
                     <ul class="list-inline">
@@ -67,6 +67,8 @@
                             <div class="dlab-tabs">
                                 <ul class="nav nav-tabs">
                                     <li><a data-toggle="tab" href="#profile" class="active"><i class="ti-image"></i><span class="title-head">Edit Profile</span></a></li>
+                                    <li><a data-toggle="tab" href="#referral"><i class="fa fa-user"></i><span class="title-head">My Referrals</span></a></li>
+                                    <li><a data-toggle="tab" href="#withdrawal"><i class="fa fa-money"></i><span class="title-head">Withdrawal Info</span></a></li>
                                     <li><a data-toggle="tab" href="#password"><i class="fa fa-cog"></i><span class="title-head">Change Password</span></a></li>
                                 </ul>
                                 <div class="tab-content">
@@ -136,8 +138,65 @@
                                             </div>
                                         </form>
                                      </div>
+                                     <div id="referral" class="tab-pane">
+                                        <h5 class="mb-3">Total Referrals: {{$referrals->count()}}</h5>
+                                        <div class="row mb-2">
+                                            @foreach ($referrals as $referral)
+                                                <div class="col-12">
+                                                    {{$referral->user->name ?? ''}}
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div id="withdrawal" class="tab-pane">
+                                        <form action="{{ route('student.bank_account.store') }}" method="post">@csrf
+                                            <div class="row">
+                                                 <div class="col-md-6">
+                                                     <div class="form-group">
+                                                         <label class="font-weight-700">BANK NAME *</label>
+                                                        <input name="bank_name" class="form-control" placeholder="e.g First Bank" type="text" value="{{ $user->bank->bank_name ?? ''}}"  required autofocus>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                     <div class="form-group">
+                                                         <label class="font-weight-700">ACCOUNT NAME *</label>
+                                                         <input name="account_name" class="form-control" placeholder="Your bank account name" type="text" value="{{ $user->bank->account_name ?? ''}}"  required autofocus>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                     <div class="form-group">
+                                                         <label class="font-weight-700">ACCOUNT NUMBER *</label>
+                                                         <input name="account_number" class="form-control" placeholder="Your bank account number" type="text" value="{{ $user->bank->account_number ?? ''}}" required autofocus>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                     <button class="btn btn-success col-12 mt-4">SAVE</button>
+                                                 </div>
+                                            </div>
+                                        </form>
+                                        <div class="row mt-5">
+                                            <div class="col-md-6">
+                                                <h5 class="mb-3">Wallet Balance: {{ format_money($user->wallet) }}</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5 class="mb-3" style="float: right">Total Withdrawn: {{ format_money($withdrawals->sum('amount')) }}</h5>
+                                            </div>
+                                        </div>
+                                        @foreach ($withdrawals as $withdrawal)
+
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                   <b>Amount:</b> {{ format_money($withdrawal->amount) }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <b>Paid on:</b> {{ date('M d, Y', strtotime($withdrawal->create_at)) }}
+                                                 </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
                                     <div id="password" class="tab-pane">
-                                    <form action="{{ route('student.profile.password_reset')}}" method="post">@csrf
+                                        <form action="{{ route('student.profile.password_reset')}}" method="post">@csrf
                                            <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
