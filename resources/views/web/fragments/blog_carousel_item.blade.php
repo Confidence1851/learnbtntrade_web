@@ -9,19 +9,19 @@
             <div class="dlab-post-meta">
                 <ul>
                     <li class="post-author"> <i class="la la-user-circle"></i>
-                        By <a href="javascript:void(0);">{{ $post->author->fullName() ?? '' }}</a>
+                        By <a href="javascript:void(0);">{{ str_limit($post->author->fullName() ?? '') }}</a>
                     </li>
-                    <li class="post-tag"> <a href="javascript:void(0);">{{ str_limit(strtoupper($post->category->title ?? '')) }}</a> </li>
+                    <li class="post-tag"> <a title="{{$post->category->title ?? ''}}" href="javascript:void(0);">{{ str_limit(strtoupper($post->category->title ?? '')) }}</a> </li>
                 </ul>
             </div>
             <div class="dlab-post-title">
                 <h4 class="post-title">
-                    <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ str_limit($post->title ?? '') }}</a>
+                    <a title="{{$post->title ?? ''}}" href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">{{ str_limit($post->title ?? '', 30) }}</a>
                 </h4>
             </div>
             <div class="dlab-post-text">
                 <p class="limit_content" limit="20">
-                    {!! str_limit(strip_tags($post->body ?? '') , 200) !!}
+                    {!! str_limit(strip_tags($post->body ?? '') , 160) !!}
                 </p>
             </div>
             <div class="post-footer">
