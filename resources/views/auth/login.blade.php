@@ -1,4 +1,4 @@
-@extends('web.layouts.app')
+@extends('web.layouts.app' ,[ 'title' => 'Login'])
 
 @section('content')
 <!-- Content -->

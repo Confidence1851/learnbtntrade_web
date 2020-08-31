@@ -6,10 +6,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy" />
+	<meta name="keywords" content="{{ $meta_keywords ?? 'learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy' }}" />
 	<meta name="author" content="Confidence Ugolo" />
 	<meta name="robots" content="" />
-	<meta name="description" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
+	<meta name="description" content="{{ $meta_description ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
 	<meta property="og:title" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
 	<meta property="og:description" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
 	<meta property="og:image" content="{{ $favicon_img }}" />
