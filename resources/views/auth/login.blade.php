@@ -75,7 +75,7 @@
                                     <a data-toggle="tab" href="#forgot-password" class="m-l5"><i class="fa fa-unlock-alt"></i> Forgot Password</a>
                                 </div>
                             </form>
-                            <form method="POST" action="{{ route('password.email') }}">
+                            <form method="POST" action="{{ route('password.email') }}" id="forgot-password" class="tab-pane fade  col-12 p-a0">
                                 @csrf
                                 <h4 class="font-weight-700">FORGET PASSWORD ?</h4>
                                 <p class="font-weight-600">We will send you an email to reset your password. </p>

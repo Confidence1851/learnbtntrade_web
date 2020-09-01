@@ -181,6 +181,9 @@
     @if (session()->has('error_flash'))
         <div id="error_flash_msg">{{ session()->get('error_flash') ?? ''}}</div>
     @endif
+    @if (session()->has('status'))
+    <div id="error_flash_msg">{{ session()->get('status') ?? ''}}</div>
+@endif
     </div>
     @php
         $hide_footer = $hide_footer ?? false;
