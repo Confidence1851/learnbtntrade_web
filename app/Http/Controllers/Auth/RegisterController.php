@@ -79,13 +79,13 @@ class RegisterController extends Controller
 
         if(!empty($code = $data['referrer'])){
             $ref = User::where('ref_code',$code)->first();
-            Referral::create([
-                'user_id' => $user->id,
-                'referrer_id' => $ref->id,
-                'type' => 0
-            ]);
-            $ref->wallet += 1;
-            $ref->save();
+            if(!empty($ref)){
+                Referral::create([
+                    'user_id' => $user->id,
+                    'referrer_id' => $ref->id,
+                    'type' => 0
+                ]);
+            }
         }
 
         return $user;

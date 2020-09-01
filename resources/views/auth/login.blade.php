@@ -27,6 +27,11 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="font-weight-700 m-t0 m-b40">ALREADY REGISTERED?</h2>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="row dzseth">
@@ -70,12 +75,13 @@
                                     <a data-toggle="tab" href="#forgot-password" class="m-l5"><i class="fa fa-unlock-alt"></i> Forgot Password</a>
                                 </div>
                             </form>
-                            <form id="forgot-password" class="tab-pane fade  col-12 p-a0">
+                            <form method="POST" action="{{ route('password.email') }}">
+                                @csrf
                                 <h4 class="font-weight-700">FORGET PASSWORD ?</h4>
                                 <p class="font-weight-600">We will send you an email to reset your password. </p>
                                 <div class="form-group">
                                     <label class="font-weight-700">E-MAIL *</label>
-                                    <input name="dzName" required="" class="form-control" placeholder="Your Email Id" type="email">
+                                    <input name="email" required="" class="form-control" placeholder="Your email address" type="email">
                                 </div>
                                 <div class="text-left">
                                     <a class="site-button outline gray button-lg radius-no" data-toggle="tab" href="#login">Back</a>
