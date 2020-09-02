@@ -90,7 +90,7 @@
                                                                                 <td>{{$resource->getStatus()}}</td>
                                                                                 <td>{{$resource->created_at->format('M D d, Y')}}</td>
                                                                                 <td>
-                                                                                    <form  action="{{ route('course.comments.destroy',$resource) }}" method="POST">
+                                                                                    <form  action="{{ route('course.resources.destroy',$resource) }}" method="POST">
                                                                                         @method('delete')
                                                                                         @csrf
                                                                                         <a href="{{ route('course.resources.show' , $resource)}}" class="btn btn-info sm" onclick=" return confirm('Are you sure you want to download this item? it may cost you money!');">

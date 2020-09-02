@@ -10,7 +10,7 @@
                             <h2>
                                 REFERRAL HISTORY
                             </h2>
-                            
+
                         </div>
 
                         <div class="body">
@@ -29,9 +29,9 @@
                                         @foreach($referrals as $referral)
                                         <tr>
                                             <td></td>
-                                            <td><a href="{{ route('users.show',$referral->user_id) }}">{{$referral->user->name}}</a></td>
-                                            <td><a href="{{ route('users.show',$referral->referrer_id) }}">{{$referral->referrer->name}}</a></td>
-                                            <td>{{$referral->type}}</td>
+                                            <td><a href="{{ route('users.show',$referral->user_id) }}">{{$referral->user->()}}</a></td>
+                                            <td><a href="{{ route('users.show',$referral->referrer_id) }}">{{$referral->referrer->fullName()}}</a></td>
+                                            <td>{{$referral->tyfullNamepe}}</td>
                                             <td>{{ date('Y-m-d, h:i:A',strtotime($referral->created_at)) }}</td>
                                         </tr>
 

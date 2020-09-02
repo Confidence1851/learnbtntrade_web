@@ -123,13 +123,13 @@ Route::middleware('auth')->group(function (){
                 Route::get('questions/create/{id}','CourseTestQuestionController@create')->name('questions.create');
                 Route::resource('questions','CourseTestQuestionController')->except(['create']);
             });
-            
+
         });
 
     });
 
 
-    Route::middleware(['blogger' , 'blogger' , 'instructor'])->namespace('Admin')->prefix('super-user')->group(function (){
+    Route::middleware('super_user')->namespace('Admin')->prefix('super-user')->group(function (){
         Route::get('profile/edit', 'UsersController@editProfile')->name('edit.profile');
         Route::post('/profile/update', 'UsersController@updateProfile')->name('profile.update');
         Route::post('profile/password-reset', 'UsersController@profile_password_reset')->name('profile.password_reset');
@@ -198,7 +198,8 @@ Route::middleware('auth')->group(function (){
         Route::resource('logs','LogsController');
 
         Route::get('/referrals/index', 'HomeController@referrals')->name('referrals.index');
-        Route::get('/newsletter/index', 'HomeController@newsletters')->name('newsletters.index');
+        Route::resource('newsletters','NewsLettersSubscriberController');
+
 
     });
 });

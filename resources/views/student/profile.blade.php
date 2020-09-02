@@ -143,7 +143,7 @@
                                         <div class="row mb-2">
                                             @foreach ($referrals as $referral)
                                                 <div class="col-12">
-                                                    {{$referral->user->name ?? ''}}
+                                                    {{$referral->user->fullName() ?? ''}}
                                                 </div>
                                             @endforeach
                                         </div>

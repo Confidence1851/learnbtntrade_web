@@ -14,8 +14,9 @@
 							<!-- SLIDE  -->
 							<li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<!-- MAIN IMAGE -->
-								<img src="{{ $web_source }}/images/main-slider/dummy.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slide11.jpg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
-								<!-- LAYER NR. 1 -->
+								<img src="{{ $web_source }}/images/main-slider/slider1.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slider1.png" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+                                <!-- LAYER NR. 1 -->
+
 								<!-- LAYERS -->
 								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer"
 									data-x="['center','center','center','center']"
@@ -36,8 +37,10 @@
 									data-paddingleft="[0,0,0,0]"
 									style="z-index: 2;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
 									<!-- LAYER NR. 1 -->
-								<!-- BACKGROUND VIDEO LAYER -->
-								{{-- <div class="rs-background-video-layer"
+                                <!-- BACKGROUND VIDEO LAYER -->
+
+                        {{--
+                                <div class="rs-background-video-layer"
 									data-forcerewind="on"
 									data-volume="mute"
 									data-videowidth="100%"
@@ -47,8 +50,9 @@
 									data-videoloop="loop"
 									data-aspectratio="16:9"
 									data-autoplay="true"
-									data-autoplayonlyfirsttime="false"
-								></div> --}}
+									data-autoplayonlyfirsttime="false">
+                                </div>
+                        --}}
 
 								<div class="tp-caption tp-shape tp-shapewrapper ov-tp "
 									id="slide-100-layer-1"
@@ -88,7 +92,7 @@
 									data-paddingright="[10,10,0,0]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[0,0,0,0]"
-									style="z-index: 6; min-width: 800px; max-width: 800px; font-weight: 600; white-space: normal; color: #fff; font-family:'Merriweather', serif;">
+									style="z-index: 6; min-width: 800px; max-width: 800px; font-weight: 600; white-space: normal; color: #232323; font-family:'Merriweather', serif;">
 									Welcome To Learnbtctrade Academy
 								</div>
 								<!-- LAYER NR. 3 -->

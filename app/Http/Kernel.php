@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'blogger' => \App\Http\Middleware\BloggerMiddleware::class,
         'instructor' => \App\Http\Middleware\InstructorMiddleware::class,
         'course_access' => \App\Http\Middleware\CourseAccessMiddleware::class,
+        'super_user' => \App\Http\Middleware\SuperUserMiddleware::class,
     ];
 }

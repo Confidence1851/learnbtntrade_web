@@ -34,8 +34,4 @@ class HomeController extends Controller
         return view('admin.referral.index',compact('referrals'));
     }
 
-    public function newsletters(){
-        $emails = NewsletterSubscriber::orderby('created_at','desc')->get();
-        return view('admin.newsletter.index',compact('emails'));
-    }
 }

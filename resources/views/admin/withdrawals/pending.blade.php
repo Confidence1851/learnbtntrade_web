@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Pending Withdrawals | Withdrawals' , 'activeGroup'  => 'withdrawals', 'activePage' => ''])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Pending Withdrawals' , 'activeGroup'  => 'withdrawals', 'activePage' => 'pending'])
 @section('content')
      <div class="container-fluid">
 
@@ -8,80 +8,87 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                PENDING WITHDRAWALS
+                               PENDING WITHDRAWALS
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
+                                   <button class="btn btn-success btn-sm" id="checkAllItems">Check All</button>
+                                   <button class="btn btn-danger btn-sm" id="uncheckAllItems">Uncheck All</button>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">  <!-- js-basic-example -->
+                         <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-basic-example">  <!-- js-basic-example -->
                                     <thead>
                                         <tr>
+                                            <th></th>
+                                            <th>#</th>
                                             <th>User Name</th>
-                                            <th>Reference No.</th>
+                                            <th>Bank</th>
                                             <th>Amount</th>
-                                            <th>Method</th>
-                                            <th>Actions</th>
-                                            <th>TimeOut</th>
                                             <th>Creation Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($withdrawals as $withdrawal)
+                                        @php
+                                            $i = 0;
+                                        @endphp
+                                        @foreach($users as $user)
+                                        @php
+                                            $i++;
+                                        @endphp
                                         <tr>
-                                            <td>{{$withdrawal->user->name ?? ''}}</td>
-                                            <td>{{$withdrawal->reference}}</td>
-                                            <td>$ {{$withdrawal->amount}}</td>
-                                            <td><button class="btn btn-outline-primary xs">{{$withdrawal->getPaymentMethod()}}</button></td>
-                                            <td>
-                                                <form id="withdrawal_process_{{$withdrawal->id}}" action="{{ route('process_withdrawal') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="withdrawal_id" value="{{$withdrawal->id}}" required>
-                                                    <button type="submit" class="btn btn-success xs"  onclick=" return confirm('Are you sure you want to process this withdrawal?');">Process</button>
-                                                    <button type="button" class="btn btn-danger xs" data-toggle="modal"  data-target="#withdrawal_cancel_{{$withdrawal->id}}">Cancel</button>
-
-                                                </form>
-                                                 <div class="modal fade"  id="withdrawal_cancel_{{$withdrawal->id}}" tabindex="-1" role="dialog">
-                                                    <div class="modal-dialog modal-md" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Cancel Withdrawal</h4>
-                                                            </div>
-                                                        <form action="{{ route('cancel_withdrawal') }}" method="post">@csrf
-                                                            <div class="modal-body">
-                                                                    <input type="hidden" name="withdrawal_id" value="{{$withdrawal->id}}" required>
-                                                                   <div class="form-group">
-                                                                       <textarea name="comment" class="form-control" required rows="4" placeholder="Enter reason here........."></textarea>
-                                                                       @error('comment')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                        @enderror
-                                                                   </div>
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                                                                <button type="save" class="btn btn-link waves-effect">PROCEED</button>
-                                                            </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
+                                            <td>{{$i}}</td>
+                                            <td class="text-center">
+                                                <div >
+                                                    <span class="btn btn-sm checkItem" aria-checked="false" id="{{$user->id}}"> <i class="material-icons" style="color:red">cancel</i> </span>
                                                 </div>
                                             </td>
-                                            <td>{{$withdrawal->timeout}}</td>
-                                            <td style="color: {{$withdrawal->color}} ">{{ date('M D , Y h:i:A' , strtotime($withdrawal->created_at))}}</td>
+                                            <td>{{$user->fullName() ?? ''}}</td>
+                                            <td><a href="#"data-toggle="modal" data-target="#view_item_{{$user->id}}"  class="btn btn-primary btn-sm"> View Bank</a></td>
+                                            <td>{{ format_money($user->amount) }}</td>
+                                            <td>{{ date('M D , Y h:i:A' , strtotime($user->created_at))}}</td>
                                         </tr>
+
+                                        <div class="modal fade" id="view_item_{{$user->id}}" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Bank Information</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Bank Name:</b> {{$user->bank->bank_name}}
+                                                            </div>
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Account Name:</b> {{$user->bank->account_name}}
+                                                            </div>
+                                                            <div class="col-md-12 mb-2">
+                                                                <b>Account Number:</b> {{$user->bank->account_number}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                        <form method="post" action="{{ route('approve_investments') }}">@csrf
+                            <input type="hidden" name="items" id="inputItems" required aria-required="true">
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-sm btn-primary mt-5" id="approveBtn">Approve</button>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Withdrawal;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WithdrawalsController extends Controller
 {
@@ -15,54 +18,51 @@ class WithdrawalsController extends Controller
     }
 
     public function pending(){
-        $withdrawals = Withdrawal::where('status','Pending')->orderby('created_at','desc')->get();
-        foreach($withdrawals as $withdrawal){
-            $withdrawal['color'] = 'green';
-            $withdrawal['timeout'] = Carbon::parse($withdrawal->created_at)->longRelativeToNowDiffForHumans();
-            if(Carbon::parse($withdrawal->created_at)->diffInHours(now() , false) > 23){
-                $withdrawal['color'] = 'blue';
-            }
-            if(Carbon::parse($withdrawal->created_at)->diffInHours(now() , false) > 47){
-                $withdrawal['color'] = 'red';
-            }
-
-        }
-        return view('admin.withdrawals.pending',compact('withdrawals'));
+        $users = User::where('wallet' , '>' , '0')->wherehas('bank')->orderby('wallet','desc')->get();
+        return view('admin.withdrawals.pending',compact('users'));
     }
 
-    /**
-     * Approve investments.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function process(Request $request)
-    {
+
+    public function approve(Request $request){
         $data = $request->validate([
-            'withdrawal_id' => 'required|string'
+            'items' => 'required|string'
         ]);
-        $withdrawal = $this->Withdrawal->find($data['withdrawal_id']);
-        if(empty($withdrawal)){
-            return redirect()->back()->with('error_msg','Withdrawal not found!');
+        $items = explode(',',$data['items']);
+        try{
+            DB::beginTransaction();
+            foreach($items as $item){
+                $user = $this->User->find($item);
+                if(!empty($user)){
+
+
+                    $with = Withdrawal::create([
+                        'admin_id' => auth()->id(),
+                        'user_id' => $user->id,
+                        'amount' => $user->wallet,
+                        'bank_name' => $user->bank->bank_name ?? '',
+                        'account_name' => $user->bank->account_name ?? '',
+                        'account_number' => $user->bank->account_number ?? '',
+                    ]);
+
+                    $user->wallet -= $with->amount;
+                    $user->save();
+                    //Send email to users
+                    // $this->sendNotificationMail([
+                    //     'title' => 'Investment Approved!',
+                    //     'email' => $investment->user->email,
+                    //     'description' => 'We are pleased to notify you that your investment request has been approved!',
+                    //     'message' => 'Please check for the investment details with reference no. #'.$investment->reference,
+                    // ]);
+                }
+            }
+            DB::commit();
+            return redirect()->back()->with('success_msg','Withdrawal history stored successfully!');
         }
-        $this->Withdrawal->update($withdrawal->id , ['status'  => $this->processingStatus]);
-        // Send mail to user
-        return redirect()->back()->with('success_msg','Withdrawal successfully updated!');
+        catch(Exception $e){
+            DB::rollback();
+            return redirect()->back()->with('error_msg','Error message: '.$e->getMessage());
+        }
     }
 
-    public function cancel(Request $request)
-    {
-        $data = $request->validate([
-            'withdrawal_id' => 'required|string',
-            'comment' => 'required|string',
-        ]);
-        $withdrawal = $this->Withdrawal->find($data['withdrawal_id']);
-        if(empty($withdrawal)){
-            return redirect()->back()->with('error_msg','Withdrawal not found!');
-        }
-        $this->Withdrawal->update($withdrawal->id , ['status'  => $this->cancelledStatus]);
-        // Send mail to user with the comment
-        return redirect()->back()->with('success_msg','Withdrawal successfully updated!');
-    }
 
 }

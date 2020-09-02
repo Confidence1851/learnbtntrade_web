@@ -52,13 +52,13 @@
                                             <td>{{$course->getStatus()}}</td>
                                             <td>{{$course->created_at->format('M D d, Y')}}</td>
                                             <td>
-                                                <form  action="{{ route('course.details.destroy',$course) }}" method="POST">
+                                                <form  action="{{ route('course.test.details.destroy',$course) }}" method="POST">
                                                     @method('delete')
                                                     @csrf
-                                                    <a href="{{ route('course.details.show',$course) }}" class="btn btn-info btn-xs">
+                                                    <a href="{{ route('course.test.details.show',$course) }}" class="btn btn-info btn-xs">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
-                                                    <a href="{{ route('course.details.edit',$course) }}" class="btn btn-success btn-xs">
+                                                    <a href="{{ route('course.test.details.edit',$course) }}" class="btn btn-success btn-xs">
                                                         <i class="material-icons">edit</i>
                                                     </a>
                                                     <button type="submit" class="btn btn-danger btn-xs"  onclick=" return confirm('Are you sure you want to delete this item? All comments would also be deleted!');">

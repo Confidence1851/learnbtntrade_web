@@ -33,7 +33,7 @@
                     <div class=" col-md-12 m-b30">
                         <div class="dlab-accordion  box-sort-in m-b30 space active-bg accdown1" id="accordion001">
                             @foreach($orders as $order)
-                            <div class="panel">
+                            <div class="panel mb-2">
                                 <div class="acod-head">
                                     <h6 class="acod-title"> <a href="javascript:void(0);" data-toggle="collapse" data-target="#collapse_{{$order->id}}" aria-expanded="true">
                                         <div class="row">
