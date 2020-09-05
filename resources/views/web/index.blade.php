@@ -93,7 +93,7 @@
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[0,0,0,0]"
 									style="z-index: 6; min-width: 800px; max-width: 800px; font-weight: 600; white-space: normal; color: #232323; font-family:'Merriweather', serif;">
-									Welcome To Learnbtctrade Academy
+									{{-- Welcome To Learnbtctrade Academy --}}
 								</div>
 								<!-- LAYER NR. 3 -->
 								<div class="tp-caption"
@@ -115,7 +115,7 @@
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[0,0,0,0]"
                                     style="z-index: 7; min-width: 640px; max-width: 640px; font-weight: 700; font-size: 18px; line-height: 30px; font-weight: 400; color: #fff; font-family: 'Roboto',sans-serif;">
-                                    Home For Wealth Creation through Blockchain Education.
+                                    {{-- Home For Wealth Creation through Blockchain Education. --}}
 								</div>
 								<!-- LAYER NR. 5 -->
 								<a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"

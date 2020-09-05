@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Traits\Constants;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CourseSectionResource extends Model
 {
-    use Constants;
+    use Constants , SoftDeletes;
     protected $guarded = [];
 
     public function getStatus(){

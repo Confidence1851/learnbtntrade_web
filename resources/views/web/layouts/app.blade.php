@@ -5,7 +5,8 @@
     @endphp
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="keywords" content="{{ $meta_keywords ?? 'learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy' }}" />
 	<meta name="author" content="Confidence Ugolo" />
 	<meta name="robots" content="" />
@@ -132,7 +133,7 @@
                                     <div class="avatar_box">
                                         <img src="{{ auth('web')->user()->getAvatar()}}"  class="img-responsive img-rounded" alt="">
                                     </div>
-                                    <span class="mt-3">
+                                    <span class="mt-3 ml-2">
                                         {{ auth('web')->user()->fullName() }}
                                     </span>
                                 </li>
@@ -181,7 +182,7 @@
     @if (session()->has('error_flash'))
         <div id="error_flash_msg">{{ session()->get('error_flash') ?? ''}}</div>
     @endif
-    
+
     </div>
     @php
         $hide_footer = $hide_footer ?? false;

@@ -23,6 +23,7 @@ class CreateCourseCategoriesTable extends Migration
             $table->tinyinteger('featured')->default(0);
             $table->tinyinteger('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

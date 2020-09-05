@@ -23,6 +23,7 @@ class CreateCourseSectionResourcesTable extends Migration
             $table->tinyinteger('status')->default(0);
             $table->foreign('course_section_id')->references('id')->on('course_sections')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

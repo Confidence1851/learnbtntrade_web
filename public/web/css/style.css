@@ -3989,6 +3989,7 @@ blockquote:before {
     height: auto;
     width: 100%;
     max-width: 180px;
+    max-height: 180px;
 }
 
 .logo-header span,

@@ -125,10 +125,14 @@ class CourseController extends Controller
         foreach($test->questions as $question){
 
             $text = $request->answer['text_'.$question->id];
-            $file = $request->answer['file_'.$question->id];
-            if(!empty($file)){
-                $file = putFileInPrivateStorage($file , $this->courseTestAnswerPath);
+            $file = null;
+            if(array_key_exists('file_'.$question->id , $request->answer )){
+                $file = $request->answer['file_'.$question->id];
+                if(!empty($file)){
+                    $file = putFileInPrivateStorage($file , $this->courseTestAnswerPath);
+                }
             }
+
             $itemData = [
                 'user_id' => auth()->id(),
                 'course_test_question_id' => $question->id,

@@ -6,11 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\Constants;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravolt\Avatar\Avatar;
 
 class User extends Authenticatable  //implements MustVerifyEmail
 {
-    use Notifiable , Constants;
+    use Notifiable , Constants , SoftDeletes;
 
     protected static $logFillable  = true;
 
