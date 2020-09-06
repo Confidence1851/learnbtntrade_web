@@ -38,13 +38,13 @@
                         </div>
                     @endforeach
                 </div>
-                @if($course->activeTests->count() > 0)
+                {{-- @if($course->activeTests->count() > 0)
                     <div class="section_footer text-center">
                         <a href="{{ route('my_courses.take_test' ,  ['id' => $section->course->id , 'slug' => $section->course->slug])}}" >
                             Take Test
                         </a>
                     </div>
-                @endif
+                @endif --}}
             </div>
         </div>
     </div>
@@ -65,7 +65,12 @@
 
     $(document).ready(function(){
         loadVideo('{{$this_section->title}}' ,'{{ route('my_courses.section_video', encrypt($this_section->id)) }}');
-    })
+    });
+
+    function getVideoData(title , url){
+        
+    }
+
 
     function loadVideo(title , url){
         $('.section_header').text(title);

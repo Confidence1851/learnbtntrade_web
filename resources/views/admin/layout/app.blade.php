@@ -298,6 +298,9 @@
                             <li class="{{$activePage == 'course_all' ? 'active' : ''}}">
                                 <a href="{{ route('course.details.index') }}">Course Details</a>
                             </li>
+                            {{-- <li class="{{$activePage == 'assignments' ? 'active' : ''}}">
+                                <a href="{{ route('course.assignments.index') }}">Course Assignments</a>
+                            </li> --}}
                         </ul>
                     </li>
 

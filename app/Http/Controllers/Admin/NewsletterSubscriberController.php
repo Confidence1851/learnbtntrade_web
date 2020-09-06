@@ -19,11 +19,11 @@ class NewsletterSubscriberController extends Controller
     }
 
     public function create(){
-        $emails = NewsletterSubscriber::orderby('firstname','asc')->get();
+        $emails = NewsletterSubscriber::orderby('name','asc')->get();
         return view('admin.newsletter.new',compact('emails'));
     }
 
-    public function send_letters(Request $request){
+    public function send(Request $request){
 
         $data = $request->validate([
             'title' => 'nullable|string',
@@ -32,18 +32,17 @@ class NewsletterSubscriberController extends Controller
             'recipients' => 'nullable|string'
 
           ]);
-         //  dd($data);
          $recipients = explode(',',$data['recipients']);
-         // dd($recipients);
+        //  dd($recipients);
          $emails = array();
          foreach($recipients as $recipient){
              array_push($emails,NewsletterSubscriber::where('id',$recipient)->first());
          }
 
 
-         // dd($emails);
+        //  dd($emails);
          foreach($emails as $email){
-             $name = $email->firstname;
+             $name = $email->name;
              $data['email'] = $email->email;
              $data['subject'] = Str::replaceArray('{{name}}', [$name,$name,$name,$name,$name,$name,$name,$name,$name,$name] ,$data['subject']);
              $data['message'] = Str::replaceArray('{{name}}', [$name,$name,$name,$name,$name,$name,$name,$name,$name,$name] ,$data['message']);

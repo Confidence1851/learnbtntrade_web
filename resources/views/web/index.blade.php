@@ -18,105 +18,7 @@
                                 <!-- LAYER NR. 1 -->
 
 								<!-- LAYERS -->
-								<div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer"
-									data-x="['center','center','center','center']"
-									data-hoffset="['0','0','0','0']"
-									data-y="['middle','middle','middle','middle']"
-									data-voffset="['0','0','0','0']"
-									data-width="full" data-height="full"
-									data-whitespace="nowrap"
-									data-type="shape"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-									data-frames='[{"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}]'
-									data-textAlign="['left','left','left','left']"
-									data-paddingtop="[0,0,0,0]"
-									data-paddingright="[0,0,0,0]"
-									data-paddingbottom="[0,0,0,0]"
-									data-paddingleft="[0,0,0,0]"
-									style="z-index: 2;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
-									<!-- LAYER NR. 1 -->
-                                <!-- BACKGROUND VIDEO LAYER -->
-
-                        {{--
-                                <div class="rs-background-video-layer"
-									data-forcerewind="on"
-									data-volume="mute"
-									data-videowidth="100%"
-									data-videoheight="100%"
-                                    data-videomp4="{{ $web_source }}/video/video2.mp4"
-									data-videopreload="auto"
-									data-videoloop="loop"
-									data-aspectratio="16:9"
-									data-autoplay="true"
-									data-autoplayonlyfirsttime="false">
-                                </div>
-                        --}}
-
-								<div class="tp-caption tp-shape tp-shapewrapper ov-tp "
-									id="slide-100-layer-1"
-									data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-									data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-									data-width="full"
-									data-height="full"
-									data-whitespace="nowrap"
-									data-type="shape"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-									data-frames='[{"delay":10,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1500,"frame":"999","to":"opacity:0;","ease":"Power4.easeIn"}]'
-									data-textAlign="['inherit','inherit','inherit','inherit']"
-									data-paddingtop="[0,0,0,0]"
-									data-paddingright="[0,0,0,0]"
-									data-paddingbottom="[0,0,0,0]"
-									data-paddingleft="[0,0,0,0]"
-									style="z-index: 5;">
-								</div>
-								<div class="tp-caption "
-									id="slide-100-layer-3"
-									data-x="['center','center','center','center']" data-hoffset="['-90','45','0','0']"
-									data-y="['middle','middle','middle','middle']" data-voffset="['-90','-100','-80','-90']"
-									data-fontsize="['65','50','40','30']"
-									data-lineheight="['75','60','50','40']"
-									data-letterspacing="['2','2','2','2']"
-									data-width="['1000','900','768','360']"
-									data-height="none"
-									data-whitespace="['normal','nowrap','normal','normal']"
-									data-type="text"
-									data-responsive_offset="off"
-									data-responsive="off"
-									data-frames='[{"delay":900,"speed":2000,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:1.1;sY:1.1;skX:0;skY:0;opacity:0;","color":"#000000","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","color":"#000000","to":"opacity:0;","ease":"nothing"}]'
-									data-textAlign="['left','left','center','center']"
-									data-paddingtop="[0,0,0,0]"
-									data-paddingright="[10,10,0,0]"
-									data-paddingbottom="[0,0,0,0]"
-									data-paddingleft="[0,0,0,0]"
-									style="z-index: 6; min-width: 800px; max-width: 800px; font-weight: 600; white-space: normal; color: #232323; font-family:'Merriweather', serif;">
-									{{-- Welcome To Learnbtctrade Academy --}}
-								</div>
-								<!-- LAYER NR. 3 -->
-								<div class="tp-caption"
-									id="slide-100-layer-4"
-									data-x="['center','center','center','center']" data-hoffset="['-265','-165','0','0']"
-									data-y="['middle','middle','middle','middle']" data-voffset="['50','15','20','10']"
-									data-fontsize="['18','16','14','14']"
-									data-lineheight="['30','30','26','26']"
-									data-width="['640','481','500','300']"
-									data-height="none"
-									data-whitespace="normal"
-									data-type="text"
-									data-responsive_offset="off"
-									data-responsive="off"
-									data-frames='[{"delay":900,"speed":2000,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:1.1;sY:1.1;skX:0;skY:0;opacity:0;","color":"#000000","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","color":"#000000","to":"opacity:0;","ease":"nothing"}]'
-									data-textAlign="['left','left','center','center']"
-									data-paddingtop="[0,0,0,0]"
-									data-paddingright="[0,0,0,0]"
-									data-paddingbottom="[0,0,0,0]"
-									data-paddingleft="[0,0,0,0]"
-                                    style="z-index: 7; min-width: 640px; max-width: 640px; font-weight: 700; font-size: 18px; line-height: 30px; font-weight: 400; color: #fff; font-family: 'Roboto',sans-serif;">
-                                    {{-- Home For Wealth Creation through Blockchain Education. --}}
-								</div>
+								 <!-- BACKGROUND VIDEO LAYER -->
 								<!-- LAYER NR. 5 -->
 								<a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"
 									href="{{ route('about_us') }}" target="_blank"
@@ -137,11 +39,16 @@
 									data-paddingleft="[30,30,30,20]"
 									style="z-index: 8;letter-spacing: 2px; white-space: nowrap; font-size: 12px; font-weight: 600; color: rgba(255,255,255,1);  text-transform: uppercase; border-radius:4px;"> About Us
 								</a>
-								<!-- LAYER NR. 5 -->
-								{{-- <a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"
-									href="{{ route('services.plans') }}" target="_blank"
-									id="slide-100-layer-6"
-									data-x="['center','center','center','center']" data-hoffset="['-360','-180','70','65']"
+
+                            </li>
+                            <li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<!-- MAIN IMAGE -->
+								<img src="{{ $web_source }}/images/main-slider/slider2.jpeg"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slider2.jpeg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
+
+								<a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"
+									href="{{ route('about_us') }}" target="_blank"
+									id="slide-100-layer-5"
+									data-x="['center','center','center','center']" data-hoffset="['-515','-340','-85','-65']"
 									data-y="['middle','middle','middle','middle']" data-voffset="['140','100','100','100']"
 									data-lineheight="['18','18','18','18']"
 									data-whitespace="nowrap"
@@ -155,8 +62,9 @@
 									data-paddingright="[30,30,30,20]"
 									data-paddingbottom="[15,15,15,10]"
 									data-paddingleft="[30,30,30,20]"
-									style="z-index: 8;letter-spacing: 2px; white-space: nowrap; font-size: 12px; font-weight: 600; color: rgba(255,255,255,1);  text-transform: uppercase; border-radius:4px;"> Services
-								</a> --}}
+									style="z-index: 8;letter-spacing: 2px; white-space: nowrap; font-size: 12px; font-weight: 600; color: rgba(255,255,255,1);  text-transform: uppercase; border-radius:4px;"> About Us
+								</a>
+
                             </li>
 						</ul>
 						<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
@@ -232,7 +140,7 @@
             <div class="container">
                 <div class="row service-area-one">
                     <div class="col-lg-4 m-b30 hidden-sm">
-                        <div class="rdx-thu"><img src="{{ $web_source }}/images/student1.png" alt=""></div>
+                        <div class="rdx-thu"><img src="{{ $web_source }}/images/services.jpeg" alt=""></div>
                     </div>
                     <div class="col-lg-8">
                         <div class="section-head">

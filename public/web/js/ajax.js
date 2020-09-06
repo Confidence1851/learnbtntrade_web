@@ -119,3 +119,42 @@ function hideSpinner(item_id) {
     $('.cart_btn_' + item_id).removeAttr('disabled');
     $('.cart_btn_spinner_' + item_id).addClass('d-none');
 }
+
+
+
+
+$('.cart_ajax_form').on('submit', function(e) {
+    e.preventDefault();
+    var formdata = new FormData($(this)[0]);
+    var item_id = $(this).attr('item_id');
+    var url = $(this).attr('action');
+    var hide = $(this).hasClass('hideItem');
+    showSpinner(item_id);
+
+    $.ajax({
+        url: url,
+        type: 'Post',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata,
+        success: function(data) {
+            if (data.success) {
+                successMsg("Success", data.msg);
+                $('.course_cart_input_' + item_id).val(data.item_id);
+                $('.cart_btn_text_' + item_id).text(data.title);
+                $('.cart_btn_' + item_id).attr('title', data.title);
+                $('.cart_form_' + item_id).attr('action', data.action);
+
+                if (hide) {
+                    $('.cartItem_' + item_id).addClass('d-none');
+                }
+            } else {
+                errorMsg("Error", data.msg);
+            }
+            updateCart(data.quantity, data.price, data.discount, data.total);
+            hideSpinner(item_id);
+        }
+
+    });
+});

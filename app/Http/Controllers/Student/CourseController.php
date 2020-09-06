@@ -49,6 +49,26 @@ class CourseController extends Controller
     }
 
 
+    public function get_section($id){
+        $section = $this->CourseSection->find(decrypt($id));
+        $check = $this->validateAccess($section->course_id);
+        if(!$check){
+            return response()->json([
+                'success' => false,
+                'msg' => 'You don`t have access to this resource',
+                'data' => null
+            ]);
+        }
+        session()->put('section_key' , encrypt(now()));
+        return response()->json([
+            'success' => false,
+            'msg' => 'You don`t have access to this resource',
+            'data' => null
+        ]);
+    }
+
+
+
     public function section_video($id){
         $section = $this->CourseSection->find(decrypt($id));
         $check = $this->validateAccess($section->course_id);

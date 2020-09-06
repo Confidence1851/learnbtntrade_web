@@ -62,6 +62,7 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
         Route::get('/index', 'CourseController@my_courses')->name('index');
         Route::get('/go-to-course/{id}/{slug}', 'CourseController@go_to_course')->name('go_to_course');
         Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
+        Route::get('/get/section/{id}', 'CourseController@get_section')->name('get_section');
         Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
         Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
         Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
@@ -162,6 +163,7 @@ Route::middleware('auth')->group(function (){
             Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
             Route::resource('comments','BlogCommentController');
             Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
+            Route::resource('assignments','CourseAssignmentController');
 
             Route::prefix('test')->as('test.')->group(function () {
                 Route::get('details/create/{id}','CourseTestController@create')->name('details.create');
@@ -198,7 +200,8 @@ Route::middleware('auth')->group(function (){
         Route::resource('logs','LogsController');
 
         Route::get('/referrals/index', 'HomeController@referrals')->name('referrals.index');
-        Route::resource('newsletters','NewsLettersSubscriberController');
+        Route::resource('newsletters','NewsletterSubscriberController');
+        Route::post('newsletters/send','NewsletterSubscriberController@send')->name('newsletters.send');
 
 
     });

@@ -158,7 +158,7 @@
             <!-- #END# Exportable Table -->
         </div>
 @stop
-S
+
 @section('scripts')
     <!-- Ckeditor -->
     <script src="{{asset($admin_source)}}/plugins/ckeditor/ckeditor.js"></script>
