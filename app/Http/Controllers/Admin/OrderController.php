@@ -109,9 +109,9 @@ class OrderController extends Controller
         }
         foreach($order->items as $item){
             if(!empty($item->course_id)){
-                // if(!empty($course = $item->course)){
-                //     Do something
-                // }
+                if(!empty($course = $item->course)){
+                   
+                }
             }
             else{
                 if(!empty($plan = $item->plan)){

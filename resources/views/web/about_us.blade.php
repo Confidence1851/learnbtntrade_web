@@ -28,9 +28,9 @@
                 <div class="row align-item-center about-three">
                     <div class="col-lg-6 p-lr0">
                         <div class="video-bx about-video">
-                            <img src="{{ $web_source }}/images/about/about3.jpg" class="img-cover" alt=""/>
+                            <video src="{{ $web_source }}/video/about_us.mp4"></video>
                             <div class="video-play-icon">
-                                <a href="https://www.youtube.com/watch?v=f4Bts39jimI" class="popup-youtube video"><i class="fa fa-play"></i></a>
+                                <a href="{{ $web_source }}/video/about_us.mp4" class="popup-youtube video"><i class="fa fa-play"></i></a>
                             </div>
                         </div>
                     </div>

@@ -75,46 +75,67 @@ Once you purchase a course, you have a lifetime access to all the features liste
 course you bought. Due to you having a lifetime access to the content, there are no refunds once you
 purchase from The LEARNBTCTRADE Academy. The one-time fee you pay is non-refundable.
 </p>
-PROHIBITED ACTIVITIES
+
+<h5 class="mt-3">PROHIBITED ACTIVITIES</h5>
+<p>
 You may not access or use the Site for any purpose other than that for which we make the Site available.
 The Site may not be used in connection with any commercial endeavors except those that are
 specifically endorsed or approved by us.
 As a user of the Site, you agree not to:
+<br>
 1. Systematically retrieve data or other content from the Site to create or compile, directly or indirectly,
 a collection, compilation, database, or directory without written permission from us.
+<br>
 2. Circumvent, disable, or otherwise interfere with security-related features of the Site, including
 features that prevent or restrict the use or copying of any Content or enforce limitations on the use of
 the Site and/or the Content contained therein.
+<br>
 3. Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Site.
+<br>
 4. Use any information obtained from the Site in order to harass, abuse, or harm another person.
+<br>
 5. Make improper use of our support services or submit false reports of abuse or misconduct.
+<br>
 6. Use the Site in a manner inconsistent with any applicable laws or regulations.
+<br>
 7. Engage in unauthorized framing of or linking to the Site.
+<br>
 8. Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material,
 including excessive use of capital letters and spamming (continuous posting of repetitive text), that
 interferes with any party’s uninterrupted use and enjoyment of the Site or modifies, impairs, disrupts,
 alters, or interferes with the use, features, functions, operation, or maintenance of the Site.
+<br>
 9. Engage in any automated use of the system, such as using scripts to send comments or messages, or
 using any data mining, robots, or similar data gathering and extraction tools.
+<br>
 10. Sell or otherwise transfer your profile.
+<br>
 11. Attempt to bypass any measures of the Site designed to prevent or restrict access to the Site, or any
 portion of the Site.
+<br>
 12. Copy or adapt the Site’s software, including but not limited to Flash, PHP, HTML, JavaScript, or other
 code.
+<br>
 13. Decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way
 making up a part of the Site.
+<br>
 14. Except as may be the result of standard search engine or Internet browser usage, use, launch,
 develop, or distribute any automated system, including without limitation, any spider, robot, cheat
 utility, scraper, or offline reader that accesses the Site, or using or launching any unauthorized script or
 other software.
+<br>
 15. Use a buying agent or purchasing agent to make purchases on the Site.
+<br>
 16. Make any unauthorized use of the Site, including collecting usernames and/or email addresses of
 users by electronic or other means for the purpose of sending unsolicited email, or creating user
 accounts by automated means or under false pretenses.
+<br>
 17. Use the Site as part of any effort to compete with us or otherwise use the Site and/or the Content
 for any revenue-generating endeavor or commercial enterprise.
+</p>
 
-USER GENERATED CONTRIBUTIONS
+<h5 class="mt-3">USER GENERATED CONTRIBUTIONS</h5>
+<p>
 The Site does not offer users to submit or post content. We may provide you with the opportunity to
 create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials
 to us or on the Site, including but not limited to text, writings, video, audio, photographs, graphics,
@@ -153,8 +174,9 @@ origin, gender, sexual preference, or physical handicap.
 Terms of Use, or any applicable law or regulation.
 Any use of the Site in violation of the foregoing violates these Terms of Use and may result in, among
 other things, termination or suspension of your rights to use the Site.
-
-CONTRIBUTION LICENSE
+</p>
+<h5 class="mt-3">CONTRIBUTION LICENSE</h5>
+<p>
 You and Site agree that we may access, store, process, and use any information and personal data that
 you provide following the terms of the Privacy Policy and your choices (including settings).
 By submitting suggestions or other feedback regarding the Site, you agree that we can use and share
@@ -165,7 +187,10 @@ Contributions. We are not liable for any statements or representations in your C
 by you in any area on the Site. You are solely responsible for your Contributions to the Site and you
 expressly agree to exonerate us from any and all responsibility and to refrain from any legal action
 against us regarding your Contributions.
-GUIDELINES FOR REVIEWS
+</p>
+
+<h5 class="mt-3">GUIDELINES FOR REVIEWS </h5>
+<p></p>
 We may provide you areas on the Site to leave reviews or ratings. When posting a review, you must
 comply with the following criteria: (1) you should have firsthand experience with the person/entity
 being reviewed; (2) your reviews should not contain offensive profanity, or abusive, racist, offensive, or
@@ -182,7 +207,8 @@ our affiliates or partners. We do not assume liability for any review or for any
 resulting from any review. By posting a review, you hereby grant to us a perpetual, non-exclusive,
 worldwide, royalty-free, fully-paid, assignable, and sub licensable right and license to reproduce, modify,
 translate, transmit by any means, display, perform, and/or distribute all content relating to reviews.
-SITE MANAGEMENT
+
+<h5 class="mt-3">SITE MANAGEMENT </h5>
 We reserve the right, but not the obligation, to: (1) monitor the Site for violations of these Terms of Use;
 (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these
 Terms of Use, including without limitation, reporting such user to law enforcement authorities; (3) in our
@@ -192,7 +218,8 @@ discretion and without limitation, notice, or liability, to remove from the Site
 files and content that are excessive in size or are in any way burdensome to our systems; and (5)
 otherwise manage the Site in a manner designed to protect our rights and property and to facilitate the
 proper functioning of the Site.
-PRIVACY POLICY
+
+<h5 class="mt-3">PRIVACY POLICY</h5>
 We care about data privacy and security. By using the Site, you agree to be bound by our Privacy Policy
 posted on the Site, which is incorporated into these Terms of Use. Please be advised the Site is hosted in
 the Nigeria. If you access the Site from the European Union, Asia, or any other region of the world with
@@ -201,7 +228,8 @@ applicable laws in the Nigeria, then through your continued use of the Site, you
 data to the Nigeria, and you expressly consent to have your data transferred to and processed in the
 Nigeria. Further, we do not knowingly accept, request, or solicit information from children or knowingly
 market to children.
-TERM AND TERMINATION
+
+<h5 class="mt-3">TERM AND TERMINATION</h5>
 These Terms of Use shall remain in full force and effect while you use the Site. WITHOUT LIMITING ANY
 OTHER PROVISION OF THESE TERMS OF USE, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND
 WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SITE (INCLUDING BLOCKING CERTAIN
@@ -215,7 +243,8 @@ creating a new account under your name, a fake or borrowed name, or the name of 
 even if you may be acting on behalf of the third party. In addition to terminating or suspending your
 account, we reserve the right to take appropriate legal action, including without limitation pursuing civil,
 criminal, and injunctive redress.
-MODIFICATIONS AND INTERRUPTIONS
+
+<h5 class="mt-3">MODIFICATIONS AND INTERRUPTIONS</h5>
 We reserve the right to change, modify, or remove the contents of the Site at any time or for any reason
 at our sole discretion without notice. However, we have no obligation to update any information on our
 Site. We also reserve the right to modify or discontinue all or part of the Site without notice at any time.
@@ -229,12 +258,15 @@ for any loss, damage, or inconvenience caused by your inability to access or use
 downtime or discontinuance of the Site. Nothing in these Terms of Use will be construed to obligate us
 to maintain and support the Site or to supply any corrections, updates, or releases in connection
 therewith.
-GOVERNING LAW
+
+<h5 class="mt-3">GOVERNING LAW</h5>
 These Terms of Use and your use of the Site are governed by and construed in accordance with the laws
 of Nigeria applicable to agreements made and to be entirely performed within Nigeria, without regard
 to its conflict of law principles.
-DISPUTE RESOLUTION
+
+<h5 class="mt-3">DISPUTE RESOLUTION</h5>
 Informal Negotiations
+<br>
 To expedite resolution and control the cost of any dispute, controversy, or claim related to these Terms
 of Use (each a “Dispute” and collectively, the “Disputes”) brought by either you or us (individually, a
 “Party” and collectively, the “Parties”), the Parties agree to first attempt to negotiate any Dispute
@@ -242,8 +274,9 @@ of Use (each a “Dispute” and collectively, the “Disputes”) brought by ei
 arbitration. Such informal negotiations commence upon written notice from one Party to the other
 Party.
 
+<br>
 Binding Arbitration
-
+<br>
 If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute (except those
 Disputes expressly excluded below) will be finally and exclusively resolved through binding arbitration.
 YOU UNDERSTAND THAT WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT
@@ -261,27 +294,33 @@ applicable AAA rules or applicable law, the arbitration will take place in Niger
 Except as otherwise provided herein, the Parties may litigate in court to compel arbitration, stay
 proceedings pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered
 by the arbitrator.
+<br>
 If for any reason, a Dispute proceeds in court rather than arbitration, the Dispute shall be commenced
 or prosecuted in the state and federal courts located in Nigeria County, California, and the Parties
 hereby consent to, and waive all defenses of lack of personal jurisdiction, and forum non convenience
 with respect to venue and jurisdiction in such state and federal courts. Application of the United Nations
 Convention on Contracts for the International Sale of Goods and the Uniform Computer Information
 Transaction Act (UCITA) is excluded from these Terms of Use.
-
+<br>
 In no event shall any Dispute brought by either Party related in any way to the Site be commenced more
 than one (1) years after the cause of action arose. If this provision is found to be illegal or
 unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this
 provision found to be illegal or unenforceable, and such Dispute shall be decided by a court of
 competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to
 the personal jurisdiction of that court.
+
+<br>
 Restrictions
+<br>
 The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. To
 the full extent permitted by law, (a) no arbitration shall be joined with any other proceeding; (b) there is
 no right or authority for any Dispute to be arbitrated on a class-action basis or to utilize class action
 procedures; and (c) there is no right or authority for any Dispute to be brought in a purported
 representative capacity on behalf of the general public or any other persons.
 
+<br>
 Exceptions to Informal Negotiations and Arbitration
+<br>
 The Parties agree that the following Disputes are not subject to the above provisions concerning
 informal negotiations and binding arbitration: (a) any Disputes seeking to enforce or protect, or
 concerning the validity of, any of the intellectual property rights of a Party; (b) any Dispute related to, or
@@ -290,12 +329,16 @@ injunctive relief. If this provision is found to be illegal or unenforceable, th
 arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and
 such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction
 above, and the Parties agree to submit to the personal jurisdiction of that court.
-CORRECTIONS
+
+
+<h5 class="mt-3">CORRECTIONS</h5>
 There may be information on the Site that contains typographical errors, inaccuracies, or omissions,
 including descriptions, pricing, availability, and various other information. We reserve the right to
 correct any errors, inaccuracies, or omissions and to change or update the information on the Site at any
 time, without prior notice.
-DISCLAIMER
+
+
+<h5 class="mt-3">DISCLAIMER</h5>
 THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SITE
 AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE
 DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND YOUR USE
@@ -318,7 +361,9 @@ APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PA
 OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRDPARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE
 THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND
 EXERCISE CAUTION WHERE APPROPRIATE.
-LIMITATIONS OF LIABILITY
+
+
+<h5 class="mt-3">LIMITATIONS OF LIABILITY</h5>
 IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD
 PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE
 DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING
@@ -330,7 +375,9 @@ PRIOR TO ANY CAUSE OF ACTION ARISING. CERTAIN STATE LAWS DO NOT ALLOW LIMITATION
 IMPLIED WARRANTIES OR THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES. IF THESE LAWS
 APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU,
 AND YOU MAY HAVE ADDITIONAL RIGHTS.
-INDEMNIFICATION
+
+
+<h5 class="mt-3">INDEMNIFICATION</h5>
 You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our
 respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim,
 or demand, including reasonable attorneys’ fees and expenses, made by any third party due to or arising
@@ -343,7 +390,7 @@ indemnify us, and you agree to cooperate, at your expense, with our defense of s
 reasonable efforts to notify you of any such claim, action, or proceeding which is subject to this
 indemnification upon becoming aware of it.
 
-USER DATA
+<h5 class="mt-3">USER DATA</h5>
 We will maintain certain data that you transmit to the Site for the purpose of managing the
 performance of the Site, as well as data relating to your use of the Site. Although we perform regular
 routine backups of data, you are solely responsible for all data that you transmit or that relates to any
