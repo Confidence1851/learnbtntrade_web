@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseTestAnswer;
 use Illuminate\Http\Request;
 
-class CourseAssignment extends Controller
+class CourseAssignmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class CourseAssignment extends Controller
      */
     public function index()
     {
-        Course
+        $answers = CourseTestAnswer::orderby('created_at' , 'desc')->distinct('batch_no')->paginate(100);
+        return view('admin.course_assignments.index' , compact('answers'));
     }
 
     /**
@@ -46,7 +48,9 @@ class CourseAssignment extends Controller
      */
     public function show($id)
     {
-        //
+        $answer = CourseTestAnswer::findorfail($id);
+        $answers = CourseTestAnswer::where('batch_no' , $answer->batch_no)->paginate(100);
+        return view('admin.course_assignments.show' , compact('answers' , 'answer'));
     }
 
     /**

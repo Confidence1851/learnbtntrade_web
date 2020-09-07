@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Referral History' , 'activeGroup'  => 'referrals', 'activePage' => ''])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Course Test Answers' , 'activeGroup'  => 'course', 'activePage' => 'assignments'])
 @section('content')
      <div class="container-fluid">
 
@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                REFERRAL HISTORY
+                                COURSE ASSIGNMENTS
                             </h2>
 
                         </div>
@@ -20,17 +20,22 @@
                                         <tr>
                                             <th></th>
                                             <th>User</th>
-                                            <th>Referred By</th>
+                                            <th>Batch No</th>
                                             <th>Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($referrals as $referral)
+                                        @php($i = 0)
+                                        @foreach($answers as $answer)
+                                        @php($i++)
+
                                         <tr>
-                                            <td></td>
-                                            <td><a href="{{ route('users.show',$referral->user_id) }}">{{$referral->user->fullName()}}</a></td>
-                                            <td><a href="{{ route('users.show',$referral->referrer_id) }}">{{$referral->referrer->fullName()}}</a></td>
-                                            <td>{{ date('Y-m-d, h:i:A',strtotime($referral->created_at)) }}</td>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $answer->user->fullName() }}</td>
+                                            <td>{{ $answer->batch_no }}</td>
+                                            <td>{{ date('Y-m-d, h:i:A',strtotime($answer->created_at)) }}</td>
+                                            <td><a href="{{ route('course.assignments.show' , $answer) }}" class="btn btn-primary btn-sm">View</a></td>
                                         </tr>
 
                                         @endforeach
