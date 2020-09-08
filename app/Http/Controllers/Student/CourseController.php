@@ -34,7 +34,7 @@ class CourseController extends Controller
     public function download_resource($id)
     {
         $resource = $this->CourseSectionResource->find(decrypt($id));
-        $check = $this->validateAccess($resource->course_id);
+        $check = $this->validateAccess($resource->section->course_id);
         if(!$check){
             return view('student.access_denied');
         }

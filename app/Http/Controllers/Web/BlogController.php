@@ -22,14 +22,14 @@ class BlogController extends Controller
             ->where('post_category_id' , $category_id )->paginate(20);
             $category_id = $this->PostCategory->find($category_id);
         }
-        $featured_posts = $this->Post->model()->where('status' , $this->activeStatus)->where('featured' , $this->activeStatus)->limit(10)->get();
+        $featured_posts = $this->Post->model()->where('status' , $this->activeStatus)->where('featured' , $this->activeStatus)->limit(5)->inRandomOrder()->get();
         return view('web.blog' , compact('posts' , 'featured_posts' , 'categories' , 'search_keywords' , 'category_id'));
     }
 
     public function blog_post_info($id , $slug){
         $categories = $this->PostCategory->model()->where('status' , $this->activeStatus)->get();
         $post = $this->Post->find($id);
-        $related_posts = $this->Post->model()->where('status' , $this->activeStatus)->where('post_category_id' , $post->category->id )->limit(10)->get();
+        $related_posts = $this->Post->model()->where('status' , $this->activeStatus)->where('post_category_id' , $post->category->id )->limit(5)->inRandomOrder()->get();
         return view('web.blog_info' , compact('post' , 'categories' , 'related_posts'));
     }
 

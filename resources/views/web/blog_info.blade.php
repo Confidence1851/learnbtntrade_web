@@ -124,7 +124,7 @@
                                 @foreach($related_posts as $posts)
                                     <div class="widget-post clearfix">
                                         <div class="dlab-post-media">
-                                            <img src="{{ getFileFromStorage($post->image) }}" width="200" height="143" alt="">
+                                            <img src="{{ getFileFromStorage($post->image , 'storage') }}" width="200" height="143" alt="">
                                         </div>
                                         <div class="dlab-post-info">
                                             <div class="dlab-post-meta">

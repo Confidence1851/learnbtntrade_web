@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="dlab-post-text">
                                         <p class="limit_content" limit="20">
-                                            {!! $post->body ?? '' !!}
+                                            {!! str_limit(strip_tags($post->body ?? '') , 300) !!}
                                         </p>
                                     </div>
                                     <div class="post-footer">
@@ -114,7 +114,7 @@
                                 @foreach($featured_posts as $posts)
                                 <div class="widget-post clearfix">
                                     <div class="dlab-post-media">
-                                        <img src="{{ getFileFromStorage($post->image) }}" width="200" height="143" alt="">
+                                        <img src="{{ getFileFromStorage($post->image , 'storage') }}" width="200" height="143" alt="">
                                     </div>
                                     <div class="dlab-post-info">
                                         <div class="dlab-post-meta">
