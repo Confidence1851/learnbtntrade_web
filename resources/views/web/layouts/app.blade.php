@@ -32,7 +32,8 @@
 	<script src="{{ $web_source }}/js/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- STYLESHEETS -->
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/style.css">
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/templete.css">

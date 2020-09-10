@@ -4,58 +4,7 @@
 <!-- Content -->
 <div class="page-content bg-white">
    <!-- Slider -->
-	<div class="main-slider style-two default-banner" id="home">
-		<div class="tp-banner-container">
-			<div class="tp-banner" >
-				<div id="welcome_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="reveal-add-on36" data-source="gallery" style="background:#ffffff;padding:0px;">
-					<!-- START REVOLUTION SLIDER 5.4.7.2 fullscreen mode -->
-					<div id="welcome" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.7.2">
-						<ul>
-                            <!-- SLIDE  -->
-                            <li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-								<img src="{{ $web_source }}/images/main-slider/slider2.jpeg"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slider2.jpeg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
-                            </li>
-                            <li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-								<img src="{{ $web_source }}/images/main-slider/slider3.jpeg"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slider3.jpeg" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
-                            </li>
-							<li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-								<!-- MAIN IMAGE -->
-								<img src="{{ $web_source }}/images/main-slider/slider1.png"  alt=""  data-lazyload="{{ $web_source }}/images/main-slider/slider1.png" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Power3.easeInOut" data-scalestart="150" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="4" class="rev-slidebg" data-no-retina>
-                                <!-- LAYER NR. 1 -->
-
-								<!-- LAYERS -->
-								 <!-- BACKGROUND VIDEO LAYER -->
-								<!-- LAYER NR. 5 -->
-								<a class="tp-caption rev-btn tc-btnshadow btnhover14 tp-rs-menulink bg-primary"
-									href="{{ route('about_us') }}" target="_blank"
-									id="slide-100-layer-5"
-									data-x="['center','center','center','center']" data-hoffset="['-515','-340','-85','-65']"
-									data-y="['middle','middle','middle','middle']" data-voffset="['140','100','100','100']"
-									data-lineheight="['18','18','18','18']"
-									data-whitespace="nowrap"
-									data-type="button"
-									data-actions=''
-									data-responsive_offset="off"
-									data-responsive="off"
-									data-frames='[{"delay":900,"speed":2000,"frame":"0","from":"x:-50px;z:0;rX:0;rY:0;rZ:0;sX:1.1;sY:1.1;skX:0;skY:0;opacity:0;fbr:100;","bgcolor":"#000000","to":"o:1;fbr:100;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","bgcolor":"#000000","to":"opacity:0;fbr:100;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"150","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;fbr:90%;","style":"c:rgba(255,255,255,1);"}]'
-									data-textAlign="['center','center','center','center']"
-									data-paddingtop="[15,15,15,10]"
-									data-paddingright="[30,30,30,20]"
-									data-paddingbottom="[15,15,15,10]"
-									data-paddingleft="[30,30,30,20]"
-									style="z-index: 8;letter-spacing: 2px; white-space: nowrap; font-size: 12px; font-weight: 600; color: rgba(255,255,255,1);  text-transform: uppercase; border-radius:4px;"> About Us
-								</a>
-
-                            </li>
-
-						</ul>
-						<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
-					</div>
-				</div>
-				<!-- END REVOLUTION SLIDER -->
-			</div>
-		</div>
-    </div>
+	@include('web.fragments.home_slider')
 
 
     <!-- contact area -->
