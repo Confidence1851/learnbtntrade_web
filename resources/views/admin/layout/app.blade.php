@@ -370,11 +370,23 @@
                         </ul>
                     </li>
 
-                    <li class="{{$activePage == 'withdrawals' ? 'active' : ''}}">
-                        <a href="{{ route('withdrawals.index') }}">
-                            <i class="material-icons">shopping_cart</i>
+                    <li class="{{$activeGroup == 'withdrawals' ? 'active' : ''}}">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">store</i>
                             <span>Withdrawals</span>
                         </a>
+                        <ul class="ml-menu">
+                            <li class="{{$activePage == 'paid' ? 'active' : ''}}">
+                                <a href="{{ route('withdrawals.index') }}">Paid</a>
+                            </li>
+                            <li class="{{$activePage == 'pending' ? 'active' : ''}}">
+                                <a href="{{ route('pending_withdrawals') }}">Pending</a>
+                            </li>
+
+                            {{-- <li class="{{$activePage == 'signal_updates' ? 'active' : ''}}">
+                                <a href="#">Signal Updates</a>
+                            </li> --}}
+                        </ul>
                     </li>
 
 
