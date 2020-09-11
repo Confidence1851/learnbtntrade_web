@@ -145,7 +145,7 @@ class CourseSectionController extends Controller
         }
         $data['slug'] = Str::slug($data['title']);
         $this->CourseSection->update($section->id ,$data);
-        return redirect()->route('course.sections.show' , $section->course_id)->with('success_msg', 'Course section updated successfully!');
+        return redirect()->route('course.details.show' , $section->course_id)->with('success_msg', 'Course section updated successfully!');
     }
 
     /**
