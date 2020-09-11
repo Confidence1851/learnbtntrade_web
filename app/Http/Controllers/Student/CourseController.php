@@ -10,12 +10,13 @@ use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Helpers\VideoStream;
+use Carbon\Carbon;
 
 class CourseController extends Controller
 {
 
     public function take_course($id , $slug){
-        $section = $this->CourseSection->find(decrypt($id));
+        $section = $this->CourseSection->find($id);
 
         $check = $this->validateAccess($section->course_id);
         if(!$check){
@@ -27,13 +28,12 @@ class CourseController extends Controller
                     ->where('course_id', $course->id)
                     ->where('status' , $this->activeStatus)
                     ->orderby('number', 'asc')->get();
-        // session()->put('video_hash' , encrypt(time()));
         return view('student.course_sections' , compact('course' , 'section' , 'sections'));
     }
 
     public function download_resource($id)
     {
-        $resource = $this->CourseSectionResource->find(decrypt($id));
+        $resource = $this->CourseSectionResource->find($id);
         $check = $this->validateAccess($resource->section->course_id);
         if(!$check){
             return view('student.access_denied');
@@ -49,8 +49,28 @@ class CourseController extends Controller
     }
 
 
-    public function get_section($id){
-        $section = $this->CourseSection->find(decrypt($id));
+
+    public function section_video(){
+        $key = 'section_load_video';
+        if(!session()->has($key)){
+            return response()->json([
+                'success' => false,
+                'msg' => 'Could not load  this resource',
+                'data' => null
+            ]);
+        }
+        $hash = decrypt(session()->get($key));
+        $validate = Carbon::parse($hash['hash'])->diffInSeconds(now() , false);
+        if($validate > 3){
+            return response()->json([
+                'success' => false,
+                'msg' => 'Your access to this resource timed out!',
+                'data' => null
+            ]);
+        }
+
+        $section = $this->CourseSection->find($hash['key']);
+        // dump($section->id);
         $check = $this->validateAccess($section->course_id);
         if(!$check){
             return response()->json([
@@ -59,29 +79,36 @@ class CourseController extends Controller
                 'data' => null
             ]);
         }
-        session()->put('section_key' , encrypt(now()));
-        return response()->json([
-            'success' => false,
-            'msg' => 'You don`t have access to this resource',
-            'data' => null
-        ]);
-    }
+        // dd($check);
 
-
-
-    public function section_video($id){
-        $section = $this->CourseSection->find(decrypt($id));
-        $check = $this->validateAccess($section->course_id);
-        if(!$check){
-            return response()->json([
-                'success' => false,
-                'msg' => 'You don`t have access to this resource',
-                'data' => null
-            ]);
-        }
         //  return getFileFromPrivateStorage($section->video);
         $stream = new VideoStream($section->video);
+        // session()->forget($key);
         return $stream->start();
+    }
+
+    public function section_load_video($id){
+        $section = $this->CourseSection->find($id);
+        $check = $this->validateAccess($section->course_id);
+        if(!$check){
+            return response()->json([
+                'success' => false,
+                'msg' => 'You don`t have access to this resource',
+                'data' => null
+            ]);
+        }
+
+        $hash = encrypt(['key' => $section->id, 'hash' => now()]);
+        session()->put('section_load_video' , $hash);
+
+        return response()->json([
+            'success' => true,
+            'msg' => 'Video resource loaded!',
+            'data' => [
+                'title' => $section->title,
+                'url' => route('my_courses.section_video'),
+            ]
+        ]);
     }
 
     public function validateAccess($course_id){
@@ -103,7 +130,7 @@ class CourseController extends Controller
             return view('student.access_denied');
         }
         $section = $this->CourseSection->model()->where('course_id' , $course->id)->first();
-        return redirect()->route('my_courses.take_course' , [ 'id' => encrypt($section->id) , 'slug' => $section->slug ]);
+        return redirect()->route('my_courses.take_course' , [ 'id' => $section->id , 'slug' => $section->slug ]);
     }
 
     public function take_tests($id){

@@ -119,3 +119,34 @@ function hideSpinner(item_id) {
     $('.cart_btn_' + item_id).removeAttr('disabled');
     $('.cart_btn_spinner_' + item_id).addClass('d-none');
 }
+
+
+
+
+$('.section_load_video').on('click', function(e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $.ajax({
+        url: url,
+        type: 'Get',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: null,
+        success: function(data) {
+            if (data.success) {
+                successMsg("Success", data.msg);
+                loadVideo(data.data.title, data.data.url);
+            } else {
+                errorMsg("Error", data.msg);
+            }
+        }
+
+    });
+});
+
+
+function loadVideo(title, url) {
+    $('.section_header').text(title);
+    $('#video_player').attr('src', url);
+}

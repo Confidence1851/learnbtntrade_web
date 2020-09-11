@@ -86,7 +86,7 @@
 
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('my_courses.take_course' , ['id' => encrypt($section->id) , 'slug' => $section->slug ]) }}">
+                                                    <a href="{{ route('my_courses.take_course' , ['id' => $section->id , 'slug' => $section->slug ]) }}">
                                                         <span><i class="fa fa-play m-r10 text-primary"></i>Section {{$section->number}}</span>
                                                     </a>
                                                 </td>
@@ -99,7 +99,7 @@
                                             @endforeach
                                         </table>
                                     </div>
-                                    <div id="review" class="tab-pane comments-area ">
+                                    <div id="review" class="tab-pane comments-area d-none">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-5 m-b30">
                                                 <h5>Average Rating</h5>

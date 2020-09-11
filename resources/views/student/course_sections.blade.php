@@ -1,9 +1,5 @@
 @extends('web.layouts.app' , ['title' => $section->title   , 'activePage' => 'course' , 'meta_keywords' => $section->meta_keywords , 'meta_description' => $section->meta_description , 'hide_footer' => true ])
 @section('content')
-{{-- @php
-    $hash = session()->get('video_hash');
-    session()->forget('video_hash');
-@endphp --}}
   <main class="page-content">
     <div class="container-fluid">
         <div class="row mt-4">
@@ -19,7 +15,7 @@
                             <div class="section_item mb-1">
                                 <div class="row">
                                     <div class="col-10">
-                                        <a href="#" onclick="return loadVideo('{{$this_section->title}}' ,'{{ route('my_courses.section_video', encrypt($this_section->id)) }}')" title="Play {{$this_section->title}}"> {{$this_section->title}}</a>
+                                        <a href="{{ route('my_courses.section_load_video', $this_section->id) }}" class="section_load_video"  title="Play {{$this_section->title}}"> {{$this_section->title}}</a>
                                     </div>
                                     <div class="col-2">
                                         <span onclick="return handleShowResources(section_resource_{{$this_section->id}});">
@@ -31,7 +27,7 @@
                             <div class="section_resources d-none" id="section_resource_{{$this_section->id}}">
                                 @foreach ($this_section->activeResources as $resource)
                                     <div class="section_resource_item">
-                                    <a href="{{ route('my_courses.download_resource' , encrypt($resource->id))}}" title="Download {{$resource->filename}}"  onclick=" return confirm('You are about to download a file. Proceed?');">
+                                    <a href="{{ route('my_courses.download_resource' , $resource->id)}}" title="Download {{$resource->filename}}"  onclick=" return confirm('You are about to download a file. Proceed?');">
                                             <i class="fa fa-file"></i>{{$resource->filename}}
                                         </a>
                                     </div>
@@ -66,18 +62,9 @@
     }
 
     $(document).ready(function(){
-        loadVideo('{{$this_section->title}}' ,'{{ route('my_courses.section_video', encrypt($this_section->id)) }}');
+        loadVideo('{{$section->title}}' ,'{{ route('my_courses.section_load_video',$section->id) }}');
     });
 
-    function getVideoData(title , url){
 
-    }
-
-
-    function loadVideo(title , url){
-        $('.section_header').text(title);
-        $('#video_player').attr('src' , url);
-
-    }
 </script>
 @endsection
