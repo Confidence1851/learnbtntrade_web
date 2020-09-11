@@ -60,14 +60,14 @@ class CourseController extends Controller
             ]);
         }
         $hash = decrypt(session()->get($key));
-        $validate = Carbon::parse($hash['hash'])->diffInSeconds(now() , false);
-        if($validate > 10){
-            return response()->json([
-                'success' => false,
-                'msg' => 'Your access to this resource timed out!',
-                'data' => null
-            ]);
-        }
+        // $validate = Carbon::parse($hash['hash'])->diffInSeconds(now() , false);
+        // if($validate > 10){
+        //     return response()->json([
+        //         'success' => false,
+        //         'msg' => 'Your access to this resource timed out!',
+        //         'data' => null
+        //     ]);
+        // }
 
         $section = $this->CourseSection->find($hash['key']);
         // dump($section->id);
