@@ -1,178 +1,205 @@
-    .course-details .nav-tabs li {
-        width: 33.3333% !important;
-    }
-    
-    .jq-toast-wrap {
-        z-index: 90000000 !important;
-    }
-    
-    #video_player {
-        width: 100%;
-        height: 35vw;
-    }
-    
-    .section_header {
-        font-size: 3vh;
-        margin-bottom: 10px;
-    }
-    
-    .section_item {
-        font-weight: bold;
-        /* margin-bottom: 5px; */
-    }
-    
-    .sections_list {
-        height: 34vw;
-        overflow: scroll;
-        overflow-x: hidden;
-        padding-bottom: 25px;
-    }
-    
-    .message_title {
-        margin-top: 100px;
-    }
-    
-    .check_img {
-        max-width: 300px;
-        min-width: 100px;
-        margin-top: 40px;
-    }
-    
-    @media screen and (max-width: 594px) {
+        .course-details .nav-tabs li {
+            width: 33.3333% !important;
+        }
+        
+        .jq-toast-wrap {
+            z-index: 90000000 !important;
+        }
+        
         #video_player {
             width: 100%;
-            height: 50vh;
+            height: 35vw;
         }
+        
+        .section_header {
+            font-size: 3vh;
+            margin-bottom: 10px;
+        }
+        
+        .section_item {
+            font-weight: bold;
+            /* margin-bottom: 5px; */
+        }
+        
         .sections_list {
-            height: 100%;
+            height: 34vw;
             overflow: scroll;
             overflow-x: hidden;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding-bottom: 25px;
         }
-        #quik-search-btn {
-            display: none;
-        }
+        
         .message_title {
-            margin-top: 20px !important;
+            margin-top: 100px;
+        }
+        
+        .check_img {
+            max-width: 300px;
+            min-width: 100px;
+            margin-top: 40px;
+        }
+        
+        @media screen and (max-width: 594px) {
+            #video_player {
+                width: 100%;
+                height: 50vh;
+            }
+            .sections_list {
+                height: 100%;
+                overflow: scroll;
+                overflow-x: hidden;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            #quik-search-btn {
+                display: none;
+            }
+            .message_title {
+                margin-top: 20px !important;
+                text-align: center;
+            }
+            .resize_95 {
+                width: 95% !important;
+            }
+        }
+        
+        .section_footer {
+            position: relative;
+            bottom: 20px;
+            background-color: lightslategrey;
+            color: aliceblue;
+            padding: 10px;
+        }
+        
+        .section_footer a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .section_resource_item {
+            margin-bottom: 5px;
+        }
+        
+        .section_resource_item i {
+            margin-right: 10px;
+        }
+        
+        .course_cart {
+            color: rgb(26, 26, 129);
+        }
+        
+        .cart_icon_md {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .cart_icon_lg {
+            font-size: 27px;
+            cursor: pointer;
+        }
+        
+        .course_enroll_btn {
+            padding: 0px !important;
+            font-size: 12px;
+            padding: 5px 15px !important;
+            background-color: dodgerblue;
+            color: white;
+        }
+        
+        .course_enroll_btn .spinner {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .cart_float_count {
+            position: relative;
+            bottom: 12px;
+            right: 15px;
+            font-size: 12px;
+            background-color: dodgerblue;
+            color: white;
+            border-radius: 100%;
+            padding: .2em .5em;
+            font-size: 55%;
+            font-weight: 400;
+            line-height: 1.4;
             text-align: center;
+            white-space: nowrap;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            box-sizing: border-box;
         }
-        .resize_95 {
-            width: 95% !important;
+        
+        #floating_menu {
+            position: fixed;
+            top: 70px;
+            background-color: white;
+            width: 200px;
+            height: 300px;
+            padding: 20px;
         }
-    }
-    
-    .section_footer {
-        position: relative;
-        bottom: 20px;
-        background-color: lightslategrey;
-        color: aliceblue;
-        padding: 10px;
-    }
-    
-    .section_footer a {
-        color: white;
-        font-size: 20px;
-    }
-    
-    .section_resource_item {
-        margin-bottom: 5px;
-    }
-    
-    .section_resource_item i {
-        margin-right: 10px;
-    }
-    
-    .course_cart {
-        color: rgb(26, 26, 129);
-    }
-    
-    .cart_icon_md {
-        font-size: 20px;
-        cursor: pointer;
-    }
-    
-    .cart_icon_lg {
-        font-size: 27px;
-        cursor: pointer;
-    }
-    
-    .course_enroll_btn {
-        padding: 0px !important;
-        font-size: 12px;
-        padding: 5px 15px !important;
-        background-color: dodgerblue;
-        color: white;
-    }
-    
-    .course_enroll_btn .spinner {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .cart_float_count {
-        position: relative;
-        bottom: 12px;
-        right: 15px;
-        font-size: 12px;
-        background-color: dodgerblue;
-        color: white;
-        border-radius: 100%;
-        padding: .2em .5em;
-        font-size: 55%;
-        font-weight: 400;
-        line-height: 1.4;
-        text-align: center;
-        white-space: nowrap;
-        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        box-sizing: border-box;
-    }
-    
-    #floating_menu {
-        position: fixed;
-        top: 70px;
-        background-color: white;
-        width: 200px;
-        height: 300px;
-        padding: 20px;
-    }
-    
-    .avatar_box {
-        width: 60px;
-        height: 60px;
-        padding: 4px;
-    }
-    
-    .img-rounded {
-        border-radius: 100%;
-    }
-    
-    .logo_img {
-        width: 70px !important;
-        padding: 5px;
-    }
-    
-    .logo_text {
-        text-align: start !important;
-        font-size: 23px !important;
-        color: #003399 !important;
-        letter-spacing: normal !important;
-        padding-top: 18px;
-        font-weight: bold;
-    }
-    
-    .logo_area {
-        padding-top: 10px;
-    }
-    
-    .shift_sm_pr {
-        float: right;
-    }
-    
-    .user_rating {
-        align-content: center;
-    }
-    
-    .user_rating {
-        align-content: center;
-    }
+        
+        .avatar_box {
+            width: 60px;
+            height: 60px;
+            padding: 4px;
+        }
+        
+        .img-rounded {
+            border-radius: 100%;
+        }
+        
+        .logo_img {
+            width: 70px !important;
+            padding: 5px;
+        }
+        
+        .logo_text {
+            text-align: start !important;
+            font-size: 23px !important;
+            color: #003399 !important;
+            letter-spacing: normal !important;
+            padding-top: 18px;
+            font-weight: bold;
+        }
+        
+        .logo_area {
+            padding-top: 10px;
+        }
+        
+        .shift_sm_pr {
+            float: right;
+        }
+        
+        .user_rating {
+            align-content: center;
+        }
+        
+        .user_rating {
+            align-content: center;
+        }
+        
+        .slider_object {
+            width: 100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top center;
+        }
+        
+        .slider_object .slider_btn_area {
+            position: relative;
+            bottom: -500px;
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        @media screen and (max-width: 594px) {
+            .slider_object {
+                height: 50vh;
+            }
+            .slider_object .slider_btn_area {
+                position: relative;
+                bottom: -200px;
+                width: 80%;
+                margin: 0 auto;
+            }
+        }

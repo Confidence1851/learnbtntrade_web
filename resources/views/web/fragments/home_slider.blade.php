@@ -1,13 +1,39 @@
-<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="height:700px">
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" >
     <div class="carousel-inner">
       <div class="carousel-item active" data-interval="10000">
-        <img src="{{ $web_source }}/images/main-slider/slider2.jpeg"" class="d-block w-100" alt="...">
+        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider2.jpeg)">
+            <div class="slider_btn_area">
+                <a href="" class="btn btn-primary slider_btn">About Us</a>
+            </div>
+        </div>
       </div>
-      <div class="carousel-item" data-interval="2000">
-        <img src="{{ $web_source }}/images/main-slider/slider3.jpeg"" class="d-block w-100" alt="...">
+      <div class="carousel-item" data-interval="10000">
+        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider4.jpeg)">
+            <div class="slider_btn_area">
+                <a href="" class="btn btn-primary slider_btn">About Us</a>
+            </div>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="{{ $web_source }}/images/main-slider/slider1.png"" class="d-block w-100" alt="...">
+      <div class="carousel-item" data-interval="10000">
+        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider3.jpeg)">
+            <div class="slider_btn_area">
+                <a href="" class="btn btn-primary slider_btn">About Us</a>
+            </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="10000">
+        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider1.png)">
+            <div class="slider_btn_area">
+                <a href="" class="btn btn-primary slider_btn">About Us</a>
+            </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="10000">
+        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider5.jpeg)">
+            <div class="slider_btn_area">
+                <a href="" class="btn btn-primary slider_btn">About Us</a>
+            </div>
+        </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
