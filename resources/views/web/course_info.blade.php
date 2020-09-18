@@ -217,27 +217,37 @@
                                         </div>
                                         <div class="comment-respond" id="respond">
                                             @auth
-                                                <div class="section-head">
-                                                    <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
-                                                </div>
-                                                <form class="comment-form review_form" id="review_form" method="post" action="{{ route('our_courses.review_course')}}"> @csrf
-                                                    <div class="user_rating ">
-                                                        <i class="text-yellow fa fa-star-o" data-alt="1" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star-o" data-alt="2" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star-o" data-alt="3" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star-o" data-alt="4" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star-o" data-alt="5" title="regular"></i>
+                                                @if(!in_array($course->id , getMyCourses()->toArray()))
+                                                    <div class="section-head text-center">
+                                                        <h5 class="">ORDER THIS COURSE TO LEAVE A REVIEW</h5>
                                                     </div>
-                                                    <input type="hidden" name="stars" id="stars" required value="">
-                                                    <input type="hidden" name="course_id" required value="{{ $course->id }}">
-                                                    <p class="comment-form-comment">
-                                                        <label for="comment">Comment</label>
-                                                        <textarea rows="8" name="comment" placeholder="Describe your experience" id="comment_field"></textarea>
-                                                    </p>
-                                                    <p class="form-submit">
-                                                        <input type="submit" value="Post Review" class="site-button" id="submit">
-                                                    </p>
-                                                </form>
+                                                @else
+                                                    @if(!hasReviewedCourse($course->id , auth('web')->id()))
+                                                        <div id="review_area">
+                                                            <div class="section-head">
+                                                                <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
+                                                            </div>
+                                                            <form class="comment-form review_form" id="review_form" method="post" action="{{ route('our_courses.review_course')}}"> @csrf
+                                                                <div class="user_rating ">
+                                                                    <i class="text-yellow fa fa-star-o" data-alt="1" title="regular"></i>
+                                                                    <i class="text-yellow fa fa-star-o" data-alt="2" title="regular"></i>
+                                                                    <i class="text-yellow fa fa-star-o" data-alt="3" title="regular"></i>
+                                                                    <i class="text-yellow fa fa-star-o" data-alt="4" title="regular"></i>
+                                                                    <i class="text-yellow fa fa-star-o" data-alt="5" title="regular"></i>
+                                                                </div>
+                                                                <input type="hidden" name="stars" id="stars" required value="">
+                                                                <input type="hidden" name="course_id" required value="{{ $course->id }}">
+                                                                <p class="comment-form-comment">
+                                                                    <label for="comment">Comment</label>
+                                                                    <textarea rows="8" name="comment" placeholder="Describe your experience" id="comment_field"></textarea>
+                                                                </p>
+                                                                <p class="form-submit">
+                                                                    <input type="submit" value="Post Review" class="site-button" id="submit">
+                                                                </p>
+                                                            </form>
+                                                        </div>
+                                                    @endif
+                                                @endif
                                             @else
                                                 <div class="section-head text-center">
                                                     <h5 class="">LOGIN TO LEAVE A REVIEW</h5>
@@ -307,7 +317,7 @@
 </div>
 <!-- Content END-->
 {{-- Templates --}}
-<li class="comment">
+<li class="comment d-none" id="template">
     <div class="comment_container">
         <img class="avatar avatar-60 photo" src="" alt="">
         <div class="comment-text">
@@ -322,10 +332,10 @@
             </div>
             <p class="meta">
                 <strong class="author"></strong>
-                <span><i class="fa fa-clock-o"></i></span>
+                <span class="time"><i class="fa fa-clock-o"></i> </span>
             </p>
             <div class="description">
-                <p></p>
+                <p class="comment_section"></p>
             </div>
         </div>
     </div>

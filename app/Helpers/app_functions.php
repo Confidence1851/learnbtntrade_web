@@ -314,6 +314,15 @@ function getFileType(String $type)
     }
 
 
+    function hasReviewedCourse($course_id ,$user_id){
+        $count = CourseReview::where('user_id' , $user_id)->where('course_id' , $course_id)->count();
+        if($count < 1){
+            return false;
+        }
+        return true;
+    }
+
+
     function getMyCourses(){
         $my_courses = [];
         if(auth('web')->check()){

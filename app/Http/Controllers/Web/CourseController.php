@@ -64,7 +64,8 @@ class CourseController extends Controller
                 'avatar' => $review->user->getAvatar(),
                 'name' => $review->user->fullName(),
                 'date' => date('jS F Y', strtotime($review->created_at)),
-                'comment' => $review->comment
+                'comment' => $review->comment,
+                'stars' => $review->stars,
             ],
         ]);
     }

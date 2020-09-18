@@ -213,12 +213,9 @@ $('#review_form').on('submit', function(e) {
             if (data.success) {
                 successMsg("Success", data.msg);
                 rebuildCourseReview(data.data);
-                $('#review_form #comment_field').val("");
-                $('#review_form #stars').val("");
-                jQuery.each($('#review_form i'), function() {
-                    $(this).removeClass('fa-star');
-                    $(this).addClass('fa-star-o');
-                });
+                $('#review_area').html("");
+                getReviewTemplate(data.review);
+                generateAllStars();
 
             } else {
                 errorMsg("Error", data.msg);
@@ -233,21 +230,25 @@ function getReviewTemplate(data) {
     var avatar = data.avatar;
     var name = data.name;
     var date = data.date;
+    var stars = data.stars;
     var comment = data.comment;
-    var template = $("#comment_template").clone(true, true);
+    var template = $(".comment#template").clone(true, true);
+    console.log(template);
     template.attr("id", null);
-    template.find('#temp_img').attr("src", avatar);
-    template.find('#temp_name').text(name);
-    template.find('#temp_date').text(date);
-    template.find('#temp_comment').html(comment);
+    template.find('img.avatar').attr("src", avatar);
+    template.find('.author').text(name);
+    template.find('.time').append(date);
+    template.find('.user_review_stars').attr('data-rating', stars);
+    template.find('.comment_section').html(comment);
     template.removeClass('d-none');
-    template.appendTo("#comment_list_body");
+    template.appendTo(".commentlist");
 }
 
-
-jQuery.each($('.user_review_stars'), function() {
-    generateStars($(this));
-});
+function generateAllStars() {
+    jQuery.each($('.user_review_stars'), function() {
+        generateStars($(this));
+    });
+}
 
 function generateStars(body) {
     // var body = $('.user_review_stars');
