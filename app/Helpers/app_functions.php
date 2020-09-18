@@ -1,5 +1,6 @@
 <?php
 
+use App\CourseReview;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\OrderItem;
@@ -410,4 +411,69 @@ function getFileType(String $type)
 
     function setActiveCourse($course_id){
         session()->put('active_course_id', $course_id);
+    }
+
+    function getCourseRatingStats($course_id){
+        $ratings = CourseReview::where('course_id' , $course_id)->get();
+        $star5 = 0;
+        $star4 = 0;
+        $star3 = 0;
+        $star2 = 0;
+        $star1 = 0;
+        $count = 0;
+        $total = 0;
+        foreach($ratings as $rating){
+            $count++;
+            $total+= $rating->stars;
+
+            if($rating->stars == 5){
+                $star5++;
+            }
+            if($rating->stars == 4){
+                $star4++;
+            }
+            if($rating->stars == 3){
+                $star3++;
+            }
+            if($rating->stars == 2){
+                $star2++;
+            }
+            if($rating->stars == 1){
+                $star1++;
+            }
+        }
+        $perc5 = $star5 == 0 ? 0 : ($star5 * 100) / $count;
+        $perc4 = $star4 == 0 ? 0 : ($star4 * 100) / $count;
+        $perc3 = $star3 == 0 ? 0 : ($star3 * 100) / $count;
+        $perc2 = $star2 == 0 ? 0 : ($star2 * 100) / $count;
+        $perc1 = $star1 == 0 ? 0 : ($star1 * 100) / $count;
+        $avg = $total == 0 ? 0 : $total / $count;
+
+        return [
+            'stars' => [
+                '5' => [
+                    'count' => $star5,
+                    'percent' => $perc5,
+                ],
+                '4' => [
+                    'count' => $star4,
+                    'percent' => $perc4,
+                ],
+                '3' => [
+                    'count' => $star3,
+                    'percent' => $perc3,
+                ],
+                '2' => [
+                    'count' => $star2,
+                    'percent' => $perc2,
+                ],
+                '1' => [
+                    'count' => $star1,
+                    'percent' => $perc1,
+                ],
+            ],
+            'avg' => number_format($avg , 1),
+            'count' => number_format($count),
+        ];
+
     }

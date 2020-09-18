@@ -106,7 +106,7 @@ class CourseController extends Controller
             'msg' => 'Video resource loaded!',
             'data' => [
                 'title' => $section->title,
-                'url' => route('my_courses.section_video'),
+                'url' => route('my_courses.section_video' , $section->id),
             ]
         ]);
     }

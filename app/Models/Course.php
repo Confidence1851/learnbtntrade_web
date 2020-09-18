@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\CourseReview;
 use App\Traits\Constants;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -71,5 +72,9 @@ class Course extends Model
 
     public function getDuration(){
         return $this->sections()->where('status' , $this->activeStatus)->sum('duration');
+    }
+
+    public function activeReviews(){
+        return $this->hasMany(CourseReview::class)->where('status' , $this->activeStatus);
     }
 }

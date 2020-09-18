@@ -1,5 +1,8 @@
 @extends('web.layouts.app' , ['title' => $course->title   , 'activePage' => 'blog' , 'meta_keywords' => $course->meta_keywords , 'meta_description' => $course->meta_description ])
 @section('content')
+@php
+    $courseRatings = getCourseRatingStats($course->id);
+@endphp
 <!-- Content -->
 <div class="page-content bg-gray">
     <div class="section-full content-inner">
@@ -14,8 +17,8 @@
                                 <div class="course-info-dec">Student(s)</div>
                             </li>
                             <li>
-                                <i class="fa fa-star"></i> <span>0.0</span>
-                                <div class="course-info-dec">Reviews (0)</div>
+                                <i class="fa fa-star"></i> <span>({{$courseRatings['avg']}}</span>
+                                <div class="course-info-dec">Reviews ({{$courseRatings['count']}})</div>
                             </li>
                             <li>
                             <i class="fa fa-clock-o"></i> <span> {{ formatTime($course->getDuration())}}</span>
@@ -52,7 +55,7 @@
                                     <li>
                                         <a data-toggle="tab" href="#review">
                                             <i class="fa fa-comments"></i>
-                                            <span class="title-head">Review </span> <span class="text-primary">(0)</span>
+                                            <span class="title-head">Review </span> <span class="text-primary">({{$courseRatings['count']}})</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -99,15 +102,15 @@
                                             @endforeach
                                         </table>
                                     </div>
-                                    <div id="review" class="tab-pane comments-area d-none">
+                                    <div id="review" class="tab-pane comments-area">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-5 m-b30">
                                                 <h5>Average Rating</h5>
                                                 <div class="icon-bx-wraper bx-style-1 center rating-average">
-                                                    <h2 class="rating-title text-primary">4.5</h2>
+                                                    <h2 class="rating-title text-primary">{{$courseRatings['avg']}}</h2>
                                                     <div class="icon-content">
                                                         <div class="star-rating">
-                                                            <div data-rating="3">
+                                                            <div data-rating="4">
                                                                 <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
                                                                 <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
                                                                 <i class="text-yellow fa fa-star-o" data-alt="3" title="regular"></i>
@@ -115,7 +118,7 @@
                                                                 <i class="text-yellow fa fa-star-o" data-alt="5" title="regular"></i>
                                                             </div>
                                                         </div>
-                                                        <p>100,453 ratings</p>
+                                                        <p>{{$courseRatings['count']}} ratings</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,50 +131,54 @@
                                                                 <span class="input-group">5 stars</span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:100%"></div>
+                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['5']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">5</span>
-                                                            </div>
-                                                        </li>
-                                                        <li class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group">4 stars</span></div>
-                                                            <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:80%"></div>
-                                                            </div>
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group">4</span>
+                                                                <span class="input-group">{{$courseRatings['stars']['5']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">3 stars</span></div>
+                                                                <span class="input-group">4 stars</span>
+                                                            </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:60%"></div>
+                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['4']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">3</span>
+                                                                <span class="input-group">{{$courseRatings['stars']['4']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">2 stars</span></div>
+                                                                <span class="input-group">3 stars</span>
+                                                            </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:40%"></div>
+                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['3']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">2</span>
+                                                                <span class="input-group">{{$courseRatings['stars']['3']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">1 stars</span></div>
+                                                                <span class="input-group">2 stars</span>
+                                                            </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:20%"></div>
+                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['2']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">1</span>
+                                                                <span class="input-group">{{$courseRatings['stars']['2']['count']}}</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group">1 star </span>
+                                                            </div>
+                                                            <div class="bar">
+                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['1']['percent']}}%"></div>
+                                                            </div>
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group">{{$courseRatings['stars']['1']['count']}}</span>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -181,97 +188,60 @@
 
                                         <div id="comments">
                                             <ol class="commentlist">
-                                                <li class="comment">
-                                                    <div class="comment_container">
-                                                        <img class="avatar avatar-60 photo" src="images/testimonials/pic1.jpg" alt="">
-                                                        <div class="comment-text">
-                                                            <div class="star-rating">
-                                                                <div data-rating="3">
-                                                                    <i class="fa fa-star text-yellow" data-alt="1" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="2" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="3" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="4" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
+                                                @foreach ($course->activeReviews as $review)
+                                                    <li class="comment">
+                                                        <div class="comment_container">
+                                                            <img class="avatar avatar-60 photo" src="images/testimonials/pic1.jpg" alt="">
+                                                            <div class="comment-text">
+                                                                <div class="star-rating">
+                                                                    <div data-rating="3">
+                                                                        <i class="fa fa-star text-yellow" data-alt="1" title="regular"></i>
+                                                                        <i class="fa fa-star text-yellow" data-alt="2" title="regular"></i>
+                                                                        <i class="fa fa-star-o text-yellow" data-alt="3" title="regular"></i>
+                                                                        <i class="fa fa-star-o text-yellow" data-alt="4" title="regular"></i>
+                                                                        <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <p class="meta">
+                                                                    <strong class="author">Cobus Bester</strong>
+                                                                    <span><i class="fa fa-clock-o"></i> March 7, 2013</span>
+                                                                </p>
+                                                                <div class="description">
+                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                                 </div>
                                                             </div>
-                                                            <p class="meta">
-                                                                <strong class="author">Cobus Bester</strong>
-                                                                <span><i class="fa fa-clock-o"></i> March 7, 2013</span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                                <li class="comment">
-                                                    <div class="comment_container">
-                                                        <img class="avatar avatar-60 photo" src="images/testimonials/pic2.jpg" alt="">
-                                                        <div class="comment-text">
-                                                            <div class="star-rating">
-                                                                <div data-rating="3">
-                                                                    <i class="fa fa-star text-yellow" data-alt="1" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="2" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="3" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="4" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
-                                                                </div>
-                                                            </div>
-                                                            <p class="meta">
-                                                                <strong class="author">Cobus Bester</strong>
-                                                                <span><i class="fa fa-clock-o"></i> March 7, 2013</span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="comment">
-                                                    <div class="comment_container">
-                                                        <img class="avatar avatar-60 photo" src="images/testimonials/pic3.jpg" alt="">
-                                                        <div class="comment-text">
-                                                            <div class="star-rating">
-                                                                <div data-rating="3">
-                                                                    <i class="fa fa-star text-yellow" data-alt="1" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="2" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="3" title="regular"></i>
-                                                                    <i class="fa fa-star text-yellow" data-alt="4" title="regular"></i>
-                                                                    <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
-                                                                </div>
-                                                            </div>
-                                                            <p class="meta">
-                                                                <strong class="author">Cobus Bester</strong>
-                                                                <span><i class="fa fa-clock-o"></i> March 7, 2013</span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                @endforeach
                                             </ol>
                                         </div>
                                         <div class="comment-respond" id="respond">
-                                            <div class="section-head">
-                                                <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
-                                            </div>
-                                            <form class="comment-form" id="commentform" method="post">
-                                                <div class="user_rating">
-                                                    <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
-                                                    <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
-                                                    <i class="text-yellow fa fa-star" data-alt="3" title="regular"></i>
-                                                    <i class="text-yellow fa fa-star" data-alt="4" title="regular"></i>
-                                                    <i class="text-yellow fa fa-star" data-alt="5" title="regular"></i>
+                                            @auth
+                                                <div class="section-head">
+                                                    <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
                                                 </div>
-                                                <p class="comment-form-comment">
-                                                    <label for="comment">Comment</label>
-                                                    <textarea rows="8" placeholder="Add a Comment" id="comment"></textarea>
-                                                </p>
-                                                <p class="form-submit">
-                                                    <input type="submit" value="Post Comment" class="site-button" id="submit">
-                                                </p>
-                                            </form>
+                                                <form class="comment-form review_form" id="review_form" method="post">
+                                                    <div class="user_rating ">
+                                                        <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star" data-alt="3" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star" data-alt="4" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star" data-alt="5" title="regular"></i>
+                                                    </div>
+                                                    <input type="hidden" name="stars" required value="">
+                                                    <p class="comment-form-comment">
+                                                        <label for="comment">Comment</label>
+                                                        <textarea rows="8" placeholder="Describe your experience" id="comment"></textarea>
+                                                    </p>
+                                                    <p class="form-submit">
+                                                        <input type="submit" value="Post Review" class="site-button" id="submit">
+                                                    </p>
+                                                </form>
+                                            @else
+                                                <div class="section-head text-center">
+                                                    <h5 class="">LOGIN TO LEAVE A REVIEW</h5>
+                                                </div>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>

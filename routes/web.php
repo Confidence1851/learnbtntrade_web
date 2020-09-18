@@ -64,7 +64,7 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
         Route::get('/take-course/{id}/{slug}', 'CourseController@take_course')->name('take_course');
         Route::get('/get/section/{id}', 'CourseController@get_section')->name('get_section');
         Route::get('/section/load/{id}', 'CourseController@section_load_video')->name('section_load_video');
-        Route::get('/section/video', 'CourseController@section_video')->name('section_video');
+        Route::get('/section/video/{id}', 'CourseController@section_video')->name('section_video');
         Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
         Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
         Route::get('/start-tests/{id}', 'CourseController@start_test')->name('start_test');
