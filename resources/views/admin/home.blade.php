@@ -190,7 +190,7 @@
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 d-none">
             <div class="card">
                 <div class="header">
                     <h2>STATISTICS</h2>

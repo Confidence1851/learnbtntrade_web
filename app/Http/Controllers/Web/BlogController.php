@@ -12,13 +12,12 @@ class BlogController extends Controller
         $search_keywords = $request->keywords;
         $category_id = $request->category_id;
         $categories = $this->PostCategory->model()->where('status' , $this->activeStatus)->get();
+        $builder = $this->Post->model()->where('status' , $this->activeStatus)->orderBy('created_at' , 'desc');
         if(empty($category_id)){
-            $posts = $this->Post->model()->where('status' , $this->activeStatus)
-            ->where('title', 'like' , '%'.$search_keywords.'%')->paginate(20);
+            $posts = $builder->where('title', 'like' , '%'.$search_keywords.'%')->paginate(20);
         }
         else{
-            $posts = $this->Post->model()->where('status' , $this->activeStatus)
-            ->where('title', 'like' , '%'.$search_keywords.'%')
+            $posts = $builder->where('title', 'like' , '%'.$search_keywords.'%')
             ->where('post_category_id' , $category_id )->paginate(20);
             $category_id = $this->PostCategory->find($category_id);
         }
