@@ -50,11 +50,12 @@ Route::prefix('our-blog')->as('our_blog.')->group(function () {
     Route::post('/comment', 'Web\BlogController@blog_comment')->name('blog_comment');
 });
 
-Route::prefix('verified-courses')->as('our_courses.')->group(function () {
-    Route::get('/index', 'Web\CourseController@courses')->name('courses');
-    Route::get('/search', 'Web\CourseController@courses')->name('course_search');
-    Route::get('/details/{id}/{slug}', 'Web\CourseController@course_info')->name('course_info');
-    Route::get('/category/{id}/{slug}', 'Web\CourseController@category_courses')->name('category_courses');
+Route::prefix('verified-courses')->as('our_courses.')->namespace('Web')->group(function () {
+    Route::get('/index', 'CourseController@courses')->name('courses');
+    Route::get('/search', 'CourseController@courses')->name('course_search');
+    Route::get('/details/{id}/{slug}', 'CourseController@course_info')->name('course_info');
+    Route::get('/category/{id}/{slug}', 'CourseController@category_courses')->name('category_courses');
+    Route::post('/review', 'CourseController@review_course')->name('review_course');
 });
 
 Route::namespace('Student')->middleware(['auth'])->group(function () {

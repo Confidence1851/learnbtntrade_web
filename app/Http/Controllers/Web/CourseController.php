@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\CourseReview;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,25 @@ class CourseController extends Controller
         $course = $this->Course->find($id);
         $related_courses = $this->Post->model()->where('status' , $this->activeStatus)->where('post_category_id' , $course->category->id )->limit(10)->get();
         return view('web.course_info' , compact('course' , 'categories' , 'related_courses'));
+    }
+
+
+    public function review_course(Request $request){
+        // dd($request->all());
+        $data = $request->validate([
+            'course_id' => 'required|string',
+            'stars' => 'required|string',
+            'comment' => 'required|string',
+        ]);
+
+        $data['user_id'] = auth()->user()->id;
+        $data['status'] = $this->activeStatus;
+        CourseReview::create($data);
+        return response()->json([
+            'success' => true,
+            'msg' => 'Review submitted successfully!',
+            'data' => getCourseRatingStats($data['course_id']),
+        ]);
     }
 
 

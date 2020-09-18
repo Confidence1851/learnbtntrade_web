@@ -111,26 +111,8 @@
                         <div class="widget recent-posts-entry">
                             <h5 class="widget-title style-1">Featured Posts</h5>
                             <div class="widget-post-bx">
-                                @foreach($featured_posts as $posts)
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media">
-                                        <img src="{{ getFileFromStorage($post->image , 'storage') }}" width="200" height="143" alt="">
-                                    </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-date"> <i class="la la-clock"></i> <span> {{ date('d M Y',strtotime($post->created_at)) }}</span> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="dlab-post-header">
-                                            <h6 class="post-title">
-                                            <a href="{{ route('our_blog.blog_post_info' , ['id' => $post->id , 'slug' => $post->slug]) }}">
-                                                    {{ str_limit($post->title) }}
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                @foreach($featured_posts as $relatedPost)
+                                    @include('web.fragments.related_blog_item' , ['relatedPost' => $relatedPost])
                                 @endforeach
                             </div>
                         </div>

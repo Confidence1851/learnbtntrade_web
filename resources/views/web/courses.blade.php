@@ -1,4 +1,4 @@
-@extends('web.layouts.app' , ['title' => 'List of courses'   , 'activePage' => 'course' , 'meta_keywords' => '' , 'meta_description' => '' ])
+@extends('web.layouts.app' , ['title' => 'List of courses'   , 'activePage' => 'courses' , 'meta_keywords' => '' , 'meta_description' => '' ])
 @section('content')
 
 <!-- Content -->
@@ -80,26 +80,8 @@
                         <div class="widget recent-posts-entry">
                             <h5 class="widget-title style-1">Featured Courses</h5>
                             <div class="widget-post-bx">
-                                @foreach($featured_courses as $course)
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media">
-                                        <img src="{{ getFileFromStorage($course->image , 'storage') }}" width="200" height="143" alt="">
-                                    </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-date"> <i class="la la-clock"></i> <span> {{ date('d M Y',strtotime($course->created_at)) }}</span> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="dlab-post-header">
-                                            <h6 class="post-title">
-                                            <a href="{{ route('our_courses.course_info' , ['id' => $course->id , 'slug' => $course->slug]) }}">
-                                                    {{ str_limit($course->title) }}
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                @foreach($featured_courses as $featuredCourse)
+                                    @include('web.fragments.related_courses_item' , ['relatedCourse' => $featuredCourse])
                                 @endforeach
                             </div>
                         </div>

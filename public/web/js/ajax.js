@@ -150,3 +150,118 @@ function loadVideo(title, url) {
     $('.section_header').text(title);
     $('#video_player').attr('src', url);
 }
+
+
+$('#review_form i').on('click', function() {
+    var thisVal = $(this).attr('data-alt');
+    jQuery.each($('#review_form i'), function() {
+
+        var loopVal = $(this).attr('data-alt');
+        if (loopVal == thisVal) {
+            $('#review_form #stars').val(thisVal);
+        }
+        if (loopVal <= thisVal) {
+            $(this).removeClass('fa-star-o');
+            $(this).addClass('fa-star');
+        } else {
+            $(this).removeClass('fa-star');
+            $(this).addClass('fa-star-o');
+        }
+    });
+});
+
+
+function rebuildCourseReview(data) {
+    $('.review_avg').html(data.avg);
+    $('.avg_data_rating').attr('data-rating', data.avg);
+    $('.review_count').html(data.count);
+    $('.star1count').html(data.stars.one.count);
+    $('.star2count').html(data.stars.two.count);
+    $('.star3count').html(data.stars.three.count);
+    $('.star4count').html(data.stars.four.count);
+    $('.star5count').html(data.stars.five.count);
+
+    $('.star1percent').css('width', data.stars.one.percent + '%');
+    $('.star2percent').css('width', data.stars.two.percent + '%');
+    $('.star3percent').css('width', data.stars.three.percent + '%');
+    $('.star4percent').css('width', data.stars.four.percent + '%');
+    $('.star5percent').css('width', data.stars.five.percent + '%');
+
+}
+
+
+
+$('#review_form').on('submit', function(e) {
+    e.preventDefault();
+    if ($('#review_form #stars').val().trim().length < 1) {
+        return alert('Please select a star rating!');
+    }
+    if ($('#review_form #comment_field').val().trim().length < 1) {
+        return alert('Please add a review comment!');
+    }
+    var formdata = new FormData($(this)[0]);
+    var url = $(this).attr('action');
+
+    $.ajax({
+        url: url,
+        type: 'Post',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata,
+        success: function(data) {
+            if (data.success) {
+                successMsg("Success", data.msg);
+                rebuildCourseReview(data.data);
+                $('#review_form #comment_field').val("");
+                $('#review_form #stars').val("");
+                jQuery.each($('#review_form i'), function() {
+                    $(this).removeClass('fa-star');
+                    $(this).addClass('fa-star-o');
+                });
+
+            } else {
+                errorMsg("Error", data.msg);
+            }
+        }
+
+    });
+});
+
+
+function getReviewTemplate(data) {
+    var avatar = data.avatar;
+    var name = data.name;
+    var date = data.date;
+    var comment = data.comment;
+    var template = $("#comment_template").clone(true, true);
+    template.attr("id", null);
+    template.find('#temp_img').attr("src", avatar);
+    template.find('#temp_name').text(name);
+    template.find('#temp_date').text(date);
+    template.find('#temp_comment').html(comment);
+    template.removeClass('d-none');
+    template.appendTo("#comment_list_body");
+}
+
+
+jQuery.each($('.user_review_stars'), function() {
+    generateStars($(this));
+});
+
+function generateStars(body) {
+    // var body = $('.user_review_stars');
+    var rating = body.attr('data-rating');
+    jQuery.each(body.find('i'), function() {
+        var loopVal = $(this).attr('data-alt');
+        console.log(loopVal);
+        console.log(rating);
+        if (loopVal <= rating) {
+            $(this).removeClass('fa-star-o');
+            $(this).addClass('fa-star');
+        } else {
+            $(this).removeClass('fa-star');
+            $(this).addClass('fa-star-o');
+        }
+    });
+}

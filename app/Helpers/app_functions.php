@@ -1,6 +1,6 @@
 <?php
 
-use App\CourseReview;
+use App\Models\CourseReview;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\OrderItem;
@@ -451,23 +451,23 @@ function getFileType(String $type)
 
         return [
             'stars' => [
-                '5' => [
+                'five' => [
                     'count' => $star5,
                     'percent' => $perc5,
                 ],
-                '4' => [
+                'four' => [
                     'count' => $star4,
                     'percent' => $perc4,
                 ],
-                '3' => [
+                'three' => [
                     'count' => $star3,
                     'percent' => $perc3,
                 ],
-                '2' => [
+                'two' => [
                     'count' => $star2,
                     'percent' => $perc2,
                 ],
-                '1' => [
+                'one' => [
                     'count' => $star1,
                     'percent' => $perc1,
                 ],

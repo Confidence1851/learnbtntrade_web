@@ -192,6 +192,14 @@
             margin: 0 auto;
         }
         
+        #review_form .user_rating i.text-yellow {
+            font-size: 25px;
+        }
+        
+        #review_form .user_rating {
+            margin-left: 18px;
+        }
+        
         @media screen and (max-width: 594px) {
             .slider_object {
                 height: 50vh;
@@ -201,5 +209,9 @@
                 bottom: -200px;
                 width: 80%;
                 margin: 0 auto;
+            }
+            #review_form .user_rating {
+                margin: 0 auto;
+                text-align: center;
             }
         }

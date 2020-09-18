@@ -1,4 +1,4 @@
-@extends('web.layouts.app' , ['title' => $course->title   , 'activePage' => 'blog' , 'meta_keywords' => $course->meta_keywords , 'meta_description' => $course->meta_description ])
+@extends('web.layouts.app' , ['title' => $course->title   , 'activePage' => 'courses' , 'meta_keywords' => $course->meta_keywords , 'meta_description' => $course->meta_description ])
 @section('content')
 @php
     $courseRatings = getCourseRatingStats($course->id);
@@ -17,8 +17,8 @@
                                 <div class="course-info-dec">Student(s)</div>
                             </li>
                             <li>
-                                <i class="fa fa-star"></i> <span>({{$courseRatings['avg']}}</span>
-                                <div class="course-info-dec">Reviews ({{$courseRatings['count']}})</div>
+                                <i class="fa fa-star"></i> <span>(<span class="review_avg">{{$courseRatings['avg']}}</span>)</span>
+                                <div class="course-info-dec">Reviews (<span class="review_count">{{$courseRatings['count']}}</span>)</div>
                             </li>
                             <li>
                             <i class="fa fa-clock-o"></i> <span> {{ formatTime($course->getDuration())}}</span>
@@ -55,7 +55,7 @@
                                     <li>
                                         <a data-toggle="tab" href="#review">
                                             <i class="fa fa-comments"></i>
-                                            <span class="title-head">Review </span> <span class="text-primary">({{$courseRatings['count']}})</span>
+                                            <span class="title-head">Review </span> <span class="text-primary ">(<span class="review_count">{{$courseRatings['count']}}</span>)</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -107,18 +107,18 @@
                                             <div class="col-md-4 col-sm-5 m-b30">
                                                 <h5>Average Rating</h5>
                                                 <div class="icon-bx-wraper bx-style-1 center rating-average">
-                                                    <h2 class="rating-title text-primary">{{$courseRatings['avg']}}</h2>
+                                                    <h2 class="rating-title text-primary"><span class="review_avg">{{$courseRatings['avg']}}</span></h2>
                                                     <div class="icon-content">
                                                         <div class="star-rating">
-                                                            <div data-rating="4">
-                                                                <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
-                                                                <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
+                                                            <div class="user_review_stars avg_data_rating" data-rating="{{$courseRatings['avg']}}">
+                                                                <i class="text-yellow fa fa-star-o" data-alt="1" title="regular"></i>
+                                                                <i class="text-yellow fa fa-star-o" data-alt="2" title="regular"></i>
                                                                 <i class="text-yellow fa fa-star-o" data-alt="3" title="regular"></i>
                                                                 <i class="text-yellow fa fa-star-o" data-alt="4" title="regular"></i>
                                                                 <i class="text-yellow fa fa-star-o" data-alt="5" title="regular"></i>
                                                             </div>
                                                         </div>
-                                                        <p>{{$courseRatings['count']}} ratings</p>
+                                                        <p><span class="review_count">{{$courseRatings['count']}}</span> ratings</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,10 +131,10 @@
                                                                 <span class="input-group">5 stars</span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['5']['percent']}}%"></div>
+                                                                <div class="bar-rat bg-primary star5percent" style="width:{{$courseRatings['stars']['five']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">{{$courseRatings['stars']['5']['count']}}</span>
+                                                                <span class="input-group star5count">{{$courseRatings['stars']['five']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
@@ -142,10 +142,10 @@
                                                                 <span class="input-group">4 stars</span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['4']['percent']}}%"></div>
+                                                                <div class="bar-rat bg-primary star4percent" style="width:{{$courseRatings['stars']['four']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">{{$courseRatings['stars']['4']['count']}}</span>
+                                                                <span class="input-group star4count">{{$courseRatings['stars']['four']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
@@ -153,10 +153,10 @@
                                                                 <span class="input-group">3 stars</span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['3']['percent']}}%"></div>
+                                                                <div class="bar-rat bg-primary star3percent" style="width:{{$courseRatings['stars']['three']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">{{$courseRatings['stars']['3']['count']}}</span>
+                                                                <span class="input-group star3count">{{$courseRatings['stars']['three']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
@@ -164,10 +164,10 @@
                                                                 <span class="input-group">2 stars</span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['2']['percent']}}%"></div>
+                                                                <div class="bar-rat bg-primary star2percent" style="width:{{$courseRatings['stars']['two']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">{{$courseRatings['stars']['2']['count']}}</span>
+                                                                <span class="input-group star2count">{{$courseRatings['stars']['two']['count']}}</span>
                                                             </div>
                                                         </li>
                                                         <li class="input-group">
@@ -175,10 +175,10 @@
                                                                 <span class="input-group">1 star </span>
                                                             </div>
                                                             <div class="bar">
-                                                                <div class="bar-rat bg-primary" style="width:{{$courseRatings['stars']['1']['percent']}}%"></div>
+                                                                <div class="bar-rat bg-primary star1percent" style="width:{{$courseRatings['stars']['one']['percent']}}%"></div>
                                                             </div>
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group">{{$courseRatings['stars']['1']['count']}}</span>
+                                                                <span class="input-group star1count">{{$courseRatings['stars']['one']['count']}}</span>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -191,23 +191,23 @@
                                                 @foreach ($course->activeReviews as $review)
                                                     <li class="comment">
                                                         <div class="comment_container">
-                                                            <img class="avatar avatar-60 photo" src="images/testimonials/pic1.jpg" alt="">
+                                                            <img class="avatar avatar-60 photo" src="{{ $review->user->getAvatar() }}" alt="">
                                                             <div class="comment-text">
                                                                 <div class="star-rating">
-                                                                    <div data-rating="3">
-                                                                        <i class="fa fa-star text-yellow" data-alt="1" title="regular"></i>
-                                                                        <i class="fa fa-star text-yellow" data-alt="2" title="regular"></i>
+                                                                    <div class="user_review_stars"  data-rating="{{$review->stars}}">
+                                                                        <i class="fa fa-star-o text-yellow" data-alt="1" title="regular"></i>
+                                                                        <i class="fa fa-star-o text-yellow" data-alt="2" title="regular"></i>
                                                                         <i class="fa fa-star-o text-yellow" data-alt="3" title="regular"></i>
                                                                         <i class="fa fa-star-o text-yellow" data-alt="4" title="regular"></i>
                                                                         <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
                                                                     </div>
                                                                 </div>
                                                                 <p class="meta">
-                                                                    <strong class="author">Cobus Bester</strong>
-                                                                    <span><i class="fa fa-clock-o"></i> March 7, 2013</span>
+                                                                    <strong class="author">{{ $review->user->fullName() }}</strong>
+                                                                    <span><i class="fa fa-clock-o"></i>{{ date('jS F Y', strtotime($review->created_at)) }}</span>
                                                                 </p>
                                                                 <div class="description">
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                                    <p>{!! $review->comment !!}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -220,18 +220,19 @@
                                                 <div class="section-head">
                                                     <h5 class="widget-title style-1">LEAVE A REVIEW</h5>
                                                 </div>
-                                                <form class="comment-form review_form" id="review_form" method="post">
+                                                <form class="comment-form review_form" id="review_form" method="post" action="{{ route('our_courses.review_course')}}"> @csrf
                                                     <div class="user_rating ">
-                                                        <i class="text-yellow fa fa-star" data-alt="1" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star" data-alt="2" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star" data-alt="3" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star" data-alt="4" title="regular"></i>
-                                                        <i class="text-yellow fa fa-star" data-alt="5" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star-o" data-alt="1" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star-o" data-alt="2" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star-o" data-alt="3" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star-o" data-alt="4" title="regular"></i>
+                                                        <i class="text-yellow fa fa-star-o" data-alt="5" title="regular"></i>
                                                     </div>
-                                                    <input type="hidden" name="stars" required value="">
+                                                    <input type="hidden" name="stars" id="stars" required value="">
+                                                    <input type="hidden" name="course_id" required value="{{ $course->id }}">
                                                     <p class="comment-form-comment">
                                                         <label for="comment">Comment</label>
-                                                        <textarea rows="8" placeholder="Describe your experience" id="comment"></textarea>
+                                                        <textarea rows="8" name="comment" placeholder="Describe your experience" id="comment_field"></textarea>
                                                     </p>
                                                     <p class="form-submit">
                                                         <input type="submit" value="Post Review" class="site-button" id="submit">
@@ -279,26 +280,8 @@
                             <div class="widget recent-posts-entry">
                                 <h5 class="widget-title style-1">Related Courses</h5>
                                 <div class="widget-post-bx">
-                                    @foreach($related_courses as $course)
-                                    <div class="widget-post clearfix">
-                                        <div class="dlab-post-media">
-                                            <img src="{{ getFileFromStorage($course->image , 'storage') }}" width="200" height="143" alt="">
-                                        </div>
-                                        <div class="dlab-post-info">
-                                            <div class="dlab-post-meta">
-                                                <ul>
-                                                    <li class="post-date"> <i class="la la-clock"></i> <span> {{ date('d M Y',strtotime($course->created_at)) }}</span> </li>
-                                                </ul>
-                                            </div>
-                                            <div class="dlab-post-header">
-                                                <h6 class="post-title">
-                                                <a href="{{ route('our_courses.course_info' , ['id' => $course->id , 'slug' => $course->slug]) }}">
-                                                        {{ str_limit($course->title) }}
-                                                    </a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @foreach($related_courses as $relatedCourse)
+                                        @include('web.fragments.related_courses_item' , ['relatedCourse' => $relatedCourse])
                                     @endforeach
                                 </div>
                             </div>
