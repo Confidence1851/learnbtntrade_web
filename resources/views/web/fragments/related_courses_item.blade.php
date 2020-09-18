@@ -11,7 +11,7 @@
         <div class="dlab-post-header">
             <h6 class="post-title">
             <a href="{{ route('our_courses.course_info' , ['id' => $relatedCourse->id , 'slug' => $relatedCourse->slug]) }}">
-                    {{ str_limit($relatedCourse->title) }}
+                    {{ str_limit($relatedCourse->title , 35) }}
                 </a>
             </h6>
         </div>
