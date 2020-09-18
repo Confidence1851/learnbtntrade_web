@@ -4,8 +4,8 @@
 <!-- Content -->
 <div class="page-content bg-white">
    <!-- Slider -->
+   
 	@include('web.fragments.home_slider')
-
 
     <!-- contact area -->
     <div class="content-block">
