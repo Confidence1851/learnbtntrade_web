@@ -306,4 +306,28 @@
     </div>
 </div>
 <!-- Content END-->
+{{-- Templates --}}
+<li class="comment">
+    <div class="comment_container">
+        <img class="avatar avatar-60 photo" src="" alt="">
+        <div class="comment-text">
+            <div class="star-rating">
+                <div class="user_review_stars"  data-rating="">
+                    <i class="fa fa-star-o text-yellow" data-alt="1" title="regular"></i>
+                    <i class="fa fa-star-o text-yellow" data-alt="2" title="regular"></i>
+                    <i class="fa fa-star-o text-yellow" data-alt="3" title="regular"></i>
+                    <i class="fa fa-star-o text-yellow" data-alt="4" title="regular"></i>
+                    <i class="fa fa-star-o text-yellow" data-alt="5" title="regular"></i>
+                </div>
+            </div>
+            <p class="meta">
+                <strong class="author"></strong>
+                <span><i class="fa fa-clock-o"></i></span>
+            </p>
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</li>
 @endsection

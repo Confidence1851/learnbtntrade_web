@@ -55,11 +55,17 @@ class CourseController extends Controller
 
         $data['user_id'] = auth()->user()->id;
         $data['status'] = $this->activeStatus;
-        CourseReview::create($data);
+        $review = CourseReview::create($data);
         return response()->json([
             'success' => true,
             'msg' => 'Review submitted successfully!',
             'data' => getCourseRatingStats($data['course_id']),
+            'review' => [
+                'avatar' => $review->user->getAvatar(),
+                'name' => $review->user->fullName(),
+                'date' => date('jS F Y', strtotime($review->created_at)),
+                'comment' => $review->comment
+            ],
         ]);
     }
 
