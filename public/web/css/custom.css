@@ -179,7 +179,7 @@
         
         .slider_object {
             width: 100%;
-            height: 100vh;
+            height: 95vh;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: top center;
@@ -190,6 +190,7 @@
             bottom: -500px;
             width: 80%;
             margin: 0 auto;
+            z-index: 10;
         }
         
         #review_form .user_rating i.text-yellow {
