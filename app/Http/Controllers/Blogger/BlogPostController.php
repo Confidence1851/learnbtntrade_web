@@ -40,6 +40,9 @@ class BlogPostController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        if(array_key_exists('error_msg' , $data)){
+            return redirect()->back()->withInput($request->all())->with('error_msg' , $data['error_msg']);
+        }
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = auth('web')->id();
         $data['status'] = $this->activeStatus;
@@ -75,7 +78,7 @@ class BlogPostController extends Controller
             $count = $this->Post->model()->where('title' , $data['title'])->count();
         }
         if($count > 0){
-            return redirect()->back()->with('error_msg', 'Blog title already exists!');
+            return ['error_msg' => 'Blog title already exists!'];
         }
 
         if(!empty( $image = $request->file('image'))){
@@ -121,6 +124,9 @@ class BlogPostController extends Controller
         $post = $this->Post->find($id);
 
         $data = $this->validateData($request , $id);
+        if(array_key_exists('error_msg' , $data)){
+            return redirect()->back()->withInput($request->all())->with('error_msg' , $data['error_msg']);
+        }
         try{
             if(!empty($request['image'])){
                 deleteFileFromStorage($post->image);
