@@ -127,6 +127,15 @@
 									{{-- <li><a href="">Signal Results</a></li> --}}
 								</ul>
                             </li>
+                            @auth
+                            @else
+                            <li class="{{ $activePage == 'login' ? 'active' : ''}}">
+                                <a href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="{{ $activePage == 'register' ? 'active' : ''}}">
+                                <a href="{{ route('register') }}">Register</a>
+                            </li>
+                            @endauth
                         </ul>
                         @if(auth('web')->check())
                             <ul class="nav navbar-nav d-block d-md-none mt-5">
