@@ -30,7 +30,18 @@
 	<!--[if lt IE 9]>
 	<script src="{{ $web_source }}/js/html5shiv.min.js"></script>
 	<script src="{{ $web_source }}/js/respond.min.js"></script>
-	<![endif]-->
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179075073-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-179075073-1');
+    </script>
+
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/bootstrap/css/bootstrap.min.css">
