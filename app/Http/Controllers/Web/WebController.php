@@ -42,6 +42,10 @@ class WebController extends Controller
         return view('web.contact_us');
     }
 
+    public function crypto_haven(){
+        return view('web.crypto_haven');
+    }
+
     public function about_us(){
         return view('web.about_us');
     }

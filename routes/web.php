@@ -26,6 +26,7 @@ Route::get('/avatar/{path}', 'Web\WebController@userAvatar')->name('user.avatar'
 Route::get('/file/{path}', 'Web\WebController@read_file')->name('read_file');
 Route::post('/save-contact', 'Web\WebController@contact_form')->name('contact_form');
 Route::post('/subscribe-email', 'Web\WebController@subscribe_email')->name('subscribe_email');
+Route::get('/recommendations/crypto-haven', 'Web\WebController@crypto_haven')->name('crypto_haven');
 
 
 
