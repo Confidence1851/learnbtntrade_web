@@ -119,7 +119,7 @@ Route::middleware('auth')->group(function (){
             Route::resource('sections','CourseSectionController')->except(['create']);
             Route::resource('sections/resources','CourseSectionResourceController')->except(['index' , 'edit' , 'create']);
             Route::get('/section/file/{id}', 'CourseSectionController@section_file')->name('sections.file');
-
+            Route::resource('assignments','CourseAssignmentController');
 
             Route::prefix('test')->as('test.')->group(function () {
                 Route::get('details/create/{id}','CourseTestController@create')->name('details.create');

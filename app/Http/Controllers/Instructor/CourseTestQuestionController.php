@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Instructor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseTest;
@@ -27,7 +27,7 @@ class CourseTestQuestionController extends Controller
     public function create($id)
     {
         $test = CourseTest::findorfail($id);
-        return view('admin.course_test_questions.create' , compact('test'));
+        return view('instructor.course_test_questions.create' , compact('test'));
     }
 
     /**
@@ -83,7 +83,7 @@ class CourseTestQuestionController extends Controller
     public function show($id)
     {
         $question = CourseTestQuestion::findorfail($id);
-        return view('admin.course_test_questions.show', compact('question'));
+        return view('instructor.course_test_questions.show', compact('question'));
     }
 
     /**
@@ -95,7 +95,7 @@ class CourseTestQuestionController extends Controller
     public function edit($id)
     {
         $question = CourseTestQuestion::findorfail($id);
-        return view('admin.course_test_questions.edit', compact('question'));
+        return view('instructor.course_test_questions.edit', compact('question'));
     }
 
     /**

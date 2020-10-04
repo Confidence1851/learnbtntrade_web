@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseTest;
-use App\Models\CourseTestQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class CourseTestQuestionController extends Controller
+class CourseTestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +26,8 @@ class CourseTestQuestionController extends Controller
      */
     public function create($id)
     {
-        $test = CourseTest::findorfail($id);
-        return view('admin.course_test_questions.create' , compact('test'));
+        $courses = $this->Course->model()->where('status' , $this->activeStatus)->get();
+        return view('instructor.course_tests.create' , compact('id' , 'courses'));
     }
 
     /**
@@ -38,38 +38,30 @@ class CourseTestQuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $test = CourseTest::findorfail($request->course_test_id);
-        if(empty($test)){
-            return redirect()->back()->with('error_msg', 'Couldn`t find test details!');
+        $course = $this->Course->find($request->course_id);
+        if(empty($course)){
+            return redirect()->back()->with('error_msg', 'Couldn`t find course details!');
         }
         $data = $this->validateData($request);
         if($data == false){
             return redirect()->back()->with('error_msg', 'We couldn`t validate data!');
         }
-        $data['course_id'] = $test->course_id;
-        CourseTestQuestion::create($data);
-        return redirect()->route('course.test.details.show' , $test->id)->with('success_msg', 'Course test question added successfully!');
+
+        $data['user_id'] = auth('web')->id();
+        CourseTest::create($data);
+        return redirect()->route('course.details.show', $course->id)->with('success_msg', 'Course test created successfully!');
     }
 
     public function validateData($request)
     {
         $data = $request->validate([
-            'course_test_id' => 'required|string',
-            'question' => 'required|string',
-            'type' => 'required|string',
-            'a' => 'nullable|string',
-            'b' => 'nullable|string',
-            'c' => 'nullable|string',
-            'd' => 'nullable|string',
-            'answer' => 'nullable|string',
-            'duration' => 'nullable|string',
-            'file' => 'nullable|mimetypes:'.imageMimes().','.docMimes(),
+            'course_id' => 'required|string',
+            'difficulty' => 'required|string',
+            'duration' => 'required|string',
+            'title' => 'required|string',
+            // 'file' => 'nullable|mimetypes:'.imageMimes().','.docMimes(),
             'status' => 'required|string',
         ]);
-
-        if(!empty( $file = $request->file('file'))){
-            $data['file'] = putFileInPrivateStorage($file , $this->courseTestQuestionPath);
-        }
         return $data;
     }
 
@@ -82,8 +74,8 @@ class CourseTestQuestionController extends Controller
      */
     public function show($id)
     {
-        $question = CourseTestQuestion::findorfail($id);
-        return view('admin.course_test_questions.show', compact('question'));
+        $test = CourseTest::findorfail($id);
+        return view('instructor.course_tests.show', compact('test'));
     }
 
     /**
@@ -94,8 +86,9 @@ class CourseTestQuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = CourseTestQuestion::findorfail($id);
-        return view('admin.course_test_questions.edit', compact('question'));
+        $test = CourseTest::findorfail($id);
+        $courses = $this->Course->model()->where('status' , $this->activeStatus)->get();
+        return view('instructor.course_tests.edit', compact('test' , 'courses'));
     }
 
     /**
@@ -107,16 +100,16 @@ class CourseTestQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $test = CourseTestQuestion::findorfail($id);
+        $test = CourseTest::findorfail($id);
 
         $data = $this->validateData($request , $id);
         if($data == false){
             return redirect()->back()->with('error_msg', 'We couldn`t validate data!');
         }
 
-        $data['course_id'] = $test->course_id;
         $test->update($data);
-        return redirect()->route('course.test.details.show' , $test->course_id)->with('success_msg', 'Course test question updated successfully!');
+        $test->questions->update(['course_id' , $test->course_id]);
+        return redirect()->route('course.test.details.show' , $test->course_id)->with('success_msg', 'Course test details updated successfully!');
     }
 
     /**
@@ -127,8 +120,9 @@ class CourseTestQuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question =CourseTestQuestion::findorfail($id);
-        $question->delete();
-        return redirect()->back()->with('success_msg', 'Course test question deleted successfully!');
+        $test =CourseTest::findorfail($id);
+        $test->delete();
+        return redirect()->back()->with('success_msg', 'Course test deleted successfully!');
     }
+
 }
