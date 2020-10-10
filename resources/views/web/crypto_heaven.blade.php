@@ -6,12 +6,12 @@
     <div class="dlab-bnr-inr overlay-black-middle bg-pt" style="background-image:url(images/banner/bnr3.jpg);">
         <div class="container">
             <div class="dlab-bnr-inr-entry">
-                <h1 class="text-white">Crypto Haven</h1>
+                <h1 class="text-white">Crypto Heaven</h1>
                 <!-- Breadcrumb row -->
                 <div class="breadcrumb-row">
                     <ul class="list-inline">
                     <li><a href="{{ route('homepage')}}">Home</a></li>
-                        <li>Crypto Haven</li>
+                        <li>Crypto Heaven</li>
                     </ul>
                 </div>
                 <!-- Breadcrumb row END -->
@@ -38,7 +38,7 @@
                         <div class="max-w600 p-lr15">
                             <div class="section-head text-white m-b20">
                                 <h5 class="title-small">Step into the World of Crypto</h5>
-                                <h2 class="title">About Crypto Haven</h2>
+                                <h2 class="title">About Crypto Heaven</h2>
                                 <div class="dlab-separator bg-white"></div>
                             </div>
                             <p>
