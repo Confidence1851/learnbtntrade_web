@@ -12,7 +12,7 @@
                 <li><a href="{{ route('about_us')}}">About Us</a></li>
                 <li><a href="{{ route('terms_and_conditions')}}">Terms and Conditions</a></li>
                 <li><a href="{{ route('faqs')}}">Frequently Asked Questions</a></li>
-                <li><a href="{{ route('crypto_heaven')}}">Crypto Heaven</a></li>
+                {{-- <li><a href="{{ route('crypto_heaven')}}">Crypto Heaven</a></li> --}}
             </ul>
             </div>
           </div>
