@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-lg-6 m-b15">
                         <h5>Naira Payment Information</h5>
-                        <table class="table-bordered check-tbl">
+                        <table class=" table-responsive">
                             <tbody>
                                 <tr>
                                     <td>Account Name</td>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-lg-6 m-b15">
                         <h5>Crypto Payment Information</h5>
-                        <table class="table-bordered check-tbl">
+                        <table class="table-responsive">
                             <tbody>
                                 <tr>
                                     <td>Bitcoin (BTC)</td>
@@ -165,7 +165,7 @@
 
 
                             <div class="row">
-                                <div class="col">
+                                <div class=" col-md-6 ">
                                     <div class="form-group">
                                         <label for="">Payment Type</label>
                                         <select type="text" class="form-control"  name="payment_type" required>
@@ -175,7 +175,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Upload Receipt or Proof</label>
                                         <input type="file" class="form-control"  name="file" placeholder="" required>
@@ -187,14 +187,14 @@
                             <div class="row">
                                 
                                 @if($hasSubs > 0)
-                                   <div class="col">
+                                   <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Whatsapp Number</label>
                                             <input type="text" class="form-control" required name="phone_no" placeholder="For signal plans">
                                         </div>
                                    </div>
                                 @endif
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Add Comment</label>
                                         <input type="text" class="form-control"  name="comment" placeholder="Extra Comment? (optional)">
