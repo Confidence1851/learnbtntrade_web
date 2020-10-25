@@ -486,3 +486,49 @@ function getFileType(String $type)
         ];
 
     }
+
+
+
+    function getCryptoRates(array $currencies = null , bool $convert  = false){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.blockchain.com/v3/exchange/tickers",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+             CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            // CURLOPT_HTTPHEADER => array(
+            // 	// Set Here Your Requesred Headers
+
+            // ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            // echo "cURL Error #:" . $err;
+        } else {
+            $result = json_decode($response);
+            $parseData = [];
+            $returnData = [];
+            foreach($result as $r){
+                $r->price_24h = format_money(($r->price_24h ) , 2 );
+                $parseData[$r->symbol]  = $r;
+
+            }
+            if(isset($currencies) && count($currencies) > 0 ){
+                foreach($currencies as $c){
+                    if(array_key_exists($c , $parseData)){
+                        $returnData[$c]  = $parseData[$c] ;
+                    }
+                }
+            }
+            else{
+                $returnData = $parseData;
+            }
+
+            
+            return $returnData ;
+        }
+    }

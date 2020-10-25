@@ -97,9 +97,9 @@
             </div>
         <form class="shop-form" action="{{ route('cart.checkout') }}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="row">
-                    <div class="col-lg-6 m-b15">
+                    <div class="col-lg-5 m-b15">
                         <h5>Naira Payment Information</h5>
-                        <table class=" table-responsive">
+                        <table class="table-striped table-responsive">
                             <tbody>
                                 <tr>
                                     <td>Account Name</td>
@@ -122,16 +122,18 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 m-b15">
+                    <div class="col-lg-7 m-b15">
                         <h5>Crypto Payment Information</h5>
-                        <table class="table-responsive">
+                        <table class="table-responsive table-striped ">
                             <tbody>
                                 <tr>
                                     <td>Bitcoin (BTC)</td>
+                                    <td>Rate: {{ optional($cryptoRates['BTC-USD'])->price_24h }}</td>
                                     <td>1JdQ5ECwyArbeTRJbbWoJmoAT3qitfz25F</td>
                                 </tr>
                                 <tr>
                                     <td>USDT (TRC20)</td>
+                                    <td>Rate: {{ optional($cryptoRates['USDT-USD'])->price_24h }}</td>
                                     <td>TP3LbXtskLrQ1z8fro4d43CnJJcA5aUsTc</td>
                                 </tr>
                                 

@@ -57,8 +57,9 @@ class CartController extends Controller
         $items = getUserCart()->items;
         $reference = $cart->reference;
         $hasSubs = $items->where('plan_id' , '!=', null)->count();
-        // dd($hasSubs);
-        return view('web.cart', compact('cart', 'items' , 'reference' , 'hasSubs'));
+        $cryptoRates = getCryptoRates(['BTC-USD' , 'USDT-USD']);
+
+        return view('web.cart', compact('cart', 'items' , 'reference' , 'hasSubs' , 'cryptoRates'));
     }
 
     public function checkout(Request $request){
