@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->User->model()->paginate(50);
+        $users = $this->User->model()->orderby('created_at' , 'desc')->paginate(50);
         $title = "ALL USERS";
         $tag = "users";
         return view('admin.user_management.users.users',compact('users','title' , 'tag'));
@@ -26,7 +26,7 @@ class UsersController extends Controller
 
     public function enrolled()
     {
-        $users = $this->User->model()->whereHas('orderItems')->paginate(50);
+        $users = $this->User->model()->whereHas('orderItems')->orderby('created_at' , 'desc')->paginate(50);
         $title = "ENROLLED USERS";
         $tag = "enrolled";
         return view('admin.user_management.users.users',compact('users','title' , 'tag'));
@@ -34,7 +34,7 @@ class UsersController extends Controller
 
     public function unenrolled()
     {
-        $users = $this->User->model()->whereDoesntHave('orderItems')->paginate(50);
+        $users = $this->User->model()->whereDoesntHave('orderItems')->orderby('created_at' , 'desc')->paginate(50);
         $title = "UNENROLLED USERS";
         $tag = "unenrolled";
         return view('admin.user_management.users.users',compact('users','title' , 'tag'));
