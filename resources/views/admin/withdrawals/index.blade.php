@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Withdrawals' , 'activeGroup'  => 'withdrawals', 'activePage' => 'all'])
+@extends('admin.layout.app',[ 'pageTitle' =>  'Withdrawals' , 'activeGroup'  => 'withdrawals', 'activePage' => 'paid'])
 @section('content')
      <div class="container-fluid">
 
@@ -17,6 +17,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Approved By</th>
                                             <th>User Name</th>
                                             <th>Bank</th>
                                             <th>Amount</th>
@@ -33,7 +34,8 @@
                                         @endphp
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$withdrawal->user->name ?? ''}}</td>
+                                            <td>{{$withdrawal->admin->fullName() ?? ''}}</td>
+                                            <td>{{$withdrawal->user->fullName() ?? ''}}</td>
                                             <td><a href="#"data-toggle="modal" data-target="#view_item_{{$withdrawal->id}}"  class="btn btn-primary btn-sm"> View Bank</a></td>
                                             <td>{{ format_money($withdrawal->amount) }}</td>
                                             <td>{{ date('M D , Y h:i:A' , strtotime($withdrawal->created_at))}}</td>

@@ -67,19 +67,25 @@ class CartController extends Controller
             'file' => 'required|file|mimetypes:image/jpeg,image/png,image/jpg,application/pdf',
             'comment' => 'nullable|string',
             'phone_no' => 'nullable|string',
-            'reference' => 'required|string',
+            'payment_type' => 'required|string',
         ]);
         if(!empty( $file = $request->file('file'))){
             $data['file'] = putFileInPrivateStorage($file , $this->orderReceiptsFilePath);
         }
 
-        // DB::beginTransaction();
+        if(strtolower($request['payment_type']) == 'bank'){
+            $payType = 'Bank Transfer';
+        }
+        elseif(strtolower($request['payment_type']) == 'crypto'){
+            $payType = 'Crypto Payment';
+        }
+
         $cart = getUserCart();
         $data['user_id'] = auth('web')->id();
         $data['amount'] = $cart->total;
         $data['discount'] = $cart->discount;
         $data['reference'] = $cart->reference;
-        $data['payment_type'] = 'Bank Transfer';
+        $data['payment_type'] = $payType;
 
         $order = Order::create($data);
 

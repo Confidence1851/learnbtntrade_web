@@ -98,7 +98,7 @@
         <form class="shop-form" action="{{ route('cart.checkout') }}" method="POST" enctype="multipart/form-data">@csrf
                 <div class="row">
                     <div class="col-lg-6 m-b15">
-                        <h5>Payment Information</h5>
+                        <h5>Naira Payment Information</h5>
                         <table class="table-bordered check-tbl">
                             <tbody>
                                 <tr>
@@ -117,32 +117,89 @@
                         </table>
 
                         <div class="form-group">
-                            <p style="color: red" class="mb-4">
+                            <p style="color: black" class="mb-4">
+                                 Please note that our exchange rate is <b> NGN400 per $1. </b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 m-b15">
+                        <h5>Crypto Payment Information</h5>
+                        <table class="table-bordered check-tbl">
+                            <tbody>
+                                <tr>
+                                    <td>Bitcoin (BTC)</td>
+                                    <td>1JdQ5ECwyArbeTRJbbWoJmoAT3qitfz25F</td>
+                                </tr>
+                                <tr>
+                                    <td>USDT (TRC20)</td>
+                                    <td>TP3LbXtskLrQ1z8fro4d43CnJJcA5aUsTc</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+
+                        <div class="form-group">
+                            <p style="color: black" class="mb-4">
                                 <b>Instruction:</b>
-                                    Kindly copy the ORDER REFERENCE below and use it as a comment when paying! <br>
+                                    Kindly copy your preferred address  and be sure that everything looks good before payment! <br>
+                                    Please note that by sending via the wrong network, you would loose your coins!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-15">
+                        <div class="form-group">
+                            <p style="color: red" class="mb-4">
+                                <b>Instruction:</b> <br>
+                                <b>For Bank Transfer:</b> Kindly copy the ORDER REFERENCE below and use it as a payment narration when paying in the bank or via online banking! <br>
                                     Please note that our exchange rate is <b> NGN400 per $1. </b>
+                                    <br>
+                                    <br>
+                                <b>For Crypto Payment:</b> Kindly ensure you copied the correct address and you are transferring with the correct network! <br>
                             </p>
                             <label for="">Order Reference</label>
                             <input type="text" class="form-control" name="reference" value="{{$reference}}" required readonly>
                         </div>
                     </div>
-                    <div class="col-lg-6 m-b15">
+                    <div class="col-md-7 m-b15">
                             <h5>Complete Order</h5>
 
 
-                            <div class="form-group">
-                                <label for="">Upload Receipt</label>
-                                <input type="file" class="form-control"  name="file" placeholder="" required>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Payment Type</label>
+                                        <select type="text" class="form-control"  name="payment_type" required>
+                                            <option value="" disabled selected> Select Type</option>
+                                            <option value="bank">Bank Transfer</option>
+                                            <option value="crypto">Crypto Payment</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Upload Receipt or Proof</label>
+                                        <input type="file" class="form-control"  name="file" placeholder="" required>
+                                    </div>
+                                </div>
+                                
                             </div>
-                            @if($hasSubs > 0)
-                            <div class="form-group">
-                                <label for="">Whatsapp Number</label>
-                                <input type="text" class="form-control" required name="phone_no" placeholder="For signal plans">
-                            </div>
-                            @endif
-                            <div class="form-group">
-                                <label for="">Add Comment</label>
-                                <input type="text" class="form-control"  name="comment" placeholder="Extra Comment? (optional)">
+
+                            <div class="row">
+                                
+                                @if($hasSubs > 0)
+                                   <div class="col">
+                                        <div class="form-group">
+                                            <label for="">Whatsapp Number</label>
+                                            <input type="text" class="form-control" required name="phone_no" placeholder="For signal plans">
+                                        </div>
+                                   </div>
+                                @endif
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Add Comment</label>
+                                        <input type="text" class="form-control"  name="comment" placeholder="Extra Comment? (optional)">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                             <button class="site-button" type="submit">Process Order</button>

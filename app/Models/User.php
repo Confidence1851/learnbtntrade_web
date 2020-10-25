@@ -112,4 +112,8 @@ class User extends Authenticatable  //implements MustVerifyEmail
         return $this->hasMany(Order::class)->where('status', $this->activeStatus);
     }
 
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class , 'user_id' , 'id');
+    }
+
 }

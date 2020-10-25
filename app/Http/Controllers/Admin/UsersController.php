@@ -18,16 +18,26 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->User->all();
+        $users = $this->User->model()->paginate(50);
         $title = "ALL USERS";
-        return view('admin.user_management.users.users',compact('users','title'));
+        $tag = "users";
+        return view('admin.user_management.users.users',compact('users','title' , 'tag'));
     }
 
     public function enrolled()
     {
-        $users = $this->User->all();
+        $users = $this->User->model()->whereHas('orderItems')->paginate(50);
         $title = "ENROLLED USERS";
-        return view('admin.user_management.users.users',compact('users','title'));
+        $tag = "enrolled";
+        return view('admin.user_management.users.users',compact('users','title' , 'tag'));
+    }
+
+    public function unenrolled()
+    {
+        $users = $this->User->model()->whereDoesntHave('orderItems')->paginate(50);
+        $title = "UNENROLLED USERS";
+        $tag = "unenrolled";
+        return view('admin.user_management.users.users',compact('users','title' , 'tag'));
     }
 
     /**

@@ -334,11 +334,14 @@
                             <span>Users</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class="{{$activePage == 'sub_admins' ? 'active' : ''}}">
+                            <li class="{{$activePage == 'users' ? 'active' : ''}}">
                                 <a href="{{ route('users.index') }}">All Users</a>
                             </li>
-                            <li class="{{$activePage == 'agents' ? 'active' : ''}}">
+                            <li class="{{$activePage == 'enrolled' ? 'active' : ''}}">
                                 <a href="{{ route('users.enrolled') }}">Enrolled Users</a>
+                            </li>
+                            <li class="{{$activePage == 'unenrolled' ? 'active' : ''}}">
+                                <a href="{{ route('users.unenrolled') }}">Unenrolled Users</a>
                             </li>
                         </ul>
                     </li>

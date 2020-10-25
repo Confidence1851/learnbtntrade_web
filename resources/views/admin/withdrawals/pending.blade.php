@@ -47,7 +47,7 @@
                                             </td>
                                             <td>{{$user->fullName() ?? ''}}</td>
                                             <td><a href="#"data-toggle="modal" data-target="#view_item_{{$user->id}}"  class="btn btn-primary btn-sm"> View Bank</a></td>
-                                            <td>{{ format_money($user->amount) }}</td>
+                                            <td>{{ format_money($user->wallet) }}</td>
                                             <td>{{ date('M D , Y h:i:A' , strtotime($user->created_at))}}</td>
                                         </tr>
 
@@ -83,7 +83,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        <form method="post" action="{{ route('approve_investments') }}">@csrf
+                        <form method="post" action="{{ route('approve_withdrawal') }}">@csrf
                             <input type="hidden" name="items" id="inputItems" required aria-required="true">
                             <div class="mt-5">
                                 <button type="submit" class="btn btn-sm btn-primary mt-5" id="approveBtn">Approve</button>

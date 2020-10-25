@@ -186,6 +186,7 @@ Route::middleware('auth')->group(function (){
 
         Route::resource('users','UsersController');
         Route::get('enrolled/users','UsersController@enrolled')->name('users.enrolled');
+        Route::get('unenrolled/users','UsersController@unenrolled')->name('users.unenrolled');
         Route::post('users/password/reset/{id}','UsersController@password_reset')->name('users.password_reset');
 
 
