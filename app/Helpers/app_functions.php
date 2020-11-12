@@ -489,7 +489,7 @@ function getFileType(String $type)
 
 
 
-    function getCryptoRates(array $currencies = null , bool $convert  = false){
+    function getBlockchainCryptoRates(array $currencies = null , bool $convert  = false){
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.blockchain.com/v3/exchange/tickers",
@@ -530,5 +530,35 @@ function getFileType(String $type)
 
             
             return $returnData ;
+        }
+    }
+
+    function getCryptoRates(array $currencies = null , bool $convert  = false){
+        return getCoinDestCryptoRates($convert);
+    }
+
+
+    function getCoinDestCryptoRates(bool $convert  = false){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.coindesk.com/v1/bpi/currentprice.json",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+             CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            // CURLOPT_HTTPHEADER => array(
+            // 	// Set Here Your Requesred Headers
+
+            // ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            // echo "cURL Error #:" . $err;
+        } else {
+            $result = json_decode($response);
+            return $result->bpi->USD->rate_float ;
         }
     }

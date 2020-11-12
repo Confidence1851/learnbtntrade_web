@@ -57,7 +57,11 @@ class CartController extends Controller
         $items = getUserCart()->items;
         $reference = $cart->reference;
         $hasSubs = $items->where('plan_id' , '!=', null)->count();
-        $cryptoRates = getCryptoRates(['BTC-USD' , 'USDT-USD']);
+        $cryptoRates = [
+            'BTC-USD' => format_money(getCryptoRates(['BTC-USD'])), 
+            'USDT-USD' => format_money(1)
+        ];
+
 
         return view('web.cart', compact('cart', 'items' , 'reference' , 'hasSubs' , 'cryptoRates'));
     }

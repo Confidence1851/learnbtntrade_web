@@ -128,12 +128,12 @@
                             <tbody>
                                 <tr>
                                     <td>Bitcoin (BTC)</td>
-                                    <td>Rate: {{ optional($cryptoRates['BTC-USD'])->price_24h }}</td>
+                                    <td>Rate: {{ $cryptoRates['BTC-USD'] }}</td>
                                     <td>1JdQ5ECwyArbeTRJbbWoJmoAT3qitfz25F</td>
                                 </tr>
                                 <tr>
                                     <td>USDT (TRC20)</td>
-                                    <td>Rate: {{ optional($cryptoRates['USDT-USD'])->price_24h }}</td>
+                                    <td>Rate: {{ $cryptoRates['USDT-USD'] }}</td>
                                     <td>TP3LbXtskLrQ1z8fro4d43CnJJcA5aUsTc</td>
                                 </tr>
                                 
