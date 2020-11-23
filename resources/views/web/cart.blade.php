@@ -103,15 +103,15 @@
                             <tbody>
                                 <tr>
                                     <td>Account Name</td>
-                                    <td>Jackson Emmanuel Okon</td>
+                                    <td>Jackman Global Resources Limited </td>
                                 </tr>
                                 <tr>
                                     <td>Account Number</td>
-                                    <td>3109463356</td>
+                                    <td>7350282011</td>
                                 </tr>
                                 <tr>
                                     <td>Bank Name</td>
-                                    <td>First Bank</td>
+                                    <td>FCMB</td>
                                 </tr>
                             </tbody>
                         </table>
