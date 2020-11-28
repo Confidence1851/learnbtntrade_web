@@ -1,23 +1,23 @@
 
 <script src="{{ $web_source }}/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
 <script src="{{ $web_source }}/plugins/wow/wow.js"></script><!-- WOW JS -->
-<script src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script defer src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="{{ $web_source }}/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="{{ $web_source }}/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
-<script src="{{ $web_source }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
-<script src="{{ $web_source }}/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
-<script src="{{ $web_source }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
-<script src="{{ $web_source }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
-<script src="{{ $web_source }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-<script src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+<script defer src="{{ $web_source }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
+{{-- <script src="{{ $web_source }}/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS --> --}}
+{{-- <script src="{{ $web_source }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS --> --}}
+{{-- <script src="{{ $web_source }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS --> --}}
+<script defer src="{{ $web_source }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
+<script defer src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
+<script defer src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
 <script src="{{ $web_source }}/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
-<script src="{{ $web_source }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery -->
+{{-- <script src="{{ $web_source }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery --> --}}
 <script src="{{ $web_source }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="{{ $web_source }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
-<script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
+{{-- <script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  --> --}}
 {{-- <script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  --> --}}
-<script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
+{{-- <script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider --> --}}
 <script src="{{ $web_source }}/js/jquery.lazy.min.js"></script>
 <!-- REVOLUTION JS FILES -->
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>

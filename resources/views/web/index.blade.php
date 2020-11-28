@@ -1,6 +1,6 @@
 @extends('web.layouts.app' , ['title' => 'Home'])
 @section('content')
-<div id="loading-area" style="background-image: url({{ $logo_img }});"></div>
+{{-- <div id="loading-area" style="background-image: url({{ $logo_img }});"></div> --}}
 <!-- Content -->
 <div class="page-content bg-white">
    <!-- Slider -->
