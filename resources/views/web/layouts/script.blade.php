@@ -9,28 +9,28 @@
 {{-- <script src="{{ $web_source }}/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS --> --}}
 {{-- <script src="{{ $web_source }}/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS --> --}}
 <script defer src="{{ $web_source }}/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script defer src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
-<script defer src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+{{-- <script defer src="{{ $web_source }}/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY --> --}}
+{{-- <script defer src="{{ $web_source }}/plugins/masonry/masonry.filter.js"></script><!-- MASONRY --> --}}
 <script src="{{ $web_source }}/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
 {{-- <script src="{{ $web_source }}/plugins/lightgallery/js/lightgallery-all.min.js"></script><!-- Lightgallery --> --}}
 <script src="{{ $web_source }}/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="{{ $web_source }}/js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
-{{-- <script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  --> --}}
-{{-- <script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  --> --}}
+<script src="{{ $web_source }}/plugins/countdown/jquery.countdown.js"></script><!-- COUNTDOWN FUCTIONS  -->
+<script src="{{ $web_source }}/js/dz.ajax.js"></script><!-- CONTACT JS  -->
 {{-- <script src="{{ $web_source }}/plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider --> --}}
 <script src="{{ $web_source }}/js/jquery.lazy.min.js"></script>
 <!-- REVOLUTION JS FILES -->
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+{{-- <script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script> --}}
+{{-- <script src="{{ $web_source }}/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script> --}}
 <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+{{-- <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script> --}}
+{{-- <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 <script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="{{ $web_source }}/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script> --}}
 <script src="{{ $web_source }}/js/rev.slider.js"></script>
 <script src="{{ $web_source }}/js/ajax.js"></script>
 <script>
@@ -83,7 +83,6 @@ jQuery(document).ready(function() {
 	}
 </script>
 <script>
-
     $('body').on('click',function(e){
         console.log(e);
         var target = $(e.target);
@@ -95,9 +94,7 @@ jQuery(document).ready(function() {
                 $('#floating_menu').addClass('d-none');
             }
         }
-
-    })
-
+    });
 </script>
 <script src="https://public.bnbstatic.com/static/js/ocbs/binance-fiat-widget.js"></script>
 <script>

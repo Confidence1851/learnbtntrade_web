@@ -1,6 +1,6 @@
 @extends('web.layouts.app' , ['title' => $section->title   , 'activePage' => 'course' , 'meta_keywords' => $section->meta_keywords , 'meta_description' => $section->meta_description , 'hide_footer' => true ])
 @section('style')
-<link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
+
 @endsection
 @section('content')
   <main class="page-content">
@@ -8,13 +8,8 @@
         <div class="row mt-4">
             <div class="col-md-9">
                 <div class="section_header">{!! $section->title !!}</div>
-                {{-- <video src="" controls id="video_player"></video> --}}
-                <video id="player" class="img-fluid" playsinline controls data-poster="{{ $logo_img }}">
-                    <source id="video_player" src="" type="video/mp4" />
-                  
-                    <!-- Captions are optional -->
-                    {{-- <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default /> --}}
-                  </video>
+                <video src="https://learnbtctrade.com/my-courses/section/video/14" controls id="video_player"></video>
+                
             </div>
             <div class="col-md-3">
                 <div class="h4">Sections List</div>
@@ -58,7 +53,7 @@
   </main>
 @endsection
 @section('scripts')
-<script src="https://cdn.plyr.io/3.6.3/plyr.polyfilled.js"></script>
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
 <script>
     function handleShowResources(target){
         $('.section_resources').addClass('d-none');
@@ -72,8 +67,16 @@
     }
 
     $(document).ready(function(){
-        loadVideo('{{$section->title}}' ,'{{ route('my_courses.section_load_video',$section->id) }}');
+        loadVideo('{{$section->title}}' ,'{{ route('my_courses.section_video',$section->id) }}');
     });
+
+    
+function loadVideo(title, url) {
+    $('.section_header').text(title);
+    $('#video_player').attr('src', url);
+    
+}
+
 
 
 </script>

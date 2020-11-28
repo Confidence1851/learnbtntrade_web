@@ -70,7 +70,7 @@ Route::namespace('Student')->middleware(['auth'])->group(function () {
         Route::get('/download/section-resource/{id}', 'CourseController@download_resource')->name('download_resource');
         Route::get('/take-tests/{id}/{slug}', 'CourseController@take_tests')->name('take_test');
         Route::get('/start-tests/{id}', 'CourseController@start_test')->name('start_test');
-        Route::post('/submit-tests/', 'CourseController@submit_tests')->name('submit_tests');
+        Route::post('/submit-tests', 'CourseController@submit_tests')->name('submit_tests');
         Route::get('/test-complete/{id}', 'CourseController@test_complete')->name('test_complete');
     });
 

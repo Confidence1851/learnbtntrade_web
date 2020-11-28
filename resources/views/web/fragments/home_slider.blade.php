@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="carousel-item" data-interval="10000">
-        <div class="slider_object" style="background-image: url({{ $web_source }}/images/main-slider/slider3.jpeg)">
+        <div class="slider_object"  style="background-image: url({{ $web_source }}/images/main-slider/slider3.jpeg)">
             <div class="slider_btn_area">
                 <a href="{{ route('about_us') }}" class="btn btn-primary slider_btn">About Us</a>
             </div>

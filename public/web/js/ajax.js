@@ -146,11 +146,6 @@ $('.section_load_video').on('click', function(e) {
 });
 
 
-function loadVideo(title, url) {
-    $('.section_header').text(title);
-    $('#video_player').attr('src', url);
-}
-
 
 $('#review_form i').on('click', function() {
     var thisVal = $(this).attr('data-alt');
