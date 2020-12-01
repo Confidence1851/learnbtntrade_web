@@ -1,7 +1,7 @@
 
 <script src="{{ $web_source }}/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
 <script src="{{ $web_source }}/plugins/wow/wow.js"></script><!-- WOW JS -->
-<script defer src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ $web_source }}/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="{{ $web_source }}/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 <script src="{{ $web_source }}/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
 <script defer src="{{ $web_source }}/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
