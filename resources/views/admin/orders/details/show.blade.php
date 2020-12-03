@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Order Information | Orders' , 'activeGroup'  => 'orders', 'activePage' => 'details'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Order Information | Orders' , 'activeGroup'  => 'orders', 'activePage' => 'details'])
 @section('content')
 <div class="container-fluid">
     <div class="row clearfix">

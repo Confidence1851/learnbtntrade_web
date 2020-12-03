@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Users Management | Agent Information' , 'activeGroup'  => 'users_management', 'activePage' => 'agents'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Users Management | Agent Information' , 'activeGroup'  => 'users_management', 'activePage' => 'agents'])
 @section('content')
 @php
     $source = env('RESOURCE_PATH').'/'."dashboard";

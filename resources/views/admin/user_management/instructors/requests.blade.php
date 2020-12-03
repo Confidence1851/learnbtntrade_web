@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>   $title == 1 ? 'All Requests | Intructors' : 'Pending Requests | Intructors' , 'activeGroup'  => 'instructors', 'activePage' => $title == 1 ? 'all' : 'requests'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>   $title == 1 ? 'All Requests | Intructors' : 'Pending Requests | Intructors' , 'activeGroup'  => 'instructors', 'activePage' => $title == 1 ? 'all' : 'requests'])
 @section('content')
 
      <div class="container-fluid">

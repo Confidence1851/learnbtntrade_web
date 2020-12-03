@@ -1,4 +1,4 @@
-SUNEDITOR.create('editor_classic', {
+SUNEDITOR.create('ckeditor', {
     display: 'block',
     width: '100%',
     height: 'auto',

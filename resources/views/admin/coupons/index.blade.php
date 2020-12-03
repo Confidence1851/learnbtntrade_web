@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Coupons' , 'activeGroup'  => 'coupons', 'activePage' => ''])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Coupons' , 'activeGroup'  => 'coupons', 'activePage' => ''])
 @section('content')
      <div class="container-fluid">
 

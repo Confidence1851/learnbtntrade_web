@@ -2,47 +2,81 @@
 <html>
 
 <head>
-    @php
-        $source = env('RESOURCE_PATH').'/'."dashboard";
-    @endphp
+
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$pageTitle}}</title>
-    <!-- Favicon-->
-    <link rel="icon" href="{{asset($source)}}/favicon.ico" type="image/x-icon">
+    <title>{{$pageTitle}} | {{auth('web')->user()->getRole()}}</title>
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="{{ $favicon_img }}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ $favicon_img }}" />
+
 
     <!-- Google Fonts -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{asset($source)}}/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ $admin_source }}/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="{{asset($source)}}/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="{{ $admin_source }}/plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Multi Select Css -->
-    <link href="{{asset($source)}}/plugins/multi-select/css/multi-select.css" rel="stylesheet">
+    <link href="{{ $admin_source }}/plugins/multi-select/css/multi-select.css" rel="stylesheet">
 
     <!-- Animation Css -->
-    <link href="{{asset($source)}}/plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="{{ $admin_source }}/plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- JQuery DataTable Css -->
-    <link href="{{asset($source)}}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="{{ $admin_source }}/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
      <!-- Bootstrap Select Css -->
-     <link href="{{asset($source)}}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+     <link href="{{ $admin_source }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
+    <!-- Morris Css -->
+    <link href="{{ $admin_source }}/plugins/morrisjs/morris.css" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="{{asset($source)}}/css/style.css" rel="stylesheet">
+    <link href="{{ $admin_source }}/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="{{asset($source)}}/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="{{ $admin_source }}/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- suneditor -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/sample.css" media="all">
+    <link href="{{ $admin_source }}/plugins/suneditor/css/suneditor.min.css" rel="stylesheet">
+    <!-- codeMirror -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/codemirror.css">
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/katex.min.css">
+
+
+    <style>
+        .upload_icon{
+            position: relative;
+            bottom: 40px;
+            right: -190px;
+            cursor: pointer;
+            background-color: skyblue;
+            width: 20px;
+            height: 30px;
+            border-radius: 100%;
+            padding-top: 3.5px;
+            padding-right: 27px;
+            padding-left: 3px;
+        }
+        .rounded_{
+            border-radius: 50% 40% !important;
+        }
+    </style>
 </head>
 
 <body class="theme-blue">
+    {{-- @php
+        $pendingInvestments = App\Models\Investment::where('status',0)->count();
+        $pendingWithdrawals = App\Models\Withdrawal::where('status',0)->count();
+    @endphp --}}
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -80,7 +114,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{{asset($source)}}/index.html">Stakeguard</a>
+                <a class="navbar-brand" href="/">LearnBtcTrade {{auth('web')->user()->getRole()}}</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -196,6 +230,18 @@
                         </ul>
                     </li>
                     <!-- #END# Notifications -->
+                    <li class="">
+                        <a href="" class=""  role="button" title="Pending Investments">
+                            <i class="material-icons">timeline</i>
+                        <span class="label-count">0</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="" class=""  role="button"  title="Pending Withdrawals">
+                            <i class="material-icons">trending_up</i>
+                            <span class="label-count">0</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -207,80 +253,38 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{asset($source)}}/images/user.png" width="48" height="48" alt="User" />
+                    <img src="{{auth('web')->user()->getAvatar()}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} ({{Auth::user()->getRole()}})</div>
-                    <div class="email">{{Auth::user()->email}}</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{auth('web')->user()->name}} ({{auth('web')->user()->getRole()}})</div>
+                    <div class="email">{{auth('web')->user()->email}}</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <!-- <li><a href="javascript:void(0);"><i class="material-icons">group</i>Referrals</a></li> -->
-                            <!-- <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Payment</a></li> -->
-                            <!-- <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li> -->
+                        <li><a href="{{ route('edit.profile')}}"><i class="material-icons">person</i>Edit Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);" onclick=" document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Sign Out</a></li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf
-                            </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li class="{{$activePage == 'dashboard' ? 'active' : ''}}">
-                        <a href="{{ route('home') }}">
-                            <i class="material-icons">home</i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="{{$activeGroup == 'chats' ? 'active' : ''}}">
-                        <a href="{{ route('agent_chats') }}">
-                            <i class="material-icons">trending_up</i>
-                            <span>Chats</span>
-                        </a>
-                    </li>
-
-                    <li class="{{$activeGroup == 'coupons' ? 'active' : ''}}">
-                        <a href="{{ route('agent_coupons') }}">
-                            <i class="material-icons">content_paste</i>
-                            <span>Coupon Codes</span>
-                        </a>
-                    </li>
-
-                    <li class="{{$activeGroup == 'transactions' ? 'active' : ''}}">
-                        <a href="{{ route('agent_transactions') }}">
-                            <i class="material-icons">content_paste</i>
-                            <span>Agent Transactions</span>
-                        </a>
-                    </li>
-
-                    <li class="header">INTERACTIONS</li>
-
-                    <li class="{{$activeGroup == 'adverts' ? 'active' : ''}}">
-                        <a href="#">
-                            <i class="material-icons col-amber">rss_feed</i>
-                            <span>Complaints</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @if (auth('web')->user()->getRole() == "Administrator")
+                @include("admin.layout.admin_sidebar")
+            @endif
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2020 <a href="javascript:void(0);">Smart Guard Corp</a>.
+                    &copy; 2020 <a href="javascript:void(0);">LearnBtcTrade Ltd.</a>.
                 </div>
             </div>
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
+
     </section>
 
     <section class="content">
@@ -289,39 +293,98 @@
     </section>
 
     <!-- Jquery Core Js -->
-    <script src="{{asset($source)}}/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="{{asset($source)}}/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="{{ $admin_source }}/plugins/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
-    <script src="{{asset($source)}}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="{{ $admin_source }}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="{{asset($source)}}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="{{asset($source)}}/plugins/node-waves/waves.js"></script>
+    <script src="{{ $admin_source }}/plugins/node-waves/waves.js"></script>
 
     <!-- Jquery DataTable Plugin Js -->
-    <script src="{{asset($source)}}/plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="{{asset($source)}}/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Multi Select Plugin Js -->
-    <script src="{{asset($source)}}/plugins/multi-select/js/jquery.multi-select.js"></script>
+    <script src="{{ $admin_source }}/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+
+    <!-- Morris Plugin Js -->
+    {{-- <script src="{{ $admin_source }}/plugins/raphael/raphael.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/morrisjs/morris.js"></script>
+    <script src="{{ $admin_source }}/js/pages/charts/morris.js"></script> --}}
 
 
     <!-- Custom Js -->
-    <script src="{{asset($source)}}/js/admin.js"></script>
-    <script src="{{asset($source)}}/js/pages/tables/jquery-datatable.js"></script>
-    <script src="{{asset($source)}}/js/user.js"></script>
+    <script src="{{ $admin_source }}/js/admin.js"></script>
+    <script src="{{ $admin_source }}/js/pages/tables/jquery-datatable.js"></script>
+
+
+    <script src="{{ $admin_source }}/js/script.js"></script>
+    <script src="{{ $admin_source }}/js/user.js"></script>
+
+    <!-- suneditor -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/common.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/suneditor.min.js"></script>
+    <!-- codeMirror -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/codemirror.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/htmlmixed.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/xml.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/css.js"></script>
+    <!-- KaTeX -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/katex.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/suneditor-init.js"></script>
+{{-- 
+ <!-- Ckeditor -->
+ <script src="{{ $admin_source }}/plugins/ckeditor/ckeditor.js"></script>
+ <script>
+     $(function () {
+         //CKEditor
+         CKEDITOR.replace('ckeditor');
+         CKEDITOR.config.height = 300;
+     });
+ </script> --}}
+    <script>
+        (function($) {
+            "use strict";
+            $(document).ready(function() {
+                // $("#ckeditor").attr("id" , "")
+                $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+                    localStorage.setItem('activeTab', $(e.target).attr('href'));
+                });
+                var activeTab = localStorage.getItem('activeTab');
+                if (activeTab) {
+                    $('#nav-tab a[href="' + activeTab + '"]').tab('show');
+                }
+            });
+
+
+            $(document).ready(function() {
+                var activeTab = localStorage.getItem('activeTab');
+                if (activeTab) {
+                    $('#nav-tab a[href="' + activeTab + '"]').tab('show');
+                }
+            });
+        })(jQuery);
+
+
+    </script>
+
+
+    @yield('scripts')
 
 </body>
 

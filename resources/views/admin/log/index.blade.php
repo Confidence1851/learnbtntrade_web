@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Activity Logs' , 'activeGroup'  => 'logs', 'activePage' => 'logs'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Activity Logs' , 'activeGroup'  => 'logs', 'activePage' => 'logs'])
 @section('content')
      <div class="container-fluid">
             <!-- Exportable Table -->

@@ -1,12 +1,12 @@
 @php
     if(auth('web')->user()->role == $bloggerRole){
-        $layout = 'blogger.layout.app';
+        $layout = 'dashboard_layout.app';
     }
     else if(auth('web')->user()->role == $instructorRole){
         $layout = 'instructor.layout.app';
     }
     else{
-        $layout = 'admin.layout.app';
+        $layout = 'dashboard_layout.app';
     }
 @endphp
 @extends($layout,[ 'pageTitle' =>  'Edit Profile' , 'activeGroup'  => 'profile', 'activePage' => ''])

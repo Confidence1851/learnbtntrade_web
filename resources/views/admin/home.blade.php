@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Dashboard' , 'activeGroup'  => '', 'activePage' => 'dashboard'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Dashboard' , 'activeGroup'  => '', 'activePage' => 'dashboard'])
 @section('content')
      <div class="container-fluid">
         <!-- Hover Zoom Effect -->

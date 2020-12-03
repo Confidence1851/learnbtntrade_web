@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Course Category information' , 'activeGroup'  => 'course', 'activePage' => 'category' ,'meta_keywords' => $category->meta_keywords , 'meta_description' => $category->meta_description])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Course Category information' , 'activeGroup'  => 'course', 'activePage' => 'category' ,'meta_keywords' => $category->meta_keywords , 'meta_description' => $category->meta_description])
 @section('content')
      <div class="container-fluid">
 

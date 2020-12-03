@@ -29,7 +29,7 @@ class Post extends Model
     {
         
         $filename = $this->getPostBodyFileName();
-        if(file_exists(storage_path($filename))){
+        if(file_exists(storage_path("app/".$filename))){
             $content = Storage::disk('local')->get($filename);
         }
         else{

@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Edit Blog Post' , 'activeGroup'  => 'blog', 'activePage' => 'post'])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Edit Blog Post' , 'activeGroup'  => 'blog', 'activePage' => 'post'])
 @section('content')
      <div class="container-fluid">
 
@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Body</label>
-                                            <textarea id="editor_classic"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
+                                            <textarea id="ckeditor"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
                                             </div>
                                             @error('body')
                                                 <span class="invalid-feedback" role="alert">

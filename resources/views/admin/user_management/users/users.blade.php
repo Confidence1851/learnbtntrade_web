@@ -1,4 +1,4 @@
-@extends('admin.layout.app',[ 'pageTitle' =>  'Users Management | Users' , 'activeGroup'  => 'users_management', 'activePage' => $tag ?? ''])
+@extends('dashboard_layout.app',[ 'pageTitle' =>  'Users Management | Users' , 'activeGroup'  => 'users_management', 'activePage' => $tag ?? ''])
 @section('content')
 
      <div class="container-fluid">
