@@ -2,6 +2,8 @@
 @section('content')
      <div class="container-fluid">
 
+        
+
             <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -59,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Body</label>
-                                            <textarea id="ckeditor"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
+                                            <textarea id="editor_classic"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
                                             </div>
                                             @error('body')
                                                 <span class="invalid-feedback" role="alert">

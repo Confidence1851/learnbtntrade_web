@@ -42,6 +42,16 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ $admin_source }}/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- suneditor -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/sample.css" media="all">
+    <link href="{{ $admin_source }}/plugins/suneditor/css/suneditor.min.css" rel="stylesheet">
+    <!-- codeMirror -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/codemirror.css">
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/katex.min.css">
+
+
     <style>
         .upload_icon{
             position: relative;
@@ -500,6 +510,18 @@
     <script src="{{ $admin_source }}/js/script.js"></script>
     <script src="{{ $admin_source }}/js/user.js"></script>
 
+    <!-- suneditor -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/common.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/suneditor.min.js"></script>
+    <!-- codeMirror -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/codemirror.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/htmlmixed.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/xml.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/css.js"></script>
+    <!-- KaTeX -->
+    <script src="{{ $admin_source }}/plugins/suneditor/js/katex.min.js"></script>
+    <script src="{{ $admin_source }}/plugins/suneditor/js/suneditor-init.js"></script>
+{{-- 
  <!-- Ckeditor -->
  <script src="{{ $admin_source }}/plugins/ckeditor/ckeditor.js"></script>
  <script>
@@ -508,7 +530,7 @@
          CKEDITOR.replace('ckeditor');
          CKEDITOR.config.height = 300;
      });
- </script>
+ </script> --}}
     <script>
         (function($) {
             "use strict";

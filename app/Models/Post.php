@@ -5,11 +5,34 @@ namespace App\Models;
 use App\Traits\Constants;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
     use Constants , SoftDeletes;
     protected $guarded = [];
+    public $bodyFileStore = "/blog/post/";
+
+    
+    public function getPostBodyFileName(){
+        return $this->bodyFileStore."".$this->id.".txt";
+    }
+
+    public function setBodyAttribute($value)
+    {
+        $filename = $this->getPostBodyFileName();
+        Storage::disk('local')->put($filename, $value);
+        $this->attributes['body'] = $filename;
+    }
+
+    public function getBodyAttribute()
+    {
+        
+        $filename = $this->getPostBodyFileName();
+        $content = Storage::disk('local')->get($filename);
+        return $this->attributes['body'] =  $content;
+
+    }
 
     public function getStatus(){
         return $this->getModelStatus($this->status);

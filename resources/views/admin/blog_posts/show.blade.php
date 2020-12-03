@@ -52,7 +52,9 @@
                                                         <img src="{{ getFileFromStorage($post->image , 'storage') }}" alt="" class="img-responsive">
                                                     </div>
                                                     <br>
-                                                    {!! $post->body !!}
+                                                    <div class="se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable">
+                                                        {!! $post->body !!}
+                                                    </div>
                                                 </div>
 
                                             </div>

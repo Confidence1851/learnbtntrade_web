@@ -120,6 +120,7 @@ class BlogPostController extends Controller
     public function update(Request $request, $id)
     {
         $post = $this->Post->find($id);
+        // dd($request->all());
 
         $data = $this->validateData($request , $id);
         try{

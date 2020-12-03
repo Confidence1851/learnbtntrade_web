@@ -22,7 +22,7 @@
 								<div class="dlab-media">
 									<a href="javascript:;"><img src="{{ getFileFromStorage($post->image , 'storage') }}" alt=""></a>
 								</div>
-								<div class="dlab-post-text text">
+								<div class="dlab-post-text text se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable">
                                      {!! $post->body ?? '' !!}
                                 </div>
 								<div class="post-footer">

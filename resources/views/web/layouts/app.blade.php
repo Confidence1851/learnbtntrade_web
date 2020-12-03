@@ -49,6 +49,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/style.css">
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/templete.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ $web_source }}/css/skin/skin-4.css">
+    <link href="{{ $admin_source }}/plugins/suneditor/css/suneditor.min.css" rel="stylesheet">
 	<!-- REVOLUTION SLIDER CSS -->
 	{{-- <link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/revolution/revolution/css/revolution.min.css"> --}}
     <!-- Jquery Toast css -->
