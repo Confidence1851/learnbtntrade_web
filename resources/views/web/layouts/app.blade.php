@@ -7,13 +7,29 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta name="keywords" content="{{ $meta_keywords ?? 'learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy' }}" />
+	<meta name="keywords" content="{{ $meta_keywords ?? 'learn bitcoin, bitcoin, learnbtctrade, btc trade, academy, learnbtctrade academy , blockchain , crypto' }}" />
 	<meta name="author" content="Confidence Ugolo" />
 	<meta name="robots" content="" />
 	<meta name="description" content="{{ $meta_description ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
-	<meta property="og:title" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
-	<meta property="og:description" content="Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency." />
-	<meta property="og:image" content="{{ $favicon_img }}" />
+    <meta property="og:url"content="{{ request()->url() }}" />
+    <meta property="og:site_name"content="Learnbtctrade Academy" />
+
+    <meta property="og:title" content="{{ $meta_title ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
+	<meta property="og:description" content="{{ $meta_description ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
+    <meta property="og:image" content="{{ $meta_image ?? $favicon_img }}" />
+    <meta property="og:image:url" content="{{ $meta_image ?? $favicon_img }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="{{ $meta_type ?? "website" }}" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property='article:published_time' content="{{ $meta_article_time ?? "" }}" />
+    <meta property='article:section' content="{{ $meta_article_category ?? "" }}" />
+
+    
+    <meta property="twitter:title" content="{{ $meta_title ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
+	<meta property="twitter:card" content="{{ $meta_description ?? 'Learnbtctrade Academy is a team of talented techpreneurs, passionate about teaching and educating people on how to make money from the blockchain market through trading and investing in crypto currency.' }}" />
+    <meta name="twitter:site"content="Learnbtctrade Academy" />
+
 	<meta name="format-detection" content="telephone=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 

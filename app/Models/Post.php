@@ -25,11 +25,17 @@ class Post extends Model
         $this->attributes['body'] = $filename;
     }
 
-    public function getBodyAttribute()
+    public function getBodyAttribute($value)
     {
         
         $filename = $this->getPostBodyFileName();
-        $content = Storage::disk('local')->get($filename);
+        if(file_exists(storage_path($filename))){
+            $content = Storage::disk('local')->get($filename);
+        }
+        else{
+            $content = $value;
+        }
+        
         return $this->attributes['body'] =  $content;
 
     }

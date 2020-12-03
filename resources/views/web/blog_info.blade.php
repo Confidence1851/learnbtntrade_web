@@ -1,4 +1,4 @@
-@extends('web.layouts.app' , ['title' => $post->title   , 'activePage' => 'blog' , 'meta_keywords' => $post->meta_keywords , 'meta_description' => $post->meta_description ])
+@extends('web.layouts.app' , $metaTags)
 @section('content')
 <!-- Content -->
 <div class="page-content bg-gray">
@@ -20,7 +20,7 @@
 								</div>
 								<h2 class="dlab-title">{!! $post->title ?? '' !!}</h2>
 								<div class="dlab-media">
-									<a href="javascript:;"><img src="{{ getFileFromStorage($post->image , 'storage') }}" alt=""></a>
+									<a href="javascript:;"><img src="{{ getFileFromStorage($post->image , 'storage') }}" alt="{{ $post->title }}" title="{{ $post->title }}"></a>
 								</div>
 								<div class="dlab-post-text text se-wrapper-inner se-wrapper-wysiwyg sun-editor-editable">
                                      {!! $post->body ?? '' !!}

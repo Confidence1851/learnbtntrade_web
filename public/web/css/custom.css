@@ -216,3 +216,36 @@
                 text-align: center;
             }
         }
+
+
+        .textLimit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; 
+            -webkit-box-orient: vertical;
+         }
+         
+
+         .oneLine {
+            -webkit-line-clamp: 1; 
+         }
+
+         .twoLines {
+            -webkit-line-clamp: 2; 
+         }
+
+         .threeLines {
+            -webkit-line-clamp: 3; 
+         }
+
+         .fourLines {
+            -webkit-line-clamp: 4; 
+         }
+
+         .fiveLines {
+            -webkit-line-clamp: 5; 
+         }
+
+        
+         

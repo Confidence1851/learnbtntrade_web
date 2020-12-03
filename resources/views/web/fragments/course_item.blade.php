@@ -18,8 +18,12 @@
             </div>
         </div>
         <div class="dlab-info">
-            <h6 class="dlab-title"><a href="{{ route('my_courses.go_to_course' , ['id' => $course->id , 'slug' => $course->slug]) }}">{{ str_limit($course->title) }}</a></h6>
-            <p>{!! str_limit($course->description) !!}.</p>
+            <h6 class="dlab-title">
+                <a href="{{ route('my_courses.go_to_course' , ['id' => $course->id , 'slug' => $course->slug]) }}" title="{{ $course->title }}" class="textLimit">
+                    {{ $course->title }}
+                </a>
+            </h6>
+            <p class="textLimit threeLines">{!! str_limit( $course->description, 250) !!}.</p>
             <div class="courses-info">
                 <ul>
                     @if (auth('web')->check())

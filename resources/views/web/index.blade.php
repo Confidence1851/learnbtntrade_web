@@ -1,4 +1,4 @@
-@extends('web.layouts.app' , ['title' => 'Home'])
+@extends('web.layouts.app' , ['title' => 'Home of talented techpreneurs'])
 @section('content')
 {{-- <div id="loading-area" style="background-image: url({{ $logo_img }});"></div> --}}
 <!-- Content -->

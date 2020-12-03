@@ -29,7 +29,18 @@ class BlogController extends Controller
         $categories = $this->PostCategory->model()->where('status' , $this->activeStatus)->get();
         $post = $this->Post->find($id);
         $related_posts = $this->Post->model()->where('status' , $this->activeStatus)->where('post_category_id' , $post->category->id )->limit(5)->inRandomOrder()->get();
-        return view('web.blog_info' , compact('post' , 'categories' , 'related_posts'));
+        $metaTags = [
+            'title' => str_limit($post->title , 30) , 
+            'meta_type' => 'article' , 
+            'meta_title' => str_limit($post->title , 60) , 
+            'meta_image' => getFileFromStorage($post->image , 'storage')  , 
+            'activePage' => 'blog' , 
+            'meta_keywords' => $post->meta_keywords , 
+            'meta_description' => $post->meta_description ,
+            'meta_article_time' => $post->created_at,
+            'meta_article_category' => $post->category->title
+        ];
+        return view('web.blog_info' , compact('post' , 'categories' , 'related_posts' , 'metaTags'));
     }
 
     public function blog_category_posts(Request $request , $id){
