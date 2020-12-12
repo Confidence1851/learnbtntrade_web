@@ -170,7 +170,7 @@ jQuery(document).ready(function() {
         });
     });
     $(document).ready(() => {
-        $('video').attr('controlsList', 'nodownload');
+        // $('video').attr('controlsList', 'nodownload');
         $("video").on("contextmenu",function(){
             return false;
         });
