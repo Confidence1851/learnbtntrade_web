@@ -32,12 +32,15 @@ class NewsletterSubscriberController extends Controller
             'recipients' => 'nullable|string'
 
           ]);
+
+        //   dd($data);
          $recipients = explode(',',$data['recipients']);
         //  dd($recipients);
          $emails = array();
          foreach($recipients as $recipient){
              array_push($emails,NewsletterSubscriber::where('id',$recipient)->first());
          }
+        //  dd($data['message']);
 
 
         //  dd($emails);
@@ -46,12 +49,11 @@ class NewsletterSubscriberController extends Controller
              $data['email'] = $email->email;
              $data['subject'] = Str::replaceArray('{{name}}', [$name,$name,$name,$name,$name,$name,$name,$name,$name,$name] ,$data['subject']);
              $data['message'] = Str::replaceArray('{{name}}', [$name,$name,$name,$name,$name,$name,$name,$name,$name,$name] ,$data['message']);
-             // dump($data);
+            //  dd($data);
              Mail::to($data['email'])->send(new NewsLetter($data));
              $data['subject'] = $request['subject'];
              $data['message'] = $request['message'];
          }
-         // dd('');
          return redirect()->back()->withStatus(__('Letter successfully sent to '.count($emails).' email address(es)!'));
      }
 

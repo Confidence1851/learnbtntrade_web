@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/news' , function(){
+    return view('emails.newsletter');
+});
+
 Route::get('/', 'Web\WebController@index')->name('homepage');
 Route::get('/signup-invite/ref/{code}', 'Auth\RegisterController@ref_invite')->name('ref_invite');
 Route::get('/contact-us', 'Web\WebController@contact_us')->name('contact_us');
