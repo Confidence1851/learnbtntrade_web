@@ -19,7 +19,7 @@
                             <div class="section_item mb-1">
                                 <div class="row">
                                     <div class="col-10">
-                                        <a href="{{ route('my_courses.section_load_video', $this_section->id) }}" class="section_load_video"  title="Play {{$this_section->title}}"> {{$this_section->title}}</a>
+                                        <a href="{{ route('my_courses.take_course' , ['id' => $this_section->id , 'slug' => $this_section->slug ])}}" class=""  title="Play {{$this_section->title}}"> {{$this_section->title}}</a>
                                     </div>
                                     <div class="col-2">
                                         <span onclick="return handleShowResources(section_resource_{{$this_section->id}});">
