@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Description</label>
-                                            <textarea id="ckeditor" type="text" name="description" class="form-control" required>{!! old('description') !!}</textarea>
+                                            <textarea id="sun_editor" type="text" name="description" class="form-control" required>{!! old('description') !!}</textarea>
                                             </div>
                                             @error('description')
                                                 <span class="invalid-feedback" role="alert">

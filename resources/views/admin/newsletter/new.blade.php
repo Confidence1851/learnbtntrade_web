@@ -61,7 +61,7 @@
                                                                 <div class="form-group">
                                                                     <div class="form-line">
                                                                         <label for="">Message</label>
-                                                                    <textarea id="ckeditor" type="text" name="message" class="form-control" placeholder="Use &#123;&#123;name&#125;&#125; to represent the person`s name" required>{!! old('message') !!}</textarea>
+                                                                    <textarea id="sun_editor" type="text" name="message" class="form-control" placeholder="Use &#123;&#123;name&#125;&#125; to represent the person`s name" required>{!! old('message') !!}</textarea>
                                                                     </div>
                                                                     @error('message')
                                                                         <span class="invalid-feedback" role="alert">

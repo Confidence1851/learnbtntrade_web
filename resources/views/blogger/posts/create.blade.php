@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Body</label>
-                                            <textarea id="ckeditor" type="text" name="body" class="form-control" required>{!! old('body') !!}</textarea>
+                                            <textarea id="sun_editor" type="text" name="body" class="form-control" required>{!! old('body') !!}</textarea>
                                             </div>
                                             @error('body')
                                                 <span class="invalid-feedback" role="alert">
@@ -158,16 +158,4 @@
             <!-- #END# Exportable Table -->
         </div>
 @stop
-S
-@section('scripts')
-    <!-- Ckeditor -->
-    <script src="{{asset($admin_source)}}/plugins/ckeditor/ckeditor.js"></script>
-    <script>
-        $(function () {
-            //CKEditor
-            CKEDITOR.replace('ckeditor');
-            CKEDITOR.config.height = 300;
-        });
-    </script>
 
-@endsection

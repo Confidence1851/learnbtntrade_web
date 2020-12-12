@@ -1,4 +1,4 @@
-SUNEDITOR.create('ckeditor', {
+SUNEDITOR.create('sun_editor', {
     display: 'block',
     width: '100%',
     height: 'auto',

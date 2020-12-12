@@ -273,6 +273,8 @@
             <!-- Menu -->
             @if (auth('web')->user()->getRole() == "Administrator")
                 @include("admin.layout.admin_sidebar")
+            @elseif (auth('web')->user()->getRole() == "Blogger")
+            @include("dashboard_layout.blogger_sidebar")
             @endif
             <!-- #Menu -->
             <!-- Footer -->

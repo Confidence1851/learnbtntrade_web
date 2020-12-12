@@ -10,7 +10,7 @@
 
         <li class="{{$activePage == 'blog' ? 'active' : ''}}">
             <a href="{{ route('blogger.posts.index') }}">
-                <i class="material-icons">home</i>
+                <i class="material-icons">devices</i>
                 <span>Blog Posts</span>
             </a>
         </li>

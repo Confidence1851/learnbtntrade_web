@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label for="">Body</label>
-                                            <textarea id="ckeditor"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
+                                            <textarea id="sun_editor"  type="text" name="body" class="form-control" required>{!! $post->body !!}</textarea>
                                             </div>
                                             @error('body')
                                                 <span class="invalid-feedback" role="alert">
