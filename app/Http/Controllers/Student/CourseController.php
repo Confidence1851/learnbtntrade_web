@@ -84,7 +84,7 @@ class CourseController extends Controller
         //  return getFileFromPrivateStorage($section->video);
         $stream = new VideoStream($section->video);
         // session()->forget($key);
-        return $stream->start();
+        $stream->start();
     }
 
     public function section_load_video($id){
