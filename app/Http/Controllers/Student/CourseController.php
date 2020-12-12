@@ -51,35 +51,16 @@ class CourseController extends Controller
 
 
     public function section_video($id){
-        $key = 'section_load_video';
-        if(!session()->has($key)){
-            return response()->json([
-                'success' => false,
-                'msg' => 'Could not load  this resource',
-                'data' => null
-            ]);
-        }
-        $hash = decrypt(session()->get($key));
-        // $validate = Carbon::parse($hash['hash'])->diffInSeconds(now() , false);
-        // if($validate > 10){
+       
+        $section = $this->CourseSection->find($id);
+        // $check = $this->validateAccess($section->course_id);
+        // if(!$check){
         //     return response()->json([
         //         'success' => false,
-        //         'msg' => 'Your access to this resource timed out!',
+        //         'msg' => 'You don`t have access to this resource',
         //         'data' => null
         //     ]);
         // }
-
-        $section = $this->CourseSection->find($hash['key']);
-        // dump($section->id);
-        $check = $this->validateAccess($section->course_id);
-        if(!$check){
-            return response()->json([
-                'success' => false,
-                'msg' => 'You don`t have access to this resource',
-                'data' => null
-            ]);
-        }
-        // dd($check);
 
         //  return getFileFromPrivateStorage($section->video);
         $stream = new VideoStream($section->video);
@@ -123,9 +104,8 @@ class CourseController extends Controller
         return true;
     }
 
-    public function go_to_course($id){
+    public function go_to_course($id , $slug){
         $course = $this->Course->find($id);
-        dd();
         $check = $this->validateAccess($id);
         if(!$check){
             return view('student.access_denied');
