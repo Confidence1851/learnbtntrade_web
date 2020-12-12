@@ -50,7 +50,7 @@ class CourseController extends Controller
 
 
 
-    public function section_video(){
+    public function section_video($id){
         $key = 'section_load_video';
         if(!session()->has($key)){
             return response()->json([
@@ -125,6 +125,7 @@ class CourseController extends Controller
 
     public function go_to_course($id){
         $course = $this->Course->find($id);
+        dd();
         $check = $this->validateAccess($id);
         if(!$check){
             return view('student.access_denied');

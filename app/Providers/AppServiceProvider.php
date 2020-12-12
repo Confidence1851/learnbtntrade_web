@@ -41,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'logo_img' => route('homepage').env('ASSET_URL').'/logo.png',
                 'favicon_img' => route('homepage').env('ASSET_URL').'/logo.png',
+                'public_source' => route('homepage').env('ASSET_URL'),
                 'web_source' => route('homepage').env('ASSET_URL').'/web',
                 'admin_source' => route('homepage').env('ASSET_URL').'/dashboard',
                 'userRole' => $this->bloggerRole,

@@ -1,6 +1,6 @@
 @extends('web.layouts.app' , ['title' => $section->title   , 'activePage' => 'course' , 'meta_keywords' => $section->meta_keywords , 'meta_description' => $section->meta_description , 'hide_footer' => true ])
 @section('style')
-
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
 @endsection
 @section('content')
   <main class="page-content">
@@ -8,7 +8,7 @@
         <div class="row mt-4">
             <div class="col-md-9">
                 <div class="section_header">{!! $section->title !!}</div>
-                <video src="https://learnbtctrade.com/my-courses/section/video/14" controls id="video_player"></video>
+                <video src="" controls id="video_player"></video>
                 
             </div>
             <div class="col-md-3">
@@ -55,6 +55,7 @@
 @section('scripts')
 <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
 <script>
+    const player = new Plyr('#video_player');
     function handleShowResources(target){
         $('.section_resources').addClass('d-none');
 

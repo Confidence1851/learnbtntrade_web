@@ -70,6 +70,7 @@
 	{{-- <link rel="stylesheet" type="text/css" href="{{ $web_source }}/plugins/revolution/revolution/css/revolution.min.css"> --}}
     <!-- Jquery Toast css -->
     <link href="{{asset('toast')}}/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+    @yield('style')
 	<link rel="stylesheet" type="text/css" href="{{ $web_source }}/css/custom.css">
 </head>
 <body id="bg">
