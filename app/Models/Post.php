@@ -15,7 +15,7 @@ class Post extends Model
 
     
     public function getPostBodyFileName(){
-        return $this->bodyFileStore."".$this->id.".txt";
+        return $this->bodyFileStore.$this->id.".txt";
     }
 
     public function setBodyAttribute($value)

@@ -160,7 +160,7 @@
 @stop
 
 @section('scripts')
-    <!-- Ckeditor -->
+    {{-- <!-- Ckeditor -->
     <script src="{{asset($admin_source)}}/plugins/ckeditor/ckeditor.js"></script>
     <script>
         $(function () {
@@ -168,6 +168,6 @@
             CKEDITOR.replace('ckeditor');
             CKEDITOR.config.height = 300;
         });
-    </script>
+    </script> --}}
 
 @endsection
