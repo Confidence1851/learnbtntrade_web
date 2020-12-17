@@ -73,11 +73,12 @@
                             </div>
                         @endforeach
                          <!-- Pagination start -->
-                        <div class="pagination-bx rounded-sm primary clearfix m-b30 text-center">
+                        {{-- <div class="pagination-bx rounded-sm primary clearfix m-b30 text-center">
                             <ul class="pagination">
-                                {!! $posts->links() !!}
+                               
                             </ul>
-                        </div>
+                        </div> --}}
+                        {!! $posts->links() !!}
                         <!-- Pagination END -->
                     @else
                     <div class="container">

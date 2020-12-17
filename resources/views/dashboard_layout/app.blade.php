@@ -44,7 +44,7 @@
     <link href="{{ $admin_source }}/css/themes/all-themes.css" rel="stylesheet" />
 
     <!-- suneditor -->
-    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/sample.css" media="all">
+    {{-- <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/sample.css" media="all"> --}}
     <link href="{{ $admin_source }}/plugins/suneditor/css/suneditor.min.css" rel="stylesheet">
     <!-- codeMirror -->
     <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/codemirror.css">

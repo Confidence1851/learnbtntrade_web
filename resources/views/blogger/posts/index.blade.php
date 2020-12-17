@@ -75,5 +75,6 @@
                 </div>
             </div>
             <!-- #END# Exportable Table -->
+            {{ $posts->links() }}
         </div>
 @stop
