@@ -1,4 +1,7 @@
 @extends('dashboard_layout.app',[ 'pageTitle' =>  'Blog Post Information' , 'activeGroup'  => 'blog', 'activePage' => 'post'])
+@section('style')
+    <link rel="stylesheet" href="{{ $admin_source }}/plugins/suneditor/css/sample.css" media="all">    
+@endsection
 @section('content')
      <div class="container-fluid">
 
