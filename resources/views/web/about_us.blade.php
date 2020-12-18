@@ -157,7 +157,7 @@
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
                                 <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/team/emma.jpeg">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/emma.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
@@ -176,7 +176,7 @@
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
                                 <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/team/eclick.jpeg">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/eclick.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
@@ -195,7 +195,7 @@
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
                                 <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/team/alex.jpeg">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/alex.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
@@ -214,7 +214,7 @@
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
                                 <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/team/confidence.jfif">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/confidence.jfif">
                                 </a>
                             </div>
                             <div class="dlab-info">
@@ -233,7 +233,7 @@
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
                                 <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt="" src="{{ $web_source }}/images/our-team/preview.jpg" class="lazy" data-src="{{ $web_source }}/team/dora.jpeg">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/dora.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">

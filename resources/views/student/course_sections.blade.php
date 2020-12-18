@@ -9,7 +9,6 @@
             <div class="col-md-9">
                 <div class="section_header">{!! $section->title !!}</div>
                 <video src="" controls id="video_player"></video>
-                
             </div>
             <div class="col-md-3">
                 <div class="h4">Sections List</div>
