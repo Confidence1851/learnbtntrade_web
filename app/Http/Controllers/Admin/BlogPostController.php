@@ -17,7 +17,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $posts = $this->Post->all();
+        $posts = $this->Post->model()->paginate(100);
         return view('admin.blog_posts.index',compact('posts'));
     }
 
@@ -91,9 +91,9 @@ class BlogPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post)
     {
-        $post = $this->Post->find($id);
+        $post = $this->Post->find($post);
         return view('admin.blog_posts.show', compact('post'));
     }
 
