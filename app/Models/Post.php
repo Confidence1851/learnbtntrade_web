@@ -21,7 +21,7 @@ class Post extends Model
     public function setBodyAttribute($value)
     {
         $filename = $this->body;
-        if(empty($filename) ||  !Storage::disk('local')->exists($filename)){
+        if(empty($filename) ||  !file_exists(storage_path("app/".$filename))){
             $id = uniqid();
             $filename = $this->getPostBodyFileName($id);
         }
