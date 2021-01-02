@@ -50,10 +50,18 @@ class BlogPostController extends Controller
 
     public function validateData($request , $id = null )
     {
-        // dd($request->all());
+
+        $title = '|unique:posts,title';
+        if(!empty($id)){
+            $post = $this->Post->find($id);
+            if($request->title == $post->title){
+                $title = '';
+            }
+        }
+       
         $data = $request->validate([
             'post_category_id' => 'required|string',
-            'title' => 'required|string',
+            'title' => 'required|string'.$title,
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/jpg,image/svg',
             'body' => 'required|string',
             'status' => 'required|string',
@@ -61,23 +69,7 @@ class BlogPostController extends Controller
             'meta_keywords' => 'nullable|string',
             'meta_description' => 'nullable|string',
         ]);
-        $count = 0 ;
-        if(!empty($id)){
-            $post = $this->Post->find($id);
-            if(strtolower($post->title) == strtolower($data['title']) ){
-                //
-            }
-            else{
-                $count = $this->Post->model()->where('title' , $data['title'])->first();
-            }
-        }
-        else{
-            $count = $this->Post->model()->where('title' , $data['title'])->first();
-        }
-        if($count > 0){
-            return redirect()->back()->with('error_msg', 'Blog title already exists!');
-        }
-
+       
         if(!empty( $image = $request->file('image'))){
             $data['image'] = resizeImageandSave($image , $this->blogPostsImagePath , 'local' , 640 , 360);
         }

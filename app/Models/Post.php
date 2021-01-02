@@ -25,6 +25,7 @@ class Post extends Model
             $id = uniqid();
             $filename = $this->getPostBodyFileName($id);
         }
+        dump("set");
         dd($filename);
         
         Storage::disk('local')->put($filename, $value);
@@ -41,6 +42,10 @@ class Post extends Model
         else{
             $content = $value;
         }
+
+        dump("get");
+        dd($filename);
+        
         
         return $this->attributes['body'] =  $content;
 
