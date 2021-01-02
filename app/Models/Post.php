@@ -14,13 +14,18 @@ class Post extends Model
     public $bodyFileStore = "/blog/post/";
 
     
-    public function getPostBodyFileName(){
-        return $this->bodyFileStore.$this->id.".txt";
+    public function getPostBodyFileName($id){
+        return $this->bodyFileStore.$id.".txt";
     }
 
     public function setBodyAttribute($value)
     {
-        $filename = $this->getPostBodyFileName();
+        $filename = $this->body;
+        if(!empty($filename) ||  !Storage::disk('local')->exists($filename)){
+            $id = uniqid();
+            $filename = $this->getPostBodyFileName($id);
+        }
+        
         Storage::disk('local')->put($filename, $value);
         $this->attributes['body'] = $filename;
     }
@@ -28,7 +33,7 @@ class Post extends Model
     public function getBodyAttribute($value)
     {
         
-        $filename = $this->getPostBodyFileName();
+        $filename = $value;
         if(file_exists(storage_path("app/".$filename))){
             $content = Storage::disk('local')->get($filename);
         }
