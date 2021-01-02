@@ -21,10 +21,11 @@ class Post extends Model
     public function setBodyAttribute($value)
     {
         $filename = $this->body;
-        if(!empty($filename) ||  !Storage::disk('local')->exists($filename)){
+        if(empty($filename) ||  !Storage::disk('local')->exists($filename)){
             $id = uniqid();
             $filename = $this->getPostBodyFileName($id);
         }
+        dd($filename);
         
         Storage::disk('local')->put($filename, $value);
         $this->attributes['body'] = $filename;
