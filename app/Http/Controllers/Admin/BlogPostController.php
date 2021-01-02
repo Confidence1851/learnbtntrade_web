@@ -17,7 +17,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $posts = $this->Post->model()->paginate(100);
+        $posts = $this->Post->model()->orderby("id" , "desc")->paginate(100);
         return view('admin.blog_posts.index',compact('posts'));
     }
 
