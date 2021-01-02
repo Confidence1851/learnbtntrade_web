@@ -26,7 +26,7 @@ class Post extends Model
             $filename = $this->getPostBodyFileName($id);
         }
         dump("set");
-        dd($filename);
+        dump($filename);
         
         Storage::disk('local')->put($filename, $value);
         $this->attributes['body'] = $filename;
@@ -44,7 +44,7 @@ class Post extends Model
         }
 
         dump("get");
-        dd($filename);
+        dump($filename);
         
         
         return $this->attributes['body'] =  $content;
