@@ -154,6 +154,9 @@
                                 <b>Instruction:</b> <br>
                                 <b>For Bank Transfer:</b> Kindly copy the ORDER REFERENCE below and use it as a payment narration when paying in the bank or via online banking! <br>
                                     Please note that our exchange rate is <b> NGN400 per $1. </b>
+                                    <p>
+                                        <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto.</b>
+                                    </p>
                                     <br>
                                     <br>
                                 <b>For Crypto Payment:</b> Kindly ensure you copied the correct address and you are transferring with the correct network! <br>
