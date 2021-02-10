@@ -107,11 +107,11 @@
                                 </tr>
                                 <tr>
                                     <td>Account Number</td>
-                                    <td>3109463356</td>
+                                    <td>2209747074</td>
                                 </tr>
                                 <tr>
                                     <td>Bank Name</td>
-                                    <td>First bank</td>
+                                    <td>Zenith Bank PLC </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -155,7 +155,8 @@
                                 <b>For Bank Transfer:</b> Kindly copy the ORDER REFERENCE below and use it as a payment narration when paying in the bank or via online banking! <br>
                                     Please note that our exchange rate is <b> NGN400 per $1. </b>
                                     <p>
-                                        <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto.</b>
+                                        <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto. 
+                                            Instead use your name or training as the description so as to avoid your bank blocking youur account and seizing your money in respect to the CBN ban.</b>
                                     </p>
                                     <br>
                                     <br>
