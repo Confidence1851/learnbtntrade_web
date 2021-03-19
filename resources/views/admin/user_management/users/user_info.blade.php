@@ -343,7 +343,7 @@
                                                 <label for="NewPassword" class="col-sm-3 control-label">New Password</label>
                                                 <div class="col-sm-9">
                                                     <div class="form-line">
-                                                        <input type="password" class="form-control" id="NewPassword" name="new" placeholder="New Password" required>
+                                                        <input type="password" class="form-control" id="NewPassword" name="password" placeholder="New Password" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,7 +351,7 @@
                                                 <label for="NewPasswordConfirm" class="col-sm-3 control-label">New Password (Confirm)</label>
                                                 <div class="col-sm-9">
                                                     <div class="form-line">
-                                                        <input type="password" class="form-control" id="NewPasswordConfirm" name="new_confirm" placeholder="New Password (Confirm)" required>
+                                                        <input type="password" class="form-control" id="NewPasswordConfirm" name="password_confirmation" placeholder="New Password (Confirm)" required>
                                                     </div>
                                                 </div>
                                             </div>
