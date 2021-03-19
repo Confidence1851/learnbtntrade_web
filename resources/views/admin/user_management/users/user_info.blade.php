@@ -351,7 +351,7 @@
                                                 <label for="NewPasswordConfirm" class="col-sm-3 control-label">New Password (Confirm)</label>
                                                 <div class="col-sm-9">
                                                     <div class="form-line">
-                                                        <input type="password" class="form-control" id="NewPasswordConfirm" name="password_confirmation" placeholder="New Password (Confirm)" required>
+                                                        <input type="password" class="form-control" id="NewPasswordConfirm" name="password_confirmation" placeholder="Confirm New Password" required>
                                                     </div>
                                                 </div>
                                             </div>
