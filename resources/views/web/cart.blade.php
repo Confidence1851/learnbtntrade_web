@@ -118,7 +118,7 @@
 
                         <div class="form-group">
                             <p style="color: black" class="mb-4">
-                                 Please note that our exchange rate is <b> NGN400 per $1. </b>
+                                 Please note that our exchange rate is <b> NGN500 per $1. </b>
                             </p>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                             <p style="color: red" class="mb-4">
                                 <b>Instruction:</b> <br>
                                 <b>For Bank Transfer:</b> Kindly copy the ORDER REFERENCE below and use it as a payment narration when paying in the bank or via online banking! <br>
-                                    Please note that our exchange rate is <b> NGN400 per $1. </b>
+                                    Please note that our exchange rate is <b> NGN500 per $1. </b>
                                     <p>
                                         <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto. 
                                             Instead use your name or training as the description so as to avoid your bank blocking youur account and seizing your money in respect to the CBN ban.</b>
