@@ -263,7 +263,6 @@
                             </div>
                             <div class="dlab-info">
                                 <h4 class="dlab-title"><a href="#"></a></h4>
-                                <span class="dlab-position">Team Members & Workforce</span>
                                 <ul class="dlab-social-icon dez-border">
                                     <li><a class="fa fa-faceboo" href="javascript:void(0);"></a></li>
                                     <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
