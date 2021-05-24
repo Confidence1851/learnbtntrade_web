@@ -1,5 +1,11 @@
 @extends('web.layouts.app' , ['title' => 'About us'  , 'activePage' => 'about' , 'meta_keywords' => 'about us' , 'meta_description' => 'Learn about our company.'])
 @section('content')
+<style>
+    .dlab-media{
+        height: 380px;
+        width: 100%;
+    }
+</style>
 <!-- Content -->
 <div class="page-content bg-white">
     <!-- inner page banner -->
@@ -153,15 +159,15 @@
                     </p>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
-                                <a href="teachers-profile.html">
+                                <a href="#">
                                     <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/emma.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Emmanuel Jackson</a></h4>
+                                <h4 class="dlab-title"><a href="#">Emmanuel Jackson</a></h4>
                                 <span class="dlab-position">Chief Executive Officer</span>
                                 <ul class="dlab-social-icon dez-border">
                                     <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
@@ -172,15 +178,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
-                                <a href="teachers-profile.html">
+                                <a href="#">
                                     <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/eclick.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Emmanuel Uko</a></h4>
+                                <h4 class="dlab-title"><a href="#">Emmanuel Uko</a></h4>
                                 <span class="dlab-position">Head of Administration</span>
                                 <ul class="dlab-social-icon dez-border">
                                     <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
@@ -191,15 +197,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
-                                <a href="teachers-profile.html">
+                                <a href="#">
                                     <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/alex.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Alexander Agbu</a></h4>
+                                <h4 class="dlab-title"><a href="#">Alexander Agbu</a></h4>
                                 <span class="dlab-position">Chief Technical Analyst</span>
                                 <ul class="dlab-social-icon dez-border">
                                     <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
@@ -210,15 +216,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
+                    {{-- <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
-                                <a href="teachers-profile.html">
+                                <a href="#">
                                     <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/confidence.jfif">
                                 </a>
                             </div>
                             <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Ugolo Confidence</a></h4>
+                                <h4 class="dlab-title"><a href="#">Ugolo Confidence</a></h4>
                                 <span class="dlab-position">Chief Technical Officer</span>
                                 <ul class="dlab-social-icon dez-border">
                                     <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
@@ -228,19 +234,57 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
+                    </div> --}}
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
                         <div class="dlab-box m-b30 dlab-team1">
                             <div class="dlab-media">
-                                <a href="teachers-profile.html">
-                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/dora.jpeg">
+                                <a href="#">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/analysis.jpeg">
                                 </a>
                             </div>
                             <div class="dlab-info">
-                                <h4 class="dlab-title"><a href="teachers-profile.html">Dora Ayomide </a></h4>
-                                <span class="dlab-position">Chief Editor</span>
+                                <h4 class="dlab-title"><a href="#"></a></h4>
+                                <span class="dlab-position">Technical & Fundamental Analysis Department</span>
                                 <ul class="dlab-social-icon dez-border">
-                                    <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-faceboo" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="#">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/workforce.jpeg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="#"></a></h4>
+                                <span class="dlab-position">Team Members & Workforce</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-faceboo" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
+                                    <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.8s">
+                        <div class="dlab-box m-b30 dlab-team1">
+                            <div class="dlab-media">
+                                <a href="#">
+                                    <img width="358" height="460" alt=""  class="lazy" src="{{ $web_source }}/team/branding.jpeg">
+                                </a>
+                            </div>
+                            <div class="dlab-info">
+                                <h4 class="dlab-title"><a href="#"></a></h4>
+                                <span class="dlab-position">The Branding Department</span>
+                                <ul class="dlab-social-icon dez-border">
+                                    <li><a class="fa fa-faceboo" href="javascript:void(0);"></a></li>
                                     <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
                                     <li><a class="fa fa-linkedin" href="javascript:void(0);"></a></li>
                                     <li><a class="fa fa-pinterest" href="javascript:void(0);"></a></li>
