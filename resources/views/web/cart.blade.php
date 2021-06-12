@@ -103,15 +103,15 @@
                             <tbody>
                                 <tr>
                                     <td>Account Name</td>
-                                    <td>Jackson Emmanuel Okon </td>
+                                    <td>Jackson, Okon Emmanuel</td>
                                 </tr>
                                 <tr>
                                     <td>Account Number</td>
-                                    <td>2209747074</td>
+                                    <td>1100069119</td>
                                 </tr>
                                 <tr>
                                     <td>Bank Name</td>
-                                    <td>Zenith Bank PLC </td>
+                                    <td>Kuda Microfinance Bank</td>
                                 </tr>
                             </tbody>
                         </table>
