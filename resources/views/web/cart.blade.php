@@ -55,7 +55,7 @@
                                 @endphp
                                 <tr class="alert cartItem_{{$item->id}}">
                                     <td class="product-item-img">
-                                        <img src="{{ getFileFromStorage($object->image) }}" title="Item Image" alt="">
+                                        <img src="{{ !empty($image = $object->image) ? getFileFromStorage($image) : "" }}" title="Item Image" alt="">
                                     </td>
                                     <td class="product-item-name">{{ $object->title }}</td>
                                     <td class="product-item-price">{{ format_money($object->price) }}</td>
@@ -136,7 +136,7 @@
                                     <td>Rate: {{ $cryptoRates['USDT-USD'] }}</td>
                                     <td>TP3LbXtskLrQ1z8fro4d43CnJJcA5aUsTc</td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
 
@@ -155,7 +155,7 @@
                                 <b>For Bank Transfer:</b> Kindly copy the ORDER REFERENCE below and use it as a payment narration when paying in the bank or via online banking! <br>
                                     Please note that our exchange rate is <b> NGN500 per $1. </b>
                                     <p>
-                                        <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto. 
+                                        <b>Please do not include Crypto or bitcoin or crypto related terms while making payment via bank, otherwise you might stand to lose your money and crypto.
                                             Instead use your name or training as the description so as to avoid your bank blocking youur account and seizing your money in respect to the CBN ban.</b>
                                     </p>
                                     <br>
@@ -187,11 +187,11 @@
                                         <input type="file" class="form-control"  name="file" placeholder="" required>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             <div class="row">
-                                
+
                                 @if($hasSubs > 0)
                                    <div class="col-md-6">
                                         <div class="form-group">
