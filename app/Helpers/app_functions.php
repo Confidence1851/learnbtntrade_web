@@ -226,7 +226,7 @@ function getFileType(String $type)
     /** Returns cart details
      * @return object
      */
-    function getUserCart(){
+    function getUserCart($refresh = false){
         $user = auth('web')->user();
 
         $cart = Cart::where('user_id', $user->id)->first();
@@ -240,6 +240,10 @@ function getFileType(String $type)
                 'reference' => generateCartHash(),
             ]);
         }
+
+        if($refresh){
+            $cart = refreshCart($cart->id);
+        }
         return $cart;
     }
 
@@ -251,7 +255,7 @@ function getFileType(String $type)
      */
     function refreshCart($cart_id , $generate_reference = false){
         $cart = Cart::find($cart_id);
-        $items = CartItem::where('cart_id' , $cart->id)->get();
+        $items = $cart->items;
         $price = 0;
         $discount = 0;
         $total = 0;
@@ -528,7 +532,7 @@ function getFileType(String $type)
                 $returnData = $parseData;
             }
 
-            
+
             return $returnData ;
         }
     }
