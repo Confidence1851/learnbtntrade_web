@@ -47,10 +47,10 @@
                                 @foreach($items as $item)
                                 @php
                                     if(!empty($item->course_id)){
-                                        $object = $item->course;
+                                        $object = optional($item->course);
                                     }
                                     else{
-                                        $object = $item->plan;
+                                        $object = optional($item->plan);
                                     }
                                 @endphp
                                 <tr class="alert cartItem_{{$item->id}}">
