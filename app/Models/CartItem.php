@@ -19,4 +19,14 @@ class CartItem extends Model
     public function plan(){
         return $this->belongsTo(Plan::class , 'plan_id');
     }
+
+    public function item(){
+        if(!empty($this->course)){
+            $item = $this->course;
+        }
+        else{
+            $item = $this->plan;
+        }
+        return $item;
+    }
 }

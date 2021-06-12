@@ -46,12 +46,7 @@
                             <tbody>
                                 @foreach($items as $item)
                                 @php
-                                    if(!empty($item->course_id)){
-                                        $object = optional($item->course);
-                                    }
-                                    else{
-                                        $object = optional($item->plan);
-                                    }
+                                    $object = optional($item->item());
                                 @endphp
                                 <tr class="alert cartItem_{{$item->id}}">
                                     <td class="product-item-img">
