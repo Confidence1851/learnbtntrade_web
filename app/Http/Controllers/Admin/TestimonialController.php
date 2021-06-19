@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TestimonialController extends Controller
 {
@@ -17,7 +18,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::get();
-        return view('admin.testimonials.index',compact('testimonials'));
+        return view('admin.testimonials.index', compact('testimonials'));
     }
 
     /**
@@ -27,7 +28,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.testimonials.create");
     }
 
     /**
@@ -40,24 +41,30 @@ class TestimonialController extends Controller
     {
         $data = $this->validateData($request);
         Testimonial::create($data);
-        return redirect()->back()->with('success_msg', 'Testimonial created successfully!');
+        return redirect()->route("testimonials.index")->with('success_msg', 'Testimonial created successfully!');
     }
 
 
-    public function validateData($request , $id = null)
+    public function validateData($request, $id = null)
     {
         // dd($request->all());
+
         $data = $request->validate([
             'title' => 'required|string',
             'name' => 'required|string',
-            'content' => 'required|string',
-            'image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg,image/svg',
+            'content' => 'nullable|string|'.Rule::requiredIf(empty($request->content_image)),
+            'image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg',
+            'content_image' => 'nullable|mimetypes:image/jpeg,image/png,image/jpg|'.Rule::requiredIf(empty($request->content)),
+            'content_type' => 'required|string',
             'featured' => 'required|string',
             'status' => 'required|string',
         ]);
 
-        if(!empty( $image = $request->file('image'))){
-            $data['image'] = putFileInStorage($image , $this->testimonialImagePath);
+        if (!empty($image = $request->file('image'))) {
+            $data['image'] = putFileInStorage($image, $this->testimonialImagePath);
+        }
+        if (!empty($image = $request->file('content_image'))) {
+            $data['content_image'] = putFileInStorage($image, $this->testimonialImagePath);
         }
         return $data;
     }
@@ -79,9 +86,9 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Testimonial $testimonial)
     {
-        //
+        return view("admin.testimonials.edit", ["testimonial" => $testimonial]);
     }
 
     /**
@@ -95,17 +102,10 @@ class TestimonialController extends Controller
     {
         $testimonial = Testimonial::find($id);
 
-        $data = $this->validateData($request , $id);
-        try{
-            if(!empty($request['file'])){
-                deleteFileFromStorage($testimonial->image);
-            }
-        }
-        catch(\Exception $e){
-            session()->flash('error_msg' , 'Couldn`t delete old testimonial image!');
-        }
+        $data = $this->validateData($request, $id);
+        $this->clean($request , $testimonial);
         $testimonial->update($data);
-        return redirect()->back()->with('success_msg', 'Testimonial updated successfully!');
+        return redirect()->route("testimonials.index")->with('success_msg', 'Testimonial updated successfully!');
     }
 
     /**
@@ -118,15 +118,19 @@ class TestimonialController extends Controller
     {
         $testimonial = Testimonial::find($id);
 
-        try{
-            if(!empty($testimonial->image)){
-               deleteFileFromStorage($testimonial->image);
-            }
-        }
-        catch(\Exception $e){
-            session()->flash('error_msg' , 'Couldn`t delete old testimonial image!');
-        }
+        $this->clean(request() , $testimonial);
         $testimonial->delete($testimonial->id);
         return redirect()->back()->with('success_msg', 'Testimonial deleted successfully!');
+    }
+
+
+    public function clean($request , $testimonial)
+    {
+            if (!empty($request['image'])) {
+                deleteFileFromPrivateStorage($this->testimonialImagePath . '/' . $testimonial->image);
+            }
+            if (!empty($request['content_image'])) {
+                deleteFileFromPrivateStorage($this->testimonialImagePath . '/' . $testimonial->content_image);
+            }
     }
 }

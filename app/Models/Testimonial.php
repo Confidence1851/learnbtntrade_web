@@ -11,15 +11,26 @@ class Testimonial extends Model
     use Constants;
     protected $guarded = [];
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->getModelStatus($this->status);
     }
 
-    public function getAvatar(){
-        if(empty($this->image)){
+    public function getAvatar()
+    {
+        if (empty($this->image)) {
             return getFileFromStorage('user.png');
         }
-        return route('read_file',encrypt($this->testimonialImagePath.'/'.$this->image));
+        return route('read_file', encrypt($this->testimonialImagePath . '/' . $this->image));
+    }
+
+
+    public function getContentImage()
+    {
+        if (empty($this->content_image)) {
+            return "";
+        }
+        return route('read_file', encrypt($this->testimonialImagePath . '/' . $this->content_image));
     }
 
 }

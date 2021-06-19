@@ -168,7 +168,7 @@ trait Constants
         ];
     }
 
-    
+
 
      /**
      * User images file path
@@ -181,7 +181,7 @@ trait Constants
      * Testimonial images file path
      * @return string
      */
-    public $testimonialImagePath = 'testimonials/avatars';
+    public $testimonialImagePath = 'testimonials';
 
     /**
      * Blog Post categories images file path
